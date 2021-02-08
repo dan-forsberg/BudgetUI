@@ -3,7 +3,7 @@ import type ICategory from "../interfaces/category";
 
 type GetCategoriesResp = {
 	message?: string;
-	categories?: ICategory[];
+	categories: ICategory[];
 };
 const getCategories = async (): Promise<ICategory[]> => {
 	const response = await get("/category");
@@ -16,9 +16,20 @@ const getCategories = async (): Promise<ICategory[]> => {
 	return json.categories;
 };
 
+type AddCategoryResp = {
+	message?: string;
+	id: number;
+	category: string;
+};
 const addCategory = async (category: string): Promise<ICategory> => {
-	const result = await post("/category/new", { category: category });
-	return result.json();
+	const response = await post("/category/new", { category: category });
+	const json = await response.json() as AddCategoryResp;
+
+	if (response.status !== 200) {
+		throw new Error(json.message);
+	}
+
+	return json;
 };
 
 const removeCategory = async (id: number): Promise<unknown> => {
