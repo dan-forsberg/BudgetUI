@@ -32,16 +32,32 @@ const addCategory = async (category: string): Promise<ICategory> => {
 	return json;
 };
 
-const removeCategory = async (id: number): Promise<unknown> => {
+type RemoveCategoryResp = {
+	message?: string;
+	rowsDeleted: number;
+};
+const removeCategory = async (id: number): Promise<number> => {
 	const response = await remove(`/category/delete/${id}`);
+	const json = await response.json() as RemoveCategoryResp;
+
 	if (response.status !== 200) {
-		throw new Error((await response.json()).message);
+		throw new Error(json.message);
 	}
-	return response;
+	return json.rowsDeleted;
 };
 
-const updateCategory = async (id: number, newName: string): Promise<unknown> => {
-	return await patch(`/category/${id}`, { category: newName });
+type UpdateCategoryResp = {
+	message: string;
+};
+const updateCategory = async (id: number, newName: string): Promise<string> => {
+	const response = await patch(`/category/update/${id}`, { category: newName });
+	const json = await response.json() as UpdateCategoryResp;
+
+	if (response.status !== 200) {
+		throw new Error(json.message);
+	}
+
+	return json.message;
 };
 
 export default { getCategories, addCategory, removeCategory, updateCategory };
