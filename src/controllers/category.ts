@@ -33,7 +33,11 @@ const addCategory = async (category: string): Promise<ICategory> => {
 };
 
 const removeCategory = async (id: number): Promise<unknown> => {
-	return await remove(`/category/delete/${id}`);
+	const response = await remove(`/category/delete/${id}`);
+	if (response.status !== 200) {
+		throw new Error((await response.json()).message);
+	}
+	return response;
 };
 
 const updateCategory = async (id: number, newName: string): Promise<unknown> => {
