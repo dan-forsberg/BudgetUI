@@ -1,10 +1,14 @@
 <script lang="ts">
 	// Populate categories store
 	// TODO: move this to a more suitable place?
-	import category from './controllers/category';
-	import { categoryStore } from './stores/categoryStore';
+	import Category from './components/Category.svelte';
+	import entry from './controllers/entry';
 
-	category.getCategories().then((categories) => {
-		categoryStore.set(categories);
-	});
+	let entries = entry.getAllEntries();
 </script>
+
+{#await entries}
+	<p>Hämtar</p>
+{:then entries}
+	<Category {entries} />
+{/await}
