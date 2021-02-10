@@ -8,15 +8,29 @@
 		defaultEntryStore.set(res);
 	});
 
-	let entries = entry.getSpecificEntries({ description: 'Nånting', amount: 200, category: 3 });
+	let entries = [];
+	//let entries = entry.getSpecificEntries({ description: 'Nånting', amount: 200, category: 3 });
+	let newBudget = true;
 </script>
 
-{#await entries}
-	<p>Hämtar</p>
-{:then entries}
-	{#if entries.length > 0}
-		<Category {entries} />
-	{:else}
-		<p>Tomt!</p>
-	{/if}
-{/await}
+<button
+	on:click|preventDefault={() => {
+		newBudget = !newBudget;
+	}}
+>
+	Lägg till budget
+</button>
+
+{#if newBudget}
+	<NewBudget />
+{:else}
+	{#await entries}
+		<p>Hämtar budgetar</p>
+	{:then entries}
+		{#if entries.length > 0}
+			<Category {entries} />
+		{:else}
+			<p>Tomt!</p>
+		{/if}
+	{/await}
+{/if}
