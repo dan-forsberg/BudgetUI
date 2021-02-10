@@ -1,8 +1,12 @@
 <script lang="ts">
-	// Populate categories store
-	// TODO: move this to a more suitable place?
 	import Category from './components/Category.svelte';
+	import NewBudget from './components/NewBudget.svelte';
 	import entry from './controllers/entry';
+	import defaultEntryStore from './stores/defaultEntryStore';
+
+	entry.getDefaultEntries().then((res) => {
+		defaultEntryStore.set(res);
+	});
 
 	let entries = entry.getSpecificEntries({ description: 'Nånting', amount: 200, category: 3 });
 </script>
