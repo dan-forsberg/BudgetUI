@@ -20,12 +20,20 @@ type GetAttributes = {
 	category?: number;
 };
 const getSpecificEntries = async (attributes: GetAttributes): Promise<IEntry[]> => {
-	/* TODO, implement */
-	//shush up eslint
-	if (attributes)
-		attributes = null;
+	// Add the attributes as GET params
+	let endPoint = "/entry/specific/?";
+	for (const attribute in attributes) {
+		endPoint += `${attribute}=${attributes[attribute]}&`;
+	}
+	endPoint = endPoint.slice(0, -1);
 
-	return null;
+	const response = await get(endPoint);
+	const json = await response.json();
+
+	if (response.status !== 200) {
+		throw new Error(json.message);
+	}
+	return json.result;
 };
 
 const newEntry = async (newEntry: IEntry | IEntry[]): Promise<IEntry> => {
