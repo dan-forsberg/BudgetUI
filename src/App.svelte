@@ -10,7 +10,7 @@
 
 	let entries = [];
 	//let entries = entry.getSpecificEntries({ description: 'Nånting', amount: 200, category: 3 });
-	let newBudget = true;
+	let newBudget = false;
 </script>
 
 <button

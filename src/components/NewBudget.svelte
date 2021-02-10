@@ -1,7 +1,7 @@
 <script>
-	import entry from '../controllers/entry';
 	import defaultEntryStore from '../stores/defaultEntryStore';
 	import InPlaceEdit from './InPlaceEdit.svelte';
+	import NewCategory from './NewCategory.svelte';
 
 	const now = new Date();
 	const thisYear = now.getFullYear();
@@ -20,6 +20,7 @@
 	<h1>
 		<InPlaceEdit bind:value={title} on:submit={submit('title')} />
 	</h1>
+	<NewCategory values={$defaultEntryStore} />
 </div>
 
 <style>
