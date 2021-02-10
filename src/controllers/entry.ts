@@ -13,6 +13,17 @@ const getAllEntries = async (): Promise<IEntry[]> => {
 	return json;
 };
 
+const getDefaultEntries = async (): Promise<IEntry[]> => {
+	const response = await get("/default");
+	const json = await response.json();
+
+	if (response.status !== 200) {
+		throw new Error(json.message);
+	}
+
+	return json;
+};
+
 type GetAttributes = {
 	date?: Date;
 	description?: string;
@@ -53,4 +64,4 @@ const newEntry = async (newEntry: IEntry | IEntry[]): Promise<IEntry> => {
 	return json;
 };
 
-export default { getAllEntries, getSpecificEntries, newEntry };
+export default { getAllEntries, getSpecificEntries, newEntry, getDefaultEntries };
