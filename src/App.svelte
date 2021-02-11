@@ -1,15 +1,20 @@
 <script lang="ts">
-	import Category from './components/Category.svelte';
-	import NewBudget from './components/NewBudget.svelte';
+	import Category from './components/read/Category.svelte';
+	import NewBudget from './components/create/NewBudget.svelte';
 	import entry from './controllers/entry';
 	import defaultEntryStore from './stores/defaultEntryStore';
+	import category from './controllers/category';
+	import categoryStore from './stores/categoryStore';
 
 	entry.getDefaultEntries().then((res) => {
 		defaultEntryStore.set(res);
 	});
 
+	category.getCategories().then((res) => {
+		categoryStore.set(res);
+	});
+
 	let entries = [];
-	//let entries = entry.getSpecificEntries({ description: 'Nånting', amount: 200, category: 3 });
 	let newBudget = false;
 </script>
 
