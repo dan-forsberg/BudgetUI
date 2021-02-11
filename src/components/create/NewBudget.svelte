@@ -1,12 +1,11 @@
 <script>
-	import defaultEntryStore from '../stores/defaultEntryStore';
-	import InPlaceEdit from './InPlaceEdit.svelte';
-	import NewCategory from './NewCategory.svelte';
+	import defaultEntryStore from '../../../stores/defaultEntryStore';
+	import InPlaceEdit from '../InPlaceEdit.svelte';
+	import NewCategory from '../NewCategory.svelte';
 
 	const now = new Date();
-	const thisYear = now.getFullYear();
 	const thisMonth = now.getMonth() < 10 ? '0' + now.getMonth() : now.getMonth();
-	let title = `Budget ${thisYear}-${thisMonth}`;
+	let title = `Budget ${now.getFullYear}-${thisMonth}`;
 
 	function submit(field) {
 		return ({ detail: newValue }) => {
@@ -20,7 +19,7 @@
 	<h1>
 		<InPlaceEdit bind:value={title} on:submit={submit('title')} />
 	</h1>
-	<NewCategory values={$defaultEntryStore} />
+	<NewCategory values={$defaultEntryStore} {submit} />
 </div>
 
 <style>

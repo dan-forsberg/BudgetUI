@@ -4,6 +4,7 @@
 	import type IEntry from '../interfaces/entry';
 
 	export let values: IEntry[];
+	export let submit;
 
 	const newRow = () => {
 		values.push({ date: new Date(), description: '...', amount: undefined });
