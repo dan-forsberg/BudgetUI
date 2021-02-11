@@ -1,0 +1,37 @@
+* Naming convention
+A budget contains many categories
+A category contains many entries
+An entry contains a description, amount (date) and belongs to a category
+
+A budget is what defines the entries for a certain time period, most likely a month.
+
+** Example
+
+*Budget 2021-01*				<-- Budget name
+
+/Gemensamma/  					<-- Category name
+| Gemensam utgift   | Belopp |
+|-------------------+--------|
+| Hyra              |  -6382 |  <--- Entry
+| Bensin            |   -775 |  <--- Entry
+| Bredband          |   -299 |  <--- Entry
+| El                |   -189 |
+| Hemförsäkring     |    -75 |
+| Bilförsäkring     |   -718 |
+| Mat               |  -4000 |
+| Viaplay           |   -109 |
+| Parkering         |   -210 |
+|-------------------+--------|
+| Totalt            | -12636 |
+
+/Dans/
+| Dans utgifter och inkomst      | Belopp |
+|--------------------------------+--------|
+| Lön                            |      x |
+| Unionen                        |   -112 |
+| Vimla                          |   -160 |
+| Livförsäkring                  |    -94 |
+| Specsavers                     |   -124 |
+| Hälften av gemensamma utgifter |  -6318 |
+|--------------------------------+--------|
+| Totalt                         |      x |
