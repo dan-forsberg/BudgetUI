@@ -3,19 +3,16 @@
 	import EntryRow from './EntryRow.svelte';
 
 	export let entries: IEntry[];
+	export let category: string;
 
 	/*  
-	Sort the entries so that positive entries are sorted ascending (salary first)
-	Sort the remaining, negative, entries descending
-	Lön 		20000
-	Försäkring	200
-	Försäljning 100
-	Hyra		-5000
-	Mat			-4000
-	Viaplay		-109
+	Filter out positive from negative values, sort biggest-lowest
+	Lön 		20000 	(biggest)
+	Försäljning 100 	(lowest)
+	Hyra		-5000 	(biggest)
+	Viaplay		-109 	(lowest)
 	...
 	*/
-	const descSort = (a, b) => b - a;
 	let total = 0,
 		negative = [],
 		positive = [];
@@ -32,15 +29,14 @@
 		}
 	});
 
-	negative.sort(descSort);
-	positive.sort();
+	negative.sort((a, b) => a.amount - b.amount);
+	positive.sort((a, b) => b.amount - a.amount);
 
 	let sortedEntries = [...positive, ...negative];
-	let categoryName = entries[0].Category.name;
 </script>
 
-{#if categoryName !== undefined}
-	<h1 class="entries-header">{categoryName}</h1>
+{#if entries !== undefined}
+	<h3 class="entries-header">{category}</h3>
 	<table>
 		<tr>
 			<th>Beskrivning</th>
@@ -57,7 +53,7 @@
 	</table>
 {:else}
 	<p>No data?</p>
-	<p>category = {categoryName}</p>
+	<p>category = {category}</p>
 {/if}
 
 <style>
