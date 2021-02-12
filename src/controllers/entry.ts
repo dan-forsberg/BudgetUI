@@ -1,5 +1,5 @@
 import type IEntry from "../interfaces/entry";
-import { get, post, remove, patch } from "./fetcher";
+import { get, post } from "./fetcher";
 
 type GetResponse = { categories: string[]; result: IEntry[]; };
 
