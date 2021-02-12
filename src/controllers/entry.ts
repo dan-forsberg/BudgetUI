@@ -1,8 +1,9 @@
 import type IEntry from "../interfaces/entry";
 import { get, post, remove, patch } from "./fetcher";
 
+type GetResponse = { categories: string[]; result: IEntry[]; };
 
-const getAllEntries = async (): Promise<IEntry[]> => {
+const getAllEntries = async (): Promise<GetResponse> => {
 	const response = await get("/entry");
 	const json = await response.json();
 
@@ -30,7 +31,7 @@ type GetAttributes = {
 	amount?: number;
 	category?: number;
 };
-const getSpecificEntries = async (attributes: GetAttributes): Promise<IEntry[]> => {
+const getSpecificEntries = async (attributes: GetAttributes): Promise<GetResponse> => {
 	// Add the attributes as GET params
 	let endPoint = "/entry/specific/?";
 	for (const attribute in attributes) {
@@ -44,7 +45,7 @@ const getSpecificEntries = async (attributes: GetAttributes): Promise<IEntry[]> 
 	if (response.status !== 200) {
 		throw new Error(json.message);
 	}
-	return json.result;
+	return json;
 };
 
 const newEntry = async (newEntry: IEntry | IEntry[]): Promise<IEntry> => {
