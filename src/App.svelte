@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Category from './components/read/Category.svelte';
 	import entry from './controllers/entry';
 	import defaultEntryStore from './stores/defaultEntryStore';
 	import category from './controllers/category';
@@ -15,7 +14,6 @@
 	});
 
 	let data = entry.getSpecificEntries({ date: new Date('2021-01') });
-	let newBudget = false;
 </script>
 
 {#await data}

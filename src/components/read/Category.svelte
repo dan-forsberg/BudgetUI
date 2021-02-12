@@ -58,7 +58,7 @@
 
 <style>
 	table tr:last-child {
-		border-top: 50px solid black;
+		border-top: 5px solid black;
 		font-weight: bold;
 	}
 </style>
