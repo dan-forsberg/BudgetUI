@@ -35,9 +35,13 @@ const getSpecificEntries = async (attributes: GetAttributes): Promise<GetRespons
 	// Add the attributes as GET params
 	let endPoint = "/entry/specific/?";
 	for (const attribute in attributes) {
-		endPoint += `${attribute}=${attributes[attribute]}&`;
+		if (attribute === "date") {
+			const date = attributes[attribute];
+			endPoint += `year=${date.getFullYear()}&month=${date.getMonth() + 1}&`;
+		} else {
+			endPoint += `${attribute}=${attributes[attribute]}&`;
+		}
 	}
-	endPoint = endPoint.slice(0, -1);
 
 	const response = await get(endPoint);
 	const json = await response.json();

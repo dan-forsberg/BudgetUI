@@ -1,23 +1,25 @@
 <script lang="ts">
 	import entry from './controllers/entry';
-	import defaultEntryStore from './stores/defaultEntryStore';
-	import category from './controllers/category';
-	import categoryStore from './stores/categoryStore';
 	import Budget from './components/read/Budget.svelte';
 
-	entry.getDefaultEntries().then((res) => {
-		defaultEntryStore.set(res);
-	});
-
-	category.getCategories().then((res) => {
-		categoryStore.set(res);
-	});
-
-	let data = entry.getSpecificEntries({ date: new Date('2021-01') });
+	let dateString = new Date().toISOString().slice(0, 10);
+	let data;
+	$: {
+		data = entry.getSpecificEntries({ date: new Date(dateString) });
+	}
 </script>
 
+<div>
+	<input id="datepicker" type="date" bind:value={dateString} />
+</div>
 {#await data}
 	<p>Hämtar budgetar</p>
 {:then data}
-	<Budget {data} date={new Date('2021-01')} />
+	<Budget {data} date={new Date(dateString)} />
 {/await}
+
+<style>
+	div {
+		width: auto;
+	}
+</style>

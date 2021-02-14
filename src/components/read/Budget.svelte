@@ -1,27 +1,21 @@
 <script lang="ts">
 	import type IEntry from '../../interfaces/entry';
-	import categoryStore from '../../stores/categoryStore';
 	import Category from './Category.svelte';
 	export let date: Date;
 	export let data: { categories: string[]; result: IEntry[] };
 
 	// Make sure that data.categories[0] is "Gemensamma"
 	const gemensamma = data.categories.indexOf('Gemensamma');
-	if (gemensamma !== -1) {
-		if (gemensamma !== 0) {
-			let temporary = data.categories[0];
-			data.categories[0] = data.categories[gemensamma];
-			data.categories[gemensamma] = temporary;
-		}
+	if (gemensamma > 0) {
+		let temporary = data.categories[0];
+		data.categories[0] = data.categories[gemensamma];
+		data.categories[gemensamma] = temporary;
 	}
 
 	let seperated = [];
-
 	data.categories.forEach((category) => {
 		seperated[category] = data.result.filter((entry) => entry.Category.name === category);
 	});
-	// TODO: get the total from Gemensamma and insert it into Dan and Malin
-	// figure out a way to not hardcode it
 </script>
 
 <div>
