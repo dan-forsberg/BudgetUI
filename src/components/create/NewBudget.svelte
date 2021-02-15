@@ -1,10 +1,12 @@
 <script>
 	import entry from '../../controllers/entry';
 	import NewCategory from './NewCategory.svelte';
+	import Toast from 'svelte-toast';
+	import page from 'page';
+	const toast = new Toast();
 
 	let seperated = [];
 	let data;
-
 	entry.getDefaultEntries().then((result) => {
 		// Make sure that data.categories[0] is "Gemensamma"
 		const gemensamma = result.categories.indexOf('Gemensamma');
@@ -30,8 +32,9 @@
 		// remove any empty entries
 		combined = combined.filter((entry) => entry.value !== '' && entry.description !== '');
 		try {
-			let result = await entry.newEntry(combined);
-			// do something on success
+			//let result = await entry.newEntry(combined);
+			toast.success('Budget sparad!');
+			page('/');
 		} catch (err) {
 			console.error(err.message);
 		}
@@ -39,7 +42,7 @@
 </script>
 
 {#if data === undefined}
-	<p>Hämtar...</p>
+	<p>Hämtar standard raderna...</p>
 {:else}
 	{#each data.categories as category}
 		<NewCategory entries={seperated[category]} {category} />
