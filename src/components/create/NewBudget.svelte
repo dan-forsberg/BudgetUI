@@ -1,6 +1,6 @@
 <script>
 	import entry from '../../controllers/entry';
-	import NewCategory from './newCategory.svelte';
+	import NewCategory from './NewCategory.svelte';
 
 	let seperated = [];
 	let data;
