@@ -1,27 +1,17 @@
 <script lang="ts">
-	import entry from './controllers/entry';
-	import Budget from './components/read/Budget.svelte';
-	import NewBudget from './components/create/newBudget.svelte';
+	import ViewBudget from './components/read/ViewBudget.svelte';
+	import NewBudget from './components/create/NewBudget.svelte';
+	import router from 'page';
 
-	let dateString = new Date().toISOString().slice(0, 10);
-	let data;
-	$: {
-		data = entry.getSpecificEntries({ date: new Date(dateString) });
-	}
+	let page;
+
+	router('/', () => {
+		page = ViewBudget;
+	});
+	router('/new', () => {
+		page = NewBudget;
+	});
+	router.start();
 </script>
 
-<NewBudget />
-
-<!-- <div>
-	<input id="datepicker" type="date" bind:value={dateString} />
-</div>
-{#await data}
-	<p>Hämtar budgetar</p>
-{:then data}
-	<Budget {data} date={new Date(dateString)} />§
-{/await} -->
-<style>
-	div {
-		width: auto;
-	}
-</style>
+<svelte:component this={page} />

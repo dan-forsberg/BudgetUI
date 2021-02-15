@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type IEntry from '../../interfaces/entry';
 	import Category from './Category.svelte';
+
 	export let date: Date;
 	export let data: { categories: string[]; result: IEntry[] };
 
