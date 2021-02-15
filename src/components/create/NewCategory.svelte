@@ -1,11 +1,36 @@
 <script>
+	import gemensamTotal from './gemensamTotal';
+	import EntryRow from '../read/EntryRow.svelte';
+
 	export let entries;
 	export let category;
+	let total = 0;
+
+	if (category === 'Dan') {
+		let halfOfGemensamma = {
+			date: new Date(),
+			amount: $gemensamTotal,
+			description: 'Hälften av gemensamma',
+			Category: entries[0].Category,
+		};
+		entries = [halfOfGemensamma, ...entries];
+		console.log(entries);
+		gemensamTotal.subscribe((value) => {
+			entries[0].amount = value;
+		});
+	}
 
 	$: {
+		entries.forEach((entry) => {
+			total += entry.amount;
+		});
+
+		if (category === 'Gemensamma') {
+			gemensamTotal.set(total);
+		}
+
 		let len = entries.length;
 		let last = entries[len - 1];
-
 		// if the last row is not empty, add an empty row
 		if (last.description !== '' && last.description !== '') {
 			// copy the category ID from the previous value, it will be correct
@@ -34,9 +59,10 @@
 
 <h4>{category}</h4>
 <form>
-	{#each entries as entry}
+	{#each entries as entry, index}
 		<input type="text" bind:value={entry.description} />
 		<input type="number" bind:value={entry.amount} />
 		<br />
 	{/each}
+	<EntryRow description="Total" amount={total} />
 </form>
