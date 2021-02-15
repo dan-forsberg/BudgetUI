@@ -3,8 +3,7 @@
 	import NewBudget from './components/create/NewBudget.svelte';
 	import router from 'page';
 
-	let page;
-
+	let page = ViewBudget;
 	router('/', () => {
 		page = ViewBudget;
 	});
