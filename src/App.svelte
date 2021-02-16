@@ -2,6 +2,7 @@
 	import ViewBudget from './components/read/ViewBudget.svelte';
 	import NewBudget from './components/create/NewBudget.svelte';
 	import router from 'page';
+	import Navigator from './components/Navigator.svelte';
 
 	let page = ViewBudget;
 	router('/', () => {
@@ -12,5 +13,7 @@
 	});
 	router.start();
 </script>
+
+<Navigator />
 
 <svelte:component this={page} />
