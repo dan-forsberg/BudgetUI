@@ -15,7 +15,7 @@
 {#await data}
 	<p>Hämtar budgetar</p>
 {:then data}
-	<Budget {data} date={new Date(dateString)} />§
+	<Budget {data} date={new Date(dateString)} />
 {/await}
 
 <style>
