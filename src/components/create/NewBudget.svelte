@@ -45,7 +45,16 @@
 	<p>Hämtar standard raderna...</p>
 {:else}
 	{#each data.categories as category}
-		<NewCategory entries={seperated[category]} {category} />
+		<div class="budget">
+			<NewCategory entries={seperated[category]} {category} />
+		</div>
 	{/each}
 	<button on:click={submit}>Skicka</button>
 {/if}
+
+<style>
+	.budget {
+		float: left;
+		margin-right: 25px;
+	}
+</style>
