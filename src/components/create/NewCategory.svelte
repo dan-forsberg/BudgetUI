@@ -13,8 +13,6 @@
 			description: 'Hälften av gemensamma',
 			Category: entries[0].Category,
 		};
-		entries = [halfOfGemensamma, ...entries];
-		console.log(entries);
 		gemensamTotal.subscribe((value) => {
 			entries[0].amount = value;
 		});
@@ -22,7 +20,8 @@
 
 	$: {
 		entries.forEach((entry) => {
-			total += entry.amount;
+			total += parseInt(entry.amount);
+			console.log(parseInt(entry.amount));
 		});
 
 		if (category === 'Gemensamma') {
