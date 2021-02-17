@@ -14,6 +14,8 @@
 	router.start();
 </script>
 
+<link rel="stylesheet" href="/build/base.css" />
+
 <Navigator />
 
 <svelte:component this={page} />
