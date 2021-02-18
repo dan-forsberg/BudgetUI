@@ -1,0 +1,6 @@
+ViewBudget handles letting the user pick a date to show a specific budget for that month.
+It gets the data from the API and renders a Budget.
+
+Budget gets an array of categories and entries. It splits the entries into the relevant categories and renders a Category.
+
+Category renders every entry for a specific category and its total.
