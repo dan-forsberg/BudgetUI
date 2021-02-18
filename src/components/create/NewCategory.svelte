@@ -79,10 +79,52 @@
 <h4>{category}</h4>
 <form use:clickOutside on:click_outside={update}>
 	{#each entries as entry, index}
-		<input type="text" bind:value={entry.description} />
-		<input type="number" bind:value={entry.amount} />
-		<br />
+		<div class="entry-container">
+			<input
+				type="text"
+				placeholder="Beskrivning"
+				bind:value={entry.description}
+				class="description"
+			/>
+			<input type="number" placeholder="Belopp" bind:value={entry.amount} class="amount" />
+		</div>
 	{/each}
-	<input type="text" disabled value="Totalt" />
-	<input type="number" disabled bind:value={total} />
+	<div class="entry-container">
+		<input disabled type="text" value="Totalt" class="description" />
+		<input disabled type="number" bind:value={total} class="amount" />
+	</div>
 </form>
+
+<style>
+	/* !important, otherwise Materalize takes priority */
+	input:disabled {
+		color: black !important;
+		border-bottom: 1px solid #9e9e9e !important;
+		font-weight: 450;
+	}
+
+	.entry-container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.description {
+		width: 70% !important;
+	}
+
+	.amount {
+		width: 25% !important;
+	}
+
+	/* Remove arrows from number input */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
+</style>

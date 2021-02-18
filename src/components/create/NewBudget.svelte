@@ -15,6 +15,8 @@
 			result.categories[0] = result.categories[gemensamma];
 			result.categories[gemensamma] = temporary;
 		}
+
+		// Separate the entries into its categories
 		result.categories.forEach((category) => {
 			seperated[category] = result.result.filter((entry) => entry.Category.name === category);
 		});
@@ -32,10 +34,11 @@
 		// remove any empty entries
 		combined = combined.filter((entry) => entry.value !== '' && entry.description !== '');
 		try {
-			//let result = await entry.newEntry(combined);
+			await entry.newEntry(combined);
 			toast.success('Budget sparad!');
 			page('/');
 		} catch (err) {
+			toast.error('Något gick fel.');
 			console.error(err.message);
 		}
 	}
@@ -44,17 +47,25 @@
 {#if data === undefined}
 	<p>Hämtar standard raderna...</p>
 {:else}
-	{#each data.categories as category}
-		<div class="budget">
-			<NewCategory entries={seperated[category]} {category} />
-		</div>
-	{/each}
+	<div class="budget-container">
+		{#each data.categories as category}
+			<div class="budget">
+				<NewCategory entries={seperated[category]} {category} />
+			</div>
+		{/each}
+	</div>
+
 	<button on:click={submit}>Skicka</button>
 {/if}
 
 <style>
+	.budget-container {
+		display: flex;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+	}
+
 	.budget {
-		float: left;
-		margin-right: 25px;
+		margin: 10px;
 	}
 </style>
