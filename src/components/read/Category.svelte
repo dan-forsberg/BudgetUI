@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type IEntry from '../../interfaces/entry';
-	import EntryRow from './EntryRow.svelte';
 
 	export let entries: IEntry[];
 	export let category: string;
@@ -13,7 +12,7 @@
 	Viaplay		-109 	(lowest)
 	...
 	*/
-	let total = 0,
+	let total: number = 0,
 		negative = [],
 		positive = [];
 
@@ -43,12 +42,14 @@
 			<th>Belopp</th>
 		</tr>
 		{#each sortedEntries as entry (entry.id)}
-			<EntryRow description={entry.description} amount={entry.amount} />
+			<tr>
+				<td>{entry.description}</td>
+				<td>{entry.amount}</td>
+			</tr>
 		{/each}
-		<!-- use tr to be able to style just this one -->
 		<tr>
 			<td>Totalt</td>
-			<td>{total}</td>
+			<td>{total < 0 ? total : '+' + total}</td>
 		</tr>
 	</table>
 {:else}
@@ -58,7 +59,7 @@
 
 <style>
 	table tr:last-child {
-		border-top: 5px solid black;
+		border-top: 2px solid black;
 		font-weight: bold;
 	}
 </style>
