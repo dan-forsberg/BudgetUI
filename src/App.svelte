@@ -19,3 +19,9 @@
 <Navigator />
 
 <svelte:component this={page} />
+
+<style>
+	:global(body) {
+		padding: 0px;
+	}
+</style>

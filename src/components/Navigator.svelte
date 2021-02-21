@@ -1,6 +1,5 @@
 <nav class="indigo darken-3">
-	<div class="nav-wrapper ">
-		<a href="/" class="brand-logo right">Logo</a>
+	<div class="nav-wrapper">
 		<ul id="nav-mobile" class="left hide-on-med-and-down">
 			<li><a href="/">Hem</a></li>
 			<li><a href="/new">Ny budget</a></li>
@@ -9,12 +8,6 @@
 </nav>
 
 <style>
-	nav {
-		position: fixed;
-		top: 0;
-		left: 0;
-	}
-
 	a:visited {
 		color: #fff;
 	}

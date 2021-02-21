@@ -1,5 +1,5 @@
 const loc = window.location;
-const URL = `${loc.protocol}//${loc.host}:8080/api`;
+const URL = `${loc.protocol}//${loc.hostname}:8080/api`;
 const headers = { "Content-Type": "application/json" };
 
 const httpReq = (endPoint: string, method: string, body?: unknown): Promise<Response> => {
@@ -11,7 +11,6 @@ const httpReq = (endPoint: string, method: string, body?: unknown): Promise<Resp
 	if (body) {
 		opts["body"] = JSON.stringify(body);
 	}
-	console.log(`Sending request to ${URL + endPoint}`);
 	const results = fetch(URL + endPoint, opts);
 	console.log(results);
 	return results;
