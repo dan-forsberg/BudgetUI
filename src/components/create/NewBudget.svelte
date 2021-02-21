@@ -44,7 +44,7 @@
 	}
 </script>
 
-<div>
+<div id="new-budget-wrapper">
 	{#if data === undefined}
 		<p>Hämtar standard raderna...</p>
 	{:else}
@@ -63,6 +63,12 @@
 </div>
 
 <style>
+	#new-budget-wrapper {
+		/* if on mobile the send button is at the very-very bottom
+		hackily fix that */
+		margin-bottom: 15px;
+	}
+
 	.budget-container {
 		display: flex;
 		justify-content: space-evenly;
