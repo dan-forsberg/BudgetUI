@@ -56,15 +56,13 @@
 			{/each}
 		</div>
 
-		<button on:click={submit}>Skicka</button>
+		<div class="center">
+			<button class="btn waves-effect waves-light indigo" on:click={submit}>Skicka</button>
+		</div>
 	{/if}
 </div>
 
 <style>
-	div {
-		position: relative;
-	}
-
 	.budget-container {
 		display: flex;
 		justify-content: space-evenly;
