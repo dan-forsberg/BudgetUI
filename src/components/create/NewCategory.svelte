@@ -29,7 +29,7 @@
 	}
 
 	const isEmptyString = (str) => {
-		return !str || str.length == 0;
+		return str == undefined || str.length == 0;
 	};
 
 	// Update the total and remove any empty rows
