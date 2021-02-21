@@ -10,8 +10,9 @@ const httpReq = (endPoint: string, method: string, body?: unknown): Promise<Resp
 	if (body) {
 		opts["body"] = JSON.stringify(body);
 	}
-
+	console.log(`Sending request to ${URL + endPoint}`);
 	const results = fetch(URL + endPoint, opts);
+	console.log(results);
 	return results;
 };
 
