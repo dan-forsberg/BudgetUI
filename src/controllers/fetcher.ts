@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/api";
+const URL = "http://0.0.0.0:8080/api";
 const headers = { "Content-Type": "application/json" };
 
 const httpReq = (endPoint: string, method: string, body?: unknown): Promise<Response> => {
