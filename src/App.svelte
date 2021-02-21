@@ -22,6 +22,7 @@
 
 <style>
 	:global(body) {
-		padding: 0px;
+		/* Not sure if materialize or svelte is adding a padding, but something is */
+		padding: 0px !important;
 	}
 </style>
