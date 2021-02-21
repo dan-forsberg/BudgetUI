@@ -2,7 +2,6 @@
 	import type IEntry from '../../interfaces/entry';
 	import Category from './Category.svelte';
 
-	export let date: Date;
 	export let data: { categories: string[]; result: IEntry[] };
 
 	// Make sure that data.categories[0] is "Gemensamma"
@@ -19,15 +18,11 @@
 	});
 </script>
 
-<div>
-	<h2>Budget {date.toISOString().slice(0, 10)}</h2>
-
-	{#each data.categories as category}
-		<div class="category">
-			<Category entries={seperated[category]} {category} />
-		</div>
-	{/each}
-</div>
+{#each data.categories as category}
+	<div class="category">
+		<Category entries={seperated[category]} {category} />
+	</div>
+{/each}
 
 <style>
 	.category {

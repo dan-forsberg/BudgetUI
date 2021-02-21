@@ -9,13 +9,14 @@
 	}
 </script>
 
-<input id="datepicker" type="date" bind:value={dateString} />
-
 <div class="flex-container">
 	{#await data}
 		<p>Hämtar budgetar</p>
 	{:then data}
-		<Budget {data} date={new Date(dateString)} />
+		<div>
+			<h2>Budget <input id="datepicker" type="date" bind:value={dateString} /></h2>
+			<Budget {data} />
+		</div>
 	{/await}
 </div>
 
@@ -30,5 +31,13 @@
 		.flex-container {
 			flex-direction: column;
 		}
+	}
+
+	#datepicker {
+		font-size: 3.56rem;
+		font-weight: 400;
+		display: inline !important;
+		width: auto !important;
+		height: auto !important;
 	}
 </style>
