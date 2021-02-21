@@ -13,7 +13,7 @@
 	{#await data}
 		<p>Hämtar budgetar</p>
 	{:then data}
-		<div>
+		<div class="budget">
 			<h2>Budget <input id="datepicker" type="date" bind:value={dateString} /></h2>
 			<Budget {data} />
 		</div>

@@ -29,4 +29,10 @@
 		float: left;
 		margin-right: 40px;
 	}
+
+	@media screen and (max-width: 1080px) {
+		.category {
+			width: 100%;
+		}
+	}
 </style>

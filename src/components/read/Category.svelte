@@ -39,17 +39,17 @@
 	<table>
 		<tr>
 			<th>Beskrivning</th>
-			<th>Belopp</th>
+			<th class="right">Belopp</th>
 		</tr>
 		{#each sortedEntries as entry (entry.id)}
 			<tr>
 				<td>{entry.description}</td>
-				<td>{entry.amount}</td>
+				<td class="right">{entry.amount}</td>
 			</tr>
 		{/each}
 		<tr>
 			<td>Totalt</td>
-			<td>{total < 0 ? total : '+' + total}</td>
+			<td class="right">{total < 0 ? total : '+' + total}</td>
 		</tr>
 	</table>
 {:else}

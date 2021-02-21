@@ -14,6 +14,10 @@
 	router.start();
 </script>
 
+<svelte:head>
+	<title>Budget planeraren 2000</title>
+</svelte:head>
+
 <link rel="stylesheet" href="/build/base.css" />
 
 <Navigator />
