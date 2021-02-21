@@ -44,21 +44,27 @@
 	}
 </script>
 
-{#if data === undefined}
-	<p>Hämtar standard raderna...</p>
-{:else}
-	<div class="budget-container">
-		{#each data.categories as category}
-			<div class="budget">
-				<NewCategory entries={seperated[category]} {category} />
-			</div>
-		{/each}
-	</div>
+<div>
+	{#if data === undefined}
+		<p>Hämtar standard raderna...</p>
+	{:else}
+		<div class="budget-container">
+			{#each data.categories as category}
+				<div class="budget">
+					<NewCategory entries={seperated[category]} {category} />
+				</div>
+			{/each}
+		</div>
 
-	<button on:click={submit}>Skicka</button>
-{/if}
+		<button on:click={submit}>Skicka</button>
+	{/if}
+</div>
 
 <style>
+	div {
+		position: relative;
+	}
+
 	.budget-container {
 		display: flex;
 		justify-content: space-evenly;
