@@ -1,5 +1,5 @@
 const loc = window.location;
-const URL = `${loc.protocol}//${loc.hostname}:8080/api`;
+const URL = `${loc.protocol}//${loc.hostname}/api`;
 const headers = { "Content-Type": "application/json" };
 
 const httpReq = (endPoint: string, method: string, body?: unknown): Promise<Response> => {
