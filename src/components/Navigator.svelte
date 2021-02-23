@@ -3,6 +3,7 @@
 		<ul id="nav-mobile" class="left">
 			<li><a href="/">Hem</a></li>
 			<li><a href="/new">Ny budget</a></li>
+			<li><a href="/edit">Ändra budget</a></li>
 		</ul>
 	</div>
 </nav>

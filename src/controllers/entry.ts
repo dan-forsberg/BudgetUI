@@ -1,5 +1,5 @@
 import type IEntry from "../interfaces/entry";
-import { get, post } from "./fetcher";
+import { get, post, patch } from "./fetcher";
 
 type GetResponse = { categories: string[]; result: IEntry[]; };
 
@@ -69,6 +69,20 @@ const newEntry = async (newEntry: IEntry | IEntry[]): Promise<IEntry> => {
 	return json;
 };
 
+const updateEntry = async (entry: IEntry): Promise<IEntry> => {
+	console.log(entry);
+	const result = await patch(`/entry/update/${entry.id}`, { entry: entry });
+	const json = await result.json();
+
+	if (result.status !== 200) {
+		throw new Error(json.message);
+	}
+
+	console.log(json);
+
+	return json;
+};
+
 /**
  * Sort an array of entries from biggest to smallest values and get a total
  * This sorts [-200, 500, -500, 2000] => [2000, 500, -500, 200]
@@ -111,5 +125,5 @@ const sortEntries = (entries: IEntry[]): {
 	return { sortedEntries, total };
 };
 
-export default { getAllEntries, getSpecificEntries, newEntry, getDefaultEntries };
+export default { getAllEntries, getSpecificEntries, newEntry, getDefaultEntries, updateEntry };
 export { sortEntries };

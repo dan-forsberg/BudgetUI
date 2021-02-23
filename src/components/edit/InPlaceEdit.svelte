@@ -1,10 +1,10 @@
 <script>
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	export let value,
-		required = true;
+		required = true,
+		onSubmit;
 
-	const dispatch = createEventDispatcher();
 	let editing = false,
 		original;
 
@@ -17,8 +17,8 @@
 	}
 
 	function submit() {
-		if (value != original) {
-			dispatch('submit', value);
+		if (value !== original) {
+			onSubmit(value);
 		}
 
 		editing = false;
@@ -38,13 +38,11 @@
 </script>
 
 {#if editing}
-	<form on:submit|preventDefault={submit} on:keydown={keydown}>
-		<input bind:value on:blur={submit} {required} use:focus />
-	</form>
+	<input bind:value on:blur={submit} {required} use:focus />
 {:else}
-	<div on:click={edit}>
+	<td on:click={edit}>
 		{value}
-	</div>
+	</td>
 {/if}
 
 <style>
