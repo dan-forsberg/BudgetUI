@@ -60,7 +60,7 @@
 
 	const newRow = () => {
 		let newEntry = {
-			Category: entries[0].Category.id,
+			Category: entries[0].Category,
 			description: '',
 			amount: '',
 			date: new Date(),
