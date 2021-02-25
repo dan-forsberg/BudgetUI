@@ -37,14 +37,11 @@
 	// Run when clicking outside the form and onMount()
 	const update = () => {
 		removeEmptyRows();
+		sortEntries();
 
 		total = 0;
 		entries.forEach((entry) => {
 			total += entry.amount;
-		});
-
-		entries.sort((a, b) => {
-			return b.amount - a.amount;
 		});
 
 		if (category === 'Gemensamma') {
@@ -56,6 +53,23 @@
 		entries = entries.filter(
 			(entry) => !isEmptyString(entry.description) && !isEmptyString(entry.amount)
 		);
+	};
+
+	const sortEntries = () => {
+		entries.forEach((entry) => {
+			total += entry.amount;
+
+			if (entry.amount > 0) {
+				positive.push(entry);
+			} else {
+				negative.push(entry);
+			}
+		});
+
+		negative.sort((a, b) => a.amount - b.amount);
+		positive.sort((a, b) => b.amount - a.amount);
+
+		entries = [...positive, ...negative];
 	};
 
 	const newRow = () => {
