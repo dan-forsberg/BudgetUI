@@ -32,27 +32,30 @@
 		return str == undefined || str.length == 0;
 	};
 
-	// Update the total and remove any empty rows
+	// Remove any empty rows and update the total
 	// Sort the entries by amount lowest - highest
 	// Run when clicking outside the form and onMount()
 	const update = () => {
-		total = 0;
-		let emptyEntries = [];
-		entries.forEach((entry) => {
-			if (isEmptyString(entry.description) && isEmptyString(entry.amount))
-				emptyEntries.push(entry);
-			else total += parseInt(entry.amount);
-		});
-		if (category === 'Gemensamma') {
-			gemensamTotal.set(total);
-		}
+		removeEmptyRows();
 
-		entries = entries.filter((entry) => !emptyEntries.includes(entry));
+		total = 0;
+		entries.forEach((entry) => {
+			total += entry.amount;
+		});
+
 		entries.sort((a, b) => {
 			return a.amount - b.amount;
 		});
 
-		if (category == 'Gemensamma') console.log(`Category ${category} length: ${entries.length}`);
+		if (category === 'Gemensamma') {
+			gemensamTotal.set(total);
+		}
+	};
+
+	const removeEmptyRows = () => {
+		entries = entries.filter(
+			(entry) => !isEmptyString(entry.description) && !isEmptyString(entry.amount)
+		);
 	};
 
 	const newRow = () => {
