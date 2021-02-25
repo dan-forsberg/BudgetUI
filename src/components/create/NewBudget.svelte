@@ -41,6 +41,7 @@
 		});
 
 		try {
+			console.dir(combined);
 			await entry.newEntry(combined);
 			toast.success('Budget sparad!');
 			page('/');
