@@ -1,8 +1,10 @@
 <script lang="ts">
+	import EditBudget from './components/edit/EditBudget.svelte';
 	import ViewBudget from './components/read/ViewBudget.svelte';
 	import NewBudget from './components/create/NewBudget.svelte';
-	import router from 'page';
+
 	import Navigator from './components/Navigator.svelte';
+	import router from 'page';
 
 	let page = ViewBudget;
 	router('/', () => {
@@ -12,7 +14,7 @@
 		page = NewBudget;
 	});
 	router('/edit', () => {
-		page = ViewBudget;
+		page = EditBudget;
 	});
 	router.start();
 </script>
