@@ -56,15 +56,8 @@
 	};
 
 	const sortEntries = () => {
-		entries.forEach((entry) => {
-			total += entry.amount;
-
-			if (entry.amount > 0) {
-				positive.push(entry);
-			} else {
-				negative.push(entry);
-			}
-		});
+		let positive = entries.filter((e) => e.amount > 0);
+		let negative = entries.filter((e) => e.amount <= 0);
 
 		negative.sort((a, b) => a.amount - b.amount);
 		positive.sort((a, b) => b.amount - a.amount);
@@ -84,10 +77,12 @@
 	};
 
 	$: {
+		console.log('update');
 		let len = entries.length;
 		let last = entries[len - 1];
 		if (!isEmptyString(last.description) && !isEmptyString(last.amount)) {
 			newRow();
+			console.log('newRow()');
 		}
 	}
 
