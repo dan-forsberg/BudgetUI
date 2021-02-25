@@ -1,3 +1,0 @@
-* Subfolders
-I've seperated components that deal with editing and just displaying into create and read.
-This is to get some namespace separation and simply to make it more understandable which component does what.
