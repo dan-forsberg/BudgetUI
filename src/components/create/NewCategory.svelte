@@ -56,7 +56,6 @@
 	const newRow = () => {
 		entries.push({
 			category: entries[0].Category.id,
-			date: new Date(),
 			description: '',
 			amount: '',
 		});
