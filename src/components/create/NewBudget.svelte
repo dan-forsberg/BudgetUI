@@ -2,7 +2,6 @@
 	import entry from '../../controllers/entry';
 	import NewCategory from './NewCategory.svelte';
 	import Toast from 'svelte-toast';
-	import page from 'page';
 	const toast = new Toast();
 
 	let dateString = new Date().toISOString().slice(0, 10);
@@ -42,9 +41,10 @@
 		});
 
 		try {
-			await entry.newEntry(combined);
+			//await entry.newEntry(combined);
+			console.dir(combined);
 			toast.success('Budget sparad!');
-			page('/');
+			//page('/');
 		} catch (err) {
 			toast.error('Något gick fel.');
 			console.error(err.message);
