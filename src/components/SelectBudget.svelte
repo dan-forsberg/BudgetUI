@@ -3,12 +3,7 @@
 	import Budget from './Budget.svelte';
 
 	export let viewOrEdit: string;
-	let view = true;
-	if (viewOrEdit === 'view') {
-		view = true;
-	} else if (viewOrEdit === 'edit') {
-		view = false;
-	}
+	let view = viewOrEdit === 'edit' ? false : true;
 
 	let dateString = new Date().toISOString().slice(0, 10);
 	let data;
