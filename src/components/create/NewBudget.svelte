@@ -8,21 +8,21 @@
 
 	let seperated = [];
 	let data;
-	entry.getDefaultEntries().then((result) => {
+	entry.getDefaultEntries().then((resp) => {
 		// Make sure that data.categories[0] is "Gemensamma"
-		const gemensamma = result.categories.indexOf('Gemensamma');
+		const gemensamma = resp.categories.indexOf('Gemensamma');
 		if (gemensamma > 0) {
-			let temporary = result.categories[0];
-			result.categories[0] = result.categories[gemensamma];
-			result.categories[gemensamma] = temporary;
+			let temporary = resp.categories[0];
+			resp.categories[0] = resp.categories[gemensamma];
+			resp.categories[gemensamma] = temporary;
 		}
 
 		// Separate the entries into its categories
-		result.categories.forEach((category) => {
-			seperated[category] = result.result.filter((entry) => entry.Category.name === category);
+		resp.categories.forEach((category) => {
+			seperated[category] = resp.result.filter((entry) => entry.Category.name === category);
 		});
 
-		data = result;
+		data = resp;
 	});
 
 	async function submit() {
