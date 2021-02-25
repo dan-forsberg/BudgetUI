@@ -5,6 +5,8 @@
 	import page from 'page';
 	const toast = new Toast();
 
+	let dateString = new Date().toISOString().slice(0, 10);
+
 	let seperated = [];
 	let data;
 	entry.getDefaultEntries().then((result) => {
@@ -33,6 +35,12 @@
 
 		// remove any empty entries
 		combined = combined.filter((entry) => entry.value !== '' && entry.description !== '');
+
+		// set the date of all the entries
+		combined.forEach((entry) => {
+			entry.date = new Date(dateString);
+		});
+
 		try {
 			await entry.newEntry(combined);
 			toast.success('Budget sparad!');
@@ -57,6 +65,12 @@
 		</div>
 
 		<div class="center">
+			<label>
+				<p>Vilken månad gäller budgeten?</p>
+				<input class="input-date" type="date" bind:value={dateString} />
+			</label>
+			<!-- bad hack -->
+			<br />
 			<button class="btn waves-effect waves-light indigo" on:click={submit}>Skicka</button>
 		</div>
 	{/if}
@@ -77,5 +91,10 @@
 
 	.budget {
 		margin: 10px;
+	}
+
+	.input-date {
+		/* Materalize sets width to 100% and takes a priority*/
+		width: auto !important;
 	}
 </style>
