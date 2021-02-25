@@ -1,9 +1,13 @@
+<!-- This should not be used directly, use SelectBudget.svelte -->
 <script lang="ts">
-	import type IEntry from '../../interfaces/entry';
-	import ViewCategory from '../../components/read/Category.svelte';
-	import EditCategory from '../../components/edit/EditCategory.svelte';
+	import type IEntry from '../interfaces/entry';
+	import ViewCategory from './read/ViewCategory.svelte';
+	import EditCategory from './edit/EditCategory.svelte';
 
+	export let view: boolean;
 	export let data: { categories: string[]; result: IEntry[] };
+
+	let component = view ? ViewCategory : EditCategory;
 
 	// Make sure that data.categories[0] is "Gemensamma"
 	const gemensamma = data.categories.indexOf('Gemensamma');
@@ -17,11 +21,6 @@
 	data.categories.forEach((category) => {
 		seperated[category] = data.result.filter((entry) => entry.Category.name === category);
 	});
-
-	// Which component should be rendered, EditCategory or ViewCategory?
-	// Determined by which page this is
-	let currPage = window.location.pathname;
-	let component = currPage === '/edit' ? EditCategory : ViewCategory;
 </script>
 
 {#each data.categories as category}
