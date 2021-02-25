@@ -12,7 +12,6 @@ const httpReq = (endPoint: string, method: string, body?: unknown): Promise<Resp
 		opts["body"] = JSON.stringify(body);
 	}
 	const results = fetch(URL + endPoint, opts);
-	console.log(results);
 	return results;
 };
 

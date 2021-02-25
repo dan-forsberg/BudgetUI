@@ -70,15 +70,12 @@ const newEntry = async (newEntry: IEntry | IEntry[]): Promise<IEntry> => {
 };
 
 const updateEntry = async (entry: IEntry): Promise<IEntry> => {
-	console.log(entry);
 	const result = await patch(`/entry/update/${entry.id}`, { entry: entry });
 	const json = await result.json();
 
 	if (result.status !== 200) {
 		throw new Error(json.message);
 	}
-
-	console.log(json);
 
 	return json;
 };
