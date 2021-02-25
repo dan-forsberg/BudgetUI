@@ -51,20 +51,24 @@
 		entries.sort((a, b) => {
 			return a.amount - b.amount;
 		});
+
+		if (category == 'Gemensamma') console.log(`Category ${category} length: ${entries.length}`);
 	};
 
 	const newRow = () => {
-		entries.push({
-			category: entries[0].Category.id,
+		let newEntry = {
+			Category: entries[0].Category.id,
 			description: '',
 			amount: '',
-		});
+			date: new Date(),
+		};
+
+		entries = [...entries, newEntry];
 	};
 
 	$: {
 		let len = entries.length;
 		let last = entries[len - 1];
-		// if the last row is not empty, add an empty row
 		if (!isEmptyString(last.description) && !isEmptyString(last.amount)) {
 			newRow();
 		}
@@ -77,7 +81,7 @@
 
 <h4>{category}</h4>
 <form use:clickOutside on:click_outside={update}>
-	{#each entries as entry, index}
+	{#each entries as entry}
 		<div class="entry-container">
 			<input
 				type="text"

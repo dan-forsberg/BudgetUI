@@ -30,6 +30,8 @@
 		let combined = [];
 		data.categories.forEach((category) => {
 			combined = [...combined, ...seperated[category]];
+
+			console.log(`[Submit] Category ${category} length ${seperated[category].length}`);
 		});
 
 		// remove any empty entries
