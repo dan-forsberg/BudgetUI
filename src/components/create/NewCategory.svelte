@@ -44,7 +44,7 @@
 		});
 
 		entries.sort((a, b) => {
-			return a.amount - b.amount;
+			return b.amount - a.amount;
 		});
 
 		if (category === 'Gemensamma') {
