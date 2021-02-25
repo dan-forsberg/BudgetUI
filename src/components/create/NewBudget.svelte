@@ -30,8 +30,6 @@
 		let combined = [];
 		data.categories.forEach((category) => {
 			combined = [...combined, ...seperated[category]];
-
-			console.log(`[Submit] Category ${category} length ${seperated[category].length}`);
 		});
 
 		// remove any empty entries
@@ -43,10 +41,9 @@
 		});
 
 		try {
-			//await entry.newEntry(combined);
-			console.dir(combined);
+			await entry.newEntry(combined);
 			toast.success('Budget sparad!');
-			//page('/');
+			page('/');
 		} catch (err) {
 			toast.error('Något gick fel.');
 			console.error(err.message);
@@ -61,7 +58,7 @@
 		<div class="budget-container">
 			{#each data.categories as category}
 				<div class="budget">
-					<NewCategory entries={seperated[category]} {category} />
+					<NewCategory bind:entries={seperated[category]} {category} />
 				</div>
 			{/each}
 		</div>
