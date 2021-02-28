@@ -28,6 +28,10 @@
 		});
 	}
 
+	const isEmptyEntry = (entry) => {
+		return isEmptyString(entry.description) && isEmptyString(entry.amount);
+	};
+
 	const isEmptyString = (str) => {
 		return str == undefined || str.length == 0;
 	};
@@ -50,9 +54,7 @@
 	};
 
 	const removeEmptyRows = () => {
-		entries = entries.filter(
-			(entry) => !isEmptyString(entry.description) && !isEmptyString(entry.amount)
-		);
+		entries = entries.filter((entry) => !isEmptyEntry(entry));
 	};
 
 	const sortEntries = () => {
@@ -80,7 +82,7 @@
 		console.log('update');
 		let len = entries.length;
 		let last = entries[len - 1];
-		if (!isEmptyString(last.description) && !isEmptyString(last.amount)) {
+		if (!isEmptyEntry) {
 			newRow();
 			console.log('newRow()');
 		}
