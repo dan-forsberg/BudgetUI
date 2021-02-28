@@ -2,4 +2,4 @@
 	import SelectBudget from '../SelectBudget.svelte';
 </script>
 
-<SelectBudget viewOrEdit="view" />
+<SelectBudget readOnly="true" />

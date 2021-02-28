@@ -4,10 +4,10 @@
 	import ViewCategory from './read/ViewCategory.svelte';
 	import EditCategory from './edit/EditCategory.svelte';
 
-	export let view: boolean;
+	export let readOnly: boolean;
 	export let data: { categories: string[]; result: IEntry[] };
 
-	let component = view ? ViewCategory : EditCategory;
+	let component = readOnly ? ViewCategory : EditCategory;
 
 	// Make sure that data.categories[0] is "Gemensamma"
 	const gemensamma = data.categories.indexOf('Gemensamma');
