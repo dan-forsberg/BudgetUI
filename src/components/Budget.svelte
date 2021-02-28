@@ -5,22 +5,29 @@
 	import EditCategory from './edit/EditCategory.svelte';
 
 	export let readOnly: boolean;
+	let component = readOnly === true ? ViewCategory : EditCategory;
+
 	export let data: { categories: string[]; result: IEntry[] };
+	let seperated = [];
+	gemensammaFirst();
+	separateCategories();
 
-	let component = readOnly ? ViewCategory : EditCategory;
-
-	// Make sure that data.categories[0] is "Gemensamma"
-	const gemensamma = data.categories.indexOf('Gemensamma');
-	if (gemensamma > 0) {
-		let temporary = data.categories[0];
-		data.categories[0] = data.categories[gemensamma];
-		data.categories[gemensamma] = temporary;
+	function gemensammaFirst() {
+		const gemensamma = data.categories.indexOf('Gemensamma');
+		if (gemensamma > 0) {
+			let temporary = data.categories[0];
+			data.categories[0] = data.categories[gemensamma];
+			data.categories[gemensamma] = temporary;
+		}
 	}
 
-	let seperated = [];
-	data.categories.forEach((category) => {
-		seperated[category] = data.result.filter((entry) => entry.Category.name === category);
-	});
+	function separateCategories() {
+		data.categories.forEach((category) => {
+			seperated[category] = data.result.filter((entry) => entry.Category.name === category);
+		});
+
+		return seperated;
+	}
 </script>
 
 {#each data.categories as category}

@@ -3,7 +3,6 @@
 	import InPlaceEdit from './InPlaceEdit.svelte';
 	import entry from '../../controllers/entry';
 	import Toast from 'svelte-toast';
-	import { add_resize_listener } from 'svelte/internal';
 	const toast = new Toast();
 
 	export let entries;

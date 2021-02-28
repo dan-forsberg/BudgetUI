@@ -65,12 +65,10 @@
 	};
 
 	$: {
-		console.log('update');
 		let len = entries.length;
 		let last = entries[len - 1];
 		if (!isEmptyEntry) {
 			newRow();
-			console.log('newRow()');
 		}
 	}
 
