@@ -11,11 +11,14 @@
 
 	let editedEntries = [];
 
-	const entryChanged = (entry, description, newValue) => {
-		if (description) {
+	const entryChanged = (entry, newValue) => {
+		if (entry.description !== newValue) {
 			entry.description = newValue;
-		} else {
+		} else if (entry.amount !== newValue) {
 			entry.amount = newValue;
+		} else {
+			console.log('entryChanged() called, but nothing changed.');
+			return;
 		}
 
 		// if the entry has already been modified, change that instance
@@ -58,11 +61,11 @@
 			<tr>
 				<InPlaceEdit
 					value={entry.description}
-					onSubmit={(value) => entryChanged(entry, true, value)}
+					onSubmit={(value) => entryChanged(entry, value)}
 				/>
 				<InPlaceEdit
 					value={entry.amount}
-					onSubmit={(value) => entryChanged(entry, false, value)}
+					onSubmit={(value) => entryChanged(entry, value)}
 				/>
 			</tr>
 		{/each}
