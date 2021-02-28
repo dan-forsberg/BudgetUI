@@ -2,7 +2,7 @@
 	import entry from '../controllers/entry';
 	import Budget from './Budget.svelte';
 
-	export let readOnly = true;
+	export let readOnly: boolean;
 
 	let dateString = new Date().toISOString().slice(0, 10);
 	let data;
@@ -17,7 +17,7 @@
 	{:then data}
 		<div class="budget">
 			<h2>Budget <input id="datepicker" type="date" bind:value={dateString} /></h2>
-			<Budget {data} readOnly />
+			<Budget {data} {readOnly} />
 		</div>
 	{/await}
 </div>
