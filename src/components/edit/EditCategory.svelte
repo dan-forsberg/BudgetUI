@@ -11,6 +11,7 @@
 	let editedEntries = [];
 
 	const entryChanged = (entry, newValue) => {
+		console.log('entryChanged called');
 		if (entry.description !== newValue) {
 			entry.description = newValue;
 		} else if (entry.amount !== newValue) {
@@ -34,9 +35,9 @@
 
 		for (const editedEntry of editedEntries) {
 			try {
-				await entry.updateEntry(ent);
+				await entry.updateEntry(editedEntry);
 			} catch (err) {
-				toast.error(`Kunde inte uppdatera: ${ent.description}`);
+				toast.error(`Kunde inte uppdatera: ${editedEntry.description}`);
 				success = false;
 			}
 		}
