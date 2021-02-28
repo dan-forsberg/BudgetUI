@@ -11,7 +11,6 @@
 	let editedEntries = [];
 
 	const entryChanged = (entry, newValue) => {
-		console.log('entryChanged called');
 		if (entry.description !== newValue) {
 			entry.description = newValue;
 		} else if (entry.amount !== newValue) {
