@@ -3,6 +3,7 @@
 	import InPlaceEdit from './InPlaceEdit.svelte';
 	import entry from '../../controllers/entry';
 	import Toast from 'svelte-toast';
+	import { add_resize_listener } from 'svelte/internal';
 	const toast = new Toast();
 
 	export let entries;
@@ -28,14 +29,15 @@
 
 	const update = async () => {
 		let success = true;
-		editedEntries.forEach((ent) => {
+
+		for (const editedEntry of editedEntries) {
 			try {
-				entry.updateEntry(ent);
+				await entry.updateEntry(ent);
 			} catch (err) {
 				toast.error(`Kunde inte uppdatera: ${ent.description}`);
 				success = false;
 			}
-		});
+		}
 
 		if (success) {
 			toast.success(`Uppdaterade ${editedEntries.length} rader.`);
