@@ -1,5 +1,6 @@
 <script>
 	import gemensamTotal from './gemensamTotal';
+	import entry, { sortEntries } from '../../controllers/entry';
 	import { clickOutside } from '../../clickOutside';
 	import { onMount } from 'svelte';
 
@@ -41,12 +42,7 @@
 	// Run when clicking outside the form and onMount()
 	const update = () => {
 		removeEmptyRows();
-		sortEntries();
-
-		total = 0;
-		entries.forEach((entry) => {
-			total += entry.amount;
-		});
+		let { entries, total } = sortEntries(entries);
 
 		if (category === 'Gemensamma') {
 			gemensamTotal.set(total);
@@ -55,16 +51,6 @@
 
 	const removeEmptyRows = () => {
 		entries = entries.filter((entry) => !isEmptyEntry(entry));
-	};
-
-	const sortEntries = () => {
-		let positive = entries.filter((e) => e.amount > 0);
-		let negative = entries.filter((e) => e.amount <= 0);
-
-		negative.sort((a, b) => a.amount - b.amount);
-		positive.sort((a, b) => b.amount - a.amount);
-
-		entries = [...positive, ...negative];
 	};
 
 	const newRow = () => {
