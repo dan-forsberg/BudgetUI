@@ -7,17 +7,17 @@
 
 	export let entries;
 	export let category;
+	let { sortedEntries, total } = sortEntries(entries);
 
 	let editedEntries = [];
 
-	const entryChanged = (entry, newValue) => {
-		if (entry.description !== newValue) {
+	const entryChanged = (entry, description, newValue) => {
+		console.log('entryChanged called');
+
+		if (description) {
 			entry.description = newValue;
-		} else if (entry.amount !== newValue) {
-			entry.amount = newValue;
 		} else {
-			console.log('entryChanged() called, but nothing changed.');
-			return;
+			entry.amount = newValue;
 		}
 
 		// if the entry has already been modified, change that instance
@@ -45,8 +45,6 @@
 			toast.success(`Uppdaterade ${editedEntries.length} rader.`);
 		}
 	};
-
-	const { sortedEntries, total } = sortEntries(entries);
 </script>
 
 {#if entries !== undefined}
@@ -60,11 +58,11 @@
 			<tr>
 				<InPlaceEdit
 					value={entry.description}
-					onSubmit={(value) => entryChanged(entry, value)}
+					onSubmit={(value) => entryChanged(entry, true, value)}
 				/>
 				<InPlaceEdit
 					value={entry.amount}
-					onSubmit={(value) => entryChanged(entry, value)}
+					onSubmit={(value) => entryChanged(entry, false, value)}
 				/>
 			</tr>
 		{/each}
