@@ -2,8 +2,8 @@
 	"name": "budget-ui",
 	"version": "1.0.0",
 	"scripts": {
-		"build": "rollup -c",
-		"dev": "rollup -c -w",
+		"build": "npx rollup -c",
+		"dev": "npx rollup -c -w",
 		"start": "sirv public --single --host",
 		"validate": "svelte-check"
 	},
