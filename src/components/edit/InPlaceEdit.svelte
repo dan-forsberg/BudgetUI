@@ -1,40 +1,40 @@
 <script>
-	import { onMount } from 'svelte';
+import { onMount } from "svelte";
 
-	export let value,
-		required = true,
-		onSubmit;
+export let value,
+	required = true,
+	onSubmit;
 
-	let editing = false,
-		original;
+let editing = false,
+	original;
 
-	onMount(() => {
-		original = value;
-	});
+onMount(() => {
+	original = value;
+});
 
-	function edit() {
-		editing = true;
+function edit() {
+	editing = true;
+}
+
+function submit() {
+	if (value !== original) {
+		onSubmit(value);
 	}
 
-	function submit() {
-		if (value !== original) {
-			onSubmit(value);
-		}
+	editing = false;
+}
 
+function keydown(event) {
+	if (event.key == "Escape") {
+		event.preventDefault();
+		value = original;
 		editing = false;
 	}
+}
 
-	function keydown(event) {
-		if (event.key == 'Escape') {
-			event.preventDefault();
-			value = original;
-			editing = false;
-		}
-	}
-
-	function focus(element) {
-		element.focus();
-	}
+function focus(element) {
+	element.focus();
+}
 </script>
 
 {#if editing}
@@ -46,13 +46,13 @@
 {/if}
 
 <style>
-	input {
-		border: none;
-		background: none;
-		font-size: inherit;
-		color: inherit;
-		font-weight: inherit;
-		text-align: inherit;
-		box-shadow: none;
-	}
+input {
+	border: none;
+	background: none;
+	font-size: inherit;
+	color: inherit;
+	font-weight: inherit;
+	text-align: inherit;
+	box-shadow: none;
+}
 </style>
