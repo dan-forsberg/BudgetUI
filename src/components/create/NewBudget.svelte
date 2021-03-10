@@ -1,56 +1,56 @@
 <script>
-	import entry from '../../controllers/entry';
-	import NewCategory from './NewCategory.svelte';
-	import Toast from 'svelte-toast';
-	import page from 'page';
-	const toast = new Toast();
+import entry from "../../controllers/entry";
+import NewCategory from "./NewCategory.svelte";
+import Toast from "svelte-toast";
+import page from "page";
+const toast = new Toast();
 
-	let dateString = new Date().toISOString().slice(0, 10);
+let dateString = new Date().toISOString().slice(0, 10);
 
-	let seperated = [];
-	let data;
-	entry.getDefaultEntries().then((resp) => {
-		// Make sure that data.categories[0] is "Gemensamma"
-		const gemensamma = resp.categories.indexOf('Gemensamma');
-		if (gemensamma > 0) {
-			let temporary = resp.categories[0];
-			resp.categories[0] = resp.categories[gemensamma];
-			resp.categories[gemensamma] = temporary;
-		}
+let seperated = [];
+let data;
+entry.getDefaultEntries().then((resp) => {
+	// Make sure that data.categories[0] is "Gemensamma"
+	const gemensamma = resp.categories.indexOf("Gemensamma");
+	if (gemensamma > 0) {
+		let temporary = resp.categories[0];
+		resp.categories[0] = resp.categories[gemensamma];
+		resp.categories[gemensamma] = temporary;
+	}
 
-		// Separate the entries into its categories
-		resp.categories.forEach((category) => {
-			seperated[category] = resp.result.filter((entry) => entry.Category.name === category);
-		});
-
-		data = resp;
+	// Separate the entries into its categories
+	resp.categories.forEach((category) => {
+		seperated[category] = resp.result.filter((entry) => entry.Category.name === category);
 	});
 
-	async function submit() {
-		// combine all the categories into one array
-		let combined = [];
-		data.categories.forEach((category) => {
-			combined = [...combined, ...seperated[category]];
-		});
+	data = resp;
+});
 
-		// remove any empty entries
-		combined = combined.filter((entry) => entry.value !== '' && entry.description !== '');
+async function submit() {
+	// combine all the categories into one array
+	let combined = [];
+	data.categories.forEach((category) => {
+		combined = [...combined, ...seperated[category]];
+	});
 
-		// set the date of all the entries
-		combined.forEach((entry) => {
-			entry.date = new Date(dateString);
-		});
+	// remove any empty entries
+	combined = combined.filter((entry) => entry.value !== "" && entry.description !== "");
 
-		try {
-			console.dir(combined);
-			await entry.newEntry(combined);
-			toast.success('Budget sparad!');
-			page('/');
-		} catch (err) {
-			toast.error('Något gick fel.');
-			console.error(err.message);
-		}
+	// set the date of all the entries
+	combined.forEach((entry) => {
+		entry.date = new Date(dateString);
+	});
+
+	try {
+		console.dir(combined);
+		await entry.newEntry(combined);
+		toast.success("Budget sparad!");
+		page("/");
+	} catch (err) {
+		toast.error("Något gick fel.");
+		console.error(err.message);
 	}
+}
 </script>
 
 <div id="new-budget-wrapper">
@@ -78,24 +78,24 @@
 </div>
 
 <style>
-	#new-budget-wrapper {
-		/* if on mobile the send button is at the very-very bottom
+#new-budget-wrapper {
+	/* if on mobile the send button is at the very-very bottom
 		hackily fix that */
-		margin-bottom: 15px;
-	}
+	margin-bottom: 15px;
+}
 
-	.budget-container {
-		display: flex;
-		justify-content: space-evenly;
-		flex-wrap: wrap;
-	}
+.budget-container {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
 
-	.budget {
-		margin: 10px;
-	}
+.budget {
+	margin: 10px;
+}
 
-	.input-date {
-		/* Materalize sets width to 100% and takes a priority*/
-		width: auto !important;
-	}
+.input-date {
+	/* Materalize sets width to 100% and takes a priority*/
+	width: auto !important;
+}
 </style>

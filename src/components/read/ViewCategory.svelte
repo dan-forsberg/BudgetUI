@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type IEntry from '../../interfaces/entry';
-	import { sortEntries } from '../../controllers/entry';
+import type IEntry from "../../interfaces/entry";
+import { sortEntries } from "../../controllers/entry";
 
-	export let entries: IEntry[];
-	export let category: string;
+export let entries: IEntry[];
+export let category: string;
 
-	const { sortedEntries, total } = sortEntries(entries);
+const { sortedEntries, total } = sortEntries(entries);
 </script>
 
 {#if entries !== undefined}
@@ -23,7 +23,7 @@
 		{/each}
 		<tr>
 			<td>Totalt</td>
-			<td class="right">{total < 0 ? total : '+' + total}</td>
+			<td class="right">{total < 0 ? total : "+" + total}</td>
 		</tr>
 	</table>
 {:else}
@@ -32,8 +32,8 @@
 {/if}
 
 <style>
-	table tr:last-child {
-		border-top: 2px solid black;
-		font-weight: bold;
-	}
+table tr:last-child {
+	border-top: 2px solid black;
+	font-weight: bold;
+}
 </style>

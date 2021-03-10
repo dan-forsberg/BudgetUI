@@ -1,14 +1,14 @@
 <script lang="ts">
-	import entry from '../controllers/entry';
-	import Budget from './Budget.svelte';
+import entry from "../controllers/entry";
+import Budget from "./Budget.svelte";
 
-	export let readOnly: boolean;
+export let readOnly: boolean;
 
-	let dateString = new Date().toISOString().slice(0, 10);
-	let data;
-	$: {
-		data = entry.getSpecificEntries({ date: new Date(dateString) });
-	}
+let dateString = new Date().toISOString().slice(0, 10);
+let data;
+$: {
+	data = entry.getSpecificEntries({ date: new Date(dateString) });
+}
 </script>
 
 <div class="flex-container">
@@ -23,23 +23,23 @@
 </div>
 
 <style>
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+@media screen and (max-width: 1080px) {
 	.flex-container {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
+		flex-direction: column;
 	}
+}
 
-	@media screen and (max-width: 1080px) {
-		.flex-container {
-			flex-direction: column;
-		}
-	}
-
-	#datepicker {
-		font-size: 3.56rem;
-		font-weight: 400;
-		display: inline !important;
-		width: auto !important;
-		height: auto !important;
-	}
+#datepicker {
+	font-size: 3.56rem;
+	font-weight: 400;
+	display: inline !important;
+	width: auto !important;
+	height: auto !important;
+}
 </style>

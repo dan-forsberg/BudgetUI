@@ -9,7 +9,7 @@
 </nav>
 
 <style>
-	a:visited {
-		color: #fff;
-	}
+a:visited {
+	color: #fff;
+}
 </style>

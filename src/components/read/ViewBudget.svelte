@@ -1,5 +1,5 @@
 <script>
-	import SelectBudget from '../SelectBudget.svelte';
+import SelectBudget from "../SelectBudget.svelte";
 </script>
 
 <SelectBudget readOnly="true" />
