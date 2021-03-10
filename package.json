@@ -4,7 +4,7 @@
 	"scripts": {
 		"build": "npx rollup -c",
 		"dev": "npx rollup -c -w",
-		"start": "sirv public --single --host",
+		"start": "node server.js",
 		"validate": "svelte-check"
 	},
 	"devDependencies": {
