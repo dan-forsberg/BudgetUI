@@ -21,7 +21,7 @@ app.use(cors());
 
 if (production) {
 	app.use(auth.auth(authConfig));
-	app.use(express.static("public"), requiresAuth());
+	app.use(express.static("public"), auth.requiresAuth());
 } else {
 	app.use(express.static("public"));
 }
