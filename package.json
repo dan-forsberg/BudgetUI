@@ -5,7 +5,7 @@
 		"build": "npx rollup -c",
 		"dev": "npx rollup -c -w",
 		"validate": "svelte-check",
-		"start": "NODE_ENV=production node -r dotenv/config server.js"
+		"start": "npx rollup --serve"
 	},
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^17.0.0",
@@ -30,10 +30,6 @@
 		"typescript": "^3.9.3"
 	},
 	"dependencies": {
-		"cors": "^2.8.5",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"express-openid-connect": "^2.2.1",
 		"page": "^1.11.6",
 		"svelte-toast": "^1.0.0"
 	}
