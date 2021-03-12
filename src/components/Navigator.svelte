@@ -1,4 +1,5 @@
 <script>
+let loc = window.location;
 let URL = `${loc.protocol}//${loc.hostname}${loc.pathname}`;
 </script>
 
