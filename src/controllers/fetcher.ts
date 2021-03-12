@@ -1,5 +1,5 @@
 const loc = window.location;
-let URL = `${loc.protocol}//${loc.hostname}/api`;
+let URL = `${loc.protocol}//${loc.hostname}${loc.pathname}api`;
 
 // if dev, use port 8080
 if (loc.hostname === "0.0.0.0" || loc.hostname === "localhost" || loc.hostname === "127.0.0.1") {
