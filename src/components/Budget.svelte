@@ -9,6 +9,7 @@ let component = readOnly === true ? ViewCategory : EditCategory;
 
 export let data: { categories: string[]; result: IEntry[] };
 let seperated = [];
+
 gemensammaFirst();
 separateCategories();
 

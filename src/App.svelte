@@ -7,15 +7,19 @@ import Navigator from "./components/Navigator.svelte";
 import router from "page";
 
 let page = ViewBudget;
+
 router("/", () => {
 	page = ViewBudget;
 });
+
 router("/new", () => {
 	page = NewBudget;
 });
+
 router("/edit", () => {
 	page = EditBudget;
 });
+
 router.start();
 </script>
 
