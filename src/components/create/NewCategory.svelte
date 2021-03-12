@@ -1,6 +1,6 @@
 <script>
-import gemensamTotal from "./gemensamTotal";
-import entry, { sortEntries } from "../../controllers/entry";
+import gemensamTotal from "../../stores/gemensamTotal";
+import { sortEntries } from "../../controllers/entry";
 import { clickOutside } from "../../clickOutside";
 import { onMount } from "svelte";
 
