@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"scripts": {
 		"build": "npx rollup -c",
-		"dev": "npx rollup -c -w",
+		"dev": "rollup -c -w",
 		"validate": "svelte-check",
-		"start": "npx rollup --serve"
+		"start": "sirv public"
 	},
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^17.0.0",

@@ -6,6 +6,7 @@ import { onMount } from "svelte";
 
 export let entries;
 export let category;
+
 let total = 0;
 
 // special value to balance out if one person should pay more for the common costs
@@ -20,12 +21,17 @@ if (entries[0].description === "HALF_OF_GEMENSAMMA") {
 	HOG_evenOuter = entry.amount;
 
 	let description = "Halva gemensamma";
-	if (HOG_evenOuter > 0) description += ` (+${HOG_evenOuter})`;
-	else if (HOG_evenOuter < 0) description += ` (${HOG_evenOuter})`;
+
+	if (HOG_evenOuter > 0) {
+		description += ` (+${HOG_evenOuter})`;
+	} else if (HOG_evenOuter < 0) {
+		description += ` (${HOG_evenOuter})`;
+	}
+
 	entry.description = description;
 
-	gemensamTotal.subscribe((value) => {
-		entry.amount = value / 2 - HOG_evenOuter;
+	gemensamTotal.subscribe((totalOfGemensam) => {
+		entry.amount = totalOfGemensam / 2 - HOG_evenOuter;
 	});
 }
 
@@ -34,15 +40,18 @@ const isEmptyEntry = (entry) => {
 };
 
 const isEmptyString = (str) => {
-	return str === undefined || str.length === 0;
+	return null === str || str === undefined || str.length === 0;
 };
 
 // Remove any empty rows and update the total
 // Sort the entries by amount lowest - highest
 // Run when clicking outside the form and onMount()
-const update = () => {
+const updateTable = () => {
 	removeEmptyRows();
-	let { entries, total } = sortEntries(entries);
+	let { sortedEntries, total: updatedTotal } = sortEntries(entries);
+
+	entries = sortedEntries;
+	total = updatedTotal;
 
 	if (category === "Gemensamma") {
 		gemensamTotal.set(total);
@@ -67,18 +76,18 @@ const newRow = () => {
 $: {
 	let len = entries.length;
 	let last = entries[len - 1];
-	if (!isEmptyEntry) {
+	if (!isEmptyEntry(last)) {
 		newRow();
 	}
 }
 
 onMount(() => {
-	update();
+	updateTable();
 });
 </script>
 
 <h4>{category}</h4>
-<form use:clickOutside on:click_outside={update}>
+<form use:clickOutside on:click_outside={updateTable}>
 	{#each entries as entry}
 		<div class="entry-container">
 			<input

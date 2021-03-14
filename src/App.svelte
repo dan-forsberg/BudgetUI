@@ -20,26 +20,8 @@ router("/edit", () => {
 	page = EditBudget;
 });
 
-router("/budget/", () => {
-	page = ViewBudget;
-});
-
-router("/budget/new", () => {
-	page = NewBudget;
-});
-
-router("/budget/edit", () => {
-	page = EditBudget;
-});
-
 router.start();
 </script>
-
-<svelte:head>
-	<title>Budget planeraren 2000</title>
-</svelte:head>
-
-<link rel="stylesheet" href="/build/base.css" />
 
 <Navigator />
 
