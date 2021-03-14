@@ -30,6 +30,7 @@
 		"typescript": "^3.9.3"
 	},
 	"dependencies": {
+		"@auth0/auth0-spa-js": "^1.13.6",
 		"page": "^1.11.6",
 		"svelte-toast": "^1.0.0"
 	}
