@@ -20,6 +20,18 @@ router("/edit", () => {
 	page = EditBudget;
 });
 
+router("/budget/", () => {
+	page = ViewBudget;
+});
+
+router("/budget/new", () => {
+	page = NewBudget;
+});
+
+router("/budget/edit", () => {
+	page = EditBudget;
+});
+
 router.start();
 </script>
 
