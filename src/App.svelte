@@ -25,6 +25,7 @@ router("/edit", () => {
 });
 
 onMount(async () => {
+	console.log("Authentication...");
 	auth0 = await createAuth0Client({
 		domain: "dev-dasifor.eu.auth0.com",
 		client_id: "5qQ5xvpUl4gecTkaP95O1HpKhGoJMUD0",
@@ -32,10 +33,12 @@ onMount(async () => {
 
 	isAuthenticated = await auth0.isAuthenticated();
 	if (!isAuthenticated) {
+		console.log("failed!");
 		await auth0.loginWithRedirect({
 			redirect_uri: window.location.origin,
 		});
 	} else {
+		console.log("succeeded!");
 		router.start();
 	}
 });
