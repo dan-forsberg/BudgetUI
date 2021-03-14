@@ -10,7 +10,7 @@ import createAuth0Client from "@auth0/auth0-spa-js";
 let auth0 = null;
 let isAuthenticated = false;
 
-let page = ViewBudget;
+let page = null;
 
 router("/", () => {
 	page = ViewBudget;
@@ -32,21 +32,33 @@ onMount(async () => {
 	});
 
 	isAuthenticated = await auth0.isAuthenticated();
-	if (!isAuthenticated) {
-		console.log("failed!");
-		await auth0.loginWithRedirect({
-			redirect_uri: window.location.origin,
-		});
-	} else {
+	if (isAuthenticated) {
 		console.log("succeeded!");
 		router.start();
+
+		return;
+	}
+
+	const query = window.location.search;
+	if (query.includes("code=") && query.includes("state=")) {
+		await auth0.handleRedirectCallback();
+		window.history.replaceState({}, document.title, "/");
 	}
 });
+
+const login = async () => {
+	await auth0.loginWithRedirect({
+		redirect_uri: window.location.origin,
+	});
+};
 </script>
 
-<Navigator />
-
-<svelte:component this={page} />
+{#if isAuthenticated}
+	<Navigator />
+	<svelte:component this={page} />
+{:else}
+	<button on:click={() => login()} />
+{/if}
 
 <style>
 :global(body) {
