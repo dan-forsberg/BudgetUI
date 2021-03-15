@@ -35,8 +35,6 @@ window.onload = async () => {
 	if (isAuthenticated) {
 		callback();
 		return;
-	} else {
-		login();
 	}
 
 	const query = window.location.search;
@@ -51,7 +49,7 @@ window.onload = async () => {
 };
 
 
-const login = async () => {
+export const login = async () => {
 	await auth0.loginWithRedirect({
 		redirect_uri: window.location.origin,
 	});
