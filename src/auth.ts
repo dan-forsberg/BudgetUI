@@ -5,12 +5,11 @@ const loc = window.location;
 const fetchAuthConfig = () => fetch("/auth_config.json");
 let auth0 = null;
 let isAuthenticated = false;
-type cbType = {
-	(): void;
-};
 
-let callback: cbType;
-export const onLoggedIn = (cb: cbType): void => {
+let callback: () => void;
+
+export const onLoggedIn = (cb: () => void): void => {
+	console.log("Callback set");
 	callback = cb;
 };
 
@@ -48,6 +47,7 @@ window.onload = async () => {
 
 		const token = await auth0.getTokenSilently();
 		console.log("setting with token");
+		callback();
 		Fetcher.getInstance(token);
 	} else {
 		login();
