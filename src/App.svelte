@@ -26,6 +26,7 @@ let loggedIn = false;
 
 onLoggedIn(() => {
 	loggedIn = true;
+	console.log("Inloggad.");
 });
 </script>
 
