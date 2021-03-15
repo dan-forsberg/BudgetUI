@@ -10,9 +10,7 @@ export class Fetcher {
 	private static instance: Fetcher;
 
 	public static getInstance(token?: string): Fetcher {
-		console.log("Got token: " + token);
-
-		if (!Fetcher.instance) {
+		if (!Fetcher.instance || token !== undefined) {
 			console.log("No instance available");
 			Fetcher.instance = new Fetcher();
 			if (token != undefined) {
