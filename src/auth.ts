@@ -9,7 +9,6 @@ let isAuthenticated = false;
 let callback: () => void;
 
 export const onLoggedIn = (cb: () => void): void => {
-	console.log("Callback set");
 	callback = cb;
 };
 
@@ -27,7 +26,6 @@ const configureClient = async () => {
 window.onload = async () => {
 	if (loc.host !== "dasifor.xyz") {
 		Fetcher.getInstance();
-		console.log("host isnt dasifor");
 		callback();
 		return;
 	}
@@ -35,9 +33,10 @@ window.onload = async () => {
 	await configureClient();
 	isAuthenticated = await auth0.isAuthenticated();
 	if (isAuthenticated) {
-		console.log("authed");
 		callback();
 		return;
+	} else {
+		login();
 	}
 
 	const query = window.location.search;
@@ -46,11 +45,8 @@ window.onload = async () => {
 		window.history.replaceState({}, document.title, "/");
 
 		const token = await auth0.getTokenSilently();
-		console.log("setting with token");
 		callback();
 		Fetcher.getInstance(token);
-	} else {
-		login();
 	}
 };
 
