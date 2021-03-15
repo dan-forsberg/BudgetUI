@@ -1,4 +1,5 @@
 import App from "./App.svelte";
+import { } from "./auth";
 import "../node_modules/materialize-css/dist/css/materialize.css";
 import "../public/global.css";
 

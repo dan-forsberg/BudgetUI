@@ -1,10 +1,11 @@
 import type IEntry from "../interfaces/entry";
-import { get, post, patch } from "./fetcher";
+import { Fetcher } from "./fetcher";
 
 type GetResponse = { categories: string[]; result: IEntry[]; };
 
 const getAllEntries = async (): Promise<GetResponse> => {
-	const response = await get("/entry");
+	const fetcher = Fetcher.getInstance();
+	const response = await fetcher.get("/entry");
 	const json = await response.json();
 
 	if (response.status !== 200) {
@@ -15,7 +16,8 @@ const getAllEntries = async (): Promise<GetResponse> => {
 };
 
 const getDefaultEntries = async (): Promise<IEntry[]> => {
-	const response = await get("/default");
+	const fetcher = Fetcher.getInstance();
+	const response = await fetcher.get("/default");
 	const json = await response.json();
 
 	if (response.status !== 200) {
@@ -43,7 +45,8 @@ const getSpecificEntries = async (attributes: GetAttributes): Promise<GetRespons
 		}
 	}
 
-	const response = await get(endPoint);
+	const fetcher = Fetcher.getInstance();
+	const response = await fetcher.get(endPoint);
 	const json = await response.json();
 
 	if (response.status !== 200) {
@@ -60,7 +63,8 @@ const newEntry = async (newEntry: IEntry | IEntry[]): Promise<IEntry> => {
 	else
 		body = { entries: [newEntry] };
 
-	const result = await post("/entry/new", body);
+	const fetcher = Fetcher.getInstance();
+	const result = await fetcher.post("/entry/new", body);
 	const json = await result.json();
 
 	if (result.status !== 201) {
@@ -70,7 +74,8 @@ const newEntry = async (newEntry: IEntry | IEntry[]): Promise<IEntry> => {
 };
 
 const updateEntry = async (entry: IEntry): Promise<IEntry> => {
-	const result = await patch(`/entry/update/${entry.id}`, { entry: entry });
+	const fetcher = Fetcher.getInstance();
+	const result = await fetcher.patch(`/entry/update/${entry.id}`, { entry: entry });
 	const json = await result.json();
 
 	if (result.status !== 200) {

@@ -1,41 +1,85 @@
-const loc = window.location;
-let URL = `${loc.protocol}//${loc.hostname}/api`;
+export class Fetcher {
 
-// if dev, use port 8080
-if (loc.hostname === "0.0.0.0" || loc.hostname === "localhost" || loc.hostname === "127.0.0.1") {
-	URL = `${loc.protocol}//${loc.hostname}:8080/api`;
-}
-
-const headers = { "Content-Type": "application/json" };
-
-const httpReq = (endPoint: string, method: string, body?: unknown): Promise<Response> => {
-	const opts = {
-		method: method,
-		headers: headers,
-	};
-
-	if (body) {
-		opts["body"] = JSON.stringify(body);
+	private constructor() {
+		return;
 	}
-	const results = fetch(URL + endPoint, opts);
-	return results;
-};
 
-const get = (endPoint: string): Promise<Response> => {
-	return httpReq(endPoint, "GET");
-};
+	private URL: string;
+	private headers: HeadersInit;
 
-const post = (endPoint: string, body: unknown): Promise<Response> => {
-	return httpReq(endPoint, "POST", body);
-};
+	private static instance: Fetcher;
 
-/* delete is a reserved keyword */
-const remove = (endPoint: string): Promise<Response> => {
-	return httpReq(endPoint, "DELETE");
-};
+	public static getInstance(token?: string): Fetcher {
+		console.log("Got token: " + token);
 
-const patch = (endPoint: string, body: unknown): Promise<Response> => {
-	return httpReq(endPoint, "PATCH", body);
-};
+		if (!Fetcher.instance) {
+			console.log("No instance available");
+			Fetcher.instance = new Fetcher();
+			if (token != undefined) {
+				console.log("Configured with token.");
+				Fetcher.instance.configure(token);
+			} else {
+				console.log("Configure with no token.");
+				Fetcher.instance.configure();
+			}
+		}
 
-export { get, post, remove, patch };
+		return Fetcher.instance;
+	}
+
+	private httpReq(endPoint: string, method: string, body?: unknown): Promise<Response> {
+		const opts = {
+			method: method,
+			headers: this.headers,
+		};
+
+		if (body) {
+			opts["body"] = JSON.stringify(body);
+		}
+		const results = fetch(this.URL + endPoint, opts);
+		return results;
+	}
+
+	public get(endPoint: string): Promise<Response> {
+		return this.httpReq(endPoint, "GET");
+	}
+
+	public post(endPoint: string, body: unknown): Promise<Response> {
+		return this.httpReq(endPoint, "POST", body);
+	}
+
+	/* delete is a reserved keyword */
+	public remove(endPoint: string): Promise<Response> {
+		return this.httpReq(endPoint, "DELETE");
+	}
+
+	public patch(endPoint: string, body: unknown): Promise<Response> {
+		return this.httpReq(endPoint, "PATCH", body);
+	}
+
+	private configure(token?: string): void {
+		const localhost = ["0.0.0.0", "localhost", "127.0.0.1"];
+		const loc = window.location;
+
+		this.URL = `${loc.protocol}//${loc.hostname}/api`;
+		let prod = true;
+
+		if (localhost.includes(loc.hostname)) {
+			this.URL = `${loc.protocol}//${loc.hostname}:8080/api`;
+			prod = false;
+		} else if (loc.hostname === "budget.dasifor.xyz") {
+			prod = false;
+		}
+
+		if (prod && token != undefined) {
+			this.headers = {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			};
+		} else {
+			this.headers = {
+				"Content-Type": "application/json"
+			};
+		}
+	}
+}

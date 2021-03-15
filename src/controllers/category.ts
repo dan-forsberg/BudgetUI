@@ -1,4 +1,4 @@
-import { get, post, remove, patch } from "./fetcher";
+import { Fetcher } from "./fetcher";
 import type ICategory from "../interfaces/category";
 
 type GetCategoriesResp = {
@@ -6,7 +6,12 @@ type GetCategoriesResp = {
 	categories: ICategory[];
 };
 const getCategories = async (): Promise<ICategory[]> => {
-	const response = await get("/category");
+	const fetcher = Fetcher.getInstance();
+	const response = await fetcher.get("/category");
+
+	console.log("getCategories got");
+	console.dir(response);
+
 	const json = await response.json() as GetCategoriesResp;
 
 	if (response.status !== 200) {
@@ -22,7 +27,8 @@ type AddCategoryResp = {
 	category: string;
 };
 const addCategory = async (category: string): Promise<ICategory> => {
-	const response = await post("/category/new", { category: category });
+	const fetcher = Fetcher.getInstance();
+	const response = await fetcher.post("/category/new", { category: category });
 	const json = await response.json() as AddCategoryResp;
 
 	if (response.status !== 200) {
@@ -37,7 +43,8 @@ type RemoveCategoryResp = {
 	rowsDeleted: number;
 };
 const removeCategory = async (id: number): Promise<number> => {
-	const response = await remove(`/category/delete/${id}`);
+	const fetcher = Fetcher.getInstance();
+	const response = await fetcher.remove(`/category/delete/${id}`);
 	const json = await response.json() as RemoveCategoryResp;
 
 	if (response.status !== 200) {
@@ -50,7 +57,8 @@ type UpdateCategoryResp = {
 	message: string;
 };
 const updateCategory = async (id: number, newName: string): Promise<string> => {
-	const response = await patch(`/category/update/${id}`, { category: newName });
+	const fetcher = Fetcher.getInstance();
+	const response = await fetcher.patch(`/category/update/${id}`, { category: newName });
 	const json = await response.json() as UpdateCategoryResp;
 
 	if (response.status !== 200) {
