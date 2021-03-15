@@ -5,6 +5,14 @@ const loc = window.location;
 const fetchAuthConfig = () => fetch("/auth_config.json");
 let auth0 = null;
 let isAuthenticated = false;
+type cbType = {
+	(): void;
+};
+
+let callback: cbType;
+export const onLoggedIn = (cb: cbType): void => {
+	callback = cb;
+};
 
 const configureClient = async () => {
 	const response = await fetchAuthConfig();
@@ -20,12 +28,16 @@ const configureClient = async () => {
 window.onload = async () => {
 	if (loc.host !== "dasifor.xyz") {
 		Fetcher.getInstance();
+		console.log("host isnt dasifor");
+		callback();
 		return;
 	}
 
 	await configureClient();
 	isAuthenticated = await auth0.isAuthenticated();
 	if (isAuthenticated) {
+		console.log("authed");
+		callback();
 		return;
 	}
 
@@ -35,11 +47,13 @@ window.onload = async () => {
 		window.history.replaceState({}, document.title, "/");
 
 		const token = await auth0.getTokenSilently();
+		console.log("setting with token");
 		Fetcher.getInstance(token);
 	} else {
 		login();
 	}
 };
+
 
 const login = async () => {
 	await auth0.loginWithRedirect({

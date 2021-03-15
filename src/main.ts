@@ -1,13 +1,17 @@
 import App from "./App.svelte";
-import { } from "./auth";
+import { onLoggedIn } from "./auth";
 import "../node_modules/materialize-css/dist/css/materialize.css";
 import "../public/global.css";
 
+let app;
+onLoggedIn(() => {
+	console.log("onLoggedIn");
 
-const app = new App({
-	target: document.body,
-	props: {
-	}
+	app = new App({
+		target: document.body,
+		props: {
+		}
+	});
 });
 
 export default app;
