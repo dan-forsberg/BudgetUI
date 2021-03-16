@@ -3,7 +3,8 @@ import EditBudget from "./components/edit/EditBudget.svelte";
 import ViewBudget from "./components/read/ViewBudget.svelte";
 import NewBudget from "./components/create/NewBudget.svelte";
 import Navigator from "./components/Navigator.svelte";
-import { onLoggedIn, login } from "./auth";
+import NotLoggedIn from "./components/NotLoggedIn.svelte";
+import { onLoggedIn } from "./auth";
 import router from "page";
 
 let page = null;
@@ -23,18 +24,17 @@ router("/edit", () => {
 router.start();
 
 let loggedIn = false;
-
 onLoggedIn(() => {
 	loggedIn = true;
 	console.log("Inloggad.");
 });
 </script>
 
+<Navigator loggedIn />
 {#if loggedIn}
-	<Navigator />
 	<svelte:component this={page} />
 {:else}
-	<button on:click={() => login()}>Logga in</button>
+	<NotLoggedIn />
 {/if}
 
 <style>

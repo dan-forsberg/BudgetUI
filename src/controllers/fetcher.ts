@@ -25,6 +25,10 @@ export class Fetcher {
 		return Fetcher.instance;
 	}
 
+	public static destroy(): void {
+		Fetcher.instance = null;
+	}
+
 	private httpReq(endPoint: string, method: string, body?: unknown): Promise<Response> {
 		const opts = {
 			method: method,

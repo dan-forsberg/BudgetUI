@@ -49,8 +49,14 @@ window.onload = async () => {
 };
 
 
-export const login = async () => {
+export const login = async (): Promise<void> => {
 	await auth0.loginWithRedirect({
 		redirect_uri: window.location.origin,
+	});
+};
+export const logout = (): void => {
+	Fetcher.destroy();
+	auth0.logout({
+		returnTo: window.location.origin
 	});
 };
