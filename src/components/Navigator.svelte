@@ -9,10 +9,12 @@ export let loggedIn: boolean;
 			<li><a href="/">Hem</a></li>
 			<li><a href="/new">Ny budget</a></li>
 			<li><a href="/edit">Ändra budget</a></li>
+		</ul>
+		<ul id="nav-mobile" class="right">
 			{#if loggedIn}
-				<li class="right"><a on:click={() => logout()}>Logga ut</a></li>
+				<li><span on:click={() => logout()}>Logga ut</span></li>
 			{:else}
-				<li class="right"><a on:click={() => login()}>Logga in</a></li>
+				<li><span on:click={() => login()}>Logga in</span></li>
 			{/if}
 		</ul>
 	</div>
