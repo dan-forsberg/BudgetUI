@@ -30,7 +30,7 @@ onLoggedIn(() => {
 });
 </script>
 
-<Navigator loggedIn />
+<Navigator {loggedIn} />
 {#if loggedIn}
 	<svelte:component this={page} />
 {:else}

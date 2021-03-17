@@ -10,9 +10,9 @@ export let loggedIn: boolean;
 			<li><a href="/new">Ny budget</a></li>
 			<li><a href="/edit">Ändra budget</a></li>
 			{#if loggedIn}
-				<li class="right"><a onclick={() => logout()}>Logga ut</a></li>
+				<li class="right"><a on:click={() => logout()}>Logga ut</a></li>
 			{:else}
-				<li class="right"><a onclick={() => login()}>Logga in</a></li>
+				<li class="right"><a on:click={() => login()}>Logga in</a></li>
 			{/if}
 		</ul>
 	</div>
