@@ -12,9 +12,9 @@ export let loggedIn: boolean;
 		</ul>
 		<ul id="nav-mobile" class="right">
 			{#if loggedIn}
-				<li><a on:click={() => logout()}>Logga ut</a></li>
+				<li><a href="/logout" on:click={() => logout()}>Logga ut</a></li>
 			{:else}
-				<li><a on:click={() => login()}>Logga in</a></li>
+				<li><a href="/logout" on:click={() => login()}>Logga in</a></li>
 			{/if}
 		</ul>
 	</div>

@@ -48,6 +48,9 @@ window.onload = async () => {
 	}
 };
 
+export const isLoggedIn = async (): Promise<boolean> => {
+	return await auth0.isAuthenticated();
+};
 
 export const login = async (): Promise<void> => {
 	await auth0.loginWithRedirect({

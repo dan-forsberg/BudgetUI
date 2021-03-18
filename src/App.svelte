@@ -3,7 +3,8 @@ import EditBudget from "./components/edit/EditBudget.svelte";
 import ViewBudget from "./components/read/ViewBudget.svelte";
 import NewBudget from "./components/create/NewBudget.svelte";
 import Navigator from "./components/Navigator.svelte";
-import NotLoggedIn from "./components/NotLoggedIn.svelte";
+import NotLoggedIn from "./components/misc/NotLoggedIn.svelte";
+import Login from "./components/misc/Login.svelte";
 import { onLoggedIn } from "./auth";
 import router from "page";
 
@@ -21,12 +22,19 @@ router("/edit", () => {
 	page = EditBudget;
 });
 
+router("/login", () => {
+	page = Login;
+});
+
+router("/logout", () => {
+	page = Login;
+});
+
 router.start();
 
 let loggedIn = false;
 onLoggedIn(() => {
 	loggedIn = true;
-	console.log("Inloggad.");
 });
 </script>
 
