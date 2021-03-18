@@ -11,13 +11,10 @@ export class Fetcher {
 
 	public static getInstance(token?: string): Fetcher {
 		if (!Fetcher.instance || token !== undefined) {
-			console.log("No instance available");
 			Fetcher.instance = new Fetcher();
 			if (token != undefined) {
-				console.log("Configured with token.");
 				Fetcher.instance.configure(token);
 			} else {
-				console.log("Configure with no token.");
 				Fetcher.instance.configure();
 			}
 		}

@@ -9,9 +9,6 @@ const getCategories = async (): Promise<ICategory[]> => {
 	const fetcher = Fetcher.getInstance();
 	const response = await fetcher.get("/category");
 
-	console.log("getCategories got");
-	console.dir(response);
-
 	const json = await response.json() as GetCategoriesResp;
 
 	if (response.status !== 200) {

@@ -12,8 +12,6 @@ let { sortedEntries, total } = sortEntries(entries);
 let editedEntries = [];
 
 const entryChanged = (entry, description, newValue) => {
-	console.log("entryChanged called");
-
 	if (description) {
 		entry.description = newValue;
 	} else {
