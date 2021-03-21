@@ -16,7 +16,7 @@ let HOG_evenOuter = 0;
 // some default entries can have a special first row with description
 // "HALF_OF_GEMENSAMMA" where the value should be the half of gemensamma's total
 // subscribe to the total and update the amount
-if (entries[0].description === "HALF_OF_GEMENSAMMA") {
+if (entries.length > 0 && entries[0].description === "HALF_OF_GEMENSAMMA") {
 	let entry = entries[0];
 	HOG_evenOuter = entry.amount;
 
@@ -36,7 +36,7 @@ if (entries[0].description === "HALF_OF_GEMENSAMMA") {
 }
 
 const isEmptyEntry = (entry) => {
-	return isEmptyString(entry.description) && isEmptyString(entry.amount);
+	return entry !== undefined && isEmptyString(entry.description) && isEmptyString(entry.amount);
 };
 
 const isEmptyString = (str) => {
@@ -64,9 +64,9 @@ const removeEmptyRows = () => {
 
 const newRow = () => {
 	let newEntry = {
-		Category: entries[0].Category,
+		Category: category,
 		description: "",
-		amount: "",
+		amount: "-",
 		date: new Date(),
 	};
 
@@ -76,7 +76,7 @@ const newRow = () => {
 $: {
 	let len = entries.length;
 	let last = entries[len - 1];
-	if (!isEmptyEntry(last)) {
+	if (len == 0 || !isEmptyEntry(last)) {
 		newRow();
 	}
 }
