@@ -3174,13 +3174,13 @@ var app = (function () {
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Beskrivning");
     			attr_dev(input0, "class", "description svelte-1wif1oa");
-    			add_location(input0, file$5, 92, 3, 2194);
+    			add_location(input0, file$5, 92, 3, 2241);
     			attr_dev(input1, "type", "number");
     			attr_dev(input1, "placeholder", "Belopp");
     			attr_dev(input1, "class", "amount svelte-1wif1oa");
-    			add_location(input1, file$5, 97, 3, 2312);
+    			add_location(input1, file$5, 97, 3, 2359);
     			attr_dev(div, "class", "entry-container svelte-1wif1oa");
-    			add_location(div, file$5, 91, 2, 2161);
+    			add_location(div, file$5, 91, 2, 2208);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3264,19 +3264,19 @@ var app = (function () {
     			input0 = element("input");
     			t3 = space();
     			input1 = element("input");
-    			add_location(h4, file$5, 88, 0, 2058);
+    			add_location(h4, file$5, 88, 0, 2105);
     			input0.disabled = true;
     			attr_dev(input0, "type", "text");
     			input0.value = "Totalt";
     			attr_dev(input0, "class", "description svelte-1wif1oa");
-    			add_location(input0, file$5, 101, 2, 2449);
+    			add_location(input0, file$5, 101, 2, 2496);
     			input1.disabled = true;
     			attr_dev(input1, "type", "number");
     			attr_dev(input1, "class", "amount svelte-1wif1oa");
-    			add_location(input1, file$5, 102, 2, 2517);
+    			add_location(input1, file$5, 102, 2, 2564);
     			attr_dev(div, "class", "entry-container svelte-1wif1oa");
-    			add_location(div, file$5, 100, 1, 2417);
-    			add_location(form, file$5, 89, 0, 2078);
+    			add_location(div, file$5, 100, 1, 2464);
+    			add_location(form, file$5, 89, 0, 2125);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3376,7 +3376,7 @@ var app = (function () {
     	// some default entries can have a special first row with description
     	// "HALF_OF_GEMENSAMMA" where the value should be the half of gemensamma's total
     	// subscribe to the total and update the amount
-    	if (entries[0].description === "HALF_OF_GEMENSAMMA") {
+    	if (entries.length > 0 && entries[0].description === "HALF_OF_GEMENSAMMA") {
     		let entry = entries[0];
     		HOG_evenOuter = entry.amount;
     		let description = "Halva gemensamma";
@@ -3395,7 +3395,7 @@ var app = (function () {
     	}
 
     	const isEmptyEntry = entry => {
-    		return isEmptyString(entry.description) && isEmptyString(entry.amount);
+    		return entry !== undefined && isEmptyString(entry.description) && isEmptyString(entry.amount);
     	};
 
     	const isEmptyString = str => {
@@ -3422,9 +3422,9 @@ var app = (function () {
 
     	const newRow = () => {
     		let newEntry = {
-    			Category: entries[0].Category,
+    			Category: category,
     			description: "",
-    			amount: "",
+    			amount: "-",
     			date: new Date()
     		};
 
@@ -3494,7 +3494,7 @@ var app = (function () {
     				let len = entries.length;
     				let last = entries[len - 1];
 
-    				if (!isEmptyEntry(last)) {
+    				if (len == 0 || !isEmptyEntry(last)) {
     					newRow();
     				}
     			}
