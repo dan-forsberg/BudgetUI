@@ -6,7 +6,7 @@ import page from "page";
 const toast = new Toast();
 
 const now = new Date();
-let dateString = new Date(now.getFullYear(), now.getMonth() + 1, 1).toISOString().slice(0, 10);
+let dateString = new Date(now.getFullYear(), now.getMonth() + 1, 5).toISOString().slice(0, 10);
 
 let seperated = [];
 let data;
@@ -68,7 +68,7 @@ async function submit() {
 
 		<div class="center">
 			<label for="date">Vilken månad gäller budgeten?</label>
-			<input id="date" class="input-date" type="month" bind:value={dateString} />
+			<input id="date" class="input-date" type="text" bind:value={dateString} />
 			<br />
 			<button class="btn waves-effect waves-light indigo" on:click={submit}>Skicka</button>
 		</div>
