@@ -5,7 +5,8 @@ import Toast from "svelte-toast";
 import page from "page";
 const toast = new Toast();
 
-let dateString = new Date().toISOString().slice(0, 10);
+const now = new Date();
+let dateString = new Date(now.getFullYear(), now.getMonth() + 1, 1).toISOString().slice(0, 10);
 
 let seperated = [];
 let data;
@@ -66,11 +67,8 @@ async function submit() {
 		</div>
 
 		<div class="center">
-			<label>
-				<p>Vilken månad gäller budgeten?</p>
-				<input class="input-date" type="date" bind:value={dateString} />
-			</label>
-			<!-- bad hack -->
+			<label for="date">Vilken månad gäller budgeten?</label>
+			<input id="date" class="input-date" type="month" bind:value={dateString} />
 			<br />
 			<button class="btn waves-effect waves-light indigo" on:click={submit}>Skicka</button>
 		</div>
