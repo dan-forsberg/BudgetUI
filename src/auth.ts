@@ -53,12 +53,13 @@ export const isLoggedIn = async (): Promise<boolean> => {
 
 export const login = async (): Promise<void> => {
 	await auth0.loginWithRedirect({
-		redirect_uri: window.location.origin,
+		redirect_uri: "https://dasifor.xyz"
 	});
 };
+
 export const logout = (): void => {
 	Fetcher.destroy();
 	auth0.logout({
-		returnTo: window.location.origin
+		returnTo: "https://dasifor.xyz"
 	});
 };
