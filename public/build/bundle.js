@@ -1,5 +1,5285 @@
-var app=function(){"use strict";function t(){}function e(t){return t()}function n(){return Object.create(null)}function r(t){t.forEach(e)}function o(t){return"function"==typeof t}function i(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function a(e){return e&&o(e.destroy)?e.destroy:t}function c(t,e){t.appendChild(e)}function s(t,e,n){t.insertBefore(e,n||null)}function u(t){t.parentNode.removeChild(t)}function l(t,e){for(let n=0;n<t.length;n+=1)t[n]&&t[n].d(e)}function f(t){return document.createElement(t)}function d(t){return document.createTextNode(t)}function p(){return d(" ")}function h(){return d("")}function m(t,e,n,r){return t.addEventListener(e,n,r),()=>t.removeEventListener(e,n,r)}function y(t,e,n){null==n?t.removeAttribute(e):t.getAttribute(e)!==n&&t.setAttribute(e,n)}function g(t){return""===t?null:+t}function v(t,e){e=""+e,t.wholeText!==e&&(t.data=e)}function b(t,e){t.value=null==e?"":e}let w;function S(t){w=t}function k(){if(!w)throw new Error("Function called outside component initialization");return w}function _(t){k().$$.on_mount.push(t)}const x=[],I=[],E=[],T=[],O=Promise.resolve();let R=!1;function L(t){E.push(t)}let C=!1;const K=new Set;function U(){if(!C){C=!0;do{for(let t=0;t<x.length;t+=1){const e=x[t];S(e),Z(e.$$)}for(S(null),x.length=0;I.length;)I.pop()();for(let t=0;t<E.length;t+=1){const e=E[t];K.has(e)||(K.add(e),e())}E.length=0}while(x.length);for(;T.length;)T.pop()();R=!1,C=!1,K.clear()}}function Z(t){if(null!==t.fragment){t.update(),r(t.before_update);const e=t.dirty;t.dirty=[-1],t.fragment&&t.fragment.p(t.ctx,e),t.after_update.forEach(L)}}const V=new Set;let W;function X(){W={r:0,c:[],p:W}}function F(){W.r||r(W.c),W=W.p}function z(t,e){t&&t.i&&(V.delete(t),t.i(e))}function N(t,e,n,r){if(t&&t.o){if(V.has(t))return;V.add(t),W.c.push((()=>{V.delete(t),r&&(n&&t.d(1),r())})),t.o(e)}}function P(t,e){const n=e.token={};function r(t,r,o,i){if(e.token!==n)return;e.resolved=i;let a=e.ctx;void 0!==o&&(a=a.slice(),a[o]=i);const c=t&&(e.current=t)(a);let s=!1;e.block&&(e.blocks?e.blocks.forEach(((t,n)=>{n!==r&&t&&(X(),N(t,1,1,(()=>{e.blocks[n]===t&&(e.blocks[n]=null)})),F())})):e.block.d(1),c.c(),z(c,1),c.m(e.mount(),e.anchor),s=!0),e.block=c,e.blocks&&(e.blocks[r]=c),s&&U()}if((o=t)&&"object"==typeof o&&"function"==typeof o.then){const n=k();if(t.then((t=>{S(n),r(e.then,1,e.value,t),S(null)}),(t=>{if(S(n),r(e.catch,2,e.error,t),S(null),!e.hasCatch)throw t})),e.current!==e.pending)return r(e.pending,0),!0}else{if(e.current!==e.then)return r(e.then,1,e.value,t),!0;e.resolved=t}var o}function j(t,e){t.d(1),e.delete(t.key)}function G(t,e){N(t,1,1,(()=>{e.delete(t.key)}))}function A(t,e,n,r,o,i,a,c,s,u,l,f){let d=t.length,p=i.length,h=d;const m={};for(;h--;)m[t[h].key]=h;const y=[],g=new Map,v=new Map;for(h=p;h--;){const t=f(o,i,h),c=n(t);let s=a.get(c);s?r&&s.p(t,e):(s=u(c,t),s.c()),g.set(c,y[h]=s),c in m&&v.set(c,Math.abs(h-m[c]))}const b=new Set,w=new Set;function S(t){z(t,1),t.m(c,l),a.set(t.key,t),l=t.first,p--}for(;d&&p;){const e=y[p-1],n=t[d-1],r=e.key,o=n.key;e===n?(l=e.first,d--,p--):g.has(o)?!a.has(r)||b.has(r)?S(e):w.has(o)?d--:v.get(r)>v.get(o)?(w.add(r),S(e)):(b.add(o),d--):(s(n,a),d--)}for(;d--;){const e=t[d];g.has(e.key)||s(e,a)}for(;p;)S(y[p-1]);return y}function Y(t){t&&t.c()}function B(t,n,i,a){const{fragment:c,on_mount:s,on_destroy:u,after_update:l}=t.$$;c&&c.m(n,i),a||L((()=>{const n=s.map(e).filter(o);u?u.push(...n):r(n),t.$$.on_mount=[]})),l.forEach(L)}function $(t,e){const n=t.$$;null!==n.fragment&&(r(n.on_destroy),n.fragment&&n.fragment.d(e),n.on_destroy=n.fragment=null,n.ctx=[])}function J(t,e){-1===t.$$.dirty[0]&&(x.push(t),R||(R=!0,O.then(U)),t.$$.dirty.fill(0)),t.$$.dirty[e/31|0]|=1<<e%31}function q(e,o,i,a,c,s,l=[-1]){const f=w;S(e);const d=e.$$={fragment:null,ctx:null,props:s,update:t,not_equal:c,bound:n(),on_mount:[],on_destroy:[],on_disconnect:[],before_update:[],after_update:[],context:new Map(f?f.$$.context:o.context||[]),callbacks:n(),dirty:l,skip_bound:!1};let p=!1;if(d.ctx=i?i(e,o.props||{},((t,n,...r)=>{const o=r.length?r[0]:n;return d.ctx&&c(d.ctx[t],d.ctx[t]=o)&&(!d.skip_bound&&d.bound[t]&&d.bound[t](o),p&&J(e,t)),n})):[],d.update(),p=!0,r(d.before_update),d.fragment=!!a&&a(d.ctx),o.target){if(o.hydrate){const t=function(t){return Array.from(t.childNodes)}(o.target);d.fragment&&d.fragment.l(t),t.forEach(u)}else d.fragment&&d.fragment.c();o.intro&&z(e.$$.fragment),B(e,o.target,o.anchor,o.customElement),U()}S(f)}class H{$destroy(){$(this,1),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(t){var e;this.$$set&&(e=t,0!==Object.keys(e).length)&&(this.$$.skip_bound=!0,this.$$set(t),this.$$.skip_bound=!1)}}class D{constructor(){}static getInstance(t){return D.instance&&void 0===t||(D.instance=new D,null!=t?D.instance.configure(t):D.instance.configure()),D.instance}static destroy(){D.instance=null}httpReq(t,e,n){const r={method:e,headers:this.headers};n&&(r.body=JSON.stringify(n));return fetch(this.URL+t,r)}get(t){return this.httpReq(t,"GET")}post(t,e){return this.httpReq(t,"POST",e)}remove(t){return this.httpReq(t,"DELETE")}patch(t,e){return this.httpReq(t,"PATCH",e)}configure(t){const e=window.location;this.URL=`${e.protocol}//${e.hostname}/api`;let n=!0;["0.0.0.0","localhost","127.0.0.1"].includes(e.hostname)?(this.URL=`${e.protocol}//${e.hostname}:8080/api`,n=!1):"budget.dasifor.xyz"===e.hostname&&(n=!1),this.headers=n&&null!=t?{"Content-Type":"application/json",Authorization:`Bearer ${t}`}:{"Content-Type":"application/json"}}}const M=t=>{let e=0;const n=[],r=[];t.forEach((t=>{e+=t.amount,t.amount>0?r.push(t):n.push(t)})),n.sort(((t,e)=>t.amount-e.amount)),r.sort(((t,e)=>e.amount-t.amount));return{sortedEntries:[...r,...n],total:e}};var Q=async t=>{let e="/entry/specific/?";for(const n in t)if("date"===n){const r=t[n];e+=`year=${r.getFullYear()}&month=${r.getMonth()+1}&`}else e+=`${n}=${t[n]}&`;const n=D.getInstance(),r=await n.get(e),o=await r.json();if(200!==r.status)throw new Error(o.message);return o},tt=async t=>{let e;e=Array.isArray(t)?{entries:t}:{entries:[t]};const n=D.getInstance(),r=await n.post("/entry/new",e),o=await r.json();if(201!==r.status)throw new Error(o.message);return o},et=async()=>{const t=D.getInstance(),e=await t.get("/default"),n=await e.json();if(200!==e.status)throw new Error(n.message);return n},nt=async t=>{const e=D.getInstance(),n=await e.patch(`/entry/update/${t.id}`,{entry:t}),r=await n.json();if(200!==n.status)throw new Error(r.message);return r};function rt(t,e,n){const r=t.slice();return r[4]=e[n],r}function ot(t){let e,n,r,o,i;return{c(){e=f("p"),e.textContent="No data?",n=p(),r=f("p"),o=d("category = "),i=d(t[1])},m(t,a){s(t,e,a),s(t,n,a),s(t,r,a),c(r,o),c(r,i)},p(t,e){2&e&&v(i,t[1])},d(t){t&&u(e),t&&u(n),t&&u(r)}}}function it(t){let e,n,r,o,i,a,l,h,m,g,b,w=[],S=new Map,k=t[2];const _=t=>t[4].id;for(let e=0;e<k.length;e+=1){let n=rt(t,k,e),r=_(n);S.set(r,w[e]=at(r,n))}return{c(){e=f("h3"),n=d(t[1]),r=p(),o=f("table"),i=f("tr"),i.innerHTML='<th>Beskrivning</th> \n\t\t\t<th class="right">Belopp</th>',a=p();for(let t=0;t<w.length;t+=1)w[t].c();l=p(),h=f("tr"),m=f("td"),m.textContent="Totalt",g=p(),b=f("td"),b.textContent=`${t[3]<0?t[3]:"+"+t[3]}`,y(e,"class","entries-header"),y(i,"class","svelte-13a5tvb"),y(b,"class","right"),y(h,"class","svelte-13a5tvb"),y(o,"class","svelte-13a5tvb")},m(t,u){s(t,e,u),c(e,n),s(t,r,u),s(t,o,u),c(o,i),c(o,a);for(let t=0;t<w.length;t+=1)w[t].m(o,null);c(o,l),c(o,h),c(h,m),c(h,g),c(h,b)},p(t,e){2&e&&v(n,t[1]),4&e&&(k=t[2],w=A(w,e,_,1,t,k,S,o,j,at,l,rt))},d(t){t&&u(e),t&&u(r),t&&u(o);for(let t=0;t<w.length;t+=1)w[t].d()}}}function at(t,e){let n,r,o,i,a,l,h=e[4].description+"",m=e[4].amount+"";return{key:t,first:null,c(){n=f("tr"),r=f("td"),o=d(h),i=p(),a=f("td"),l=d(m),y(a,"class","right"),y(n,"class","svelte-13a5tvb"),this.first=n},m(t,e){s(t,n,e),c(n,r),c(r,o),c(n,i),c(n,a),c(a,l)},p(t,n){e=t},d(t){t&&u(n)}}}function ct(e){let n;function r(t,e){return void 0!==t[0]?it:ot}let o=r(e),i=o(e);return{c(){i.c(),n=h()},m(t,e){i.m(t,e),s(t,n,e)},p(t,[e]){o===(o=r(t))&&i?i.p(t,e):(i.d(1),i=o(t),i&&(i.c(),i.m(n.parentNode,n)))},i:t,o:t,d(t){i.d(t),t&&u(n)}}}function st(t,e,n){let{entries:r}=e,{category:o}=e;const{sortedEntries:i,total:a}=M(r);return t.$$set=t=>{"entries"in t&&n(0,r=t.entries),"category"in t&&n(1,o=t.category)},[r,o,i,a]}class ut extends H{constructor(t){super(),q(this,t,st,ct,i,{entries:0,category:1})}}function lt(t){let e,n,r,o;return{c(){e=f("td"),n=d(t[0])},m(i,a){s(i,e,a),c(e,n),r||(o=m(e,"click",t[3]),r=!0)},p(t,e){1&e&&v(n,t[0])},d(t){t&&u(e),r=!1,o()}}}function ft(t){let e,n,o;return{c(){e=f("input"),e.required=t[1],y(e,"class","svelte-ml8vq6")},m(r,i){s(r,e,i),b(e,t[0]),n||(o=[m(e,"input",t[6]),m(e,"blur",t[4]),a(pt.call(null,e))],n=!0)},p(t,n){2&n&&(e.required=t[1]),1&n&&e.value!==t[0]&&b(e,t[0])},d(t){t&&u(e),n=!1,r(o)}}}function dt(e){let n;function r(t,e){return t[2]?ft:lt}let o=r(e),i=o(e);return{c(){i.c(),n=h()},m(t,e){i.m(t,e),s(t,n,e)},p(t,[e]){o===(o=r(t))&&i?i.p(t,e):(i.d(1),i=o(t),i&&(i.c(),i.m(n.parentNode,n)))},i:t,o:t,d(t){i.d(t),t&&u(n)}}}function pt(t){t.focus()}function ht(t,e,n){let r,{value:o}=e,{required:i=!0}=e,{onSubmit:a}=e,c=!1;return _((()=>{r=o})),t.$$set=t=>{"value"in t&&n(0,o=t.value),"required"in t&&n(1,i=t.required),"onSubmit"in t&&n(5,a=t.onSubmit)},[o,i,c,function(){n(2,c=!0)},function(){o!==r&&a(o),n(2,c=!1)},a,function(){o=this.value,n(0,o)}]}class mt extends H{constructor(t){super(),q(this,t,ht,dt,i,{value:0,required:1,onSubmit:5})}}function yt(){}function gt(t){return t()}function vt(){return Object.create(null)}function bt(t){t.forEach(gt)}function wt(t){return"function"==typeof t}function St(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function kt(t,e){t.appendChild(e)}function _t(t){t.parentNode.removeChild(t)}function xt(t){return document.createElement(t)}function It(t,e,n){null==n?t.removeAttribute(e):t.getAttribute(e)!==n&&t.setAttribute(e,n)}let Et;function Tt(t){Et=t}const Ot=[],Rt=[],Lt=[],Ct=[],Kt=Promise.resolve();let Ut=!1;function Zt(t){Lt.push(t)}let Vt=!1;const Wt=new Set;function Xt(){if(!Vt){Vt=!0;do{for(let t=0;t<Ot.length;t+=1){const e=Ot[t];Tt(e),Ft(e.$$)}for(Ot.length=0;Rt.length;)Rt.pop()();for(let t=0;t<Lt.length;t+=1){const e=Lt[t];Wt.has(e)||(Wt.add(e),e())}Lt.length=0}while(Ot.length);for(;Ct.length;)Ct.pop()();Ut=!1,Vt=!1,Wt.clear()}}function Ft(t){if(null!==t.fragment){t.update(),bt(t.before_update);const e=t.dirty;t.dirty=[-1],t.fragment&&t.fragment.p(t.ctx,e),t.after_update.forEach(Zt)}}const zt=new Set;function Nt(t,e){-1===t.$$.dirty[0]&&(Ot.push(t),Ut||(Ut=!0,Kt.then(Xt)),t.$$.dirty.fill(0)),t.$$.dirty[e/31|0]|=1<<e%31}function Pt(t,e,n,r,o,i,a=[-1]){const c=Et;Tt(t);const s=e.props||{},u=t.$$={fragment:null,ctx:null,props:i,update:yt,not_equal:o,bound:vt(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(c?c.$$.context:[]),callbacks:vt(),dirty:a};let l=!1;if(u.ctx=n?n(t,s,((e,n,...r)=>{const i=r.length?r[0]:n;return u.ctx&&o(u.ctx[e],u.ctx[e]=i)&&(u.bound[e]&&u.bound[e](i),l&&Nt(t,e)),n})):[],u.update(),l=!0,bt(u.before_update),u.fragment=!!r&&r(u.ctx),e.target){if(e.hydrate){const t=function(t){return Array.from(t.childNodes)}(e.target);u.fragment&&u.fragment.l(t),t.forEach(_t)}else u.fragment&&u.fragment.c();e.intro&&((f=t.$$.fragment)&&f.i&&(zt.delete(f),f.i(d))),function(t,e,n){const{fragment:r,on_mount:o,on_destroy:i,after_update:a}=t.$$;r&&r.m(e,n),Zt((()=>{const e=o.map(gt).filter(wt);i?i.push(...e):bt(e),t.$$.on_mount=[]})),a.forEach(Zt)}(t,e.target,e.anchor),Xt()}var f,d;Tt(c)}function jt(t){let e,n,r,o,i;return{c(){var a;e=xt("div"),n=xt("div"),a=t[0],r=document.createTextNode(a),It(n,"class",o="toast "+t[1]+" svelte-3qemlt"),It(e,"class",i="toast-container "+t[2]+" svelte-3qemlt")},m(t,o){!function(t,e,n){t.insertBefore(e,n||null)}(t,e,o),kt(e,n),kt(n,r)},p(t,[a]){1&a&&function(t,e){e=""+e,t.data!==e&&(t.data=e)}(r,t[0]),2&a&&o!==(o="toast "+t[1]+" svelte-3qemlt")&&It(n,"class",o),4&a&&i!==(i="toast-container "+t[2]+" svelte-3qemlt")&&It(e,"class",i)},i:yt,o:yt,d(t){t&&_t(e)}}}function Gt(t,e,n){let r,{msg:o=""}=e,{type:i=""}=e,{position:a="bottom-center"}=e;return t.$set=t=>{"msg"in t&&n(0,o=t.msg),"type"in t&&n(1,i=t.type),"position"in t&&n(3,a=t.position)},t.$$.update=()=>{8&t.$$.dirty&&n(2,r=a.split("-").join(" "))},[o,i,r,a]}class At extends class{$destroy(){!function(t,e){const n=t.$$;null!==n.fragment&&(bt(n.on_destroy),n.fragment&&n.fragment.d(e),n.on_destroy=n.fragment=null,n.ctx=[])}(this,1),this.$destroy=yt}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(){}}{constructor(t){var e;super(),document.getElementById("svelte-3qemlt-style")||((e=xt("style")).id="svelte-3qemlt-style",e.textContent=".toast-container.svelte-3qemlt{position:fixed;z-index:999}.top.svelte-3qemlt{top:15px}.bottom.svelte-3qemlt{bottom:15px}.left.svelte-3qemlt{left:15px}.right.svelte-3qemlt{right:15px}.center.svelte-3qemlt{left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%)}.toast.svelte-3qemlt{height:38px;line-height:38px;padding:0 20px;box-shadow:0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);color:#FFF;-webkit-transition:opacity 0.2s, -webkit-transform 0.2s;transition:opacity 0.2s, transform 0.2s, -webkit-transform 0.2s;-webkit-transform:translateY(35px);transform:translateY(35px);opacity:0;max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.info.svelte-3qemlt{background-color:#0091EA}.success.svelte-3qemlt{background-color:#4CAF50}.error.svelte-3qemlt{background-color:#F44336}.default.svelte-3qemlt{background-color:#353535}.anim.svelte-3qemlt{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}",kt(document.head,e)),Pt(this,t,Gt,jt,St,{msg:0,type:1,position:3})}}class Yt{constructor(t){this.opts=Object.assign({position:"bottom-center",duration:2e3},t)}show(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this._show(t,e,"default")}info(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this._show(t,e,"info")}success(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this._show(t,e,"success")}error(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this._show(t,e,"error")}_show(t,e,n){var r=Object.assign({},this.opts,e),o=new At({target:document.querySelector("body"),props:{msg:t,type:n,position:r.position}});setTimeout((()=>{o.$set({type:n+" anim"})}),0),setTimeout((()=>{o.$destroy()}),r.duration)}}function Bt(t,e,n){const r=t.slice();return r[11]=e[n],r}function $t(e){let n,r,o,i,a;return{c(){n=f("p"),n.textContent="No data?",r=p(),o=f("p"),i=d("category = "),a=d(e[1])},m(t,e){s(t,n,e),s(t,r,e),s(t,o,e),c(o,i),c(o,a)},p(t,e){2&e&&v(a,t[1])},i:t,o:t,d(t){t&&u(n),t&&u(r),t&&u(o)}}}function Jt(t){let e,n,r,o,i,a,l,h,g,b,w,S,k,_,x,I,E=[],T=new Map,O=t[2];const R=t=>t[11].id;for(let e=0;e<O.length;e+=1){let n=Bt(t,O,e),r=R(n);T.set(r,E[e]=qt(r,n))}return{c(){e=f("h3"),n=d(t[1]),r=p(),o=f("table"),i=f("tr"),i.innerHTML='<th>Beskrivning</th> \n\t\t\t<th class="right">Belopp</th>',a=p();for(let t=0;t<E.length;t+=1)E[t].c();l=p(),h=f("tr"),g=f("td"),g.textContent="Totalt",b=p(),w=f("td"),w.textContent=`${t[3]<=-1?t[3]:"+"+t[3]}`,S=p(),k=f("button"),k.textContent="Uppdatera",y(e,"class","entries-header"),y(i,"class","svelte-13a5tvb"),y(w,"class","right"),y(h,"class","svelte-13a5tvb"),y(o,"class","svelte-13a5tvb")},m(u,f){s(u,e,f),c(e,n),s(u,r,f),s(u,o,f),c(o,i),c(o,a);for(let t=0;t<E.length;t+=1)E[t].m(o,null);c(o,l),c(o,h),c(h,g),c(h,b),c(h,w),s(u,S,f),s(u,k,f),_=!0,x||(I=m(k,"click",t[8]),x=!0)},p(t,e){(!_||2&e)&&v(n,t[1]),20&e&&(O=t[2],X(),E=A(E,e,R,1,t,O,T,o,G,qt,l,Bt),F())},i(t){if(!_){for(let t=0;t<O.length;t+=1)z(E[t]);_=!0}},o(t){for(let t=0;t<E.length;t+=1)N(E[t]);_=!1},d(t){t&&u(e),t&&u(r),t&&u(o);for(let t=0;t<E.length;t+=1)E[t].d();t&&u(S),t&&u(k),x=!1,I()}}}function qt(t,e){let n,r,o,i,a;return r=new mt({props:{value:e[11].description,onSubmit:function(...t){return e[6](e[11],...t)}}}),i=new mt({props:{value:e[11].amount,onSubmit:function(...t){return e[7](e[11],...t)}}}),{key:t,first:null,c(){n=f("tr"),Y(r.$$.fragment),o=p(),Y(i.$$.fragment),y(n,"class","svelte-13a5tvb"),this.first=n},m(t,e){s(t,n,e),B(r,n,null),c(n,o),B(i,n,null),a=!0},p(t,n){e=t},i(t){a||(z(r.$$.fragment,t),z(i.$$.fragment,t),a=!0)},o(t){N(r.$$.fragment,t),N(i.$$.fragment,t),a=!1},d(t){t&&u(n),$(r),$(i)}}}function Ht(t){let e,n,r,o;const i=[Jt,$t],a=[];function c(t,e){return void 0!==t[0]?0:1}return e=c(t),n=a[e]=i[e](t),{c(){n.c(),r=h()},m(t,n){a[e].m(t,n),s(t,r,n),o=!0},p(t,[o]){let s=e;e=c(t),e===s?a[e].p(t,o):(X(),N(a[s],1,1,(()=>{a[s]=null})),F(),n=a[e],n?n.p(t,o):(n=a[e]=i[e](t),n.c()),z(n,1),n.m(r.parentNode,r))},i(t){o||(z(n),o=!0)},o(t){N(n),o=!1},d(t){a[e].d(t),t&&u(r)}}}function Dt(t,e,n){const r=new Yt;let{entries:o}=e,{category:i}=e,{sortedEntries:a,total:c}=M(o),s=[];const u=(t,e,n)=>{e?t.description=n:t.amount=n;let r=s.findIndex((e=>e.id==t.id));r>0?s[r]=t:s.push(t)},l=async()=>{let t=!0;for(const e of s)try{await nt(e)}catch(n){r.error(`Kunde inte uppdatera: ${e.description}`),t=!1}t&&r.success(`Uppdaterade ${s.length} rader.`)};return t.$$set=t=>{"entries"in t&&n(0,o=t.entries),"category"in t&&n(1,i=t.category)},[o,i,a,c,u,l,(t,e)=>u(t,!0,e),(t,e)=>u(t,!1,e),()=>l()]}class Mt extends H{constructor(t){super(),q(this,t,Dt,Ht,i,{entries:0,category:1})}}function Qt(t,e,n){const r=t.slice();return r[6]=e[n],r}function te(t){let e,n,r,o;var i=t[2];function a(t){return{props:{entries:t[1][t[6]],category:t[6]}}}return i&&(n=new i(a(t))),{c(){e=f("div"),n&&Y(n.$$.fragment),r=p(),y(e,"class","category svelte-13c2izy")},m(t,i){s(t,e,i),n&&B(n,e,null),c(e,r),o=!0},p(t,o){const c={};if(3&o&&(c.entries=t[1][t[6]]),1&o&&(c.category=t[6]),i!==(i=t[2])){if(n){X();const t=n;N(t.$$.fragment,1,0,(()=>{$(t,1)})),F()}i?(n=new i(a(t)),Y(n.$$.fragment),z(n.$$.fragment,1),B(n,e,r)):n=null}else i&&n.$set(c)},i(t){o||(n&&z(n.$$.fragment,t),o=!0)},o(t){n&&N(n.$$.fragment,t),o=!1},d(t){t&&u(e),n&&$(n)}}}function ee(t){let e,n,r=t[0].categories,o=[];for(let e=0;e<r.length;e+=1)o[e]=te(Qt(t,r,e));const i=t=>N(o[t],1,1,(()=>{o[t]=null}));return{c(){for(let t=0;t<o.length;t+=1)o[t].c();e=h()},m(t,r){for(let e=0;e<o.length;e+=1)o[e].m(t,r);s(t,e,r),n=!0},p(t,[n]){if(7&n){let a;for(r=t[0].categories,a=0;a<r.length;a+=1){const i=Qt(t,r,a);o[a]?(o[a].p(i,n),z(o[a],1)):(o[a]=te(i),o[a].c(),z(o[a],1),o[a].m(e.parentNode,e))}for(X(),a=r.length;a<o.length;a+=1)i(a);F()}},i(t){if(!n){for(let t=0;t<r.length;t+=1)z(o[t]);n=!0}},o(t){o=o.filter(Boolean);for(let t=0;t<o.length;t+=1)N(o[t]);n=!1},d(t){l(o,t),t&&u(e)}}}function ne(t,e,n){let{readOnly:r}=e,o=!0===r?ut:Mt,{data:i}=e,a=[];return function(){const t=i.categories.indexOf("Gemensamma");if(t>0){let e=i.categories[0];n(0,i.categories[0]=i.categories[t],i),n(0,i.categories[t]=e,i)}}(),i.categories.forEach((t=>{n(1,a[t]=i.result.filter((e=>e.Category.name===t)),a)})),t.$$set=t=>{"readOnly"in t&&n(3,r=t.readOnly),"data"in t&&n(0,i=t.data)},[i,a,o,r]}class re extends H{constructor(t){super(),q(this,t,ne,ee,i,{readOnly:3,data:0})}}function oe(e){return{c:t,m:t,p:t,i:t,o:t,d:t}}function ie(t){let e,n,r,o,i,a,l,h,g;return a=new re({props:{data:t[2],readOnly:t[0]}}),{c(){e=f("div"),n=f("h2"),r=d("Budget "),o=f("input"),i=p(),Y(a.$$.fragment),y(o,"id","datepicker"),y(o,"type","date"),y(o,"class","svelte-ca9f4s"),y(e,"class","budget")},m(u,f){s(u,e,f),c(e,n),c(n,r),c(n,o),b(o,t[1]),c(e,i),B(a,e,null),l=!0,h||(g=m(o,"input",t[3]),h=!0)},p(t,e){2&e&&b(o,t[1]);const n={};4&e&&(n.data=t[2]),1&e&&(n.readOnly=t[0]),a.$set(n)},i(t){l||(z(a.$$.fragment,t),l=!0)},o(t){N(a.$$.fragment,t),l=!1},d(t){t&&u(e),$(a),h=!1,g()}}}function ae(e){let n;return{c(){n=f("p"),n.textContent="Hämtar budgetar"},m(t,e){s(t,n,e)},p:t,i:t,o:t,d(t){t&&u(n)}}}function ce(t){let e,n,r,o={ctx:t,current:null,token:null,hasCatch:!1,pending:ae,then:ie,catch:oe,value:2,blocks:[,,,]};return P(n=t[2],o),{c(){e=f("div"),o.block.c(),y(e,"class","flex-container svelte-ca9f4s")},m(t,n){s(t,e,n),o.block.m(e,o.anchor=null),o.mount=()=>e,o.anchor=null,r=!0},p(e,[r]){t=e,o.ctx=t,4&r&&n!==(n=t[2])&&P(n,o)||function(t,e,n){const r=e.slice(),{resolved:o}=t;t.current===t.then&&(r[t.value]=o),t.current===t.catch&&(r[t.error]=o),t.block.p(r,n)}(o,t,r)},i(t){r||(z(o.block),r=!0)},o(t){for(let t=0;t<3;t+=1){N(o.blocks[t])}r=!1},d(t){t&&u(e),o.block.d(),o.token=null,o=null}}}function se(t,e,n){let r,{readOnly:o}=e,i=(new Date).toISOString().slice(0,10);return t.$$set=t=>{"readOnly"in t&&n(0,o=t.readOnly)},t.$$.update=()=>{2&t.$$.dirty&&n(2,r=Q({date:new Date(i)}))},[o,i,r,function(){i=this.value,n(1,i)}]}class ue extends H{constructor(t){super(),q(this,t,se,ce,i,{readOnly:0})}}function le(e){let n,r;return n=new ue({props:{readOnly:fe}}),{c(){Y(n.$$.fragment)},m(t,e){B(n,t,e),r=!0},p:t,i(t){r||(z(n.$$.fragment,t),r=!0)},o(t){N(n.$$.fragment,t),r=!1},d(t){$(n,t)}}}const fe=!1;class de extends H{constructor(t){super(),q(this,t,null,le,i,{})}}function pe(e){let n,r;return n=new ue({props:{readOnly:he}}),{c(){Y(n.$$.fragment)},m(t,e){B(n,t,e),r=!0},p:t,i(t){r||(z(n.$$.fragment,t),r=!0)},o(t){N(n.$$.fragment,t),r=!1},d(t){$(n,t)}}}const he=!0;class me extends H{constructor(t){super(),q(this,t,null,pe,i,{})}}const ye=[];const ge=function(e,n=t){let r;const o=[];function a(t){if(i(e,t)&&(e=t,r)){const t=!ye.length;for(let t=0;t<o.length;t+=1){const n=o[t];n[1](),ye.push(n,e)}if(t){for(let t=0;t<ye.length;t+=2)ye[t][0](ye[t+1]);ye.length=0}}}return{set:a,update:function(t){a(t(e))},subscribe:function(i,c=t){const s=[i,c];return o.push(s),1===o.length&&(r=n(a)||t),i(e),()=>{const t=o.indexOf(s);-1!==t&&o.splice(t,1),0===o.length&&(r(),r=null)}}}}(0);function ve(t){const e=e=>{!t||t.contains(e.target)||e.defaultPrevented||t.dispatchEvent(new CustomEvent("click_outside",t))};return document.addEventListener("click",e,!0),{destroy(){document.removeEventListener("click",e,!0)}}}function be(t,e,n){const r=t.slice();return r[12]=e[n],r[13]=e,r[14]=n,r}function we(t){let e,n,o,i,a,l;function d(){t[4].call(n,t[13],t[14])}function h(){t[5].call(i,t[13],t[14])}return{c(){e=f("div"),n=f("input"),o=p(),i=f("input"),y(n,"type","text"),y(n,"placeholder","Beskrivning"),y(n,"class","description svelte-1wif1oa"),y(i,"type","number"),y(i,"placeholder","Belopp"),y(i,"class","amount svelte-1wif1oa"),y(e,"class","entry-container svelte-1wif1oa")},m(r,u){s(r,e,u),c(e,n),b(n,t[12].description),c(e,o),c(e,i),b(i,t[12].amount),a||(l=[m(n,"input",d),m(i,"input",h)],a=!0)},p(e,r){t=e,1&r&&n.value!==t[12].description&&b(n,t[12].description),1&r&&g(i.value)!==t[12].amount&&b(i,t[12].amount)},d(t){t&&u(e),a=!1,r(l)}}}function Se(e){let n,o,i,h,w,S,k,_,x,I,E,T=e[0],O=[];for(let t=0;t<T.length;t+=1)O[t]=we(be(e,T,t));return{c(){n=f("h4"),o=d(e[1]),i=p(),h=f("form");for(let t=0;t<O.length;t+=1)O[t].c();w=p(),S=f("div"),k=f("input"),_=p(),x=f("input"),k.disabled=!0,y(k,"type","text"),k.value="Totalt",y(k,"class","description svelte-1wif1oa"),x.disabled=!0,y(x,"type","number"),y(x,"class","amount svelte-1wif1oa"),y(S,"class","entry-container svelte-1wif1oa")},m(t,r){s(t,n,r),c(n,o),s(t,i,r),s(t,h,r);for(let t=0;t<O.length;t+=1)O[t].m(h,null);c(h,w),c(h,S),c(S,k),c(S,_),c(S,x),b(x,e[2]),I||(E=[m(x,"input",e[6]),a(ve.call(null,h)),m(h,"click_outside",e[3])],I=!0)},p(t,[e]){if(2&e&&v(o,t[1]),1&e){let n;for(T=t[0],n=0;n<T.length;n+=1){const r=be(t,T,n);O[n]?O[n].p(r,e):(O[n]=we(r),O[n].c(),O[n].m(h,w))}for(;n<O.length;n+=1)O[n].d(1);O.length=T.length}4&e&&g(x.value)!==t[2]&&b(x,t[2])},i:t,o:t,d(t){t&&u(n),t&&u(i),t&&u(h),l(O,t),I=!1,r(E)}}}function ke(t,e,n){let{entries:r}=e,{category:o}=e,i=0,a=0;if(r.length>0&&"HALF_OF_GEMENSAMMA"===r[0].description){let t=r[0];a=t.amount;let e="Halva gemensamma";a>0?e+=` (+${a})`:a<0&&(e+=` (${a})`),t.description=e,ge.subscribe((e=>{t.amount=e/2-a}))}const c=t=>void 0!==t&&s(t.description)&&s(t.amount),s=t=>null==t||0===t.length,u=()=>{l();let{sortedEntries:t,total:e}=M(r);n(0,r=t),n(2,i=e),"Gemensamma"===o&&ge.set(i)},l=()=>{n(0,r=r.filter((t=>!c(t))))};return _((()=>{u()})),t.$$set=t=>{"entries"in t&&n(0,r=t.entries),"category"in t&&n(1,o=t.category)},t.$$.update=()=>{if(1&t.$$.dirty){let t=r.length,e=r[t-1];0!=t&&c(e)||(()=>{let t={Category:o,description:"",amount:"-",date:new Date};n(0,r=[...r,t])})()}},[r,o,i,u,function(t,e){t[e].description=this.value,n(0,r)},function(t,e){t[e].amount=g(this.value),n(0,r)},function(){i=g(this.value),n(2,i)}]}class _e extends H{constructor(t){super(),q(this,t,ke,Se,i,{entries:0,category:1})}}"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self&&self;var xe=function(t){var e={exports:{}};return t(e,e.exports),e.exports}((function(t,e){t.exports=function(){var t=Array.isArray||function(t){return"[object Array]"==Object.prototype.toString.call(t)},e=v,n=c,r=s,o=u,i=g,a=new RegExp(["(\\\\.)","([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^()])+)\\))?|\\(((?:\\\\.|[^()])+)\\))([+*?])?|(\\*))"].join("|"),"g");function c(t){for(var e,n=[],r=0,o=0,i="";null!=(e=a.exec(t));){var c=e[0],s=e[1],u=e.index;if(i+=t.slice(o,u),o=u+c.length,s)i+=s[1];else{i&&(n.push(i),i="");var l=e[2],d=e[3],p=e[4],h=e[5],m=e[6],y=e[7],g="+"===m||"*"===m,v="?"===m||"*"===m,b=l||"/",w=p||h||(y?".*":"[^"+b+"]+?");n.push({name:d||r++,prefix:l||"",delimiter:b,optional:v,repeat:g,pattern:f(w)})}}return o<t.length&&(i+=t.substr(o)),i&&n.push(i),n}function s(t){return u(c(t))}function u(e){for(var n=new Array(e.length),r=0;r<e.length;r++)"object"==typeof e[r]&&(n[r]=new RegExp("^"+e[r].pattern+"$"));return function(r){for(var o="",i=r||{},a=0;a<e.length;a++){var c=e[a];if("string"!=typeof c){var s,u=i[c.name];if(null==u){if(c.optional)continue;throw new TypeError('Expected "'+c.name+'" to be defined')}if(t(u)){if(!c.repeat)throw new TypeError('Expected "'+c.name+'" to not repeat, but received "'+u+'"');if(0===u.length){if(c.optional)continue;throw new TypeError('Expected "'+c.name+'" to not be empty')}for(var l=0;l<u.length;l++){if(s=encodeURIComponent(u[l]),!n[a].test(s))throw new TypeError('Expected all "'+c.name+'" to match "'+c.pattern+'", but received "'+s+'"');o+=(0===l?c.prefix:c.delimiter)+s}}else{if(s=encodeURIComponent(u),!n[a].test(s))throw new TypeError('Expected "'+c.name+'" to match "'+c.pattern+'", but received "'+s+'"');o+=c.prefix+s}}else o+=c}return o}}function l(t){return t.replace(/([.+*?=^!:${}()[\]|\/])/g,"\\$1")}function f(t){return t.replace(/([=!:$\/()])/g,"\\$1")}function d(t,e){return t.keys=e,t}function p(t){return t.sensitive?"":"i"}function h(t,e){var n=t.source.match(/\((?!\?)/g);if(n)for(var r=0;r<n.length;r++)e.push({name:r,prefix:null,delimiter:null,optional:!1,repeat:!1,pattern:null});return d(t,e)}function m(t,e,n){for(var r=[],o=0;o<t.length;o++)r.push(v(t[o],e,n).source);return d(new RegExp("(?:"+r.join("|")+")",p(n)),e)}function y(t,e,n){for(var r=c(t),o=g(r,n),i=0;i<r.length;i++)"string"!=typeof r[i]&&e.push(r[i]);return d(o,e)}function g(t,e){for(var n=(e=e||{}).strict,r=!1!==e.end,o="",i=t[t.length-1],a="string"==typeof i&&/\/$/.test(i),c=0;c<t.length;c++){var s=t[c];if("string"==typeof s)o+=l(s);else{var u=l(s.prefix),f=s.pattern;s.repeat&&(f+="(?:"+u+f+")*"),o+=f=s.optional?u?"(?:"+u+"("+f+"))?":"("+f+")?":u+"("+f+")"}}return n||(o=(a?o.slice(0,-2):o)+"(?:\\/(?=$))?"),o+=r?"$":n&&a?"":"(?=\\/|$)",new RegExp("^"+o,p(e))}function v(e,n,r){return t(n=n||[])?r||(r={}):(r=n,n=[]),e instanceof RegExp?h(e,n):t(e)?m(e,n,r):y(e,n,r)}e.parse=n,e.compile=r,e.tokensToFunction=o,e.tokensToRegExp=i;var b,w="undefined"!=typeof document,S="undefined"!=typeof window,k="undefined"!=typeof history,_="undefined"!=typeof process,x=w&&document.ontouchstart?"touchstart":"click",I=S&&!(!window.history.location&&!window.location);function E(){this.callbacks=[],this.exits=[],this.current="",this.len=0,this._decodeURLComponents=!0,this._base="",this._strict=!1,this._running=!1,this._hashbang=!1,this.clickHandler=this.clickHandler.bind(this),this._onpopstate=this._onpopstate.bind(this)}function T(){var t=new E;function e(){return O.apply(t,arguments)}return e.callbacks=t.callbacks,e.exits=t.exits,e.base=t.base.bind(t),e.strict=t.strict.bind(t),e.start=t.start.bind(t),e.stop=t.stop.bind(t),e.show=t.show.bind(t),e.back=t.back.bind(t),e.redirect=t.redirect.bind(t),e.replace=t.replace.bind(t),e.dispatch=t.dispatch.bind(t),e.exit=t.exit.bind(t),e.configure=t.configure.bind(t),e.sameOrigin=t.sameOrigin.bind(t),e.clickHandler=t.clickHandler.bind(t),e.create=T,Object.defineProperty(e,"len",{get:function(){return t.len},set:function(e){t.len=e}}),Object.defineProperty(e,"current",{get:function(){return t.current},set:function(e){t.current=e}}),e.Context=C,e.Route=K,e}function O(t,e){if("function"==typeof t)return O.call(this,"*",t);if("function"==typeof e)for(var n=new K(t,null,this),r=1;r<arguments.length;++r)this.callbacks.push(n.middleware(arguments[r]));else"string"==typeof t?this["string"==typeof e?"redirect":"show"](t,e):this.start(t)}function R(t){if(!t.handled){var e=this,n=e._window;(e._hashbang?I&&this._getBase()+n.location.hash.replace("#!",""):I&&n.location.pathname+n.location.search)!==t.canonicalPath&&(e.stop(),t.handled=!1,I&&(n.location.href=t.canonicalPath))}}function L(t){return t.replace(/([.+*?=^!:${}()[\]|/\\])/g,"\\$1")}function C(t,e,n){var r=this.page=n||O,o=r._window,i=r._hashbang,a=r._getBase();"/"===t[0]&&0!==t.indexOf(a)&&(t=a+(i?"#!":"")+t);var c=t.indexOf("?");this.canonicalPath=t;var s=new RegExp("^"+L(a));if(this.path=t.replace(s,"")||"/",i&&(this.path=this.path.replace("#!","")||"/"),this.title=w&&o.document.title,this.state=e||{},this.state.path=t,this.querystring=~c?r._decodeURLEncodedURIComponent(t.slice(c+1)):"",this.pathname=r._decodeURLEncodedURIComponent(~c?t.slice(0,c):t),this.params={},this.hash="",!i){if(!~this.path.indexOf("#"))return;var u=this.path.split("#");this.path=this.pathname=u[0],this.hash=r._decodeURLEncodedURIComponent(u[1])||"",this.querystring=this.querystring.split("#")[0]}}function K(t,n,r){var o=this.page=r||U,i=n||{};i.strict=i.strict||o._strict,this.path="*"===t?"(.*)":t,this.method="GET",this.regexp=e(this.path,this.keys=[],i)}E.prototype.configure=function(t){var e=t||{};this._window=e.window||S&&window,this._decodeURLComponents=!1!==e.decodeURLComponents,this._popstate=!1!==e.popstate&&S,this._click=!1!==e.click&&w,this._hashbang=!!e.hashbang;var n=this._window;this._popstate?n.addEventListener("popstate",this._onpopstate,!1):S&&n.removeEventListener("popstate",this._onpopstate,!1),this._click?n.document.addEventListener(x,this.clickHandler,!1):w&&n.document.removeEventListener(x,this.clickHandler,!1),this._hashbang&&S&&!k?n.addEventListener("hashchange",this._onpopstate,!1):S&&n.removeEventListener("hashchange",this._onpopstate,!1)},E.prototype.base=function(t){if(0===arguments.length)return this._base;this._base=t},E.prototype._getBase=function(){var t=this._base;if(t)return t;var e=S&&this._window&&this._window.location;return S&&this._hashbang&&e&&"file:"===e.protocol&&(t=e.pathname),t},E.prototype.strict=function(t){if(0===arguments.length)return this._strict;this._strict=t},E.prototype.start=function(t){var e=t||{};if(this.configure(e),!1!==e.dispatch){var n;if(this._running=!0,I){var r=this._window.location;n=this._hashbang&&~r.hash.indexOf("#!")?r.hash.substr(2)+r.search:this._hashbang?r.search+r.hash:r.pathname+r.search+r.hash}this.replace(n,null,!0,e.dispatch)}},E.prototype.stop=function(){if(this._running){this.current="",this.len=0,this._running=!1;var t=this._window;this._click&&t.document.removeEventListener(x,this.clickHandler,!1),S&&t.removeEventListener("popstate",this._onpopstate,!1),S&&t.removeEventListener("hashchange",this._onpopstate,!1)}},E.prototype.show=function(t,e,n,r){var o=new C(t,e,this),i=this.prevContext;return this.prevContext=o,this.current=o.path,!1!==n&&this.dispatch(o,i),!1!==o.handled&&!1!==r&&o.pushState(),o},E.prototype.back=function(t,e){var n=this;if(this.len>0){var r=this._window;k&&r.history.back(),this.len--}else t?setTimeout((function(){n.show(t,e)})):setTimeout((function(){n.show(n._getBase(),e)}))},E.prototype.redirect=function(t,e){var n=this;"string"==typeof t&&"string"==typeof e&&O.call(this,t,(function(t){setTimeout((function(){n.replace(e)}),0)})),"string"==typeof t&&void 0===e&&setTimeout((function(){n.replace(t)}),0)},E.prototype.replace=function(t,e,n,r){var o=new C(t,e,this),i=this.prevContext;return this.prevContext=o,this.current=o.path,o.init=n,o.save(),!1!==r&&this.dispatch(o,i),o},E.prototype.dispatch=function(t,e){var n=0,r=0,o=this;function i(){var t=o.exits[r++];if(!t)return a();t(e,i)}function a(){var e=o.callbacks[n++];if(t.path===o.current)return e?void e(t,a):R.call(o,t);t.handled=!1}e?i():a()},E.prototype.exit=function(t,e){if("function"==typeof t)return this.exit("*",t);for(var n=new K(t,null,this),r=1;r<arguments.length;++r)this.exits.push(n.middleware(arguments[r]))},E.prototype.clickHandler=function(t){if(1===this._which(t)&&!(t.metaKey||t.ctrlKey||t.shiftKey||t.defaultPrevented)){var e=t.target,n=t.path||(t.composedPath?t.composedPath():null);if(n)for(var r=0;r<n.length;r++)if(n[r].nodeName&&"A"===n[r].nodeName.toUpperCase()&&n[r].href){e=n[r];break}for(;e&&"A"!==e.nodeName.toUpperCase();)e=e.parentNode;if(e&&"A"===e.nodeName.toUpperCase()){var o="object"==typeof e.href&&"SVGAnimatedString"===e.href.constructor.name;if(!e.hasAttribute("download")&&"external"!==e.getAttribute("rel")){var i=e.getAttribute("href");if((this._hashbang||!this._samePath(e)||!e.hash&&"#"!==i)&&!(i&&i.indexOf("mailto:")>-1)&&!(o?e.target.baseVal:e.target)&&(o||this.sameOrigin(e.href))){var a=o?e.href.baseVal:e.pathname+e.search+(e.hash||"");a="/"!==a[0]?"/"+a:a,_&&a.match(/^\/[a-zA-Z]:\//)&&(a=a.replace(/^\/[a-zA-Z]:\//,"/"));var c=a,s=this._getBase();0===a.indexOf(s)&&(a=a.substr(s.length)),this._hashbang&&(a=a.replace("#!","")),(!s||c!==a||I&&"file:"===this._window.location.protocol)&&(t.preventDefault(),this.show(c))}}}}},E.prototype._onpopstate=(b=!1,S?(w&&"complete"===document.readyState?b=!0:window.addEventListener("load",(function(){setTimeout((function(){b=!0}),0)})),function(t){if(b){var e=this;if(t.state){var n=t.state.path;e.replace(n,t.state)}else if(I){var r=e._window.location;e.show(r.pathname+r.search+r.hash,void 0,void 0,!1)}}}):function(){}),E.prototype._which=function(t){return null==(t=t||S&&this._window.event).which?t.button:t.which},E.prototype._toURL=function(t){var e=this._window;if("function"==typeof URL&&I)return new URL(t,e.location.toString());if(w){var n=e.document.createElement("a");return n.href=t,n}},E.prototype.sameOrigin=function(t){if(!t||!I)return!1;var e=this._toURL(t),n=this._window.location;return n.protocol===e.protocol&&n.hostname===e.hostname&&(n.port===e.port||""===n.port&&(80==e.port||443==e.port))},E.prototype._samePath=function(t){if(!I)return!1;var e=this._window.location;return t.pathname===e.pathname&&t.search===e.search},E.prototype._decodeURLEncodedURIComponent=function(t){return"string"!=typeof t?t:this._decodeURLComponents?decodeURIComponent(t.replace(/\+/g," ")):t},C.prototype.pushState=function(){var t=this.page,e=t._window,n=t._hashbang;t.len++,k&&e.history.pushState(this.state,this.title,n&&"/"!==this.path?"#!"+this.path:this.canonicalPath)},C.prototype.save=function(){var t=this.page;k&&t._window.history.replaceState(this.state,this.title,t._hashbang&&"/"!==this.path?"#!"+this.path:this.canonicalPath)},K.prototype.middleware=function(t){var e=this;return function(n,r){if(e.match(n.path,n.params))return n.routePath=e.path,t(n,r);r()}},K.prototype.match=function(t,e){var n=this.keys,r=t.indexOf("?"),o=~r?t.slice(0,r):t,i=this.regexp.exec(decodeURIComponent(o));if(!i)return!1;delete e[0];for(var a=1,c=i.length;a<c;++a){var s=n[a-1],u=this.page._decodeURLEncodedURIComponent(i[a]);void 0===u&&hasOwnProperty.call(e,s.name)||(e[s.name]=u)}return!0};var U=T(),Z=U,V=U;return Z.default=V,Z}()}));function Ie(t,e,n){const r=t.slice();return r[8]=e[n],r[9]=e,r[10]=n,r}function Ee(t){let e,n,o,i,a,d,h,g,v,w,S,k,_,x=t[2].categories,I=[];for(let e=0;e<x.length;e+=1)I[e]=Oe(Ie(t,x,e));const E=t=>N(I[t],1,1,(()=>{I[t]=null}));return{c(){e=f("div");for(let t=0;t<I.length;t+=1)I[t].c();n=p(),o=f("div"),i=f("label"),i.textContent="Vilken månad gäller budgeten?",a=p(),d=f("input"),h=p(),g=f("br"),v=p(),w=f("button"),w.textContent="Skicka",y(e,"class","budget-container svelte-mz7exr"),y(i,"for","date"),y(d,"id","date"),y(d,"class","input-date svelte-mz7exr"),y(d,"type","text"),y(w,"class","btn waves-effect waves-light indigo"),y(o,"class","center")},m(r,u){s(r,e,u);for(let t=0;t<I.length;t+=1)I[t].m(e,null);s(r,n,u),s(r,o,u),c(o,i),c(o,a),c(o,d),b(d,t[0]),c(o,h),c(o,g),c(o,v),c(o,w),S=!0,k||(_=[m(d,"input",t[5]),m(w,"click",t[3])],k=!0)},p(t,n){if(6&n){let r;for(x=t[2].categories,r=0;r<x.length;r+=1){const o=Ie(t,x,r);I[r]?(I[r].p(o,n),z(I[r],1)):(I[r]=Oe(o),I[r].c(),z(I[r],1),I[r].m(e,null))}for(X(),r=x.length;r<I.length;r+=1)E(r);F()}1&n&&d.value!==t[0]&&b(d,t[0])},i(t){if(!S){for(let t=0;t<x.length;t+=1)z(I[t]);S=!0}},o(t){I=I.filter(Boolean);for(let t=0;t<I.length;t+=1)N(I[t]);S=!1},d(t){t&&u(e),l(I,t),t&&u(n),t&&u(o),k=!1,r(_)}}}function Te(e){let n;return{c(){n=f("p"),n.textContent="Hämtar standard raderna..."},m(t,e){s(t,n,e)},p:t,i:t,o:t,d(t){t&&u(n)}}}function Oe(t){let e,n,r,o,i;function a(e){t[4](e,t[8])}let l={category:t[8]};return void 0!==t[1][t[8]]&&(l.entries=t[1][t[8]]),n=new _e({props:l}),I.push((()=>function(t,e,n){const r=t.$$.props[e];void 0!==r&&(t.$$.bound[r]=n,n(t.$$.ctx[r]))}(n,"entries",a))),{c(){e=f("div"),Y(n.$$.fragment),o=p(),y(e,"class","budget svelte-mz7exr")},m(t,r){s(t,e,r),B(n,e,null),c(e,o),i=!0},p(e,o){t=e;const i={};4&o&&(i.category=t[8]),!r&&6&o&&(r=!0,i.entries=t[1][t[8]],function(t){T.push(t)}((()=>r=!1))),n.$set(i)},i(t){i||(z(n.$$.fragment,t),i=!0)},o(t){N(n.$$.fragment,t),i=!1},d(t){t&&u(e),$(n)}}}function Re(t){let e,n,r,o;const i=[Te,Ee],a=[];function c(t,e){return void 0===t[2]?0:1}return n=c(t),r=a[n]=i[n](t),{c(){e=f("div"),r.c(),y(e,"id","new-budget-wrapper"),y(e,"class","svelte-mz7exr")},m(t,r){s(t,e,r),a[n].m(e,null),o=!0},p(t,[o]){let s=n;n=c(t),n===s?a[n].p(t,o):(X(),N(a[s],1,1,(()=>{a[s]=null})),F(),r=a[n],r?r.p(t,o):(r=a[n]=i[n](t),r.c()),z(r,1),r.m(e,null))},i(t){o||(z(r),o=!0)},o(t){N(r),o=!1},d(t){t&&u(e),a[n].d()}}}function Le(t,e,n){const r=new Yt,o=new Date;let i,a=new Date(o.getFullYear(),o.getMonth()+1,5).toISOString().slice(0,10),c=[];return et().then((t=>{const e=t.categories.indexOf("Gemensamma");if(e>0){let n=t.categories[0];t.categories[0]=t.categories[e],t.categories[e]=n}t.categories.forEach((e=>{n(1,c[e]=t.result.filter((t=>t.Category.name===e)),c)})),n(2,i=t)})),[a,c,i,async function(){let t=[];i.categories.forEach((e=>{t=[...t,...c[e]]})),t=t.filter((t=>""!==t.value&&""!==t.description)),t.forEach((t=>{t.date=new Date(a)}));try{console.dir(t),await tt(t),r.success("Budget sparad!"),xe("/")}catch(t){r.error("Något gick fel."),console.error(t.message)}},function(e,r){t.$$.not_equal(c[r],e)&&(c[r]=e,n(1,c))},function(){a=this.value,n(0,a)}]}class Ce extends H{constructor(t){super(),q(this,t,Le,Re,i,{})}}
-/*! *****************************************************************************
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
+var app = (function () {
+    'use strict';
+
+    function noop$1() { }
+    function is_promise(value) {
+        return value && typeof value === 'object' && typeof value.then === 'function';
+    }
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run$1(fn) {
+        return fn();
+    }
+    function blank_object$1() {
+        return Object.create(null);
+    }
+    function run_all$1(fns) {
+        fns.forEach(run$1);
+    }
+    function is_function$1(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal$1(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function is_empty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+    function action_destroyer(action_result) {
+        return action_result && is_function$1(action_result.destroy) ? action_result.destroy : noop$1;
+    }
+
+    function append$1(target, node) {
+        target.appendChild(node);
+    }
+    function insert$1(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach$1(node) {
+        node.parentNode.removeChild(node);
+    }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
+    function element$1(name) {
+        return document.createElement(name);
+    }
+    function text$1(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text$1(' ');
+    }
+    function empty() {
+        return text$1('');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function attr$1(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
+    function to_number(value) {
+        return value === '' ? null : +value;
+    }
+    function children$1(element) {
+        return Array.from(element.childNodes);
+    }
+    function set_input_value(input, value) {
+        input.value = value == null ? '' : value;
+    }
+    function custom_event(type, detail) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, false, false, detail);
+        return e;
+    }
+
+    let current_component$1;
+    function set_current_component$1(component) {
+        current_component$1 = component;
+    }
+    function get_current_component() {
+        if (!current_component$1)
+            throw new Error('Function called outside component initialization');
+        return current_component$1;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
+
+    const dirty_components$1 = [];
+    const binding_callbacks$1 = [];
+    const render_callbacks$1 = [];
+    const flush_callbacks$1 = [];
+    const resolved_promise$1 = Promise.resolve();
+    let update_scheduled$1 = false;
+    function schedule_update$1() {
+        if (!update_scheduled$1) {
+            update_scheduled$1 = true;
+            resolved_promise$1.then(flush$1);
+        }
+    }
+    function add_render_callback$1(fn) {
+        render_callbacks$1.push(fn);
+    }
+    function add_flush_callback(fn) {
+        flush_callbacks$1.push(fn);
+    }
+    let flushing$1 = false;
+    const seen_callbacks$1 = new Set();
+    function flush$1() {
+        if (flushing$1)
+            return;
+        flushing$1 = true;
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            for (let i = 0; i < dirty_components$1.length; i += 1) {
+                const component = dirty_components$1[i];
+                set_current_component$1(component);
+                update$1(component.$$);
+            }
+            set_current_component$1(null);
+            dirty_components$1.length = 0;
+            while (binding_callbacks$1.length)
+                binding_callbacks$1.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks$1.length; i += 1) {
+                const callback = render_callbacks$1[i];
+                if (!seen_callbacks$1.has(callback)) {
+                    // ...so guard against infinite loops
+                    seen_callbacks$1.add(callback);
+                    callback();
+                }
+            }
+            render_callbacks$1.length = 0;
+        } while (dirty_components$1.length);
+        while (flush_callbacks$1.length) {
+            flush_callbacks$1.pop()();
+        }
+        update_scheduled$1 = false;
+        flushing$1 = false;
+        seen_callbacks$1.clear();
+    }
+    function update$1($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all$1($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback$1);
+        }
+    }
+    const outroing$1 = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all$1(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in$1(block, local) {
+        if (block && block.i) {
+            outroing$1.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing$1.has(block))
+                return;
+            outroing$1.add(block);
+            outros.c.push(() => {
+                outroing$1.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+
+    function handle_promise(promise, info) {
+        const token = info.token = {};
+        function update(type, index, key, value) {
+            if (info.token !== token)
+                return;
+            info.resolved = value;
+            let child_ctx = info.ctx;
+            if (key !== undefined) {
+                child_ctx = child_ctx.slice();
+                child_ctx[key] = value;
+            }
+            const block = type && (info.current = type)(child_ctx);
+            let needs_flush = false;
+            if (info.block) {
+                if (info.blocks) {
+                    info.blocks.forEach((block, i) => {
+                        if (i !== index && block) {
+                            group_outros();
+                            transition_out(block, 1, 1, () => {
+                                if (info.blocks[i] === block) {
+                                    info.blocks[i] = null;
+                                }
+                            });
+                            check_outros();
+                        }
+                    });
+                }
+                else {
+                    info.block.d(1);
+                }
+                block.c();
+                transition_in$1(block, 1);
+                block.m(info.mount(), info.anchor);
+                needs_flush = true;
+            }
+            info.block = block;
+            if (info.blocks)
+                info.blocks[index] = block;
+            if (needs_flush) {
+                flush$1();
+            }
+        }
+        if (is_promise(promise)) {
+            const current_component = get_current_component();
+            promise.then(value => {
+                set_current_component$1(current_component);
+                update(info.then, 1, info.value, value);
+                set_current_component$1(null);
+            }, error => {
+                set_current_component$1(current_component);
+                update(info.catch, 2, info.error, error);
+                set_current_component$1(null);
+                if (!info.hasCatch) {
+                    throw error;
+                }
+            });
+            // if we previously had a then/catch block, destroy it
+            if (info.current !== info.pending) {
+                update(info.pending, 0);
+                return true;
+            }
+        }
+        else {
+            if (info.current !== info.then) {
+                update(info.then, 1, info.value, promise);
+                return true;
+            }
+            info.resolved = promise;
+        }
+    }
+    function update_await_block_branch(info, ctx, dirty) {
+        const child_ctx = ctx.slice();
+        const { resolved } = info;
+        if (info.current === info.then) {
+            child_ctx[info.value] = resolved;
+        }
+        if (info.current === info.catch) {
+            child_ctx[info.error] = resolved;
+        }
+        info.block.p(child_ctx, dirty);
+    }
+
+    const globals = (typeof window !== 'undefined'
+        ? window
+        : typeof globalThis !== 'undefined'
+            ? globalThis
+            : global);
+
+    function destroy_block(block, lookup) {
+        block.d(1);
+        lookup.delete(block.key);
+    }
+    function outro_and_destroy_block(block, lookup) {
+        transition_out(block, 1, 1, () => {
+            lookup.delete(block.key);
+        });
+    }
+    function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
+        let o = old_blocks.length;
+        let n = list.length;
+        let i = o;
+        const old_indexes = {};
+        while (i--)
+            old_indexes[old_blocks[i].key] = i;
+        const new_blocks = [];
+        const new_lookup = new Map();
+        const deltas = new Map();
+        i = n;
+        while (i--) {
+            const child_ctx = get_context(ctx, list, i);
+            const key = get_key(child_ctx);
+            let block = lookup.get(key);
+            if (!block) {
+                block = create_each_block(key, child_ctx);
+                block.c();
+            }
+            else if (dynamic) {
+                block.p(child_ctx, dirty);
+            }
+            new_lookup.set(key, new_blocks[i] = block);
+            if (key in old_indexes)
+                deltas.set(key, Math.abs(i - old_indexes[key]));
+        }
+        const will_move = new Set();
+        const did_move = new Set();
+        function insert(block) {
+            transition_in$1(block, 1);
+            block.m(node, next);
+            lookup.set(block.key, block);
+            next = block.first;
+            n--;
+        }
+        while (o && n) {
+            const new_block = new_blocks[n - 1];
+            const old_block = old_blocks[o - 1];
+            const new_key = new_block.key;
+            const old_key = old_block.key;
+            if (new_block === old_block) {
+                // do nothing
+                next = new_block.first;
+                o--;
+                n--;
+            }
+            else if (!new_lookup.has(old_key)) {
+                // remove old block
+                destroy(old_block, lookup);
+                o--;
+            }
+            else if (!lookup.has(new_key) || will_move.has(new_key)) {
+                insert(new_block);
+            }
+            else if (did_move.has(old_key)) {
+                o--;
+            }
+            else if (deltas.get(new_key) > deltas.get(old_key)) {
+                did_move.add(new_key);
+                insert(new_block);
+            }
+            else {
+                will_move.add(old_key);
+                o--;
+            }
+        }
+        while (o--) {
+            const old_block = old_blocks[o];
+            if (!new_lookup.has(old_block.key))
+                destroy(old_block, lookup);
+        }
+        while (n)
+            insert(new_blocks[n - 1]);
+        return new_blocks;
+    }
+    function validate_each_keys(ctx, list, get_context, get_key) {
+        const keys = new Set();
+        for (let i = 0; i < list.length; i++) {
+            const key = get_key(get_context(ctx, list, i));
+            if (keys.has(key)) {
+                throw new Error('Cannot have duplicate keys in a keyed each');
+            }
+            keys.add(key);
+        }
+    }
+
+    function bind(component, name, callback) {
+        const index = component.$$.props[name];
+        if (index !== undefined) {
+            component.$$.bound[index] = callback;
+            callback(component.$$.ctx[index]);
+        }
+    }
+    function create_component(block) {
+        block && block.c();
+    }
+    function mount_component$1(component, target, anchor, customElement) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        if (!customElement) {
+            // onMount happens before the initial afterUpdate
+            add_render_callback$1(() => {
+                const new_on_destroy = on_mount.map(run$1).filter(is_function$1);
+                if (on_destroy) {
+                    on_destroy.push(...new_on_destroy);
+                }
+                else {
+                    // Edge case - component was destroyed immediately,
+                    // most likely as a result of a binding initialising
+                    run_all$1(new_on_destroy);
+                }
+                component.$$.on_mount = [];
+            });
+        }
+        after_update.forEach(add_render_callback$1);
+    }
+    function destroy_component$1(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            run_all$1($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty$1(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components$1.push(component);
+            schedule_update$1();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init$1(component, options, instance, create_fragment, not_equal, props, dirty = [-1]) {
+        const parent_component = current_component$1;
+        set_current_component$1(component);
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props,
+            update: noop$1,
+            not_equal,
+            bound: blank_object$1(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            on_disconnect: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(parent_component ? parent_component.$$.context : options.context || []),
+            // everything else
+            callbacks: blank_object$1(),
+            dirty,
+            skip_bound: false
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, options.props || {}, (i, ret, ...rest) => {
+                const value = rest.length ? rest[0] : ret;
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if (!$$.skip_bound && $$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty$1(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all$1($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                const nodes = children$1(options.target);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(nodes);
+                nodes.forEach(detach$1);
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in$1(component.$$.fragment);
+            mount_component$1(component, options.target, options.anchor, options.customElement);
+            flush$1();
+        }
+        set_current_component$1(parent_component);
+    }
+    /**
+     * Base class for Svelte components. Used when dev=false.
+     */
+    class SvelteComponent$1 {
+        $destroy() {
+            destroy_component$1(this, 1);
+            this.$destroy = noop$1;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set($$props) {
+            if (this.$$set && !is_empty($$props)) {
+                this.$$.skip_bound = true;
+                this.$$set($$props);
+                this.$$.skip_bound = false;
+            }
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, Object.assign({ version: '3.38.2' }, detail)));
+    }
+    function append_dev(target, node) {
+        dispatch_dev('SvelteDOMInsert', { target, node });
+        append$1(target, node);
+    }
+    function insert_dev(target, node, anchor) {
+        dispatch_dev('SvelteDOMInsert', { target, node, anchor });
+        insert$1(target, node, anchor);
+    }
+    function detach_dev(node) {
+        dispatch_dev('SvelteDOMRemove', { node });
+        detach$1(node);
+    }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ['capture'] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev('SvelteDOMAddEventListener', { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev('SvelteDOMRemoveEventListener', { node, event, handler, modifiers });
+            dispose();
+        };
+    }
+    function attr_dev(node, attribute, value) {
+        attr$1(node, attribute, value);
+        if (value == null)
+            dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
+        else
+            dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
+    }
+    function prop_dev(node, property, value) {
+        node[property] = value;
+        dispatch_dev('SvelteDOMSetProperty', { node, property, value });
+    }
+    function set_data_dev(text, data) {
+        data = '' + data;
+        if (text.wholeText === data)
+            return;
+        dispatch_dev('SvelteDOMSetData', { node: text, data });
+        text.data = data;
+    }
+    function validate_each_argument(arg) {
+        if (typeof arg !== 'string' && !(arg && typeof arg === 'object' && 'length' in arg)) {
+            let msg = '{#each} only iterates over array-like objects.';
+            if (typeof Symbol === 'function' && arg && Symbol.iterator in arg) {
+                msg += ' You can use a spread to convert this iterable into an array.';
+            }
+            throw new Error(msg);
+        }
+    }
+    function validate_slots(name, slot, keys) {
+        for (const slot_key of Object.keys(slot)) {
+            if (!~keys.indexOf(slot_key)) {
+                console.warn(`<${name}> received an unexpected slot "${slot_key}".`);
+            }
+        }
+    }
+    /**
+     * Base class for Svelte components with some minor dev-enhancements. Used when dev=true.
+     */
+    class SvelteComponentDev extends SvelteComponent$1 {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error("'target' is a required option");
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn('Component was already destroyed'); // eslint-disable-line no-console
+            };
+        }
+        $capture_state() { }
+        $inject_state() { }
+    }
+
+    class Fetcher {
+        constructor() {
+            return;
+        }
+        static getInstance(token) {
+            if (!Fetcher.instance || token !== undefined) {
+                Fetcher.instance = new Fetcher();
+                if (token != undefined) {
+                    Fetcher.instance.configure(token);
+                }
+                else {
+                    Fetcher.instance.configure();
+                }
+            }
+            return Fetcher.instance;
+        }
+        static destroy() {
+            Fetcher.instance = null;
+        }
+        httpReq(endPoint, method, body) {
+            const opts = {
+                method: method,
+                headers: this.headers,
+            };
+            if (body) {
+                opts["body"] = JSON.stringify(body);
+            }
+            const results = fetch(this.URL + endPoint, opts);
+            return results;
+        }
+        get(endPoint) {
+            return this.httpReq(endPoint, "GET");
+        }
+        post(endPoint, body) {
+            return this.httpReq(endPoint, "POST", body);
+        }
+        /* delete is a reserved keyword */
+        remove(endPoint) {
+            return this.httpReq(endPoint, "DELETE");
+        }
+        patch(endPoint, body) {
+            return this.httpReq(endPoint, "PATCH", body);
+        }
+        configure(token) {
+            const localhost = ["0.0.0.0", "localhost", "127.0.0.1"];
+            const loc = window.location;
+            this.URL = `${loc.protocol}//${loc.hostname}/api`;
+            let prod = true;
+            if (localhost.includes(loc.hostname)) {
+                this.URL = `${loc.protocol}//${loc.hostname}:8080/api`;
+                prod = false;
+            }
+            else if (loc.hostname === "budget.dasifor.xyz") {
+                prod = false;
+            }
+            if (prod && token != undefined) {
+                this.headers = {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                };
+            }
+            else {
+                this.headers = {
+                    "Content-Type": "application/json"
+                };
+            }
+        }
+    }
+
+    const getAllEntries = async () => {
+        const fetcher = Fetcher.getInstance();
+        const response = await fetcher.get("/entry");
+        const json = await response.json();
+        if (response.status !== 200) {
+            throw new Error(json.message);
+        }
+        return json;
+    };
+    const getDefaultEntries = async () => {
+        const fetcher = Fetcher.getInstance();
+        const response = await fetcher.get("/default");
+        const json = await response.json();
+        if (response.status !== 200) {
+            throw new Error(json.message);
+        }
+        return json;
+    };
+    const getSpecificEntries = async (attributes) => {
+        // Add the attributes as GET params
+        let endPoint = "/entry/specific/?";
+        for (const attribute in attributes) {
+            if (attribute === "date") {
+                const date = attributes[attribute];
+                endPoint += `year=${date.getFullYear()}&month=${date.getMonth() + 1}&`;
+            }
+            else {
+                endPoint += `${attribute}=${attributes[attribute]}&`;
+            }
+        }
+        const fetcher = Fetcher.getInstance();
+        const response = await fetcher.get(endPoint);
+        const json = await response.json();
+        if (response.status !== 200) {
+            throw new Error(json.message);
+        }
+        return json;
+    };
+    const newEntry = async (newEntry) => {
+        // the entries object has to be an array for the API
+        let body;
+        if (Array.isArray(newEntry))
+            body = { entries: newEntry };
+        else
+            body = { entries: [newEntry] };
+        const fetcher = Fetcher.getInstance();
+        const result = await fetcher.post("/entry/new", body);
+        const json = await result.json();
+        if (result.status !== 201) {
+            throw new Error(json.message);
+        }
+        return json;
+    };
+    const updateEntry = async (entry) => {
+        const fetcher = Fetcher.getInstance();
+        const result = await fetcher.patch(`/entry/update/${entry.id}`, { entry: entry });
+        const json = await result.json();
+        if (result.status !== 200) {
+            throw new Error(json.message);
+        }
+        return json;
+    };
+    /**
+     * Sort an array of entries from biggest to smallest values and get a total
+     * This sorts [-200, 500, -500, 2000] => [2000, 500, -500, 200]
+     * Used in displaying a Category and editing
+     *
+     * @param entries An an array of unsorted entries
+     */
+    const sortEntries = (entries) => {
+        /*
+        Filter out positive from negative values, sort biggest-lowest
+        Lön 		20000 	(biggest)
+        Försäljning 100 	(lowest)
+        Hyra		-5000 	(biggest)
+        Viaplay		-109 	(lowest)
+        ...
+        */
+        let total = 0;
+        const negative = [], positive = [];
+        // Filter out positive values into positive, negative into negative and find the total O(n)
+        // Sort the arrays later O(n^2) if len < 10, otherwise O(n log(n))
+        entries.forEach((entry) => {
+            total += entry.amount;
+            if (entry.amount > 0) {
+                positive.push(entry);
+            }
+            else {
+                negative.push(entry);
+            }
+        });
+        negative.sort((a, b) => a.amount - b.amount);
+        positive.sort((a, b) => b.amount - a.amount);
+        const sortedEntries = [...positive, ...negative];
+        return { sortedEntries, total };
+    };
+    var entry = { getAllEntries, getSpecificEntries, newEntry, getDefaultEntries, updateEntry };
+
+    /* src/components/read/ViewCategory.svelte generated by Svelte v3.38.2 */
+    const file$8 = "src/components/read/ViewCategory.svelte";
+
+    function get_each_context$4(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[4] = list[i];
+    	return child_ctx;
+    }
+
+    // (26:0) {:else}
+    function create_else_block$5(ctx) {
+    	let p0;
+    	let t1;
+    	let p1;
+    	let t2;
+    	let t3;
+
+    	const block = {
+    		c: function create() {
+    			p0 = element$1("p");
+    			p0.textContent = "No data?";
+    			t1 = space();
+    			p1 = element$1("p");
+    			t2 = text$1("category = ");
+    			t3 = text$1(/*category*/ ctx[1]);
+    			add_location(p0, file$8, 26, 1, 594);
+    			add_location(p1, file$8, 27, 1, 611);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p0, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, p1, anchor);
+    			append_dev(p1, t2);
+    			append_dev(p1, t3);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*category*/ 2) set_data_dev(t3, /*category*/ ctx[1]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p0);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(p1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$5.name,
+    		type: "else",
+    		source: "(26:0) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (8:0) {#if entries !== undefined}
+    function create_if_block$5(ctx) {
+    	let h3;
+    	let t0;
+    	let t1;
+    	let table;
+    	let tr0;
+    	let th0;
+    	let t3;
+    	let th1;
+    	let t5;
+    	let each_blocks = [];
+    	let each_1_lookup = new Map();
+    	let t6;
+    	let tr1;
+    	let td0;
+    	let t8;
+    	let td1;
+    	let each_value = /*sortedEntries*/ ctx[2];
+    	validate_each_argument(each_value);
+    	const get_key = ctx => /*entry*/ ctx[4].id;
+    	validate_each_keys(ctx, each_value, get_each_context$4, get_key);
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context$4(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block$4(key, child_ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			h3 = element$1("h3");
+    			t0 = text$1(/*category*/ ctx[1]);
+    			t1 = space();
+    			table = element$1("table");
+    			tr0 = element$1("tr");
+    			th0 = element$1("th");
+    			th0.textContent = "Beskrivning";
+    			t3 = space();
+    			th1 = element$1("th");
+    			th1.textContent = "Belopp";
+    			t5 = space();
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t6 = space();
+    			tr1 = element$1("tr");
+    			td0 = element$1("td");
+    			td0.textContent = "Totalt";
+    			t8 = space();
+    			td1 = element$1("td");
+
+    			td1.textContent = `${/*total*/ ctx[3] < 0
+			? /*total*/ ctx[3]
+			: "+" + /*total*/ ctx[3]}`;
+
+    			attr_dev(h3, "class", "entries-header");
+    			add_location(h3, file$8, 8, 1, 211);
+    			add_location(th0, file$8, 11, 3, 273);
+    			attr_dev(th1, "class", "right");
+    			add_location(th1, file$8, 12, 3, 297);
+    			attr_dev(tr0, "class", "svelte-13a5tvb");
+    			add_location(tr0, file$8, 10, 2, 265);
+    			add_location(td0, file$8, 21, 3, 491);
+    			attr_dev(td1, "class", "right");
+    			add_location(td1, file$8, 22, 3, 510);
+    			attr_dev(tr1, "class", "svelte-13a5tvb");
+    			add_location(tr1, file$8, 20, 2, 483);
+    			attr_dev(table, "class", "svelte-13a5tvb");
+    			add_location(table, file$8, 9, 1, 255);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h3, anchor);
+    			append_dev(h3, t0);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, table, anchor);
+    			append_dev(table, tr0);
+    			append_dev(tr0, th0);
+    			append_dev(tr0, t3);
+    			append_dev(tr0, th1);
+    			append_dev(table, t5);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(table, null);
+    			}
+
+    			append_dev(table, t6);
+    			append_dev(table, tr1);
+    			append_dev(tr1, td0);
+    			append_dev(tr1, t8);
+    			append_dev(tr1, td1);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*category*/ 2) set_data_dev(t0, /*category*/ ctx[1]);
+
+    			if (dirty & /*sortedEntries*/ 4) {
+    				each_value = /*sortedEntries*/ ctx[2];
+    				validate_each_argument(each_value);
+    				validate_each_keys(ctx, each_value, get_each_context$4, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, table, destroy_block, create_each_block$4, t6, get_each_context$4);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h3);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(table);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$5.name,
+    		type: "if",
+    		source: "(8:0) {#if entries !== undefined}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (15:2) {#each sortedEntries as entry (entry.id)}
+    function create_each_block$4(key_1, ctx) {
+    	let tr;
+    	let td0;
+    	let t0_value = /*entry*/ ctx[4].description + "";
+    	let t0;
+    	let t1;
+    	let td1;
+    	let t2_value = /*entry*/ ctx[4].amount + "";
+    	let t2;
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			tr = element$1("tr");
+    			td0 = element$1("td");
+    			t0 = text$1(t0_value);
+    			t1 = space();
+    			td1 = element$1("td");
+    			t2 = text$1(t2_value);
+    			add_location(td0, file$8, 16, 4, 391);
+    			attr_dev(td1, "class", "right");
+    			add_location(td1, file$8, 17, 4, 424);
+    			attr_dev(tr, "class", "svelte-13a5tvb");
+    			add_location(tr, file$8, 15, 3, 382);
+    			this.first = tr;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, tr, anchor);
+    			append_dev(tr, td0);
+    			append_dev(td0, t0);
+    			append_dev(tr, t1);
+    			append_dev(tr, td1);
+    			append_dev(td1, t2);
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(tr);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$4.name,
+    		type: "each",
+    		source: "(15:2) {#each sortedEntries as entry (entry.id)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$d(ctx) {
+    	let if_block_anchor;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*entries*/ ctx[0] !== undefined) return create_if_block$5;
+    		return create_else_block$5;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			}
+    		},
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$d.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$d($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("ViewCategory", slots, []);
+    	
+    	let { entries } = $$props;
+    	let { category } = $$props;
+    	const { sortedEntries, total } = sortEntries(entries);
+    	const writable_props = ["entries", "category"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<ViewCategory> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ("entries" in $$props) $$invalidate(0, entries = $$props.entries);
+    		if ("category" in $$props) $$invalidate(1, category = $$props.category);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		sortEntries,
+    		entries,
+    		category,
+    		sortedEntries,
+    		total
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("entries" in $$props) $$invalidate(0, entries = $$props.entries);
+    		if ("category" in $$props) $$invalidate(1, category = $$props.category);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [entries, category, sortedEntries, total];
+    }
+
+    class ViewCategory extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$d, create_fragment$d, safe_not_equal$1, { entries: 0, category: 1 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "ViewCategory",
+    			options,
+    			id: create_fragment$d.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*entries*/ ctx[0] === undefined && !("entries" in props)) {
+    			console.warn("<ViewCategory> was created without expected prop 'entries'");
+    		}
+
+    		if (/*category*/ ctx[1] === undefined && !("category" in props)) {
+    			console.warn("<ViewCategory> was created without expected prop 'category'");
+    		}
+    	}
+
+    	get entries() {
+    		throw new Error("<ViewCategory>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set entries(value) {
+    		throw new Error("<ViewCategory>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get category() {
+    		throw new Error("<ViewCategory>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set category(value) {
+    		throw new Error("<ViewCategory>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/edit/InPlaceEdit.svelte generated by Svelte v3.38.2 */
+    const file$7 = "src/components/edit/InPlaceEdit.svelte";
+
+    // (42:0) {:else}
+    function create_else_block$4(ctx) {
+    	let td;
+    	let t;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			td = element$1("td");
+    			t = text$1(/*value*/ ctx[0]);
+    			add_location(td, file$7, 42, 1, 561);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, td, anchor);
+    			append_dev(td, t);
+
+    			if (!mounted) {
+    				dispose = listen_dev(td, "click", /*edit*/ ctx[3], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*value*/ 1) set_data_dev(t, /*value*/ ctx[0]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(td);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$4.name,
+    		type: "else",
+    		source: "(42:0) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (40:0) {#if editing}
+    function create_if_block$4(ctx) {
+    	let input;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			input = element$1("input");
+    			input.required = /*required*/ ctx[1];
+    			attr_dev(input, "class", "svelte-ml8vq6");
+    			add_location(input, file$7, 40, 1, 493);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, input, anchor);
+    			set_input_value(input, /*value*/ ctx[0]);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[6]),
+    					listen_dev(input, "blur", /*submit*/ ctx[4], false, false, false),
+    					action_destroyer(focus.call(null, input))
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*required*/ 2) {
+    				prop_dev(input, "required", /*required*/ ctx[1]);
+    			}
+
+    			if (dirty & /*value*/ 1 && input.value !== /*value*/ ctx[0]) {
+    				set_input_value(input, /*value*/ ctx[0]);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(input);
+    			mounted = false;
+    			run_all$1(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$4.name,
+    		type: "if",
+    		source: "(40:0) {#if editing}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$c(ctx) {
+    	let if_block_anchor;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*editing*/ ctx[2]) return create_if_block$4;
+    		return create_else_block$4;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			}
+    		},
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$c.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function focus(element) {
+    	element.focus();
+    }
+
+    function instance$c($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("InPlaceEdit", slots, []);
+    	let { value } = $$props, { required = true } = $$props, { onSubmit } = $$props;
+    	let editing = false, original;
+
+    	onMount(() => {
+    		original = value;
+    	});
+
+    	function edit() {
+    		$$invalidate(2, editing = true);
+    	}
+
+    	function submit() {
+    		if (value !== original) {
+    			onSubmit(value);
+    		}
+
+    		$$invalidate(2, editing = false);
+    	}
+
+    	function keydown(event) {
+    		if (event.key == "Escape") {
+    			event.preventDefault();
+    			$$invalidate(0, value = original);
+    			$$invalidate(2, editing = false);
+    		}
+    	}
+
+    	const writable_props = ["value", "required", "onSubmit"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<InPlaceEdit> was created with unknown prop '${key}'`);
+    	});
+
+    	function input_input_handler() {
+    		value = this.value;
+    		$$invalidate(0, value);
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ("value" in $$props) $$invalidate(0, value = $$props.value);
+    		if ("required" in $$props) $$invalidate(1, required = $$props.required);
+    		if ("onSubmit" in $$props) $$invalidate(5, onSubmit = $$props.onSubmit);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		onMount,
+    		value,
+    		required,
+    		onSubmit,
+    		editing,
+    		original,
+    		edit,
+    		submit,
+    		keydown,
+    		focus
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("value" in $$props) $$invalidate(0, value = $$props.value);
+    		if ("required" in $$props) $$invalidate(1, required = $$props.required);
+    		if ("onSubmit" in $$props) $$invalidate(5, onSubmit = $$props.onSubmit);
+    		if ("editing" in $$props) $$invalidate(2, editing = $$props.editing);
+    		if ("original" in $$props) original = $$props.original;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [value, required, editing, edit, submit, onSubmit, input_input_handler];
+    }
+
+    class InPlaceEdit extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$c, create_fragment$c, safe_not_equal$1, { value: 0, required: 1, onSubmit: 5 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "InPlaceEdit",
+    			options,
+    			id: create_fragment$c.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*value*/ ctx[0] === undefined && !("value" in props)) {
+    			console.warn("<InPlaceEdit> was created without expected prop 'value'");
+    		}
+
+    		if (/*onSubmit*/ ctx[5] === undefined && !("onSubmit" in props)) {
+    			console.warn("<InPlaceEdit> was created without expected prop 'onSubmit'");
+    		}
+    	}
+
+    	get value() {
+    		throw new Error("<InPlaceEdit>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set value(value) {
+    		throw new Error("<InPlaceEdit>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get required() {
+    		throw new Error("<InPlaceEdit>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set required(value) {
+    		throw new Error("<InPlaceEdit>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get onSubmit() {
+    		throw new Error("<InPlaceEdit>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set onSubmit(value) {
+    		throw new Error("<InPlaceEdit>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    function noop() { }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function set_data(text, data) {
+        data = '' + data;
+        if (text.data !== data)
+            text.data = data;
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    let flushing = false;
+    const seen_callbacks = new Set();
+    function flush() {
+        if (flushing)
+            return;
+        flushing = true;
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            for (let i = 0; i < dirty_components.length; i += 1) {
+                const component = dirty_components[i];
+                set_current_component(component);
+                update(component.$$);
+            }
+            dirty_components.length = 0;
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                    callback();
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+        flushing = false;
+        seen_callbacks.clear();
+    }
+    function update($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+    const outroing = new Set();
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function mount_component(component, target, anchor) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        // onMount happens before the initial afterUpdate
+        add_render_callback(() => {
+            const new_on_destroy = on_mount.map(run).filter(is_function);
+            if (on_destroy) {
+                on_destroy.push(...new_on_destroy);
+            }
+            else {
+                // Edge case - component was destroyed immediately,
+                // most likely as a result of a binding initialising
+                run_all(new_on_destroy);
+            }
+            component.$$.on_mount = [];
+        });
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            run_all($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init(component, options, instance, create_fragment, not_equal, props, dirty = [-1]) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const prop_values = options.props || {};
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(parent_component ? parent_component.$$.context : []),
+            // everything else
+            callbacks: blank_object(),
+            dirty
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, prop_values, (i, ret, ...rest) => {
+                const value = rest.length ? rest[0] : ret;
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if ($$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                const nodes = children(options.target);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(nodes);
+                nodes.forEach(detach);
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    }
+
+    /* src/toast.svelte generated by Svelte v3.20.1 */
+
+    function add_css() {
+    	var style = element("style");
+    	style.id = "svelte-3qemlt-style";
+    	style.textContent = ".toast-container.svelte-3qemlt{position:fixed;z-index:999}.top.svelte-3qemlt{top:15px}.bottom.svelte-3qemlt{bottom:15px}.left.svelte-3qemlt{left:15px}.right.svelte-3qemlt{right:15px}.center.svelte-3qemlt{left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%)}.toast.svelte-3qemlt{height:38px;line-height:38px;padding:0 20px;box-shadow:0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);color:#FFF;-webkit-transition:opacity 0.2s, -webkit-transform 0.2s;transition:opacity 0.2s, transform 0.2s, -webkit-transform 0.2s;-webkit-transform:translateY(35px);transform:translateY(35px);opacity:0;max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.info.svelte-3qemlt{background-color:#0091EA}.success.svelte-3qemlt{background-color:#4CAF50}.error.svelte-3qemlt{background-color:#F44336}.default.svelte-3qemlt{background-color:#353535}.anim.svelte-3qemlt{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}";
+    	append(document.head, style);
+    }
+
+    function create_fragment$b(ctx) {
+    	let div1;
+    	let div0;
+    	let t;
+    	let div0_class_value;
+    	let div1_class_value;
+
+    	return {
+    		c() {
+    			div1 = element("div");
+    			div0 = element("div");
+    			t = text(/*msg*/ ctx[0]);
+    			attr(div0, "class", div0_class_value = "toast " + /*type*/ ctx[1] + " svelte-3qemlt");
+    			attr(div1, "class", div1_class_value = "toast-container " + /*_position*/ ctx[2] + " svelte-3qemlt");
+    		},
+    		m(target, anchor) {
+    			insert(target, div1, anchor);
+    			append(div1, div0);
+    			append(div0, t);
+    		},
+    		p(ctx, [dirty]) {
+    			if (dirty & /*msg*/ 1) set_data(t, /*msg*/ ctx[0]);
+
+    			if (dirty & /*type*/ 2 && div0_class_value !== (div0_class_value = "toast " + /*type*/ ctx[1] + " svelte-3qemlt")) {
+    				attr(div0, "class", div0_class_value);
+    			}
+
+    			if (dirty & /*_position*/ 4 && div1_class_value !== (div1_class_value = "toast-container " + /*_position*/ ctx[2] + " svelte-3qemlt")) {
+    				attr(div1, "class", div1_class_value);
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d(detaching) {
+    			if (detaching) detach(div1);
+    		}
+    	};
+    }
+
+    function instance$b($$self, $$props, $$invalidate) {
+    	let { msg = "" } = $$props;
+    	let { type = "" } = $$props;
+    	let { position = "bottom-center" } = $$props;
+
+    	$$self.$set = $$props => {
+    		if ("msg" in $$props) $$invalidate(0, msg = $$props.msg);
+    		if ("type" in $$props) $$invalidate(1, type = $$props.type);
+    		if ("position" in $$props) $$invalidate(3, position = $$props.position);
+    	};
+
+    	let _position;
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*position*/ 8) {
+    			 $$invalidate(2, _position = position.split("-").join(" "));
+    		}
+    	};
+
+    	return [msg, type, _position, position];
+    }
+
+    class Toast extends SvelteComponent {
+    	constructor(options) {
+    		super();
+    		if (!document.getElementById("svelte-3qemlt-style")) add_css();
+    		init(this, options, instance$b, create_fragment$b, safe_not_equal, { msg: 0, type: 1, position: 3 });
+    	}
+    }
+
+    class Toast$1 {
+      constructor(opts) {
+        this.opts = Object.assign({
+          position: 'bottom-center',
+          duration: 2000
+        }, opts);
+      }
+
+      show(msg) {
+        var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        this._show(msg, opts, 'default');
+      }
+
+      info(msg) {
+        var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        this._show(msg, opts, 'info');
+      }
+
+      success(msg) {
+        var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        this._show(msg, opts, 'success');
+      }
+
+      error(msg) {
+        var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        this._show(msg, opts, 'error');
+      }
+
+      _show(msg, opts, type) {
+        var _opts = Object.assign({}, this.opts, opts);
+
+        var t = new Toast({
+          target: document.querySelector('body'),
+          props: {
+            msg,
+            type,
+            position: _opts.position
+          }
+        });
+        setTimeout(() => {
+          t.$set({
+            type: type + ' ' + 'anim'
+          });
+        }, 0);
+        setTimeout(() => {
+          t.$destroy();
+        }, _opts.duration);
+      }
+
+    }
+
+    /* src/components/edit/EditCategory.svelte generated by Svelte v3.38.2 */
+    const file$6 = "src/components/edit/EditCategory.svelte";
+
+    function get_each_context$3(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[11] = list[i];
+    	return child_ctx;
+    }
+
+    // (71:0) {:else}
+    function create_else_block$3(ctx) {
+    	let p0;
+    	let t1;
+    	let p1;
+    	let t2;
+    	let t3;
+
+    	const block = {
+    		c: function create() {
+    			p0 = element$1("p");
+    			p0.textContent = "No data?";
+    			t1 = space();
+    			p1 = element$1("p");
+    			t2 = text$1("category = ");
+    			t3 = text$1(/*category*/ ctx[1]);
+    			add_location(p0, file$6, 71, 1, 1678);
+    			add_location(p1, file$6, 72, 1, 1695);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p0, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, p1, anchor);
+    			append_dev(p1, t2);
+    			append_dev(p1, t3);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*category*/ 2) set_data_dev(t3, /*category*/ ctx[1]);
+    		},
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p0);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(p1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$3.name,
+    		type: "else",
+    		source: "(71:0) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (48:0) {#if entries !== undefined}
+    function create_if_block$3(ctx) {
+    	let h3;
+    	let t0;
+    	let t1;
+    	let table;
+    	let tr0;
+    	let th0;
+    	let t3;
+    	let th1;
+    	let t5;
+    	let each_blocks = [];
+    	let each_1_lookup = new Map();
+    	let t6;
+    	let tr1;
+    	let td0;
+    	let t8;
+    	let td1;
+    	let t10;
+    	let button;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let each_value = /*sortedEntries*/ ctx[2];
+    	validate_each_argument(each_value);
+    	const get_key = ctx => /*entry*/ ctx[11].id;
+    	validate_each_keys(ctx, each_value, get_each_context$3, get_key);
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context$3(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block$3(key, child_ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			h3 = element$1("h3");
+    			t0 = text$1(/*category*/ ctx[1]);
+    			t1 = space();
+    			table = element$1("table");
+    			tr0 = element$1("tr");
+    			th0 = element$1("th");
+    			th0.textContent = "Beskrivning";
+    			t3 = space();
+    			th1 = element$1("th");
+    			th1.textContent = "Belopp";
+    			t5 = space();
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t6 = space();
+    			tr1 = element$1("tr");
+    			td0 = element$1("td");
+    			td0.textContent = "Totalt";
+    			t8 = space();
+    			td1 = element$1("td");
+
+    			td1.textContent = `${/*total*/ ctx[3] <= -1
+			? /*total*/ ctx[3]
+			: "+" + /*total*/ ctx[3]}`;
+
+    			t10 = space();
+    			button = element$1("button");
+    			button.textContent = "Uppdatera";
+    			attr_dev(h3, "class", "entries-header");
+    			add_location(h3, file$6, 48, 1, 1096);
+    			add_location(th0, file$6, 51, 3, 1158);
+    			attr_dev(th1, "class", "right");
+    			add_location(th1, file$6, 52, 3, 1182);
+    			attr_dev(tr0, "class", "svelte-13a5tvb");
+    			add_location(tr0, file$6, 50, 2, 1150);
+    			add_location(td0, file$6, 65, 3, 1519);
+    			attr_dev(td1, "class", "right");
+    			add_location(td1, file$6, 66, 3, 1538);
+    			attr_dev(tr1, "class", "svelte-13a5tvb");
+    			add_location(tr1, file$6, 64, 2, 1511);
+    			attr_dev(table, "class", "svelte-13a5tvb");
+    			add_location(table, file$6, 49, 1, 1140);
+    			add_location(button, file$6, 69, 1, 1616);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h3, anchor);
+    			append_dev(h3, t0);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, table, anchor);
+    			append_dev(table, tr0);
+    			append_dev(tr0, th0);
+    			append_dev(tr0, t3);
+    			append_dev(tr0, th1);
+    			append_dev(table, t5);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(table, null);
+    			}
+
+    			append_dev(table, t6);
+    			append_dev(table, tr1);
+    			append_dev(tr1, td0);
+    			append_dev(tr1, t8);
+    			append_dev(tr1, td1);
+    			insert_dev(target, t10, anchor);
+    			insert_dev(target, button, anchor);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[8], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (!current || dirty & /*category*/ 2) set_data_dev(t0, /*category*/ ctx[1]);
+
+    			if (dirty & /*sortedEntries, entryChanged*/ 20) {
+    				each_value = /*sortedEntries*/ ctx[2];
+    				validate_each_argument(each_value);
+    				group_outros();
+    				validate_each_keys(ctx, each_value, get_each_context$3, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, table, outro_and_destroy_block, create_each_block$3, t6, get_each_context$3);
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in$1(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h3);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(table);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+
+    			if (detaching) detach_dev(t10);
+    			if (detaching) detach_dev(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$3.name,
+    		type: "if",
+    		source: "(48:0) {#if entries !== undefined}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (55:2) {#each sortedEntries as entry (entry.id)}
+    function create_each_block$3(key_1, ctx) {
+    	let tr;
+    	let inplaceedit0;
+    	let t;
+    	let inplaceedit1;
+    	let current;
+
+    	function func(...args) {
+    		return /*func*/ ctx[6](/*entry*/ ctx[11], ...args);
+    	}
+
+    	inplaceedit0 = new InPlaceEdit({
+    			props: {
+    				value: /*entry*/ ctx[11].description,
+    				onSubmit: func
+    			},
+    			$$inline: true
+    		});
+
+    	function func_1(...args) {
+    		return /*func_1*/ ctx[7](/*entry*/ ctx[11], ...args);
+    	}
+
+    	inplaceedit1 = new InPlaceEdit({
+    			props: {
+    				value: /*entry*/ ctx[11].amount,
+    				onSubmit: func_1
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			tr = element$1("tr");
+    			create_component(inplaceedit0.$$.fragment);
+    			t = space();
+    			create_component(inplaceedit1.$$.fragment);
+    			attr_dev(tr, "class", "svelte-13a5tvb");
+    			add_location(tr, file$6, 55, 3, 1267);
+    			this.first = tr;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, tr, anchor);
+    			mount_component$1(inplaceedit0, tr, null);
+    			append_dev(tr, t);
+    			mount_component$1(inplaceedit1, tr, null);
+    			current = true;
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(inplaceedit0.$$.fragment, local);
+    			transition_in$1(inplaceedit1.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(inplaceedit0.$$.fragment, local);
+    			transition_out(inplaceedit1.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(tr);
+    			destroy_component$1(inplaceedit0);
+    			destroy_component$1(inplaceedit1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$3.name,
+    		type: "each",
+    		source: "(55:2) {#each sortedEntries as entry (entry.id)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$a(ctx) {
+    	let current_block_type_index;
+    	let if_block;
+    	let if_block_anchor;
+    	let current;
+    	const if_block_creators = [create_if_block$3, create_else_block$3];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*entries*/ ctx[0] !== undefined) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
+
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				} else {
+    					if_block.p(ctx, dirty);
+    				}
+
+    				transition_in$1(if_block, 1);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if_blocks[current_block_type_index].d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$a.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$a($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("EditCategory", slots, []);
+    	const toast = new Toast$1();
+    	let { entries } = $$props;
+    	let { category } = $$props;
+    	let { sortedEntries, total } = sortEntries(entries);
+    	let editedEntries = [];
+
+    	const entryChanged = (entry, description, newValue) => {
+    		if (description) {
+    			entry.description = newValue;
+    		} else {
+    			entry.amount = newValue;
+    		}
+
+    		// if the entry has already been modified, change that instance
+    		let index = editedEntries.findIndex(e => e.id == entry.id);
+
+    		if (index > 0) {
+    			editedEntries[index] = entry;
+    		} else {
+    			editedEntries.push(entry);
+    		}
+    	};
+
+    	const update = async () => {
+    		let success = true;
+
+    		for (const editedEntry of editedEntries) {
+    			try {
+    				await entry.updateEntry(editedEntry);
+    			} catch(err) {
+    				toast.error(`Kunde inte uppdatera: ${editedEntry.description}`);
+    				success = false;
+    			}
+    		}
+
+    		if (success) {
+    			toast.success(`Uppdaterade ${editedEntries.length} rader.`);
+    		}
+    	};
+
+    	const writable_props = ["entries", "category"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<EditCategory> was created with unknown prop '${key}'`);
+    	});
+
+    	const func = (entry, value) => entryChanged(entry, true, value);
+    	const func_1 = (entry, value) => entryChanged(entry, false, value);
+    	const click_handler = () => update();
+
+    	$$self.$$set = $$props => {
+    		if ("entries" in $$props) $$invalidate(0, entries = $$props.entries);
+    		if ("category" in $$props) $$invalidate(1, category = $$props.category);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		sortEntries,
+    		InPlaceEdit,
+    		entry,
+    		Toast: Toast$1,
+    		toast,
+    		entries,
+    		category,
+    		sortedEntries,
+    		total,
+    		editedEntries,
+    		entryChanged,
+    		update
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("entries" in $$props) $$invalidate(0, entries = $$props.entries);
+    		if ("category" in $$props) $$invalidate(1, category = $$props.category);
+    		if ("sortedEntries" in $$props) $$invalidate(2, sortedEntries = $$props.sortedEntries);
+    		if ("total" in $$props) $$invalidate(3, total = $$props.total);
+    		if ("editedEntries" in $$props) editedEntries = $$props.editedEntries;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [
+    		entries,
+    		category,
+    		sortedEntries,
+    		total,
+    		entryChanged,
+    		update,
+    		func,
+    		func_1,
+    		click_handler
+    	];
+    }
+
+    class EditCategory extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$a, create_fragment$a, safe_not_equal$1, { entries: 0, category: 1 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "EditCategory",
+    			options,
+    			id: create_fragment$a.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*entries*/ ctx[0] === undefined && !("entries" in props)) {
+    			console.warn("<EditCategory> was created without expected prop 'entries'");
+    		}
+
+    		if (/*category*/ ctx[1] === undefined && !("category" in props)) {
+    			console.warn("<EditCategory> was created without expected prop 'category'");
+    		}
+    	}
+
+    	get entries() {
+    		throw new Error("<EditCategory>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set entries(value) {
+    		throw new Error("<EditCategory>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get category() {
+    		throw new Error("<EditCategory>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set category(value) {
+    		throw new Error("<EditCategory>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/Budget.svelte generated by Svelte v3.38.2 */
+    const file$5 = "src/components/Budget.svelte";
+
+    function get_each_context$2(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[6] = list[i];
+    	return child_ctx;
+    }
+
+    // (27:0) {#each data.categories as category}
+    function create_each_block$2(ctx) {
+    	let div;
+    	let switch_instance;
+    	let t;
+    	let current;
+    	var switch_value = /*component*/ ctx[2];
+
+    	function switch_props(ctx) {
+    		return {
+    			props: {
+    				entries: /*seperated*/ ctx[1][/*category*/ ctx[6]],
+    				category: /*category*/ ctx[6]
+    			},
+    			$$inline: true
+    		};
+    	}
+
+    	if (switch_value) {
+    		switch_instance = new switch_value(switch_props(ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element$1("div");
+    			if (switch_instance) create_component(switch_instance.$$.fragment);
+    			t = space();
+    			attr_dev(div, "class", "category svelte-13c2izy");
+    			add_location(div, file$5, 27, 1, 888);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			if (switch_instance) {
+    				mount_component$1(switch_instance, div, null);
+    			}
+
+    			append_dev(div, t);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const switch_instance_changes = {};
+    			if (dirty & /*seperated, data*/ 3) switch_instance_changes.entries = /*seperated*/ ctx[1][/*category*/ ctx[6]];
+    			if (dirty & /*data*/ 1) switch_instance_changes.category = /*category*/ ctx[6];
+
+    			if (switch_value !== (switch_value = /*component*/ ctx[2])) {
+    				if (switch_instance) {
+    					group_outros();
+    					const old_component = switch_instance;
+
+    					transition_out(old_component.$$.fragment, 1, 0, () => {
+    						destroy_component$1(old_component, 1);
+    					});
+
+    					check_outros();
+    				}
+
+    				if (switch_value) {
+    					switch_instance = new switch_value(switch_props(ctx));
+    					create_component(switch_instance.$$.fragment);
+    					transition_in$1(switch_instance.$$.fragment, 1);
+    					mount_component$1(switch_instance, div, t);
+    				} else {
+    					switch_instance = null;
+    				}
+    			} else if (switch_value) {
+    				switch_instance.$set(switch_instance_changes);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			if (switch_instance) transition_in$1(switch_instance.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if (switch_instance) destroy_component$1(switch_instance);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$2.name,
+    		type: "each",
+    		source: "(27:0) {#each data.categories as category}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$9(ctx) {
+    	let each_1_anchor;
+    	let current;
+    	let each_value = /*data*/ ctx[0].categories;
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*component, seperated, data*/ 7) {
+    				each_value = /*data*/ ctx[0].categories;
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$2(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in$1(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block$2(child_ctx);
+    						each_blocks[i].c();
+    						transition_in$1(each_blocks[i], 1);
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in$1(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(each_1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$9.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$9($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Budget", slots, []);
+    	
+    	let { readOnly } = $$props;
+    	let component = readOnly === true ? ViewCategory : EditCategory;
+    	let { data } = $$props;
+    	let seperated = [];
+    	gemensammaFirst();
+    	separateCategories();
+
+    	function gemensammaFirst() {
+    		const gemensamma = data.categories.indexOf("Gemensamma");
+
+    		if (gemensamma > 0) {
+    			let temporary = data.categories[0];
+    			$$invalidate(0, data.categories[0] = data.categories[gemensamma], data);
+    			$$invalidate(0, data.categories[gemensamma] = temporary, data);
+    		}
+    	}
+
+    	function separateCategories() {
+    		data.categories.forEach(category => {
+    			$$invalidate(1, seperated[category] = data.result.filter(entry => entry.Category.name === category), seperated);
+    		});
+
+    		return seperated;
+    	}
+
+    	const writable_props = ["readOnly", "data"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Budget> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ("readOnly" in $$props) $$invalidate(3, readOnly = $$props.readOnly);
+    		if ("data" in $$props) $$invalidate(0, data = $$props.data);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		ViewCategory,
+    		EditCategory,
+    		readOnly,
+    		component,
+    		data,
+    		seperated,
+    		gemensammaFirst,
+    		separateCategories
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("readOnly" in $$props) $$invalidate(3, readOnly = $$props.readOnly);
+    		if ("component" in $$props) $$invalidate(2, component = $$props.component);
+    		if ("data" in $$props) $$invalidate(0, data = $$props.data);
+    		if ("seperated" in $$props) $$invalidate(1, seperated = $$props.seperated);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [data, seperated, component, readOnly];
+    }
+
+    class Budget extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$9, create_fragment$9, safe_not_equal$1, { readOnly: 3, data: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Budget",
+    			options,
+    			id: create_fragment$9.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*readOnly*/ ctx[3] === undefined && !("readOnly" in props)) {
+    			console.warn("<Budget> was created without expected prop 'readOnly'");
+    		}
+
+    		if (/*data*/ ctx[0] === undefined && !("data" in props)) {
+    			console.warn("<Budget> was created without expected prop 'data'");
+    		}
+    	}
+
+    	get readOnly() {
+    		throw new Error("<Budget>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set readOnly(value) {
+    		throw new Error("<Budget>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get data() {
+    		throw new Error("<Budget>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set data(value) {
+    		throw new Error("<Budget>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/SelectBudget.svelte generated by Svelte v3.38.2 */
+    const file$4 = "src/components/SelectBudget.svelte";
+
+    // (1:0) <script lang="ts">import entry from "../controllers/entry"; import Budget from "./Budget.svelte"; export let readOnly; let dateString = new Date().toISOString().slice(0, 10); let data; $: {     data = entry.getSpecificEntries({ date: new Date(dateString) }
+    function create_catch_block(ctx) {
+    	const block = {
+    		c: noop$1,
+    		m: noop$1,
+    		p: noop$1,
+    		i: noop$1,
+    		o: noop$1,
+    		d: noop$1
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_catch_block.name,
+    		type: "catch",
+    		source: "(1:0) <script lang=\\\"ts\\\">import entry from \\\"../controllers/entry\\\"; import Budget from \\\"./Budget.svelte\\\"; export let readOnly; let dateString = new Date().toISOString().slice(0, 10); let data; $: {     data = entry.getSpecificEntries({ date: new Date(dateString) }",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (14:1) {:then data}
+    function create_then_block(ctx) {
+    	let div;
+    	let h2;
+    	let t0;
+    	let input;
+    	let t1;
+    	let budget;
+    	let current;
+    	let mounted;
+    	let dispose;
+
+    	budget = new Budget({
+    			props: {
+    				data: /*data*/ ctx[2],
+    				readOnly: /*readOnly*/ ctx[0]
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div = element$1("div");
+    			h2 = element$1("h2");
+    			t0 = text$1("Budget ");
+    			input = element$1("input");
+    			t1 = space();
+    			create_component(budget.$$.fragment);
+    			attr_dev(input, "id", "datepicker");
+    			attr_dev(input, "type", "date");
+    			attr_dev(input, "class", "svelte-ca9f4s");
+    			add_location(input, file$4, 15, 14, 392);
+    			add_location(h2, file$4, 15, 3, 381);
+    			attr_dev(div, "class", "budget");
+    			add_location(div, file$4, 14, 2, 357);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, h2);
+    			append_dev(h2, t0);
+    			append_dev(h2, input);
+    			set_input_value(input, /*dateString*/ ctx[1]);
+    			append_dev(div, t1);
+    			mount_component$1(budget, div, null);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(input, "input", /*input_input_handler*/ ctx[3]);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*dateString*/ 2) {
+    				set_input_value(input, /*dateString*/ ctx[1]);
+    			}
+
+    			const budget_changes = {};
+    			if (dirty & /*data*/ 4) budget_changes.data = /*data*/ ctx[2];
+    			if (dirty & /*readOnly*/ 1) budget_changes.readOnly = /*readOnly*/ ctx[0];
+    			budget.$set(budget_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(budget.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(budget.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component$1(budget);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_then_block.name,
+    		type: "then",
+    		source: "(14:1) {:then data}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (12:14)    <p>Hämtar budgetar</p>  {:then data}
+    function create_pending_block(ctx) {
+    	let p;
+
+    	const block = {
+    		c: function create() {
+    			p = element$1("p");
+    			p.textContent = "Hämtar budgetar";
+    			add_location(p, file$4, 12, 2, 318);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    		},
+    		p: noop$1,
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_pending_block.name,
+    		type: "pending",
+    		source: "(12:14)    <p>Hämtar budgetar</p>  {:then data}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$8(ctx) {
+    	let div;
+    	let promise;
+    	let current;
+
+    	let info = {
+    		ctx,
+    		current: null,
+    		token: null,
+    		hasCatch: false,
+    		pending: create_pending_block,
+    		then: create_then_block,
+    		catch: create_catch_block,
+    		value: 2,
+    		blocks: [,,,]
+    	};
+
+    	handle_promise(promise = /*data*/ ctx[2], info);
+
+    	const block = {
+    		c: function create() {
+    			div = element$1("div");
+    			info.block.c();
+    			attr_dev(div, "class", "flex-container svelte-ca9f4s");
+    			add_location(div, file$4, 10, 0, 272);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			info.block.m(div, info.anchor = null);
+    			info.mount = () => div;
+    			info.anchor = null;
+    			current = true;
+    		},
+    		p: function update(new_ctx, [dirty]) {
+    			ctx = new_ctx;
+    			info.ctx = ctx;
+
+    			if (dirty & /*data*/ 4 && promise !== (promise = /*data*/ ctx[2]) && handle_promise(promise, info)) ; else {
+    				update_await_block_branch(info, ctx, dirty);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(info.block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			for (let i = 0; i < 3; i += 1) {
+    				const block = info.blocks[i];
+    				transition_out(block);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			info.block.d();
+    			info.token = null;
+    			info = null;
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$8.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$8($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("SelectBudget", slots, []);
+    	let { readOnly } = $$props;
+    	let dateString = new Date().toISOString().slice(0, 10);
+    	let data;
+    	const writable_props = ["readOnly"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<SelectBudget> was created with unknown prop '${key}'`);
+    	});
+
+    	function input_input_handler() {
+    		dateString = this.value;
+    		$$invalidate(1, dateString);
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ("readOnly" in $$props) $$invalidate(0, readOnly = $$props.readOnly);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		entry,
+    		Budget,
+    		readOnly,
+    		dateString,
+    		data
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("readOnly" in $$props) $$invalidate(0, readOnly = $$props.readOnly);
+    		if ("dateString" in $$props) $$invalidate(1, dateString = $$props.dateString);
+    		if ("data" in $$props) $$invalidate(2, data = $$props.data);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*dateString*/ 2) {
+    			{
+    				$$invalidate(2, data = entry.getSpecificEntries({ date: new Date(dateString) }));
+    			}
+    		}
+    	};
+
+    	return [readOnly, dateString, data, input_input_handler];
+    }
+
+    class SelectBudget extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$8, create_fragment$8, safe_not_equal$1, { readOnly: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "SelectBudget",
+    			options,
+    			id: create_fragment$8.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*readOnly*/ ctx[0] === undefined && !("readOnly" in props)) {
+    			console.warn("<SelectBudget> was created without expected prop 'readOnly'");
+    		}
+    	}
+
+    	get readOnly() {
+    		throw new Error("<SelectBudget>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set readOnly(value) {
+    		throw new Error("<SelectBudget>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/edit/EditBudget.svelte generated by Svelte v3.38.2 */
+
+    function create_fragment$7(ctx) {
+    	let selectbudget;
+    	let current;
+    	selectbudget = new SelectBudget({ props: { readOnly: readOnly$1 }, $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			create_component(selectbudget.$$.fragment);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component$1(selectbudget, target, anchor);
+    			current = true;
+    		},
+    		p: noop$1,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(selectbudget.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(selectbudget.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component$1(selectbudget, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$7.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    const readOnly$1 = false;
+
+    function instance$7($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("EditBudget", slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<EditBudget> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({ SelectBudget, readOnly: readOnly$1 });
+    	return [];
+    }
+
+    class EditBudget extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$7, create_fragment$7, safe_not_equal$1, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "EditBudget",
+    			options,
+    			id: create_fragment$7.name
+    		});
+    	}
+    }
+
+    /* src/components/read/ViewBudget.svelte generated by Svelte v3.38.2 */
+
+    function create_fragment$6(ctx) {
+    	let selectbudget;
+    	let current;
+    	selectbudget = new SelectBudget({ props: { readOnly }, $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			create_component(selectbudget.$$.fragment);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component$1(selectbudget, target, anchor);
+    			current = true;
+    		},
+    		p: noop$1,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(selectbudget.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(selectbudget.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component$1(selectbudget, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$6.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    const readOnly = true;
+
+    function instance$6($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("ViewBudget", slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<ViewBudget> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({ SelectBudget, readOnly });
+    	return [];
+    }
+
+    class ViewBudget extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$6, create_fragment$6, safe_not_equal$1, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "ViewBudget",
+    			options,
+    			id: create_fragment$6.name
+    		});
+    	}
+    }
+
+    const subscriber_queue = [];
+    /**
+     * Create a `Writable` store that allows both updating and reading by subscription.
+     * @param {*=}value initial value
+     * @param {StartStopNotifier=}start start and stop notifications for subscriptions
+     */
+    function writable(value, start = noop$1) {
+        let stop;
+        const subscribers = [];
+        function set(new_value) {
+            if (safe_not_equal$1(value, new_value)) {
+                value = new_value;
+                if (stop) { // store is ready
+                    const run_queue = !subscriber_queue.length;
+                    for (let i = 0; i < subscribers.length; i += 1) {
+                        const s = subscribers[i];
+                        s[1]();
+                        subscriber_queue.push(s, value);
+                    }
+                    if (run_queue) {
+                        for (let i = 0; i < subscriber_queue.length; i += 2) {
+                            subscriber_queue[i][0](subscriber_queue[i + 1]);
+                        }
+                        subscriber_queue.length = 0;
+                    }
+                }
+            }
+        }
+        function update(fn) {
+            set(fn(value));
+        }
+        function subscribe(run, invalidate = noop$1) {
+            const subscriber = [run, invalidate];
+            subscribers.push(subscriber);
+            if (subscribers.length === 1) {
+                stop = start(set) || noop$1;
+            }
+            run(value);
+            return () => {
+                const index = subscribers.indexOf(subscriber);
+                if (index !== -1) {
+                    subscribers.splice(index, 1);
+                }
+                if (subscribers.length === 0) {
+                    stop();
+                    stop = null;
+                }
+            };
+        }
+        return { set, update, subscribe };
+    }
+
+    const gemensamTotal = writable(0);
+
+    /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+    // Taken from
+    // https://svelte.dev/repl/0ace7a508bd843b798ae599940a91783?version=3.16.7
+    function clickOutside(node) {
+    	const handleClick = event => {
+    		if (node && !node.contains(event.target) && !event.defaultPrevented) {
+    			node.dispatchEvent(
+    				new CustomEvent("click_outside", node)
+    			);
+    		}
+    	};
+
+    	document.addEventListener("click", handleClick, true);
+
+    	return {
+    		destroy() {
+    			document.removeEventListener("click", handleClick, true);
+    		}
+    	};
+    }
+
+    /* src/components/create/NewCategory.svelte generated by Svelte v3.38.2 */
+    const file$3 = "src/components/create/NewCategory.svelte";
+
+    function get_each_context$1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[12] = list[i];
+    	child_ctx[13] = list;
+    	child_ctx[14] = i;
+    	return child_ctx;
+    }
+
+    // (91:1) {#each entries as entry}
+    function create_each_block$1(ctx) {
+    	let div;
+    	let input0;
+    	let t;
+    	let input1;
+    	let mounted;
+    	let dispose;
+
+    	function input0_input_handler() {
+    		/*input0_input_handler*/ ctx[4].call(input0, /*each_value*/ ctx[13], /*entry_index*/ ctx[14]);
+    	}
+
+    	function input1_input_handler() {
+    		/*input1_input_handler*/ ctx[5].call(input1, /*each_value*/ ctx[13], /*entry_index*/ ctx[14]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element$1("div");
+    			input0 = element$1("input");
+    			t = space();
+    			input1 = element$1("input");
+    			attr_dev(input0, "type", "text");
+    			attr_dev(input0, "placeholder", "Beskrivning");
+    			attr_dev(input0, "class", "description svelte-1wif1oa");
+    			add_location(input0, file$3, 92, 3, 2241);
+    			attr_dev(input1, "type", "number");
+    			attr_dev(input1, "placeholder", "Belopp");
+    			attr_dev(input1, "class", "amount svelte-1wif1oa");
+    			add_location(input1, file$3, 97, 3, 2359);
+    			attr_dev(div, "class", "entry-container svelte-1wif1oa");
+    			add_location(div, file$3, 91, 2, 2208);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, input0);
+    			set_input_value(input0, /*entry*/ ctx[12].description);
+    			append_dev(div, t);
+    			append_dev(div, input1);
+    			set_input_value(input1, /*entry*/ ctx[12].amount);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(input0, "input", input0_input_handler),
+    					listen_dev(input1, "input", input1_input_handler)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*entries*/ 1 && input0.value !== /*entry*/ ctx[12].description) {
+    				set_input_value(input0, /*entry*/ ctx[12].description);
+    			}
+
+    			if (dirty & /*entries*/ 1 && to_number(input1.value) !== /*entry*/ ctx[12].amount) {
+    				set_input_value(input1, /*entry*/ ctx[12].amount);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			mounted = false;
+    			run_all$1(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$1.name,
+    		type: "each",
+    		source: "(91:1) {#each entries as entry}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$5(ctx) {
+    	let h4;
+    	let t0;
+    	let t1;
+    	let form;
+    	let t2;
+    	let div;
+    	let input0;
+    	let t3;
+    	let input1;
+    	let mounted;
+    	let dispose;
+    	let each_value = /*entries*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			h4 = element$1("h4");
+    			t0 = text$1(/*category*/ ctx[1]);
+    			t1 = space();
+    			form = element$1("form");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t2 = space();
+    			div = element$1("div");
+    			input0 = element$1("input");
+    			t3 = space();
+    			input1 = element$1("input");
+    			add_location(h4, file$3, 88, 0, 2105);
+    			input0.disabled = true;
+    			attr_dev(input0, "type", "text");
+    			input0.value = "Totalt";
+    			attr_dev(input0, "class", "description svelte-1wif1oa");
+    			add_location(input0, file$3, 101, 2, 2496);
+    			input1.disabled = true;
+    			attr_dev(input1, "type", "number");
+    			attr_dev(input1, "class", "amount svelte-1wif1oa");
+    			add_location(input1, file$3, 102, 2, 2564);
+    			attr_dev(div, "class", "entry-container svelte-1wif1oa");
+    			add_location(div, file$3, 100, 1, 2464);
+    			add_location(form, file$3, 89, 0, 2125);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h4, anchor);
+    			append_dev(h4, t0);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, form, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(form, null);
+    			}
+
+    			append_dev(form, t2);
+    			append_dev(form, div);
+    			append_dev(div, input0);
+    			append_dev(div, t3);
+    			append_dev(div, input1);
+    			set_input_value(input1, /*total*/ ctx[2]);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(input1, "input", /*input1_input_handler_1*/ ctx[6]),
+    					action_destroyer(clickOutside.call(null, form)),
+    					listen_dev(form, "click_outside", /*updateTable*/ ctx[3], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*category*/ 2) set_data_dev(t0, /*category*/ ctx[1]);
+
+    			if (dirty & /*entries*/ 1) {
+    				each_value = /*entries*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$1(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(form, t2);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+
+    			if (dirty & /*total*/ 4 && to_number(input1.value) !== /*total*/ ctx[2]) {
+    				set_input_value(input1, /*total*/ ctx[2]);
+    			}
+    		},
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h4);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(form);
+    			destroy_each(each_blocks, detaching);
+    			mounted = false;
+    			run_all$1(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$5.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$5($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("NewCategory", slots, []);
+    	let { entries } = $$props;
+    	let { category } = $$props;
+    	let total = 0;
+
+    	// special value to balance out if one person should pay more for the common costs
+    	// "half of gemsamma even outer"
+    	let HOG_evenOuter = 0;
+
+    	// some default entries can have a special first row with description
+    	// "HALF_OF_GEMENSAMMA" where the value should be the half of gemensamma's total
+    	// subscribe to the total and update the amount
+    	if (entries.length > 0 && entries[0].description === "HALF_OF_GEMENSAMMA") {
+    		let entry = entries[0];
+    		HOG_evenOuter = entry.amount;
+    		let description = "Halva gemensamma";
+
+    		if (HOG_evenOuter > 0) {
+    			description += ` (+${HOG_evenOuter})`;
+    		} else if (HOG_evenOuter < 0) {
+    			description += ` (${HOG_evenOuter})`;
+    		}
+
+    		entry.description = description;
+
+    		gemensamTotal.subscribe(totalOfGemensam => {
+    			entry.amount = totalOfGemensam / 2 - HOG_evenOuter;
+    		});
+    	}
+
+    	const isEmptyEntry = entry => {
+    		return entry !== undefined && isEmptyString(entry.description) && isEmptyString(entry.amount);
+    	};
+
+    	const isEmptyString = str => {
+    		return null === str || str === undefined || str.length === 0;
+    	};
+
+    	// Remove any empty rows and update the total
+    	// Sort the entries by amount lowest - highest
+    	// Run when clicking outside the form and onMount()
+    	const updateTable = () => {
+    		removeEmptyRows();
+    		let { sortedEntries, total: updatedTotal } = sortEntries(entries);
+    		$$invalidate(0, entries = sortedEntries);
+    		$$invalidate(2, total = updatedTotal);
+
+    		if (category === "Gemensamma") {
+    			gemensamTotal.set(total);
+    		}
+    	};
+
+    	const removeEmptyRows = () => {
+    		$$invalidate(0, entries = entries.filter(entry => !isEmptyEntry(entry)));
+    	};
+
+    	const newRow = () => {
+    		let newEntry = {
+    			Category: category,
+    			description: "",
+    			amount: "-",
+    			date: new Date()
+    		};
+
+    		$$invalidate(0, entries = [...entries, newEntry]);
+    	};
+
+    	onMount(() => {
+    		updateTable();
+    	});
+
+    	const writable_props = ["entries", "category"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<NewCategory> was created with unknown prop '${key}'`);
+    	});
+
+    	function input0_input_handler(each_value, entry_index) {
+    		each_value[entry_index].description = this.value;
+    		$$invalidate(0, entries);
+    	}
+
+    	function input1_input_handler(each_value, entry_index) {
+    		each_value[entry_index].amount = to_number(this.value);
+    		$$invalidate(0, entries);
+    	}
+
+    	function input1_input_handler_1() {
+    		total = to_number(this.value);
+    		$$invalidate(2, total);
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ("entries" in $$props) $$invalidate(0, entries = $$props.entries);
+    		if ("category" in $$props) $$invalidate(1, category = $$props.category);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		gemensamTotal,
+    		sortEntries,
+    		clickOutside,
+    		onMount,
+    		entries,
+    		category,
+    		total,
+    		HOG_evenOuter,
+    		isEmptyEntry,
+    		isEmptyString,
+    		updateTable,
+    		removeEmptyRows,
+    		newRow
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("entries" in $$props) $$invalidate(0, entries = $$props.entries);
+    		if ("category" in $$props) $$invalidate(1, category = $$props.category);
+    		if ("total" in $$props) $$invalidate(2, total = $$props.total);
+    		if ("HOG_evenOuter" in $$props) HOG_evenOuter = $$props.HOG_evenOuter;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*entries*/ 1) {
+    			{
+    				let len = entries.length;
+    				let last = entries[len - 1];
+
+    				if (len == 0 || !isEmptyEntry(last)) {
+    					newRow();
+    				}
+    			}
+    		}
+    	};
+
+    	return [
+    		entries,
+    		category,
+    		total,
+    		updateTable,
+    		input0_input_handler,
+    		input1_input_handler,
+    		input1_input_handler_1
+    	];
+    }
+
+    class NewCategory extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal$1, { entries: 0, category: 1 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "NewCategory",
+    			options,
+    			id: create_fragment$5.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*entries*/ ctx[0] === undefined && !("entries" in props)) {
+    			console.warn("<NewCategory> was created without expected prop 'entries'");
+    		}
+
+    		if (/*category*/ ctx[1] === undefined && !("category" in props)) {
+    			console.warn("<NewCategory> was created without expected prop 'category'");
+    		}
+    	}
+
+    	get entries() {
+    		throw new Error("<NewCategory>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set entries(value) {
+    		throw new Error("<NewCategory>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get category() {
+    		throw new Error("<NewCategory>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set category(value) {
+    		throw new Error("<NewCategory>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+    function createCommonjsModule(fn) {
+      var module = { exports: {} };
+    	return fn(module, module.exports), module.exports;
+    }
+
+    var page = createCommonjsModule(function (module, exports) {
+    (function (global, factory) {
+    	module.exports = factory() ;
+    }(commonjsGlobal, (function () {
+    var isarray = Array.isArray || function (arr) {
+      return Object.prototype.toString.call(arr) == '[object Array]';
+    };
+
+    /**
+     * Expose `pathToRegexp`.
+     */
+    var pathToRegexp_1 = pathToRegexp;
+    var parse_1 = parse;
+    var compile_1 = compile;
+    var tokensToFunction_1 = tokensToFunction;
+    var tokensToRegExp_1 = tokensToRegExp;
+
+    /**
+     * The main path matching regexp utility.
+     *
+     * @type {RegExp}
+     */
+    var PATH_REGEXP = new RegExp([
+      // Match escaped characters that would otherwise appear in future matches.
+      // This allows the user to escape special characters that won't transform.
+      '(\\\\.)',
+      // Match Express-style parameters and un-named parameters with a prefix
+      // and optional suffixes. Matches appear as:
+      //
+      // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
+      // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
+      // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
+      '([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^()])+)\\))?|\\(((?:\\\\.|[^()])+)\\))([+*?])?|(\\*))'
+    ].join('|'), 'g');
+
+    /**
+     * Parse a string for the raw tokens.
+     *
+     * @param  {String} str
+     * @return {Array}
+     */
+    function parse (str) {
+      var tokens = [];
+      var key = 0;
+      var index = 0;
+      var path = '';
+      var res;
+
+      while ((res = PATH_REGEXP.exec(str)) != null) {
+        var m = res[0];
+        var escaped = res[1];
+        var offset = res.index;
+        path += str.slice(index, offset);
+        index = offset + m.length;
+
+        // Ignore already escaped sequences.
+        if (escaped) {
+          path += escaped[1];
+          continue
+        }
+
+        // Push the current path onto the tokens.
+        if (path) {
+          tokens.push(path);
+          path = '';
+        }
+
+        var prefix = res[2];
+        var name = res[3];
+        var capture = res[4];
+        var group = res[5];
+        var suffix = res[6];
+        var asterisk = res[7];
+
+        var repeat = suffix === '+' || suffix === '*';
+        var optional = suffix === '?' || suffix === '*';
+        var delimiter = prefix || '/';
+        var pattern = capture || group || (asterisk ? '.*' : '[^' + delimiter + ']+?');
+
+        tokens.push({
+          name: name || key++,
+          prefix: prefix || '',
+          delimiter: delimiter,
+          optional: optional,
+          repeat: repeat,
+          pattern: escapeGroup(pattern)
+        });
+      }
+
+      // Match any characters still remaining.
+      if (index < str.length) {
+        path += str.substr(index);
+      }
+
+      // If the path exists, push it onto the end.
+      if (path) {
+        tokens.push(path);
+      }
+
+      return tokens
+    }
+
+    /**
+     * Compile a string to a template function for the path.
+     *
+     * @param  {String}   str
+     * @return {Function}
+     */
+    function compile (str) {
+      return tokensToFunction(parse(str))
+    }
+
+    /**
+     * Expose a method for transforming tokens into the path function.
+     */
+    function tokensToFunction (tokens) {
+      // Compile all the tokens into regexps.
+      var matches = new Array(tokens.length);
+
+      // Compile all the patterns before compilation.
+      for (var i = 0; i < tokens.length; i++) {
+        if (typeof tokens[i] === 'object') {
+          matches[i] = new RegExp('^' + tokens[i].pattern + '$');
+        }
+      }
+
+      return function (obj) {
+        var path = '';
+        var data = obj || {};
+
+        for (var i = 0; i < tokens.length; i++) {
+          var token = tokens[i];
+
+          if (typeof token === 'string') {
+            path += token;
+
+            continue
+          }
+
+          var value = data[token.name];
+          var segment;
+
+          if (value == null) {
+            if (token.optional) {
+              continue
+            } else {
+              throw new TypeError('Expected "' + token.name + '" to be defined')
+            }
+          }
+
+          if (isarray(value)) {
+            if (!token.repeat) {
+              throw new TypeError('Expected "' + token.name + '" to not repeat, but received "' + value + '"')
+            }
+
+            if (value.length === 0) {
+              if (token.optional) {
+                continue
+              } else {
+                throw new TypeError('Expected "' + token.name + '" to not be empty')
+              }
+            }
+
+            for (var j = 0; j < value.length; j++) {
+              segment = encodeURIComponent(value[j]);
+
+              if (!matches[i].test(segment)) {
+                throw new TypeError('Expected all "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"')
+              }
+
+              path += (j === 0 ? token.prefix : token.delimiter) + segment;
+            }
+
+            continue
+          }
+
+          segment = encodeURIComponent(value);
+
+          if (!matches[i].test(segment)) {
+            throw new TypeError('Expected "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"')
+          }
+
+          path += token.prefix + segment;
+        }
+
+        return path
+      }
+    }
+
+    /**
+     * Escape a regular expression string.
+     *
+     * @param  {String} str
+     * @return {String}
+     */
+    function escapeString (str) {
+      return str.replace(/([.+*?=^!:${}()[\]|\/])/g, '\\$1')
+    }
+
+    /**
+     * Escape the capturing group by escaping special characters and meaning.
+     *
+     * @param  {String} group
+     * @return {String}
+     */
+    function escapeGroup (group) {
+      return group.replace(/([=!:$\/()])/g, '\\$1')
+    }
+
+    /**
+     * Attach the keys as a property of the regexp.
+     *
+     * @param  {RegExp} re
+     * @param  {Array}  keys
+     * @return {RegExp}
+     */
+    function attachKeys (re, keys) {
+      re.keys = keys;
+      return re
+    }
+
+    /**
+     * Get the flags for a regexp from the options.
+     *
+     * @param  {Object} options
+     * @return {String}
+     */
+    function flags (options) {
+      return options.sensitive ? '' : 'i'
+    }
+
+    /**
+     * Pull out keys from a regexp.
+     *
+     * @param  {RegExp} path
+     * @param  {Array}  keys
+     * @return {RegExp}
+     */
+    function regexpToRegexp (path, keys) {
+      // Use a negative lookahead to match only capturing groups.
+      var groups = path.source.match(/\((?!\?)/g);
+
+      if (groups) {
+        for (var i = 0; i < groups.length; i++) {
+          keys.push({
+            name: i,
+            prefix: null,
+            delimiter: null,
+            optional: false,
+            repeat: false,
+            pattern: null
+          });
+        }
+      }
+
+      return attachKeys(path, keys)
+    }
+
+    /**
+     * Transform an array into a regexp.
+     *
+     * @param  {Array}  path
+     * @param  {Array}  keys
+     * @param  {Object} options
+     * @return {RegExp}
+     */
+    function arrayToRegexp (path, keys, options) {
+      var parts = [];
+
+      for (var i = 0; i < path.length; i++) {
+        parts.push(pathToRegexp(path[i], keys, options).source);
+      }
+
+      var regexp = new RegExp('(?:' + parts.join('|') + ')', flags(options));
+
+      return attachKeys(regexp, keys)
+    }
+
+    /**
+     * Create a path regexp from string input.
+     *
+     * @param  {String} path
+     * @param  {Array}  keys
+     * @param  {Object} options
+     * @return {RegExp}
+     */
+    function stringToRegexp (path, keys, options) {
+      var tokens = parse(path);
+      var re = tokensToRegExp(tokens, options);
+
+      // Attach keys back to the regexp.
+      for (var i = 0; i < tokens.length; i++) {
+        if (typeof tokens[i] !== 'string') {
+          keys.push(tokens[i]);
+        }
+      }
+
+      return attachKeys(re, keys)
+    }
+
+    /**
+     * Expose a function for taking tokens and returning a RegExp.
+     *
+     * @param  {Array}  tokens
+     * @param  {Array}  keys
+     * @param  {Object} options
+     * @return {RegExp}
+     */
+    function tokensToRegExp (tokens, options) {
+      options = options || {};
+
+      var strict = options.strict;
+      var end = options.end !== false;
+      var route = '';
+      var lastToken = tokens[tokens.length - 1];
+      var endsWithSlash = typeof lastToken === 'string' && /\/$/.test(lastToken);
+
+      // Iterate over the tokens and create our regexp string.
+      for (var i = 0; i < tokens.length; i++) {
+        var token = tokens[i];
+
+        if (typeof token === 'string') {
+          route += escapeString(token);
+        } else {
+          var prefix = escapeString(token.prefix);
+          var capture = token.pattern;
+
+          if (token.repeat) {
+            capture += '(?:' + prefix + capture + ')*';
+          }
+
+          if (token.optional) {
+            if (prefix) {
+              capture = '(?:' + prefix + '(' + capture + '))?';
+            } else {
+              capture = '(' + capture + ')?';
+            }
+          } else {
+            capture = prefix + '(' + capture + ')';
+          }
+
+          route += capture;
+        }
+      }
+
+      // In non-strict mode we allow a slash at the end of match. If the path to
+      // match already ends with a slash, we remove it for consistency. The slash
+      // is valid at the end of a path match, not in the middle. This is important
+      // in non-ending mode, where "/test/" shouldn't match "/test//route".
+      if (!strict) {
+        route = (endsWithSlash ? route.slice(0, -2) : route) + '(?:\\/(?=$))?';
+      }
+
+      if (end) {
+        route += '$';
+      } else {
+        // In non-ending mode, we need the capturing groups to match as much as
+        // possible by using a positive lookahead to the end or next path segment.
+        route += strict && endsWithSlash ? '' : '(?=\\/|$)';
+      }
+
+      return new RegExp('^' + route, flags(options))
+    }
+
+    /**
+     * Normalize the given path string, returning a regular expression.
+     *
+     * An empty array can be passed in for the keys, which will hold the
+     * placeholder key descriptions. For example, using `/user/:id`, `keys` will
+     * contain `[{ name: 'id', delimiter: '/', optional: false, repeat: false }]`.
+     *
+     * @param  {(String|RegExp|Array)} path
+     * @param  {Array}                 [keys]
+     * @param  {Object}                [options]
+     * @return {RegExp}
+     */
+    function pathToRegexp (path, keys, options) {
+      keys = keys || [];
+
+      if (!isarray(keys)) {
+        options = keys;
+        keys = [];
+      } else if (!options) {
+        options = {};
+      }
+
+      if (path instanceof RegExp) {
+        return regexpToRegexp(path, keys)
+      }
+
+      if (isarray(path)) {
+        return arrayToRegexp(path, keys, options)
+      }
+
+      return stringToRegexp(path, keys, options)
+    }
+
+    pathToRegexp_1.parse = parse_1;
+    pathToRegexp_1.compile = compile_1;
+    pathToRegexp_1.tokensToFunction = tokensToFunction_1;
+    pathToRegexp_1.tokensToRegExp = tokensToRegExp_1;
+
+    /**
+       * Module dependencies.
+       */
+
+      
+
+      /**
+       * Short-cuts for global-object checks
+       */
+
+      var hasDocument = ('undefined' !== typeof document);
+      var hasWindow = ('undefined' !== typeof window);
+      var hasHistory = ('undefined' !== typeof history);
+      var hasProcess = typeof process !== 'undefined';
+
+      /**
+       * Detect click event
+       */
+      var clickEvent = hasDocument && document.ontouchstart ? 'touchstart' : 'click';
+
+      /**
+       * To work properly with the URL
+       * history.location generated polyfill in https://github.com/devote/HTML5-History-API
+       */
+
+      var isLocation = hasWindow && !!(window.history.location || window.location);
+
+      /**
+       * The page instance
+       * @api private
+       */
+      function Page() {
+        // public things
+        this.callbacks = [];
+        this.exits = [];
+        this.current = '';
+        this.len = 0;
+
+        // private things
+        this._decodeURLComponents = true;
+        this._base = '';
+        this._strict = false;
+        this._running = false;
+        this._hashbang = false;
+
+        // bound functions
+        this.clickHandler = this.clickHandler.bind(this);
+        this._onpopstate = this._onpopstate.bind(this);
+      }
+
+      /**
+       * Configure the instance of page. This can be called multiple times.
+       *
+       * @param {Object} options
+       * @api public
+       */
+
+      Page.prototype.configure = function(options) {
+        var opts = options || {};
+
+        this._window = opts.window || (hasWindow && window);
+        this._decodeURLComponents = opts.decodeURLComponents !== false;
+        this._popstate = opts.popstate !== false && hasWindow;
+        this._click = opts.click !== false && hasDocument;
+        this._hashbang = !!opts.hashbang;
+
+        var _window = this._window;
+        if(this._popstate) {
+          _window.addEventListener('popstate', this._onpopstate, false);
+        } else if(hasWindow) {
+          _window.removeEventListener('popstate', this._onpopstate, false);
+        }
+
+        if (this._click) {
+          _window.document.addEventListener(clickEvent, this.clickHandler, false);
+        } else if(hasDocument) {
+          _window.document.removeEventListener(clickEvent, this.clickHandler, false);
+        }
+
+        if(this._hashbang && hasWindow && !hasHistory) {
+          _window.addEventListener('hashchange', this._onpopstate, false);
+        } else if(hasWindow) {
+          _window.removeEventListener('hashchange', this._onpopstate, false);
+        }
+      };
+
+      /**
+       * Get or set basepath to `path`.
+       *
+       * @param {string} path
+       * @api public
+       */
+
+      Page.prototype.base = function(path) {
+        if (0 === arguments.length) return this._base;
+        this._base = path;
+      };
+
+      /**
+       * Gets the `base`, which depends on whether we are using History or
+       * hashbang routing.
+
+       * @api private
+       */
+      Page.prototype._getBase = function() {
+        var base = this._base;
+        if(!!base) return base;
+        var loc = hasWindow && this._window && this._window.location;
+
+        if(hasWindow && this._hashbang && loc && loc.protocol === 'file:') {
+          base = loc.pathname;
+        }
+
+        return base;
+      };
+
+      /**
+       * Get or set strict path matching to `enable`
+       *
+       * @param {boolean} enable
+       * @api public
+       */
+
+      Page.prototype.strict = function(enable) {
+        if (0 === arguments.length) return this._strict;
+        this._strict = enable;
+      };
+
+
+      /**
+       * Bind with the given `options`.
+       *
+       * Options:
+       *
+       *    - `click` bind to click events [true]
+       *    - `popstate` bind to popstate [true]
+       *    - `dispatch` perform initial dispatch [true]
+       *
+       * @param {Object} options
+       * @api public
+       */
+
+      Page.prototype.start = function(options) {
+        var opts = options || {};
+        this.configure(opts);
+
+        if (false === opts.dispatch) return;
+        this._running = true;
+
+        var url;
+        if(isLocation) {
+          var window = this._window;
+          var loc = window.location;
+
+          if(this._hashbang && ~loc.hash.indexOf('#!')) {
+            url = loc.hash.substr(2) + loc.search;
+          } else if (this._hashbang) {
+            url = loc.search + loc.hash;
+          } else {
+            url = loc.pathname + loc.search + loc.hash;
+          }
+        }
+
+        this.replace(url, null, true, opts.dispatch);
+      };
+
+      /**
+       * Unbind click and popstate event handlers.
+       *
+       * @api public
+       */
+
+      Page.prototype.stop = function() {
+        if (!this._running) return;
+        this.current = '';
+        this.len = 0;
+        this._running = false;
+
+        var window = this._window;
+        this._click && window.document.removeEventListener(clickEvent, this.clickHandler, false);
+        hasWindow && window.removeEventListener('popstate', this._onpopstate, false);
+        hasWindow && window.removeEventListener('hashchange', this._onpopstate, false);
+      };
+
+      /**
+       * Show `path` with optional `state` object.
+       *
+       * @param {string} path
+       * @param {Object=} state
+       * @param {boolean=} dispatch
+       * @param {boolean=} push
+       * @return {!Context}
+       * @api public
+       */
+
+      Page.prototype.show = function(path, state, dispatch, push) {
+        var ctx = new Context(path, state, this),
+          prev = this.prevContext;
+        this.prevContext = ctx;
+        this.current = ctx.path;
+        if (false !== dispatch) this.dispatch(ctx, prev);
+        if (false !== ctx.handled && false !== push) ctx.pushState();
+        return ctx;
+      };
+
+      /**
+       * Goes back in the history
+       * Back should always let the current route push state and then go back.
+       *
+       * @param {string} path - fallback path to go back if no more history exists, if undefined defaults to page.base
+       * @param {Object=} state
+       * @api public
+       */
+
+      Page.prototype.back = function(path, state) {
+        var page = this;
+        if (this.len > 0) {
+          var window = this._window;
+          // this may need more testing to see if all browsers
+          // wait for the next tick to go back in history
+          hasHistory && window.history.back();
+          this.len--;
+        } else if (path) {
+          setTimeout(function() {
+            page.show(path, state);
+          });
+        } else {
+          setTimeout(function() {
+            page.show(page._getBase(), state);
+          });
+        }
+      };
+
+      /**
+       * Register route to redirect from one path to other
+       * or just redirect to another route
+       *
+       * @param {string} from - if param 'to' is undefined redirects to 'from'
+       * @param {string=} to
+       * @api public
+       */
+      Page.prototype.redirect = function(from, to) {
+        var inst = this;
+
+        // Define route from a path to another
+        if ('string' === typeof from && 'string' === typeof to) {
+          page.call(this, from, function(e) {
+            setTimeout(function() {
+              inst.replace(/** @type {!string} */ (to));
+            }, 0);
+          });
+        }
+
+        // Wait for the push state and replace it with another
+        if ('string' === typeof from && 'undefined' === typeof to) {
+          setTimeout(function() {
+            inst.replace(from);
+          }, 0);
+        }
+      };
+
+      /**
+       * Replace `path` with optional `state` object.
+       *
+       * @param {string} path
+       * @param {Object=} state
+       * @param {boolean=} init
+       * @param {boolean=} dispatch
+       * @return {!Context}
+       * @api public
+       */
+
+
+      Page.prototype.replace = function(path, state, init, dispatch) {
+        var ctx = new Context(path, state, this),
+          prev = this.prevContext;
+        this.prevContext = ctx;
+        this.current = ctx.path;
+        ctx.init = init;
+        ctx.save(); // save before dispatching, which may redirect
+        if (false !== dispatch) this.dispatch(ctx, prev);
+        return ctx;
+      };
+
+      /**
+       * Dispatch the given `ctx`.
+       *
+       * @param {Context} ctx
+       * @api private
+       */
+
+      Page.prototype.dispatch = function(ctx, prev) {
+        var i = 0, j = 0, page = this;
+
+        function nextExit() {
+          var fn = page.exits[j++];
+          if (!fn) return nextEnter();
+          fn(prev, nextExit);
+        }
+
+        function nextEnter() {
+          var fn = page.callbacks[i++];
+
+          if (ctx.path !== page.current) {
+            ctx.handled = false;
+            return;
+          }
+          if (!fn) return unhandled.call(page, ctx);
+          fn(ctx, nextEnter);
+        }
+
+        if (prev) {
+          nextExit();
+        } else {
+          nextEnter();
+        }
+      };
+
+      /**
+       * Register an exit route on `path` with
+       * callback `fn()`, which will be called
+       * on the previous context when a new
+       * page is visited.
+       */
+      Page.prototype.exit = function(path, fn) {
+        if (typeof path === 'function') {
+          return this.exit('*', path);
+        }
+
+        var route = new Route(path, null, this);
+        for (var i = 1; i < arguments.length; ++i) {
+          this.exits.push(route.middleware(arguments[i]));
+        }
+      };
+
+      /**
+       * Handle "click" events.
+       */
+
+      /* jshint +W054 */
+      Page.prototype.clickHandler = function(e) {
+        if (1 !== this._which(e)) return;
+
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+        if (e.defaultPrevented) return;
+
+        // ensure link
+        // use shadow dom when available if not, fall back to composedPath()
+        // for browsers that only have shady
+        var el = e.target;
+        var eventPath = e.path || (e.composedPath ? e.composedPath() : null);
+
+        if(eventPath) {
+          for (var i = 0; i < eventPath.length; i++) {
+            if (!eventPath[i].nodeName) continue;
+            if (eventPath[i].nodeName.toUpperCase() !== 'A') continue;
+            if (!eventPath[i].href) continue;
+
+            el = eventPath[i];
+            break;
+          }
+        }
+
+        // continue ensure link
+        // el.nodeName for svg links are 'a' instead of 'A'
+        while (el && 'A' !== el.nodeName.toUpperCase()) el = el.parentNode;
+        if (!el || 'A' !== el.nodeName.toUpperCase()) return;
+
+        // check if link is inside an svg
+        // in this case, both href and target are always inside an object
+        var svg = (typeof el.href === 'object') && el.href.constructor.name === 'SVGAnimatedString';
+
+        // Ignore if tag has
+        // 1. "download" attribute
+        // 2. rel="external" attribute
+        if (el.hasAttribute('download') || el.getAttribute('rel') === 'external') return;
+
+        // ensure non-hash for the same path
+        var link = el.getAttribute('href');
+        if(!this._hashbang && this._samePath(el) && (el.hash || '#' === link)) return;
+
+        // Check for mailto: in the href
+        if (link && link.indexOf('mailto:') > -1) return;
+
+        // check target
+        // svg target is an object and its desired value is in .baseVal property
+        if (svg ? el.target.baseVal : el.target) return;
+
+        // x-origin
+        // note: svg links that are not relative don't call click events (and skip page.js)
+        // consequently, all svg links tested inside page.js are relative and in the same origin
+        if (!svg && !this.sameOrigin(el.href)) return;
+
+        // rebuild path
+        // There aren't .pathname and .search properties in svg links, so we use href
+        // Also, svg href is an object and its desired value is in .baseVal property
+        var path = svg ? el.href.baseVal : (el.pathname + el.search + (el.hash || ''));
+
+        path = path[0] !== '/' ? '/' + path : path;
+
+        // strip leading "/[drive letter]:" on NW.js on Windows
+        if (hasProcess && path.match(/^\/[a-zA-Z]:\//)) {
+          path = path.replace(/^\/[a-zA-Z]:\//, '/');
+        }
+
+        // same page
+        var orig = path;
+        var pageBase = this._getBase();
+
+        if (path.indexOf(pageBase) === 0) {
+          path = path.substr(pageBase.length);
+        }
+
+        if (this._hashbang) path = path.replace('#!', '');
+
+        if (pageBase && orig === path && (!isLocation || this._window.location.protocol !== 'file:')) {
+          return;
+        }
+
+        e.preventDefault();
+        this.show(orig);
+      };
+
+      /**
+       * Handle "populate" events.
+       * @api private
+       */
+
+      Page.prototype._onpopstate = (function () {
+        var loaded = false;
+        if ( ! hasWindow ) {
+          return function () {};
+        }
+        if (hasDocument && document.readyState === 'complete') {
+          loaded = true;
+        } else {
+          window.addEventListener('load', function() {
+            setTimeout(function() {
+              loaded = true;
+            }, 0);
+          });
+        }
+        return function onpopstate(e) {
+          if (!loaded) return;
+          var page = this;
+          if (e.state) {
+            var path = e.state.path;
+            page.replace(path, e.state);
+          } else if (isLocation) {
+            var loc = page._window.location;
+            page.show(loc.pathname + loc.search + loc.hash, undefined, undefined, false);
+          }
+        };
+      })();
+
+      /**
+       * Event button.
+       */
+      Page.prototype._which = function(e) {
+        e = e || (hasWindow && this._window.event);
+        return null == e.which ? e.button : e.which;
+      };
+
+      /**
+       * Convert to a URL object
+       * @api private
+       */
+      Page.prototype._toURL = function(href) {
+        var window = this._window;
+        if(typeof URL === 'function' && isLocation) {
+          return new URL(href, window.location.toString());
+        } else if (hasDocument) {
+          var anc = window.document.createElement('a');
+          anc.href = href;
+          return anc;
+        }
+      };
+
+      /**
+       * Check if `href` is the same origin.
+       * @param {string} href
+       * @api public
+       */
+      Page.prototype.sameOrigin = function(href) {
+        if(!href || !isLocation) return false;
+
+        var url = this._toURL(href);
+        var window = this._window;
+
+        var loc = window.location;
+
+        /*
+           When the port is the default http port 80 for http, or 443 for
+           https, internet explorer 11 returns an empty string for loc.port,
+           so we need to compare loc.port with an empty string if url.port
+           is the default port 80 or 443.
+           Also the comparition with `port` is changed from `===` to `==` because
+           `port` can be a string sometimes. This only applies to ie11.
+        */
+        return loc.protocol === url.protocol &&
+          loc.hostname === url.hostname &&
+          (loc.port === url.port || loc.port === '' && (url.port == 80 || url.port == 443)); // jshint ignore:line
+      };
+
+      /**
+       * @api private
+       */
+      Page.prototype._samePath = function(url) {
+        if(!isLocation) return false;
+        var window = this._window;
+        var loc = window.location;
+        return url.pathname === loc.pathname &&
+          url.search === loc.search;
+      };
+
+      /**
+       * Remove URL encoding from the given `str`.
+       * Accommodates whitespace in both x-www-form-urlencoded
+       * and regular percent-encoded form.
+       *
+       * @param {string} val - URL component to decode
+       * @api private
+       */
+      Page.prototype._decodeURLEncodedURIComponent = function(val) {
+        if (typeof val !== 'string') { return val; }
+        return this._decodeURLComponents ? decodeURIComponent(val.replace(/\+/g, ' ')) : val;
+      };
+
+      /**
+       * Create a new `page` instance and function
+       */
+      function createPage() {
+        var pageInstance = new Page();
+
+        function pageFn(/* args */) {
+          return page.apply(pageInstance, arguments);
+        }
+
+        // Copy all of the things over. In 2.0 maybe we use setPrototypeOf
+        pageFn.callbacks = pageInstance.callbacks;
+        pageFn.exits = pageInstance.exits;
+        pageFn.base = pageInstance.base.bind(pageInstance);
+        pageFn.strict = pageInstance.strict.bind(pageInstance);
+        pageFn.start = pageInstance.start.bind(pageInstance);
+        pageFn.stop = pageInstance.stop.bind(pageInstance);
+        pageFn.show = pageInstance.show.bind(pageInstance);
+        pageFn.back = pageInstance.back.bind(pageInstance);
+        pageFn.redirect = pageInstance.redirect.bind(pageInstance);
+        pageFn.replace = pageInstance.replace.bind(pageInstance);
+        pageFn.dispatch = pageInstance.dispatch.bind(pageInstance);
+        pageFn.exit = pageInstance.exit.bind(pageInstance);
+        pageFn.configure = pageInstance.configure.bind(pageInstance);
+        pageFn.sameOrigin = pageInstance.sameOrigin.bind(pageInstance);
+        pageFn.clickHandler = pageInstance.clickHandler.bind(pageInstance);
+
+        pageFn.create = createPage;
+
+        Object.defineProperty(pageFn, 'len', {
+          get: function(){
+            return pageInstance.len;
+          },
+          set: function(val) {
+            pageInstance.len = val;
+          }
+        });
+
+        Object.defineProperty(pageFn, 'current', {
+          get: function(){
+            return pageInstance.current;
+          },
+          set: function(val) {
+            pageInstance.current = val;
+          }
+        });
+
+        // In 2.0 these can be named exports
+        pageFn.Context = Context;
+        pageFn.Route = Route;
+
+        return pageFn;
+      }
+
+      /**
+       * Register `path` with callback `fn()`,
+       * or route `path`, or redirection,
+       * or `page.start()`.
+       *
+       *   page(fn);
+       *   page('*', fn);
+       *   page('/user/:id', load, user);
+       *   page('/user/' + user.id, { some: 'thing' });
+       *   page('/user/' + user.id);
+       *   page('/from', '/to')
+       *   page();
+       *
+       * @param {string|!Function|!Object} path
+       * @param {Function=} fn
+       * @api public
+       */
+
+      function page(path, fn) {
+        // <callback>
+        if ('function' === typeof path) {
+          return page.call(this, '*', path);
+        }
+
+        // route <path> to <callback ...>
+        if ('function' === typeof fn) {
+          var route = new Route(/** @type {string} */ (path), null, this);
+          for (var i = 1; i < arguments.length; ++i) {
+            this.callbacks.push(route.middleware(arguments[i]));
+          }
+          // show <path> with [state]
+        } else if ('string' === typeof path) {
+          this['string' === typeof fn ? 'redirect' : 'show'](path, fn);
+          // start [options]
+        } else {
+          this.start(path);
+        }
+      }
+
+      /**
+       * Unhandled `ctx`. When it's not the initial
+       * popstate then redirect. If you wish to handle
+       * 404s on your own use `page('*', callback)`.
+       *
+       * @param {Context} ctx
+       * @api private
+       */
+      function unhandled(ctx) {
+        if (ctx.handled) return;
+        var current;
+        var page = this;
+        var window = page._window;
+
+        if (page._hashbang) {
+          current = isLocation && this._getBase() + window.location.hash.replace('#!', '');
+        } else {
+          current = isLocation && window.location.pathname + window.location.search;
+        }
+
+        if (current === ctx.canonicalPath) return;
+        page.stop();
+        ctx.handled = false;
+        isLocation && (window.location.href = ctx.canonicalPath);
+      }
+
+      /**
+       * Escapes RegExp characters in the given string.
+       *
+       * @param {string} s
+       * @api private
+       */
+      function escapeRegExp(s) {
+        return s.replace(/([.+*?=^!:${}()[\]|/\\])/g, '\\$1');
+      }
+
+      /**
+       * Initialize a new "request" `Context`
+       * with the given `path` and optional initial `state`.
+       *
+       * @constructor
+       * @param {string} path
+       * @param {Object=} state
+       * @api public
+       */
+
+      function Context(path, state, pageInstance) {
+        var _page = this.page = pageInstance || page;
+        var window = _page._window;
+        var hashbang = _page._hashbang;
+
+        var pageBase = _page._getBase();
+        if ('/' === path[0] && 0 !== path.indexOf(pageBase)) path = pageBase + (hashbang ? '#!' : '') + path;
+        var i = path.indexOf('?');
+
+        this.canonicalPath = path;
+        var re = new RegExp('^' + escapeRegExp(pageBase));
+        this.path = path.replace(re, '') || '/';
+        if (hashbang) this.path = this.path.replace('#!', '') || '/';
+
+        this.title = (hasDocument && window.document.title);
+        this.state = state || {};
+        this.state.path = path;
+        this.querystring = ~i ? _page._decodeURLEncodedURIComponent(path.slice(i + 1)) : '';
+        this.pathname = _page._decodeURLEncodedURIComponent(~i ? path.slice(0, i) : path);
+        this.params = {};
+
+        // fragment
+        this.hash = '';
+        if (!hashbang) {
+          if (!~this.path.indexOf('#')) return;
+          var parts = this.path.split('#');
+          this.path = this.pathname = parts[0];
+          this.hash = _page._decodeURLEncodedURIComponent(parts[1]) || '';
+          this.querystring = this.querystring.split('#')[0];
+        }
+      }
+
+      /**
+       * Push state.
+       *
+       * @api private
+       */
+
+      Context.prototype.pushState = function() {
+        var page = this.page;
+        var window = page._window;
+        var hashbang = page._hashbang;
+
+        page.len++;
+        if (hasHistory) {
+            window.history.pushState(this.state, this.title,
+              hashbang && this.path !== '/' ? '#!' + this.path : this.canonicalPath);
+        }
+      };
+
+      /**
+       * Save the context state.
+       *
+       * @api public
+       */
+
+      Context.prototype.save = function() {
+        var page = this.page;
+        if (hasHistory) {
+            page._window.history.replaceState(this.state, this.title,
+              page._hashbang && this.path !== '/' ? '#!' + this.path : this.canonicalPath);
+        }
+      };
+
+      /**
+       * Initialize `Route` with the given HTTP `path`,
+       * and an array of `callbacks` and `options`.
+       *
+       * Options:
+       *
+       *   - `sensitive`    enable case-sensitive routes
+       *   - `strict`       enable strict matching for trailing slashes
+       *
+       * @constructor
+       * @param {string} path
+       * @param {Object=} options
+       * @api private
+       */
+
+      function Route(path, options, page) {
+        var _page = this.page = page || globalPage;
+        var opts = options || {};
+        opts.strict = opts.strict || _page._strict;
+        this.path = (path === '*') ? '(.*)' : path;
+        this.method = 'GET';
+        this.regexp = pathToRegexp_1(this.path, this.keys = [], opts);
+      }
+
+      /**
+       * Return route middleware with
+       * the given callback `fn()`.
+       *
+       * @param {Function} fn
+       * @return {Function}
+       * @api public
+       */
+
+      Route.prototype.middleware = function(fn) {
+        var self = this;
+        return function(ctx, next) {
+          if (self.match(ctx.path, ctx.params)) {
+            ctx.routePath = self.path;
+            return fn(ctx, next);
+          }
+          next();
+        };
+      };
+
+      /**
+       * Check if this route matches `path`, if so
+       * populate `params`.
+       *
+       * @param {string} path
+       * @param {Object} params
+       * @return {boolean}
+       * @api private
+       */
+
+      Route.prototype.match = function(path, params) {
+        var keys = this.keys,
+          qsIndex = path.indexOf('?'),
+          pathname = ~qsIndex ? path.slice(0, qsIndex) : path,
+          m = this.regexp.exec(decodeURIComponent(pathname));
+
+        if (!m) return false;
+
+        delete params[0];
+
+        for (var i = 1, len = m.length; i < len; ++i) {
+          var key = keys[i - 1];
+          var val = this.page._decodeURLEncodedURIComponent(m[i]);
+          if (val !== undefined || !(hasOwnProperty.call(params, key.name))) {
+            params[key.name] = val;
+          }
+        }
+
+        return true;
+      };
+
+
+      /**
+       * Module exports.
+       */
+
+      var globalPage = createPage();
+      var page_js = globalPage;
+      var default_1 = globalPage;
+
+    page_js.default = default_1;
+
+    return page_js;
+
+    })));
+    });
+
+    /* src/components/create/NewBudget.svelte generated by Svelte v3.38.2 */
+
+    const { console: console_1 } = globals;
+    const file$2 = "src/components/create/NewBudget.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[8] = list[i];
+    	child_ctx[9] = list;
+    	child_ctx[10] = i;
+    	return child_ctx;
+    }
+
+    // (60:1) {:else}
+    function create_else_block$2(ctx) {
+    	let div0;
+    	let t0;
+    	let div1;
+    	let label;
+    	let t2;
+    	let input;
+    	let t3;
+    	let br;
+    	let t4;
+    	let button;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let each_value = /*data*/ ctx[2].categories;
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			div0 = element$1("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t0 = space();
+    			div1 = element$1("div");
+    			label = element$1("label");
+    			label.textContent = "Vilken månad gäller budgeten?";
+    			t2 = space();
+    			input = element$1("input");
+    			t3 = space();
+    			br = element$1("br");
+    			t4 = space();
+    			button = element$1("button");
+    			button.textContent = "Skicka";
+    			attr_dev(div0, "class", "budget-container svelte-mz7exr");
+    			add_location(div0, file$2, 60, 2, 1589);
+    			attr_dev(label, "for", "date");
+    			add_location(label, file$2, 69, 3, 1809);
+    			attr_dev(input, "id", "date");
+    			attr_dev(input, "class", "input-date svelte-mz7exr");
+    			attr_dev(input, "type", "text");
+    			add_location(input, file$2, 70, 3, 1868);
+    			add_location(br, file$2, 71, 3, 1946);
+    			attr_dev(button, "class", "btn waves-effect waves-light indigo");
+    			add_location(button, file$2, 72, 3, 1956);
+    			attr_dev(div1, "class", "center");
+    			add_location(div1, file$2, 68, 2, 1785);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div0, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div0, null);
+    			}
+
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, label);
+    			append_dev(div1, t2);
+    			append_dev(div1, input);
+    			set_input_value(input, /*dateString*/ ctx[0]);
+    			append_dev(div1, t3);
+    			append_dev(div1, br);
+    			append_dev(div1, t4);
+    			append_dev(div1, button);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[5]),
+    					listen_dev(button, "click", /*submit*/ ctx[3], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*data, seperated*/ 6) {
+    				each_value = /*data*/ ctx[2].categories;
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in$1(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						transition_in$1(each_blocks[i], 1);
+    						each_blocks[i].m(div0, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+
+    			if (dirty & /*dateString*/ 1 && input.value !== /*dateString*/ ctx[0]) {
+    				set_input_value(input, /*dateString*/ ctx[0]);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in$1(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div0);
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div1);
+    			mounted = false;
+    			run_all$1(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$2.name,
+    		type: "else",
+    		source: "(60:1) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (58:1) {#if data === undefined}
+    function create_if_block$2(ctx) {
+    	let p;
+
+    	const block = {
+    		c: function create() {
+    			p = element$1("p");
+    			p.textContent = "Hämtar standard raderna...";
+    			add_location(p, file$2, 58, 2, 1544);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    		},
+    		p: noop$1,
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$2.name,
+    		type: "if",
+    		source: "(58:1) {#if data === undefined}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (62:3) {#each data.categories as category}
+    function create_each_block(ctx) {
+    	let div;
+    	let newcategory;
+    	let updating_entries;
+    	let t;
+    	let current;
+
+    	function newcategory_entries_binding(value) {
+    		/*newcategory_entries_binding*/ ctx[4](value, /*category*/ ctx[8]);
+    	}
+
+    	let newcategory_props = { category: /*category*/ ctx[8] };
+
+    	if (/*seperated*/ ctx[1][/*category*/ ctx[8]] !== void 0) {
+    		newcategory_props.entries = /*seperated*/ ctx[1][/*category*/ ctx[8]];
+    	}
+
+    	newcategory = new NewCategory({ props: newcategory_props, $$inline: true });
+    	binding_callbacks$1.push(() => bind(newcategory, "entries", newcategory_entries_binding));
+
+    	const block = {
+    		c: function create() {
+    			div = element$1("div");
+    			create_component(newcategory.$$.fragment);
+    			t = space();
+    			attr_dev(div, "class", "budget svelte-mz7exr");
+    			add_location(div, file$2, 62, 4, 1663);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component$1(newcategory, div, null);
+    			append_dev(div, t);
+    			current = true;
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			const newcategory_changes = {};
+    			if (dirty & /*data*/ 4) newcategory_changes.category = /*category*/ ctx[8];
+
+    			if (!updating_entries && dirty & /*seperated, data*/ 6) {
+    				updating_entries = true;
+    				newcategory_changes.entries = /*seperated*/ ctx[1][/*category*/ ctx[8]];
+    				add_flush_callback(() => updating_entries = false);
+    			}
+
+    			newcategory.$set(newcategory_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(newcategory.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(newcategory.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component$1(newcategory);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(62:3) {#each data.categories as category}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$4(ctx) {
+    	let div;
+    	let current_block_type_index;
+    	let if_block;
+    	let current;
+    	const if_block_creators = [create_if_block$2, create_else_block$2];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*data*/ ctx[2] === undefined) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element$1("div");
+    			if_block.c();
+    			attr_dev(div, "id", "new-budget-wrapper");
+    			attr_dev(div, "class", "svelte-mz7exr");
+    			add_location(div, file$2, 56, 0, 1486);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			if_blocks[current_block_type_index].m(div, null);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
+
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				} else {
+    					if_block.p(ctx, dirty);
+    				}
+
+    				transition_in$1(if_block, 1);
+    				if_block.m(div, null);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if_blocks[current_block_type_index].d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$4.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$4($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("NewBudget", slots, []);
+    	const toast = new Toast$1();
+    	const now = new Date();
+    	let dateString = new Date(now.getFullYear(), now.getMonth() + 1, 5).toISOString().slice(0, 10);
+    	let seperated = [];
+    	let data;
+
+    	entry.getDefaultEntries().then(resp => {
+    		// Make sure that data.categories[0] is "Gemensamma"
+    		const gemensamma = resp.categories.indexOf("Gemensamma");
+
+    		if (gemensamma > 0) {
+    			let temporary = resp.categories[0];
+    			resp.categories[0] = resp.categories[gemensamma];
+    			resp.categories[gemensamma] = temporary;
+    		}
+
+    		// Separate the entries into its categories
+    		resp.categories.forEach(category => {
+    			$$invalidate(1, seperated[category] = resp.result.filter(entry => entry.Category.name === category), seperated);
+    		});
+
+    		$$invalidate(2, data = resp);
+    	});
+
+    	async function submit() {
+    		// combine all the categories into one array
+    		let combined = [];
+
+    		data.categories.forEach(category => {
+    			combined = [...combined, ...seperated[category]];
+    		});
+
+    		// remove any empty entries
+    		combined = combined.filter(entry => entry.value !== "" && entry.description !== "");
+
+    		// set the date of all the entries
+    		combined.forEach(entry => {
+    			entry.date = new Date(dateString);
+    		});
+
+    		try {
+    			console.dir(combined);
+    			await entry.newEntry(combined);
+    			toast.success("Budget sparad!");
+    			page("/");
+    		} catch(err) {
+    			toast.error("Något gick fel.");
+    			console.error(err.message);
+    		}
+    	}
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<NewBudget> was created with unknown prop '${key}'`);
+    	});
+
+    	function newcategory_entries_binding(value, category) {
+    		if ($$self.$$.not_equal(seperated[category], value)) {
+    			seperated[category] = value;
+    			$$invalidate(1, seperated);
+    		}
+    	}
+
+    	function input_input_handler() {
+    		dateString = this.value;
+    		$$invalidate(0, dateString);
+    	}
+
+    	$$self.$capture_state = () => ({
+    		entry,
+    		NewCategory,
+    		Toast: Toast$1,
+    		page,
+    		toast,
+    		now,
+    		dateString,
+    		seperated,
+    		data,
+    		submit
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("dateString" in $$props) $$invalidate(0, dateString = $$props.dateString);
+    		if ("seperated" in $$props) $$invalidate(1, seperated = $$props.seperated);
+    		if ("data" in $$props) $$invalidate(2, data = $$props.data);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [
+    		dateString,
+    		seperated,
+    		data,
+    		submit,
+    		newcategory_entries_binding,
+    		input_input_handler
+    	];
+    }
+
+    class NewBudget extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$4, create_fragment$4, safe_not_equal$1, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "NewBudget",
+    			options,
+    			id: create_fragment$4.name
+    		});
+    	}
+    }
+
+    /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
 
     Permission to use, copy, modify, and/or distribute this software for any
@@ -12,5 +5292,775 @@ var app=function(){"use strict";function t(){}function e(t){return t()}function 
     LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
     OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
     PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */var Ke=function(t,e){return(Ke=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n])})(t,e)};function Ue(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Class extends value "+String(e)+" is not a constructor or null");function n(){this.constructor=t}Ke(t,e),t.prototype=null===e?Object.create(e):(n.prototype=e.prototype,new n)}var Ze=function(){return(Ze=Object.assign||function(t){for(var e,n=1,r=arguments.length;n<r;n++)for(var o in e=arguments[n])Object.prototype.hasOwnProperty.call(e,o)&&(t[o]=e[o]);return t}).apply(this,arguments)};function Ve(t,e){var n={};for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&e.indexOf(r)<0&&(n[r]=t[r]);if(null!=t&&"function"==typeof Object.getOwnPropertySymbols){var o=0;for(r=Object.getOwnPropertySymbols(t);o<r.length;o++)e.indexOf(r[o])<0&&Object.prototype.propertyIsEnumerable.call(t,r[o])&&(n[r[o]]=t[r[o]])}return n}function We(t,e,n,r){return new(n||(n=Promise))((function(o,i){function a(t){try{s(r.next(t))}catch(t){i(t)}}function c(t){try{s(r.throw(t))}catch(t){i(t)}}function s(t){var e;t.done?o(t.value):(e=t.value,e instanceof n?e:new n((function(t){t(e)}))).then(a,c)}s((r=r.apply(t,e||[])).next())}))}function Xe(t,e){var n,r,o,i,a={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return i={next:c(0),throw:c(1),return:c(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function c(i){return function(c){return function(i){if(n)throw new TypeError("Generator is already executing.");for(;a;)try{if(n=1,r&&(o=2&i[0]?r.return:i[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,i[1])).done)return o;switch(r=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:return a.label++,{value:i[1],done:!1};case 5:a.label++,r=i[1],i=[0];continue;case 7:i=a.ops.pop(),a.trys.pop();continue;default:if(!((o=(o=a.trys).length>0&&o[o.length-1])||6!==i[0]&&2!==i[0])){a=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){a.label=i[1];break}if(6===i[0]&&a.label<o[1]){a.label=o[1],o=i;break}if(o&&a.label<o[2]){a.label=o[2],a.ops.push(i);break}o[2]&&a.ops.pop(),a.trys.pop();continue}i=e.call(t,a)}catch(t){i=[6,t],r=0}finally{n=o=0}if(5&i[0])throw i[1];return{value:i[0]?i[1]:void 0,done:!0}}([i,c])}}}var Fe="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};function ze(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}function Ne(t,e){return t(e={exports:{}},e.exports),e.exports}var Pe=function(t){return t&&t.Math==Math&&t},je=Pe("object"==typeof globalThis&&globalThis)||Pe("object"==typeof window&&window)||Pe("object"==typeof self&&self)||Pe("object"==typeof Fe&&Fe)||function(){return this}()||Function("return this")(),Ge=function(t){try{return!!t()}catch(t){return!0}},Ae=!Ge((function(){return 7!=Object.defineProperty({},1,{get:function(){return 7}})[1]})),Ye={}.propertyIsEnumerable,Be=Object.getOwnPropertyDescriptor,$e={f:Be&&!Ye.call({1:2},1)?function(t){var e=Be(this,t);return!!e&&e.enumerable}:Ye},Je=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}},qe={}.toString,He=function(t){return qe.call(t).slice(8,-1)},De="".split,Me=Ge((function(){return!Object("z").propertyIsEnumerable(0)}))?function(t){return"String"==He(t)?De.call(t,""):Object(t)}:Object,Qe=function(t){if(null==t)throw TypeError("Can't call method on "+t);return t},tn=function(t){return Me(Qe(t))},en=function(t){return"object"==typeof t?null!==t:"function"==typeof t},nn=function(t,e){if(!en(t))return t;var n,r;if(e&&"function"==typeof(n=t.toString)&&!en(r=n.call(t)))return r;if("function"==typeof(n=t.valueOf)&&!en(r=n.call(t)))return r;if(!e&&"function"==typeof(n=t.toString)&&!en(r=n.call(t)))return r;throw TypeError("Can't convert object to primitive value")},rn=function(t){return Object(Qe(t))},on={}.hasOwnProperty,an=function(t,e){return on.call(rn(t),e)},cn=je.document,sn=en(cn)&&en(cn.createElement),un=function(t){return sn?cn.createElement(t):{}},ln=!Ae&&!Ge((function(){return 7!=Object.defineProperty(un("div"),"a",{get:function(){return 7}}).a})),fn=Object.getOwnPropertyDescriptor,dn={f:Ae?fn:function(t,e){if(t=tn(t),e=nn(e,!0),ln)try{return fn(t,e)}catch(t){}if(an(t,e))return Je(!$e.f.call(t,e),t[e])}},pn=function(t){if(!en(t))throw TypeError(String(t)+" is not an object");return t},hn=Object.defineProperty,mn={f:Ae?hn:function(t,e,n){if(pn(t),e=nn(e,!0),pn(n),ln)try{return hn(t,e,n)}catch(t){}if("get"in n||"set"in n)throw TypeError("Accessors not supported");return"value"in n&&(t[e]=n.value),t}},yn=Ae?function(t,e,n){return mn.f(t,e,Je(1,n))}:function(t,e,n){return t[e]=n,t},gn=function(t,e){try{yn(je,t,e)}catch(n){je[t]=e}return e},vn=je["__core-js_shared__"]||gn("__core-js_shared__",{}),bn=Function.toString;"function"!=typeof vn.inspectSource&&(vn.inspectSource=function(t){return bn.call(t)});var wn,Sn,kn,_n=vn.inspectSource,xn=je.WeakMap,In="function"==typeof xn&&/native code/.test(_n(xn)),En=Ne((function(t){(t.exports=function(t,e){return vn[t]||(vn[t]=void 0!==e?e:{})})("versions",[]).push({version:"3.11.0",mode:"global",copyright:"© 2021 Denis Pushkarev (zloirock.ru)"})})),Tn=0,On=Math.random(),Rn=function(t){return"Symbol("+String(void 0===t?"":t)+")_"+(++Tn+On).toString(36)},Ln=En("keys"),Cn=function(t){return Ln[t]||(Ln[t]=Rn(t))},Kn={},Un=je.WeakMap;if(In){var Zn=vn.state||(vn.state=new Un),Vn=Zn.get,Wn=Zn.has,Xn=Zn.set;wn=function(t,e){if(Wn.call(Zn,t))throw new TypeError("Object already initialized");return e.facade=t,Xn.call(Zn,t,e),e},Sn=function(t){return Vn.call(Zn,t)||{}},kn=function(t){return Wn.call(Zn,t)}}else{var Fn=Cn("state");Kn[Fn]=!0,wn=function(t,e){if(an(t,Fn))throw new TypeError("Object already initialized");return e.facade=t,yn(t,Fn,e),e},Sn=function(t){return an(t,Fn)?t[Fn]:{}},kn=function(t){return an(t,Fn)}}var zn,Nn,Pn={set:wn,get:Sn,has:kn,enforce:function(t){return kn(t)?Sn(t):wn(t,{})},getterFor:function(t){return function(e){var n;if(!en(e)||(n=Sn(e)).type!==t)throw TypeError("Incompatible receiver, "+t+" required");return n}}},jn=Ne((function(t){var e=Pn.get,n=Pn.enforce,r=String(String).split("String");(t.exports=function(t,e,o,i){var a,c=!!i&&!!i.unsafe,s=!!i&&!!i.enumerable,u=!!i&&!!i.noTargetGet;"function"==typeof o&&("string"!=typeof e||an(o,"name")||yn(o,"name",e),(a=n(o)).source||(a.source=r.join("string"==typeof e?e:""))),t!==je?(c?!u&&t[e]&&(s=!0):delete t[e],s?t[e]=o:yn(t,e,o)):s?t[e]=o:gn(e,o)})(Function.prototype,"toString",(function(){return"function"==typeof this&&e(this).source||_n(this)}))})),Gn=je,An=function(t){return"function"==typeof t?t:void 0},Yn=function(t,e){return arguments.length<2?An(Gn[t])||An(je[t]):Gn[t]&&Gn[t][e]||je[t]&&je[t][e]},Bn=Math.ceil,$n=Math.floor,Jn=function(t){return isNaN(t=+t)?0:(t>0?$n:Bn)(t)},qn=Math.min,Hn=function(t){return t>0?qn(Jn(t),9007199254740991):0},Dn=Math.max,Mn=Math.min,Qn=function(t){return function(e,n,r){var o,i=tn(e),a=Hn(i.length),c=function(t,e){var n=Jn(t);return n<0?Dn(n+e,0):Mn(n,e)}(r,a);if(t&&n!=n){for(;a>c;)if((o=i[c++])!=o)return!0}else for(;a>c;c++)if((t||c in i)&&i[c]===n)return t||c||0;return!t&&-1}},tr={includes:Qn(!0),indexOf:Qn(!1)},er=tr.indexOf,nr=function(t,e){var n,r=tn(t),o=0,i=[];for(n in r)!an(Kn,n)&&an(r,n)&&i.push(n);for(;e.length>o;)an(r,n=e[o++])&&(~er(i,n)||i.push(n));return i},rr=["constructor","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","toLocaleString","toString","valueOf"],or=rr.concat("length","prototype"),ir={f:Object.getOwnPropertyNames||function(t){return nr(t,or)}},ar={f:Object.getOwnPropertySymbols},cr=Yn("Reflect","ownKeys")||function(t){var e=ir.f(pn(t)),n=ar.f;return n?e.concat(n(t)):e},sr=function(t,e){for(var n=cr(e),r=mn.f,o=dn.f,i=0;i<n.length;i++){var a=n[i];an(t,a)||r(t,a,o(e,a))}},ur=/#|\.prototype\./,lr=function(t,e){var n=dr[fr(t)];return n==hr||n!=pr&&("function"==typeof e?Ge(e):!!e)},fr=lr.normalize=function(t){return String(t).replace(ur,".").toLowerCase()},dr=lr.data={},pr=lr.NATIVE="N",hr=lr.POLYFILL="P",mr=lr,yr=dn.f,gr=function(t,e){var n,r,o,i,a,c=t.target,s=t.global,u=t.stat;if(n=s?je:u?je[c]||gn(c,{}):(je[c]||{}).prototype)for(r in e){if(i=e[r],o=t.noTargetGet?(a=yr(n,r))&&a.value:n[r],!mr(s?r:c+(u?".":"#")+r,t.forced)&&void 0!==o){if(typeof i==typeof o)continue;sr(i,o)}(t.sham||o&&o.sham)&&yn(i,"sham",!0),jn(n,r,i,t)}},vr="process"==He(je.process),br=Yn("navigator","userAgent")||"",wr=je.process,Sr=wr&&wr.versions,kr=Sr&&Sr.v8;kr?Nn=(zn=kr.split("."))[0]+zn[1]:br&&(!(zn=br.match(/Edge\/(\d+)/))||zn[1]>=74)&&(zn=br.match(/Chrome\/(\d+)/))&&(Nn=zn[1]);var _r,xr=Nn&&+Nn,Ir=!!Object.getOwnPropertySymbols&&!Ge((function(){return!Symbol.sham&&(vr?38===xr:xr>37&&xr<41)})),Er=Ir&&!Symbol.sham&&"symbol"==typeof Symbol.iterator,Tr=En("wks"),Or=je.Symbol,Rr=Er?Or:Or&&Or.withoutSetter||Rn,Lr=function(t){return an(Tr,t)&&(Ir||"string"==typeof Tr[t])||(Ir&&an(Or,t)?Tr[t]=Or[t]:Tr[t]=Rr("Symbol."+t)),Tr[t]},Cr=Lr("match"),Kr=function(t){if(function(t){var e;return en(t)&&(void 0!==(e=t[Cr])?!!e:"RegExp"==He(t))}(t))throw TypeError("The method doesn't accept regular expressions");return t},Ur=Lr("match"),Zr=function(t){var e=/./;try{"/./"[t](e)}catch(n){try{return e[Ur]=!1,"/./"[t](e)}catch(t){}}return!1},Vr=dn.f,Wr="".startsWith,Xr=Math.min,Fr=Zr("startsWith"),zr=!(Fr||(_r=Vr(String.prototype,"startsWith"),!_r||_r.writable));gr({target:"String",proto:!0,forced:!zr&&!Fr},{startsWith:function(t){var e=String(Qe(this));Kr(t);var n=Hn(Xr(arguments.length>1?arguments[1]:void 0,e.length)),r=String(t);return Wr?Wr.call(e,r,n):e.slice(n,n+r.length)===r}});var Nr=function(t){if("function"!=typeof t)throw TypeError(String(t)+" is not a function");return t},Pr=function(t,e,n){if(Nr(t),void 0===e)return t;switch(n){case 0:return function(){return t.call(e)};case 1:return function(n){return t.call(e,n)};case 2:return function(n,r){return t.call(e,n,r)};case 3:return function(n,r,o){return t.call(e,n,r,o)}}return function(){return t.apply(e,arguments)}},jr=Function.call,Gr=function(t,e,n){return Pr(jr,je[t].prototype[e],n)};Gr("String","startsWith");var Ar=Array.isArray||function(t){return"Array"==He(t)},Yr=function(t,e,n){var r=nn(e);r in t?mn.f(t,r,Je(0,n)):t[r]=n},Br=Lr("species"),$r=function(t,e){var n;return Ar(t)&&("function"!=typeof(n=t.constructor)||n!==Array&&!Ar(n.prototype)?en(n)&&null===(n=n[Br])&&(n=void 0):n=void 0),new(void 0===n?Array:n)(0===e?0:e)},Jr=Lr("species"),qr=Lr("isConcatSpreadable"),Hr=xr>=51||!Ge((function(){var t=[];return t[qr]=!1,t.concat()[0]!==t})),Dr=xr>=51||!Ge((function(){var t=[];return(t.constructor={})[Jr]=function(){return{foo:1}},1!==t.concat(Boolean).foo})),Mr=function(t){if(!en(t))return!1;var e=t[qr];return void 0!==e?!!e:Ar(t)};gr({target:"Array",proto:!0,forced:!Hr||!Dr},{concat:function(t){var e,n,r,o,i,a=rn(this),c=$r(a,0),s=0;for(e=-1,r=arguments.length;e<r;e++)if(Mr(i=-1===e?a:arguments[e])){if(s+(o=Hn(i.length))>9007199254740991)throw TypeError("Maximum allowed index exceeded");for(n=0;n<o;n++,s++)n in i&&Yr(c,s,i[n])}else{if(s>=9007199254740991)throw TypeError("Maximum allowed index exceeded");Yr(c,s++,i)}return c.length=s,c}});var Qr={};Qr[Lr("toStringTag")]="z";var to="[object z]"===String(Qr),eo=Lr("toStringTag"),no="Arguments"==He(function(){return arguments}()),ro=to?He:function(t){var e,n,r;return void 0===t?"Undefined":null===t?"Null":"string"==typeof(n=function(t,e){try{return t[e]}catch(t){}}(e=Object(t),eo))?n:no?He(e):"Object"==(r=He(e))&&"function"==typeof e.callee?"Arguments":r},oo=to?{}.toString:function(){return"[object "+ro(this)+"]"};to||jn(Object.prototype,"toString",oo,{unsafe:!0});var io,ao=Object.keys||function(t){return nr(t,rr)},co=Ae?Object.defineProperties:function(t,e){pn(t);for(var n,r=ao(e),o=r.length,i=0;o>i;)mn.f(t,n=r[i++],e[n]);return t},so=Yn("document","documentElement"),uo=Cn("IE_PROTO"),lo=function(){},fo=function(t){return"<script>"+t+"<\/script>"},po=function(){try{io=document.domain&&new ActiveXObject("htmlfile")}catch(t){}var t,e;po=io?function(t){t.write(fo("")),t.close();var e=t.parentWindow.Object;return t=null,e}(io):((e=un("iframe")).style.display="none",so.appendChild(e),e.src=String("javascript:"),(t=e.contentWindow.document).open(),t.write(fo("document.F=Object")),t.close(),t.F);for(var n=rr.length;n--;)delete po.prototype[rr[n]];return po()};Kn[uo]=!0;var ho=Object.create||function(t,e){var n;return null!==t?(lo.prototype=pn(t),n=new lo,lo.prototype=null,n[uo]=t):n=po(),void 0===e?n:co(n,e)},mo=ir.f,yo={}.toString,go="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],vo={f:function(t){return go&&"[object Window]"==yo.call(t)?function(t){try{return mo(t)}catch(t){return go.slice()}}(t):mo(tn(t))}},bo={f:Lr},wo=mn.f,So=function(t){var e=Gn.Symbol||(Gn.Symbol={});an(e,t)||wo(e,t,{value:bo.f(t)})},ko=mn.f,_o=Lr("toStringTag"),xo=function(t,e,n){t&&!an(t=n?t:t.prototype,_o)&&ko(t,_o,{configurable:!0,value:e})},Io=[].push,Eo=function(t){var e=1==t,n=2==t,r=3==t,o=4==t,i=6==t,a=7==t,c=5==t||i;return function(s,u,l,f){for(var d,p,h=rn(s),m=Me(h),y=Pr(u,l,3),g=Hn(m.length),v=0,b=f||$r,w=e?b(s,g):n||a?b(s,0):void 0;g>v;v++)if((c||v in m)&&(p=y(d=m[v],v,h),t))if(e)w[v]=p;else if(p)switch(t){case 3:return!0;case 5:return d;case 6:return v;case 2:Io.call(w,d)}else switch(t){case 4:return!1;case 7:Io.call(w,d)}return i?-1:r||o?o:w}},To=[Eo(0),Eo(1),Eo(2),Eo(3),Eo(4),Eo(5),Eo(6),Eo(7)][0],Oo=Cn("hidden"),Ro=Lr("toPrimitive"),Lo=Pn.set,Co=Pn.getterFor("Symbol"),Ko=Object.prototype,Uo=je.Symbol,Zo=Yn("JSON","stringify"),Vo=dn.f,Wo=mn.f,Xo=vo.f,Fo=$e.f,zo=En("symbols"),No=En("op-symbols"),Po=En("string-to-symbol-registry"),jo=En("symbol-to-string-registry"),Go=En("wks"),Ao=je.QObject,Yo=!Ao||!Ao.prototype||!Ao.prototype.findChild,Bo=Ae&&Ge((function(){return 7!=ho(Wo({},"a",{get:function(){return Wo(this,"a",{value:7}).a}})).a}))?function(t,e,n){var r=Vo(Ko,e);r&&delete Ko[e],Wo(t,e,n),r&&t!==Ko&&Wo(Ko,e,r)}:Wo,$o=function(t,e){var n=zo[t]=ho(Uo.prototype);return Lo(n,{type:"Symbol",tag:t,description:e}),Ae||(n.description=e),n},Jo=Er?function(t){return"symbol"==typeof t}:function(t){return Object(t)instanceof Uo},qo=function(t,e,n){t===Ko&&qo(No,e,n),pn(t);var r=nn(e,!0);return pn(n),an(zo,r)?(n.enumerable?(an(t,Oo)&&t[Oo][r]&&(t[Oo][r]=!1),n=ho(n,{enumerable:Je(0,!1)})):(an(t,Oo)||Wo(t,Oo,Je(1,{})),t[Oo][r]=!0),Bo(t,r,n)):Wo(t,r,n)},Ho=function(t,e){pn(t);var n=tn(e),r=ao(n).concat(ti(n));return To(r,(function(e){Ae&&!Do.call(n,e)||qo(t,e,n[e])})),t},Do=function(t){var e=nn(t,!0),n=Fo.call(this,e);return!(this===Ko&&an(zo,e)&&!an(No,e))&&(!(n||!an(this,e)||!an(zo,e)||an(this,Oo)&&this[Oo][e])||n)},Mo=function(t,e){var n=tn(t),r=nn(e,!0);if(n!==Ko||!an(zo,r)||an(No,r)){var o=Vo(n,r);return!o||!an(zo,r)||an(n,Oo)&&n[Oo][r]||(o.enumerable=!0),o}},Qo=function(t){var e=Xo(tn(t)),n=[];return To(e,(function(t){an(zo,t)||an(Kn,t)||n.push(t)})),n},ti=function(t){var e=t===Ko,n=Xo(e?No:tn(t)),r=[];return To(n,(function(t){!an(zo,t)||e&&!an(Ko,t)||r.push(zo[t])})),r};if(Ir||(jn((Uo=function(){if(this instanceof Uo)throw TypeError("Symbol is not a constructor");var t=arguments.length&&void 0!==arguments[0]?String(arguments[0]):void 0,e=Rn(t),n=function(t){this===Ko&&n.call(No,t),an(this,Oo)&&an(this[Oo],e)&&(this[Oo][e]=!1),Bo(this,e,Je(1,t))};return Ae&&Yo&&Bo(Ko,e,{configurable:!0,set:n}),$o(e,t)}).prototype,"toString",(function(){return Co(this).tag})),jn(Uo,"withoutSetter",(function(t){return $o(Rn(t),t)})),$e.f=Do,mn.f=qo,dn.f=Mo,ir.f=vo.f=Qo,ar.f=ti,bo.f=function(t){return $o(Lr(t),t)},Ae&&(Wo(Uo.prototype,"description",{configurable:!0,get:function(){return Co(this).description}}),jn(Ko,"propertyIsEnumerable",Do,{unsafe:!0}))),gr({global:!0,wrap:!0,forced:!Ir,sham:!Ir},{Symbol:Uo}),To(ao(Go),(function(t){So(t)})),gr({target:"Symbol",stat:!0,forced:!Ir},{for:function(t){var e=String(t);if(an(Po,e))return Po[e];var n=Uo(e);return Po[e]=n,jo[n]=e,n},keyFor:function(t){if(!Jo(t))throw TypeError(t+" is not a symbol");if(an(jo,t))return jo[t]},useSetter:function(){Yo=!0},useSimple:function(){Yo=!1}}),gr({target:"Object",stat:!0,forced:!Ir,sham:!Ae},{create:function(t,e){return void 0===e?ho(t):Ho(ho(t),e)},defineProperty:qo,defineProperties:Ho,getOwnPropertyDescriptor:Mo}),gr({target:"Object",stat:!0,forced:!Ir},{getOwnPropertyNames:Qo,getOwnPropertySymbols:ti}),gr({target:"Object",stat:!0,forced:Ge((function(){ar.f(1)}))},{getOwnPropertySymbols:function(t){return ar.f(rn(t))}}),Zo){var ei=!Ir||Ge((function(){var t=Uo();return"[null]"!=Zo([t])||"{}"!=Zo({a:t})||"{}"!=Zo(Object(t))}));gr({target:"JSON",stat:!0,forced:ei},{stringify:function(t,e,n){for(var r,o=[t],i=1;arguments.length>i;)o.push(arguments[i++]);if(r=e,(en(e)||void 0!==t)&&!Jo(t))return Ar(e)||(e=function(t,e){if("function"==typeof r&&(e=r.call(this,t,e)),!Jo(e))return e}),o[1]=e,Zo.apply(null,o)}})}Uo.prototype[Ro]||yn(Uo.prototype,Ro,Uo.prototype.valueOf),xo(Uo,"Symbol"),Kn[Oo]=!0,So("asyncIterator");var ni=mn.f,ri=je.Symbol;if(Ae&&"function"==typeof ri&&(!("description"in ri.prototype)||void 0!==ri().description)){var oi={},ii=function(){var t=arguments.length<1||void 0===arguments[0]?void 0:String(arguments[0]),e=this instanceof ii?new ri(t):void 0===t?ri():ri(t);return""===t&&(oi[e]=!0),e};sr(ii,ri);var ai=ii.prototype=ri.prototype;ai.constructor=ii;var ci=ai.toString,si="Symbol(test)"==String(ri("test")),ui=/^Symbol\((.*)\)[^)]+$/;ni(ai,"description",{configurable:!0,get:function(){var t=en(this)?this.valueOf():this,e=ci.call(t);if(an(oi,t))return"";var n=si?e.slice(7,-1):e.replace(ui,"$1");return""===n?void 0:n}}),gr({global:!0,forced:!0},{Symbol:ii})}So("hasInstance"),So("isConcatSpreadable"),So("iterator"),So("match"),So("matchAll"),So("replace"),So("search"),So("species"),So("split"),So("toPrimitive"),So("toStringTag"),So("unscopables"),xo(je.JSON,"JSON",!0),xo(Math,"Math",!0),gr({global:!0},{Reflect:{}}),xo(je.Reflect,"Reflect",!0),Gn.Symbol;var li,fi,di,pi=function(t){return function(e,n){var r,o,i=String(Qe(e)),a=Jn(n),c=i.length;return a<0||a>=c?t?"":void 0:(r=i.charCodeAt(a))<55296||r>56319||a+1===c||(o=i.charCodeAt(a+1))<56320||o>57343?t?i.charAt(a):r:t?i.slice(a,a+2):o-56320+(r-55296<<10)+65536}},hi={codeAt:pi(!1),charAt:pi(!0)},mi=!Ge((function(){function t(){}return t.prototype.constructor=null,Object.getPrototypeOf(new t)!==t.prototype})),yi=Cn("IE_PROTO"),gi=Object.prototype,vi=mi?Object.getPrototypeOf:function(t){return t=rn(t),an(t,yi)?t[yi]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?gi:null},bi=Lr("iterator"),wi=!1;[].keys&&("next"in(di=[].keys())?(fi=vi(vi(di)))!==Object.prototype&&(li=fi):wi=!0),(null==li||Ge((function(){var t={};return li[bi].call(t)!==t})))&&(li={}),an(li,bi)||yn(li,bi,(function(){return this}));var Si={IteratorPrototype:li,BUGGY_SAFARI_ITERATORS:wi},ki={},_i=Si.IteratorPrototype,xi=function(){return this},Ii=Object.setPrototypeOf||("__proto__"in{}?function(){var t,e=!1,n={};try{(t=Object.getOwnPropertyDescriptor(Object.prototype,"__proto__").set).call(n,[]),e=n instanceof Array}catch(t){}return function(n,r){return pn(n),function(t){if(!en(t)&&null!==t)throw TypeError("Can't set "+String(t)+" as a prototype")}(r),e?t.call(n,r):n.__proto__=r,n}}():void 0),Ei=Si.IteratorPrototype,Ti=Si.BUGGY_SAFARI_ITERATORS,Oi=Lr("iterator"),Ri=function(){return this},Li=function(t,e,n,r,o,i,a){!function(t,e,n){var r=e+" Iterator";t.prototype=ho(_i,{next:Je(1,n)}),xo(t,r,!1),ki[r]=xi}(n,e,r);var c,s,u,l=function(t){if(t===o&&m)return m;if(!Ti&&t in p)return p[t];switch(t){case"keys":case"values":case"entries":return function(){return new n(this,t)}}return function(){return new n(this)}},f=e+" Iterator",d=!1,p=t.prototype,h=p[Oi]||p["@@iterator"]||o&&p[o],m=!Ti&&h||l(o),y="Array"==e&&p.entries||h;if(y&&(c=vi(y.call(new t)),Ei!==Object.prototype&&c.next&&(vi(c)!==Ei&&(Ii?Ii(c,Ei):"function"!=typeof c[Oi]&&yn(c,Oi,Ri)),xo(c,f,!0))),"values"==o&&h&&"values"!==h.name&&(d=!0,m=function(){return h.call(this)}),p[Oi]!==m&&yn(p,Oi,m),ki[e]=m,o)if(s={values:l("values"),keys:i?m:l("keys"),entries:l("entries")},a)for(u in s)(Ti||d||!(u in p))&&jn(p,u,s[u]);else gr({target:e,proto:!0,forced:Ti||d},s);return s},Ci=hi.charAt,Ki=Pn.set,Ui=Pn.getterFor("String Iterator");Li(String,"String",(function(t){Ki(this,{type:"String Iterator",string:String(t),index:0})}),(function(){var t,e=Ui(this),n=e.string,r=e.index;return r>=n.length?{value:void 0,done:!0}:(t=Ci(n,r),e.index+=t.length,{value:t,done:!1})}));var Zi=function(t){var e=t.return;if(void 0!==e)return pn(e.call(t)).value},Vi=function(t,e,n,r){try{return r?e(pn(n)[0],n[1]):e(n)}catch(e){throw Zi(t),e}},Wi=Lr("iterator"),Xi=Array.prototype,Fi=function(t){return void 0!==t&&(ki.Array===t||Xi[Wi]===t)},zi=Lr("iterator"),Ni=function(t){if(null!=t)return t[zi]||t["@@iterator"]||ki[ro(t)]},Pi=Lr("iterator"),ji=!1;try{var Gi=0,Ai={next:function(){return{done:!!Gi++}},return:function(){ji=!0}};Ai[Pi]=function(){return this},Array.from(Ai,(function(){throw 2}))}catch(Ke){}var Yi=function(t,e){if(!e&&!ji)return!1;var n=!1;try{var r={};r[Pi]=function(){return{next:function(){return{done:n=!0}}}},t(r)}catch(t){}return n},Bi=!Yi((function(t){Array.from(t)}));gr({target:"Array",stat:!0,forced:Bi},{from:function(t){var e,n,r,o,i,a,c=rn(t),s="function"==typeof this?this:Array,u=arguments.length,l=u>1?arguments[1]:void 0,f=void 0!==l,d=Ni(c),p=0;if(f&&(l=Pr(l,u>2?arguments[2]:void 0,2)),null==d||s==Array&&Fi(d))for(n=new s(e=Hn(c.length));e>p;p++)a=f?l(c[p],p):c[p],Yr(n,p,a);else for(i=(o=d.call(c)).next,n=new s;!(r=i.call(o)).done;p++)a=f?Vi(o,l,[r.value,p],!0):r.value,Yr(n,p,a);return n.length=p,n}}),Gn.Array.from;var $i,Ji="undefined"!=typeof ArrayBuffer&&"undefined"!=typeof DataView,qi=mn.f,Hi=je.Int8Array,Di=Hi&&Hi.prototype,Mi=je.Uint8ClampedArray,Qi=Mi&&Mi.prototype,ta=Hi&&vi(Hi),ea=Di&&vi(Di),na=Object.prototype,ra=na.isPrototypeOf,oa=Lr("toStringTag"),ia=Rn("TYPED_ARRAY_TAG"),aa=Ji&&!!Ii&&"Opera"!==ro(je.opera),ca={Int8Array:1,Uint8Array:1,Uint8ClampedArray:1,Int16Array:2,Uint16Array:2,Int32Array:4,Uint32Array:4,Float32Array:4,Float64Array:8},sa={BigInt64Array:8,BigUint64Array:8};for($i in ca)je[$i]||(aa=!1);if((!aa||"function"!=typeof ta||ta===Function.prototype)&&(ta=function(){throw TypeError("Incorrect invocation")},aa))for($i in ca)je[$i]&&Ii(je[$i],ta);if((!aa||!ea||ea===na)&&(ea=ta.prototype,aa))for($i in ca)je[$i]&&Ii(je[$i].prototype,ea);if(aa&&vi(Qi)!==ea&&Ii(Qi,ea),Ae&&!an(ea,oa))for($i in qi(ea,oa,{get:function(){return en(this)?this[ia]:void 0}}),ca)je[$i]&&yn(je[$i],ia,$i);var ua=Lr("species"),la=function(t){if(function(t){if(!en(t))return!1;var e=ro(t);return an(ca,e)||an(sa,e)}(t))return t;throw TypeError("Target is not a typed array")},fa=function(t){if(Ii){if(ra.call(ta,t))return t}else for(var e in ca)if(an(ca,$i)){var n=je[e];if(n&&(t===n||ra.call(n,t)))return t}throw TypeError("Target is not a typed array constructor")},da=[].slice;!function(t,e,n){if(Ae){if(n)for(var r in ca){var o=je[r];o&&an(o.prototype,t)&&delete o.prototype[t]}ea[t]&&!n||jn(ea,t,n?e:aa&&Di[t]||e)}}("slice",(function(t,e){for(var n=da.call(la(this),t,e),r=function(t,e){var n,r=pn(t).constructor;return void 0===r||null==(n=pn(r)[ua])?e:Nr(n)}(this,this.constructor),o=0,i=n.length,a=new(fa(r))(i);i>o;)a[o]=n[o++];return a}),Ge((function(){new Int8Array(1).slice()})));var pa=Lr("unscopables"),ha=Array.prototype;null==ha[pa]&&mn.f(ha,pa,{configurable:!0,value:ho(null)});var ma=function(t){ha[pa][t]=!0},ya=tr.includes;gr({target:"Array",proto:!0},{includes:function(t){return ya(this,t,arguments.length>1?arguments[1]:void 0)}}),ma("includes"),Gr("Array","includes"),gr({target:"String",proto:!0,forced:!Zr("includes")},{includes:function(t){return!!~String(Qe(this)).indexOf(Kr(t),arguments.length>1?arguments[1]:void 0)}}),Gr("String","includes");var ga=!Ge((function(){return Object.isExtensible(Object.preventExtensions({}))})),va=Ne((function(t){var e=mn.f,n=Rn("meta"),r=0,o=Object.isExtensible||function(){return!0},i=function(t){e(t,n,{value:{objectID:"O"+ ++r,weakData:{}}})},a=t.exports={REQUIRED:!1,fastKey:function(t,e){if(!en(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!an(t,n)){if(!o(t))return"F";if(!e)return"E";i(t)}return t[n].objectID},getWeakData:function(t,e){if(!an(t,n)){if(!o(t))return!0;if(!e)return!1;i(t)}return t[n].weakData},onFreeze:function(t){return ga&&a.REQUIRED&&o(t)&&!an(t,n)&&i(t),t}};Kn[n]=!0}));va.REQUIRED,va.fastKey,va.getWeakData,va.onFreeze;var ba=function(t,e){this.stopped=t,this.result=e},wa=function(t,e,n){var r,o,i,a,c,s,u,l=n&&n.that,f=!(!n||!n.AS_ENTRIES),d=!(!n||!n.IS_ITERATOR),p=!(!n||!n.INTERRUPTED),h=Pr(e,l,1+f+p),m=function(t){return r&&Zi(r),new ba(!0,t)},y=function(t){return f?(pn(t),p?h(t[0],t[1],m):h(t[0],t[1])):p?h(t,m):h(t)};if(d)r=t;else{if("function"!=typeof(o=Ni(t)))throw TypeError("Target is not iterable");if(Fi(o)){for(i=0,a=Hn(t.length);a>i;i++)if((c=y(t[i]))&&c instanceof ba)return c;return new ba(!1)}r=o.call(t)}for(s=r.next;!(u=s.call(r)).done;){try{c=y(u.value)}catch(t){throw Zi(r),t}if("object"==typeof c&&c&&c instanceof ba)return c}return new ba(!1)},Sa=function(t,e,n){if(!(t instanceof e))throw TypeError("Incorrect "+(n?n+" ":"")+"invocation");return t},ka=function(t,e,n){for(var r in e)jn(t,r,e[r],n);return t},_a=Lr("species"),xa=mn.f,Ia=va.fastKey,Ea=Pn.set,Ta=Pn.getterFor;!function(t,e,n){var r=-1!==t.indexOf("Map"),o=-1!==t.indexOf("Weak"),i=r?"set":"add",a=je[t],c=a&&a.prototype,s=a,u={},l=function(t){var e=c[t];jn(c,t,"add"==t?function(t){return e.call(this,0===t?0:t),this}:"delete"==t?function(t){return!(o&&!en(t))&&e.call(this,0===t?0:t)}:"get"==t?function(t){return o&&!en(t)?void 0:e.call(this,0===t?0:t)}:"has"==t?function(t){return!(o&&!en(t))&&e.call(this,0===t?0:t)}:function(t,n){return e.call(this,0===t?0:t,n),this})};if(mr(t,"function"!=typeof a||!(o||c.forEach&&!Ge((function(){(new a).entries().next()})))))s=n.getConstructor(e,t,r,i),va.REQUIRED=!0;else if(mr(t,!0)){var f=new s,d=f[i](o?{}:-0,1)!=f,p=Ge((function(){f.has(1)})),h=Yi((function(t){new a(t)})),m=!o&&Ge((function(){for(var t=new a,e=5;e--;)t[i](e,e);return!t.has(-0)}));h||((s=e((function(e,n){Sa(e,s,t);var o=function(t,e,n){var r,o;return Ii&&"function"==typeof(r=e.constructor)&&r!==n&&en(o=r.prototype)&&o!==n.prototype&&Ii(t,o),t}(new a,e,s);return null!=n&&wa(n,o[i],{that:o,AS_ENTRIES:r}),o}))).prototype=c,c.constructor=s),(p||m)&&(l("delete"),l("has"),r&&l("get")),(m||d)&&l(i),o&&c.clear&&delete c.clear}u[t]=s,gr({global:!0,forced:s!=a},u),xo(s,t),o||n.setStrong(s,t,r)}("Set",(function(t){return function(){return t(this,arguments.length?arguments[0]:void 0)}}),{getConstructor:function(t,e,n,r){var o=t((function(t,i){Sa(t,o,e),Ea(t,{type:e,index:ho(null),first:void 0,last:void 0,size:0}),Ae||(t.size=0),null!=i&&wa(i,t[r],{that:t,AS_ENTRIES:n})})),i=Ta(e),a=function(t,e,n){var r,o,a=i(t),s=c(t,e);return s?s.value=n:(a.last=s={index:o=Ia(e,!0),key:e,value:n,previous:r=a.last,next:void 0,removed:!1},a.first||(a.first=s),r&&(r.next=s),Ae?a.size++:t.size++,"F"!==o&&(a.index[o]=s)),t},c=function(t,e){var n,r=i(t),o=Ia(e);if("F"!==o)return r.index[o];for(n=r.first;n;n=n.next)if(n.key==e)return n};return ka(o.prototype,{clear:function(){for(var t=i(this),e=t.index,n=t.first;n;)n.removed=!0,n.previous&&(n.previous=n.previous.next=void 0),delete e[n.index],n=n.next;t.first=t.last=void 0,Ae?t.size=0:this.size=0},delete:function(t){var e=this,n=i(e),r=c(e,t);if(r){var o=r.next,a=r.previous;delete n.index[r.index],r.removed=!0,a&&(a.next=o),o&&(o.previous=a),n.first==r&&(n.first=o),n.last==r&&(n.last=a),Ae?n.size--:e.size--}return!!r},forEach:function(t){for(var e,n=i(this),r=Pr(t,arguments.length>1?arguments[1]:void 0,3);e=e?e.next:n.first;)for(r(e.value,e.key,this);e&&e.removed;)e=e.previous},has:function(t){return!!c(this,t)}}),ka(o.prototype,n?{get:function(t){var e=c(this,t);return e&&e.value},set:function(t,e){return a(this,0===t?0:t,e)}}:{add:function(t){return a(this,t=0===t?0:t,t)}}),Ae&&xa(o.prototype,"size",{get:function(){return i(this).size}}),o},setStrong:function(t,e,n){var r=e+" Iterator",o=Ta(e),i=Ta(r);Li(t,e,(function(t,e){Ea(this,{type:r,target:t,state:o(t),kind:e,last:void 0})}),(function(){for(var t=i(this),e=t.kind,n=t.last;n&&n.removed;)n=n.previous;return t.target&&(t.last=n=n?n.next:t.state.first)?"keys"==e?{value:n.key,done:!1}:"values"==e?{value:n.value,done:!1}:{value:[n.key,n.value],done:!1}:(t.target=void 0,{value:void 0,done:!0})}),n?"entries":"values",!n,!0),function(t){var e=Yn(t),n=mn.f;Ae&&e&&!e[_a]&&n(e,_a,{configurable:!0,get:function(){return this}})}(e)}});var Oa={CSSRuleList:0,CSSStyleDeclaration:0,CSSValueList:0,ClientRectList:0,DOMRectList:0,DOMStringList:0,DOMTokenList:1,DataTransferItemList:0,FileList:0,HTMLAllCollection:0,HTMLCollection:0,HTMLFormElement:0,HTMLSelectElement:0,MediaList:0,MimeTypeArray:0,NamedNodeMap:0,NodeList:1,PaintRequestList:0,Plugin:0,PluginArray:0,SVGLengthList:0,SVGNumberList:0,SVGPathSegList:0,SVGPointList:0,SVGStringList:0,SVGTransformList:0,SourceBufferList:0,StyleSheetList:0,TextTrackCueList:0,TextTrackList:0,TouchList:0},Ra=Pn.set,La=Pn.getterFor("Array Iterator"),Ca=Li(Array,"Array",(function(t,e){Ra(this,{type:"Array Iterator",target:tn(t),index:0,kind:e})}),(function(){var t=La(this),e=t.target,n=t.kind,r=t.index++;return!e||r>=e.length?(t.target=void 0,{value:void 0,done:!0}):"keys"==n?{value:r,done:!1}:"values"==n?{value:e[r],done:!1}:{value:[r,e[r]],done:!1}}),"values");ki.Arguments=ki.Array,ma("keys"),ma("values"),ma("entries");var Ka=Lr("iterator"),Ua=Lr("toStringTag"),Za=Ca.values;for(var Va in Oa){var Wa=je[Va],Xa=Wa&&Wa.prototype;if(Xa){if(Xa[Ka]!==Za)try{yn(Xa,Ka,Za)}catch(Ke){Xa[Ka]=Za}if(Xa[Ua]||yn(Xa,Ua,Va),Oa[Va])for(var Fa in Ca)if(Xa[Fa]!==Ca[Fa])try{yn(Xa,Fa,Ca[Fa])}catch(Ke){Xa[Fa]=Ca[Fa]}}}function za(t){var e=this.constructor;return this.then((function(n){return e.resolve(t()).then((function(){return n}))}),(function(n){return e.resolve(t()).then((function(){return e.reject(n)}))}))}function Na(t){return new this((function(e,n){if(!t||void 0===t.length)return n(new TypeError(typeof t+" "+t+" is not iterable(cannot read property Symbol(Symbol.iterator))"));var r=Array.prototype.slice.call(t);if(0===r.length)return e([]);var o=r.length;function i(t,n){if(n&&("object"==typeof n||"function"==typeof n)){var a=n.then;if("function"==typeof a)return void a.call(n,(function(e){i(t,e)}),(function(n){r[t]={status:"rejected",reason:n},0==--o&&e(r)}))}r[t]={status:"fulfilled",value:n},0==--o&&e(r)}for(var a=0;a<r.length;a++)i(a,r[a])}))}Gn.Set;var Pa=setTimeout;function ja(t){return Boolean(t&&void 0!==t.length)}function Ga(){}function Aa(t){if(!(this instanceof Aa))throw new TypeError("Promises must be constructed via new");if("function"!=typeof t)throw new TypeError("not a function");this._state=0,this._handled=!1,this._value=void 0,this._deferreds=[],Ha(t,this)}function Ya(t,e){for(;3===t._state;)t=t._value;0!==t._state?(t._handled=!0,Aa._immediateFn((function(){var n=1===t._state?e.onFulfilled:e.onRejected;if(null!==n){var r;try{r=n(t._value)}catch(t){return void $a(e.promise,t)}Ba(e.promise,r)}else(1===t._state?Ba:$a)(e.promise,t._value)}))):t._deferreds.push(e)}function Ba(t,e){try{if(e===t)throw new TypeError("A promise cannot be resolved with itself.");if(e&&("object"==typeof e||"function"==typeof e)){var n=e.then;if(e instanceof Aa)return t._state=3,t._value=e,void Ja(t);if("function"==typeof n)return void Ha((r=n,o=e,function(){r.apply(o,arguments)}),t)}t._state=1,t._value=e,Ja(t)}catch(e){$a(t,e)}var r,o}function $a(t,e){t._state=2,t._value=e,Ja(t)}function Ja(t){2===t._state&&0===t._deferreds.length&&Aa._immediateFn((function(){t._handled||Aa._unhandledRejectionFn(t._value)}));for(var e=0,n=t._deferreds.length;e<n;e++)Ya(t,t._deferreds[e]);t._deferreds=null}function qa(t,e,n){this.onFulfilled="function"==typeof t?t:null,this.onRejected="function"==typeof e?e:null,this.promise=n}function Ha(t,e){var n=!1;try{t((function(t){n||(n=!0,Ba(e,t))}),(function(t){n||(n=!0,$a(e,t))}))}catch(t){if(n)return;n=!0,$a(e,t)}}Aa.prototype.catch=function(t){return this.then(null,t)},Aa.prototype.then=function(t,e){var n=new this.constructor(Ga);return Ya(this,new qa(t,e,n)),n},Aa.prototype.finally=za,Aa.all=function(t){return new Aa((function(e,n){if(!ja(t))return n(new TypeError("Promise.all accepts an array"));var r=Array.prototype.slice.call(t);if(0===r.length)return e([]);var o=r.length;function i(t,a){try{if(a&&("object"==typeof a||"function"==typeof a)){var c=a.then;if("function"==typeof c)return void c.call(a,(function(e){i(t,e)}),n)}r[t]=a,0==--o&&e(r)}catch(t){n(t)}}for(var a=0;a<r.length;a++)i(a,r[a])}))},Aa.allSettled=Na,Aa.resolve=function(t){return t&&"object"==typeof t&&t.constructor===Aa?t:new Aa((function(e){e(t)}))},Aa.reject=function(t){return new Aa((function(e,n){n(t)}))},Aa.race=function(t){return new Aa((function(e,n){if(!ja(t))return n(new TypeError("Promise.race accepts an array"));for(var r=0,o=t.length;r<o;r++)Aa.resolve(t[r]).then(e,n)}))},Aa._immediateFn="function"==typeof setImmediate&&function(t){setImmediate(t)}||function(t){Pa(t,0)},Aa._unhandledRejectionFn=function(t){"undefined"!=typeof console&&console&&console.warn("Possible Unhandled Promise Rejection:",t)};var Da=function(){if("undefined"!=typeof self)return self;if("undefined"!=typeof window)return window;if("undefined"!=typeof global)return global;throw new Error("unable to locate global object")}();"function"!=typeof Da.Promise?Da.Promise=Aa:Da.Promise.prototype.finally?Da.Promise.allSettled||(Da.Promise.allSettled=Na):Da.Promise.prototype.finally=za,function(t){function e(){}function n(t,e){if(t=void 0===t?"utf-8":t,e=void 0===e?{fatal:!1}:e,-1===o.indexOf(t.toLowerCase()))throw new RangeError("Failed to construct 'TextDecoder': The encoding label provided ('"+t+"') is invalid.");if(e.fatal)throw Error("Failed to construct 'TextDecoder': the 'fatal' option is unsupported.")}function r(t){for(var e=0,n=Math.min(65536,t.length+1),r=new Uint16Array(n),o=[],i=0;;){var a=e<t.length;if(!a||i>=n-1){if(o.push(String.fromCharCode.apply(null,r.subarray(0,i))),!a)return o.join("");t=t.subarray(e),i=e=0}if(0==(128&(a=t[e++])))r[i++]=a;else if(192==(224&a)){var c=63&t[e++];r[i++]=(31&a)<<6|c}else if(224==(240&a)){c=63&t[e++];var s=63&t[e++];r[i++]=(31&a)<<12|c<<6|s}else 240==(248&a)&&(65535<(a=(7&a)<<18|(c=63&t[e++])<<12|(s=63&t[e++])<<6|63&t[e++])&&(a-=65536,r[i++]=a>>>10&1023|55296,a=56320|1023&a),r[i++]=a)}}if(t.TextEncoder&&t.TextDecoder)return!1;var o=["utf-8","utf8","unicode-1-1-utf-8"];Object.defineProperty(e.prototype,"encoding",{value:"utf-8"}),e.prototype.encode=function(t,e){if((e=void 0===e?{stream:!1}:e).stream)throw Error("Failed to encode: the 'stream' option is unsupported.");e=0;for(var n=t.length,r=0,o=Math.max(32,n+(n>>>1)+7),i=new Uint8Array(o>>>3<<3);e<n;){var a=t.charCodeAt(e++);if(55296<=a&&56319>=a){if(e<n){var c=t.charCodeAt(e);56320==(64512&c)&&(++e,a=((1023&a)<<10)+(1023&c)+65536)}if(55296<=a&&56319>=a)continue}if(r+4>i.length&&(o+=8,o=(o*=1+e/t.length*2)>>>3<<3,(c=new Uint8Array(o)).set(i),i=c),0==(4294967168&a))i[r++]=a;else{if(0==(4294965248&a))i[r++]=a>>>6&31|192;else if(0==(4294901760&a))i[r++]=a>>>12&15|224,i[r++]=a>>>6&63|128;else{if(0!=(4292870144&a))continue;i[r++]=a>>>18&7|240,i[r++]=a>>>12&63|128,i[r++]=a>>>6&63|128}i[r++]=63&a|128}}return i.slice?i.slice(0,r):i.subarray(0,r)},Object.defineProperty(n.prototype,"encoding",{value:"utf-8"}),Object.defineProperty(n.prototype,"fatal",{value:!1}),Object.defineProperty(n.prototype,"ignoreBOM",{value:!1});var i=r;"function"==typeof Buffer&&Buffer.from?i=function(t){return Buffer.from(t.buffer,t.byteOffset,t.byteLength).toString("utf-8")}:"function"==typeof Blob&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&(i=function(t){var e=URL.createObjectURL(new Blob([t],{type:"text/plain;charset=UTF-8"}));try{var n=new XMLHttpRequest;return n.open("GET",e,!1),n.send(),n.responseText}catch(e){return r(t)}finally{URL.revokeObjectURL(e)}}),n.prototype.decode=function(t,e){if((e=void 0===e?{stream:!1}:e).stream)throw Error("Failed to decode: the 'stream' option is unsupported.");return t=t instanceof Uint8Array?t:t.buffer instanceof ArrayBuffer?new Uint8Array(t.buffer):new Uint8Array(t),i(t)},t.TextEncoder=e,t.TextDecoder=n}("undefined"!=typeof window?window:Fe),function(){function t(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function e(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function n(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}function r(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&i(t,e)}function o(t){return(o=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}function i(t,e){return(i=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function a(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}function c(t,e){return!e||"object"!=typeof e&&"function"!=typeof e?a(t):e}function s(t){var e=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],(function(){}))),!0}catch(t){return!1}}();return function(){var n,r=o(t);if(e){var i=o(this).constructor;n=Reflect.construct(r,arguments,i)}else n=r.apply(this,arguments);return c(this,n)}}function u(t,e){for(;!Object.prototype.hasOwnProperty.call(t,e)&&null!==(t=o(t)););return t}function l(t,e,n){return(l="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(t,e,n){var r=u(t,e);if(r){var o=Object.getOwnPropertyDescriptor(r,e);return o.get?o.get.call(n):o.value}})(t,e,n||t)}var f=function(){function e(){t(this,e),Object.defineProperty(this,"listeners",{value:{},writable:!0,configurable:!0})}return n(e,[{key:"addEventListener",value:function(t,e,n){t in this.listeners||(this.listeners[t]=[]),this.listeners[t].push({callback:e,options:n})}},{key:"removeEventListener",value:function(t,e){if(t in this.listeners)for(var n=this.listeners[t],r=0,o=n.length;r<o;r++)if(n[r].callback===e)return void n.splice(r,1)}},{key:"dispatchEvent",value:function(t){if(t.type in this.listeners){for(var e=this.listeners[t.type].slice(),n=0,r=e.length;n<r;n++){var o=e[n];try{o.callback.call(this,t)}catch(t){Promise.resolve().then((function(){throw t}))}o.options&&o.options.once&&this.removeEventListener(t.type,o.callback)}return!t.defaultPrevented}}}]),e}(),d=function(e){r(c,e);var i=s(c);function c(){var e;return t(this,c),(e=i.call(this)).listeners||f.call(a(e)),Object.defineProperty(a(e),"aborted",{value:!1,writable:!0,configurable:!0}),Object.defineProperty(a(e),"onabort",{value:null,writable:!0,configurable:!0}),e}return n(c,[{key:"toString",value:function(){return"[object AbortSignal]"}},{key:"dispatchEvent",value:function(t){"abort"===t.type&&(this.aborted=!0,"function"==typeof this.onabort&&this.onabort.call(this,t)),l(o(c.prototype),"dispatchEvent",this).call(this,t)}}]),c}(f),p=function(){function e(){t(this,e),Object.defineProperty(this,"signal",{value:new d,writable:!0,configurable:!0})}return n(e,[{key:"abort",value:function(){var t;try{t=new Event("abort")}catch(e){"undefined"!=typeof document?document.createEvent?(t=document.createEvent("Event")).initEvent("abort",!1,!1):(t=document.createEventObject()).type="abort":t={type:"abort",bubbles:!1,cancelable:!1}}this.signal.dispatchEvent(t)}},{key:"toString",value:function(){return"[object AbortController]"}}]),e}();"undefined"!=typeof Symbol&&Symbol.toStringTag&&(p.prototype[Symbol.toStringTag]="AbortController",d.prototype[Symbol.toStringTag]="AbortSignal"),function(t){(function(t){return t.__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL?(console.log("__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL=true is set, will force install polyfill"),!0):"function"==typeof t.Request&&!t.Request.prototype.hasOwnProperty("signal")||!t.AbortController})(t)&&(t.AbortController=p,t.AbortSignal=d)}("undefined"!=typeof self?self:Fe)}();var Ma=Ne((function(t,e){Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){var t=this;this.locked=new Map,this.addToLocked=function(e,n){var r=t.locked.get(e);void 0===r?void 0===n?t.locked.set(e,[]):t.locked.set(e,[n]):void 0!==n&&(r.unshift(n),t.locked.set(e,r))},this.isLocked=function(e){return t.locked.has(e)},this.lock=function(e){return new Promise((function(n,r){t.isLocked(e)?t.addToLocked(e,n):(t.addToLocked(e),n())}))},this.unlock=function(e){var n=t.locked.get(e);if(void 0!==n&&0!==n.length){var r=n.pop();t.locked.set(e,n),void 0!==r&&setTimeout(r,0)}else t.locked.delete(e)}}return t.getInstance=function(){return void 0===t.instance&&(t.instance=new t),t.instance},t}();e.default=function(){return n.getInstance()}}));ze(Ma);var Qa=ze(Ne((function(t,e){var n=Fe&&Fe.__awaiter||function(t,e,n,r){return new(n||(n=Promise))((function(o,i){function a(t){try{s(r.next(t))}catch(t){i(t)}}function c(t){try{s(r.throw(t))}catch(t){i(t)}}function s(t){t.done?o(t.value):new n((function(e){e(t.value)})).then(a,c)}s((r=r.apply(t,e||[])).next())}))},r=Fe&&Fe.__generator||function(t,e){var n,r,o,i,a={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return i={next:c(0),throw:c(1),return:c(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function c(i){return function(c){return function(i){if(n)throw new TypeError("Generator is already executing.");for(;a;)try{if(n=1,r&&(o=2&i[0]?r.return:i[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,i[1])).done)return o;switch(r=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:return a.label++,{value:i[1],done:!1};case 5:a.label++,r=i[1],i=[0];continue;case 7:i=a.ops.pop(),a.trys.pop();continue;default:if(!((o=(o=a.trys).length>0&&o[o.length-1])||6!==i[0]&&2!==i[0])){a=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){a.label=i[1];break}if(6===i[0]&&a.label<o[1]){a.label=o[1],o=i;break}if(o&&a.label<o[2]){a.label=o[2],a.ops.push(i);break}o[2]&&a.ops.pop(),a.trys.pop();continue}i=e.call(t,a)}catch(t){i=[6,t],r=0}finally{n=o=0}if(5&i[0])throw i[1];return{value:i[0]?i[1]:void 0,done:!0}}([i,c])}}};Object.defineProperty(e,"__esModule",{value:!0});var o="browser-tabs-lock-key";function i(t){return new Promise((function(e){return setTimeout(e,t)}))}function a(t){for(var e="0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz",n="",r=0;r<t;r++)n+=e[Math.floor(Math.random()*e.length)];return n}var c=function(){function t(){this.acquiredIatSet=new Set,this.id=Date.now().toString()+a(15),this.acquireLock=this.acquireLock.bind(this),this.releaseLock=this.releaseLock.bind(this),this.releaseLock__private__=this.releaseLock__private__.bind(this),this.waitForSomethingToChange=this.waitForSomethingToChange.bind(this),this.refreshLockWhileAcquired=this.refreshLockWhileAcquired.bind(this),void 0===t.waiters&&(t.waiters=[])}return t.prototype.acquireLock=function(e,c){return void 0===c&&(c=5e3),n(this,void 0,void 0,(function(){var n,s,u,l,f,d;return r(this,(function(r){switch(r.label){case 0:n=Date.now()+a(4),s=Date.now()+c,u=o+"-"+e,l=window.localStorage,r.label=1;case 1:return Date.now()<s?[4,i(30)]:[3,8];case 2:return r.sent(),null!==l.getItem(u)?[3,5]:(f=this.id+"-"+e+"-"+n,[4,i(Math.floor(25*Math.random()))]);case 3:return r.sent(),l.setItem(u,JSON.stringify({id:this.id,iat:n,timeoutKey:f,timeAcquired:Date.now(),timeRefreshed:Date.now()})),[4,i(30)];case 4:return r.sent(),null!==(d=l.getItem(u))&&(d=JSON.parse(d)).id===this.id&&d.iat===n?(this.acquiredIatSet.add(n),this.refreshLockWhileAcquired(u,n),[2,!0]):[3,7];case 5:return t.lockCorrector(),[4,this.waitForSomethingToChange(s)];case 6:r.sent(),r.label=7;case 7:return n=Date.now()+a(4),[3,1];case 8:return[2,!1]}}))}))},t.prototype.refreshLockWhileAcquired=function(t,e){return n(this,void 0,void 0,(function(){var o=this;return r(this,(function(i){return setTimeout((function(){return n(o,void 0,void 0,(function(){var n,o;return r(this,(function(r){switch(r.label){case 0:return[4,Ma.default().lock(e)];case 1:return r.sent(),this.acquiredIatSet.has(e)?(n=window.localStorage,null===(o=n.getItem(t))?(Ma.default().unlock(e),[2]):((o=JSON.parse(o)).timeRefreshed=Date.now(),n.setItem(t,JSON.stringify(o)),Ma.default().unlock(e),this.refreshLockWhileAcquired(t,e),[2])):(Ma.default().unlock(e),[2])}}))}))}),1e3),[2]}))}))},t.prototype.waitForSomethingToChange=function(e){return n(this,void 0,void 0,(function(){return r(this,(function(n){switch(n.label){case 0:return[4,new Promise((function(n){var r=!1,o=Date.now(),i=!1;function a(){if(i||(window.removeEventListener("storage",a),t.removeFromWaiting(a),clearTimeout(c),i=!0),!r){r=!0;var e=50-(Date.now()-o);e>0?setTimeout(n,e):n()}}window.addEventListener("storage",a),t.addToWaiting(a);var c=setTimeout(a,Math.max(0,e-Date.now()))}))];case 1:return n.sent(),[2]}}))}))},t.addToWaiting=function(e){this.removeFromWaiting(e),void 0!==t.waiters&&t.waiters.push(e)},t.removeFromWaiting=function(e){void 0!==t.waiters&&(t.waiters=t.waiters.filter((function(t){return t!==e})))},t.notifyWaiters=function(){void 0!==t.waiters&&t.waiters.slice().forEach((function(t){return t()}))},t.prototype.releaseLock=function(t){return n(this,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,this.releaseLock__private__(t)];case 1:return[2,e.sent()]}}))}))},t.prototype.releaseLock__private__=function(e){return n(this,void 0,void 0,(function(){var n,i,a;return r(this,(function(r){switch(r.label){case 0:return n=window.localStorage,i=o+"-"+e,null===(a=n.getItem(i))?[2]:(a=JSON.parse(a)).id!==this.id?[3,2]:[4,Ma.default().lock(a.iat)];case 1:r.sent(),this.acquiredIatSet.delete(a.iat),n.removeItem(i),Ma.default().unlock(a.iat),t.notifyWaiters(),r.label=2;case 2:return[2]}}))}))},t.lockCorrector=function(){for(var e=Date.now()-5e3,n=window.localStorage,r=Object.keys(n),i=!1,a=0;a<r.length;a++){var c=r[a];if(c.includes(o)){var s=n.getItem(c);null!==s&&(void 0===(s=JSON.parse(s)).timeRefreshed&&s.timeAcquired<e||void 0!==s.timeRefreshed&&s.timeRefreshed<e)&&(n.removeItem(c),i=!0)}}i&&t.notifyWaiters()},t.waiters=void 0,t}();e.default=c}))),tc={timeoutInSeconds:60},ec=["login_required","consent_required","interaction_required","account_selection_required","access_denied"],nc={name:"auth0-spa-js",version:"1.15.0"},rc=function(t){function e(n,r){var o=t.call(this,r)||this;return o.error=n,o.error_description=r,Object.setPrototypeOf(o,e.prototype),o}return Ue(e,t),e.fromPayload=function(t){return new e(t.error,t.error_description)},e}(Error),oc=function(t){function e(n,r,o,i){void 0===i&&(i=null);var a=t.call(this,n,r)||this;return a.state=o,a.appState=i,Object.setPrototypeOf(a,e.prototype),a}return Ue(e,t),e}(rc),ic=function(t){function e(){var n=t.call(this,"timeout","Timeout")||this;return Object.setPrototypeOf(n,e.prototype),n}return Ue(e,t),e}(rc),ac=function(t){function e(n){var r=t.call(this)||this;return r.popup=n,Object.setPrototypeOf(r,e.prototype),r}return Ue(e,t),e}(ic),cc=function(t){function e(n){var r=t.call(this,"cancelled","Popup closed")||this;return r.popup=n,Object.setPrototypeOf(r,e.prototype),r}return Ue(e,t),e}(rc),sc=function(t){return new Promise((function(e,n){var r,o=setInterval((function(){t.popup&&t.popup.closed&&(clearInterval(o),clearTimeout(i),window.removeEventListener("message",r,!1),n(new cc(t.popup)))}),1e3),i=setTimeout((function(){clearInterval(o),n(new ac(t.popup)),window.removeEventListener("message",r,!1)}),1e3*(t.timeoutInSeconds||60));r=function(a){if(a.data&&"authorization_response"===a.data.type){if(clearTimeout(i),clearInterval(o),window.removeEventListener("message",r,!1),t.popup.close(),a.data.response.error)return n(rc.fromPayload(a.data.response));e(a.data.response)}},window.addEventListener("message",r)}))},uc=function(){return window.crypto||window.msCrypto},lc=function(){var t=uc();return t.subtle||t.webkitSubtle},fc=function(){var t="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_~.",e="";return Array.from(uc().getRandomValues(new Uint8Array(43))).forEach((function(n){return e+=t[n%t.length]})),e},dc=function(t){return btoa(t)},pc=function(t){return Object.keys(t).filter((function(e){return void 0!==t[e]})).map((function(e){return encodeURIComponent(e)+"="+encodeURIComponent(t[e])})).join("&")},hc=function(t){return We(void 0,void 0,void 0,(function(){var e;return Xe(this,(function(n){switch(n.label){case 0:return e=lc().digest({name:"SHA-256"},(new TextEncoder).encode(t)),window.msCrypto?[2,new Promise((function(t,n){e.oncomplete=function(e){t(e.target.result)},e.onerror=function(t){n(t.error)},e.onabort=function(){n("The digest operation was aborted")}}))]:[4,e];case 1:return[2,n.sent()]}}))}))},mc=function(t){return function(t){return decodeURIComponent(atob(t).split("").map((function(t){return"%"+("00"+t.charCodeAt(0).toString(16)).slice(-2)})).join(""))}(t.replace(/_/g,"/").replace(/-/g,"+"))},yc=function(t){var e=new Uint8Array(t);return function(t){var e={"+":"-","/":"_","=":""};return t.replace(/[+/=]/g,(function(t){return e[t]}))}(window.btoa(String.fromCharCode.apply(String,Array.from(e))))},gc=function(t,e){return We(void 0,void 0,void 0,(function(){var n,r;return Xe(this,(function(o){switch(o.label){case 0:return[4,(i=t,a=e,a=a||{},new Promise((function(t,e){var n=new XMLHttpRequest,r=[],o=[],c={},s=function(){return{ok:2==(n.status/100|0),statusText:n.statusText,status:n.status,url:n.responseURL,text:function(){return Promise.resolve(n.responseText)},json:function(){return Promise.resolve(n.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([n.response]))},clone:s,headers:{keys:function(){return r},entries:function(){return o},get:function(t){return c[t.toLowerCase()]},has:function(t){return t.toLowerCase()in c}}}};for(var u in n.open(a.method||"get",i,!0),n.onload=function(){n.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm,(function(t,e,n){r.push(e=e.toLowerCase()),o.push([e,n]),c[e]=c[e]?c[e]+","+n:n})),t(s())},n.onerror=e,n.withCredentials="include"==a.credentials,a.headers)n.setRequestHeader(u,a.headers[u]);n.send(a.body||null)})))];case 1:return n=o.sent(),r={ok:n.ok},[4,n.json()];case 2:return[2,(r.json=o.sent(),r)]}var i,a}))}))},vc=function(t,e,n){return We(void 0,void 0,void 0,(function(){var r,o;return Xe(this,(function(i){return r=new AbortController,e.signal=r.signal,[2,Promise.race([gc(t,e),new Promise((function(t,e){o=setTimeout((function(){r.abort(),e(new Error("Timeout when executing 'fetch'"))}),n)}))]).finally((function(){clearTimeout(o)}))]}))}))},bc=function(t,e,n,r,o,i){return We(void 0,void 0,void 0,(function(){return Xe(this,(function(a){return[2,(c={auth:{audience:e,scope:n},timeout:o,fetchUrl:t,fetchOptions:r},s=i,new Promise((function(t,e){var n=new MessageChannel;n.port1.onmessage=function(n){n.data.error?e(new Error(n.data.error)):t(n.data)},s.postMessage(c,[n.port2])})))];var c,s}))}))},wc=function(t,e,n,r,o,i){return void 0===i&&(i=1e4),We(void 0,void 0,void 0,(function(){return Xe(this,(function(a){return o?[2,bc(t,e,n,r,i,o)]:[2,vc(t,r,i)]}))}))};function Sc(t,e,n,r,o,i){return We(this,void 0,void 0,(function(){var a,c,s,u,l,f,d,p;return Xe(this,(function(h){switch(h.label){case 0:a=null,s=0,h.label=1;case 1:if(!(s<3))return[3,6];h.label=2;case 2:return h.trys.push([2,4,,5]),[4,wc(t,n,r,o,i,e)];case 3:return c=h.sent(),a=null,[3,6];case 4:return u=h.sent(),a=u,[3,5];case 5:return s++,[3,1];case 6:if(a)throw a.message=a.message||"Failed to fetch",a;if(l=c.json,f=l.error,d=l.error_description,p=Ve(l,["error","error_description"]),!c.ok)throw new rc(f||"request_error",d||"HTTP error. Unable to fetch "+t);return[2,p]}}))}))}function kc(t,e){var n=t.baseUrl,r=t.timeout,o=t.audience,i=t.scope,a=t.auth0Client,c=Ve(t,["baseUrl","timeout","audience","scope","auth0Client"]);return We(this,void 0,void 0,(function(){return Xe(this,(function(t){switch(t.label){case 0:return[4,Sc(n+"/oauth/token",r,o||"default",i,{method:"POST",body:JSON.stringify(c),headers:{"Content-type":"application/json","Auth0-Client":btoa(JSON.stringify(a||nc))}},e)];case 1:return[2,t.sent()]}}))}))}var _c=function(t){return Array.from(new Set(t))},xc=function(){for(var t=[],e=0;e<arguments.length;e++)t[e]=arguments[e];return _c(t.join(" ").trim().split(/\s+/)).join(" ")},Ic=function(){function t(t,e){void 0===e&&(e=Ec),this.prefix=e,this.client_id=t.client_id,this.scope=t.scope,this.audience=t.audience}return t.prototype.toKey=function(){return this.prefix+"::"+this.client_id+"::"+this.audience+"::"+this.scope},t.fromKey=function(e){var n=e.split("::"),r=n[0],o=n[1],i=n[2];return new t({client_id:o,scope:n[3],audience:i},r)},t}(),Ec="@@auth0spajs@@",Tc=function(t){var e=Math.floor(Date.now()/1e3)+t.expires_in;return{body:t,expiresAt:Math.min(e,t.decodedToken.claims.exp)}},Oc=function(t,e){var n=t.client_id,r=t.audience,o=t.scope;return e.filter((function(t){var e=Ic.fromKey(t),i=e.prefix,a=e.client_id,c=e.audience,s=e.scope,u=s&&s.split(" "),l=s&&o.split(" ").reduce((function(t,e){return t&&u.includes(e)}),!0);return i===Ec&&a===n&&c===r&&l}))[0]},Rc=function(){function t(){}return t.prototype.save=function(t){var e=new Ic({client_id:t.client_id,scope:t.scope,audience:t.audience}),n=Tc(t);window.localStorage.setItem(e.toKey(),JSON.stringify(n))},t.prototype.get=function(t,e){void 0===e&&(e=0);var n=this.readJson(t),r=Math.floor(Date.now()/1e3);if(n){if(!(n.expiresAt-e<r))return n.body;if(n.body.refresh_token){var o=this.stripData(n);return this.writeJson(t.toKey(),o),o.body}localStorage.removeItem(t.toKey())}},t.prototype.clear=function(){for(var t=localStorage.length-1;t>=0;t--)localStorage.key(t).startsWith(Ec)&&localStorage.removeItem(localStorage.key(t))},t.prototype.readJson=function(t){var e,n=Oc(t,Object.keys(window.localStorage)),r=n&&window.localStorage.getItem(n);if(r&&(e=JSON.parse(r)))return e},t.prototype.writeJson=function(t,e){localStorage.setItem(t,JSON.stringify(e))},t.prototype.stripData=function(t){return{body:{refresh_token:t.body.refresh_token},expiresAt:t.expiresAt}},t}(),Lc=function(){var t;this.enclosedCache=(t={},{save:function(e){var n=new Ic({client_id:e.client_id,scope:e.scope,audience:e.audience}),r=Tc(e);t[n.toKey()]=r},get:function(e,n){void 0===n&&(n=0);var r=Oc(e,Object.keys(t)),o=t[r],i=Math.floor(Date.now()/1e3);if(o)return o.expiresAt-n<i?o.body.refresh_token?(o.body={refresh_token:o.body.refresh_token},o.body):void delete t[e.toKey()]:o.body},clear:function(){t={}}})},Cc=function(){function t(t){this.storage=t,this.transaction=this.storage.get("a0.spajs.txs")}return t.prototype.create=function(t){this.transaction=t,this.storage.save("a0.spajs.txs",t,{daysUntilExpire:1})},t.prototype.get=function(){return this.transaction},t.prototype.remove=function(){delete this.transaction,this.storage.remove("a0.spajs.txs")},t}(),Kc=function(t){return"number"==typeof t},Uc=["iss","aud","exp","nbf","iat","jti","azp","nonce","auth_time","at_hash","c_hash","acr","amr","sub_jwk","cnf","sip_from_tag","sip_date","sip_callid","sip_cseq_num","sip_via_branch","orig","dest","mky","events","toe","txn","rph","sid","vot","vtm"],Zc=Ne((function(t,e){var n=Fe&&Fe.__assign||function(){return(n=Object.assign||function(t){for(var e,n=1,r=arguments.length;n<r;n++)for(var o in e=arguments[n])Object.prototype.hasOwnProperty.call(e,o)&&(t[o]=e[o]);return t}).apply(this,arguments)};function r(t,e){if(!e)return"";var n="; "+t;return!0===e?n:n+"="+e}function o(t,e,n){return encodeURIComponent(t).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent).replace(/\(/g,"%28").replace(/\)/g,"%29")+"="+encodeURIComponent(e).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent)+function(t){if("number"==typeof t.expires){var e=new Date;e.setMilliseconds(e.getMilliseconds()+864e5*t.expires),t.expires=e}return r("Expires",t.expires?t.expires.toUTCString():"")+r("Domain",t.domain)+r("Path",t.path)+r("Secure",t.secure)+r("SameSite",t.sameSite)}(n)}function i(t){for(var e={},n=t?t.split("; "):[],r=/(%[\dA-F]{2})+/gi,o=0;o<n.length;o++){var i=n[o].split("="),a=i.slice(1).join("=");'"'===a.charAt(0)&&(a=a.slice(1,-1));try{e[i[0].replace(r,decodeURIComponent)]=a.replace(r,decodeURIComponent)}catch(t){}}return e}function a(){return i(document.cookie)}function c(t,e,r){document.cookie=o(t,e,n({path:"/"},r))}e.__esModule=!0,e.encode=o,e.parse=i,e.getAll=a,e.get=function(t){return a()[t]},e.set=c,e.remove=function(t,e){c(t,"",n(n({},e),{expires:-1}))}}));ze(Zc),Zc.encode,Zc.parse,Zc.getAll;var Vc=Zc.get,Wc=Zc.set,Xc=Zc.remove,Fc={get:function(t){var e=Vc(t);if(void 0!==e)return JSON.parse(e)},save:function(t,e,n){var r={};"https:"===window.location.protocol&&(r={secure:!0,sameSite:"none"}),r.expires=n.daysUntilExpire,Wc(t,JSON.stringify(e),r)},remove:function(t){Xc(t)}},zc={get:function(t){return Fc.get(t)||Fc.get("_legacy_"+t)},save:function(t,e,n){var r={};"https:"===window.location.protocol&&(r={secure:!0}),r.expires=n.daysUntilExpire,Wc("_legacy_"+t,JSON.stringify(e),r),Fc.save(t,e,n)},remove:function(t){Fc.remove(t),Fc.remove("_legacy_"+t)}},Nc={get:function(t){if("undefined"!=typeof sessionStorage){var e=sessionStorage.getItem(t);if(void 0!==e)return JSON.parse(e)}},save:function(t,e){sessionStorage.setItem(t,JSON.stringify(e))},remove:function(t){sessionStorage.removeItem(t)}};var Pc,jc=("Lyogcm9sbHVwLXBsdWdpbi13ZWItd29ya2VyLWxvYWRlciAqLwohZnVuY3Rpb24oKXsidXNlIHN0cmljdCI7Ci8qISAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgogICAgQ29weXJpZ2h0IChjKSBNaWNyb3NvZnQgQ29ycG9yYXRpb24uCgogICAgUGVybWlzc2lvbiB0byB1c2UsIGNvcHksIG1vZGlmeSwgYW5kL29yIGRpc3RyaWJ1dGUgdGhpcyBzb2Z0d2FyZSBmb3IgYW55CiAgICBwdXJwb3NlIHdpdGggb3Igd2l0aG91dCBmZWUgaXMgaGVyZWJ5IGdyYW50ZWQuCgogICAgVEhFIFNPRlRXQVJFIElTIFBST1ZJREVEICJBUyBJUyIgQU5EIFRIRSBBVVRIT1IgRElTQ0xBSU1TIEFMTCBXQVJSQU5USUVTIFdJVEgKICAgIFJFR0FSRCBUTyBUSElTIFNPRlRXQVJFIElOQ0xVRElORyBBTEwgSU1QTElFRCBXQVJSQU5USUVTIE9GIE1FUkNIQU5UQUJJTElUWQogICAgQU5EIEZJVE5FU1MuIElOIE5PIEVWRU5UIFNIQUxMIFRIRSBBVVRIT1IgQkUgTElBQkxFIEZPUiBBTlkgU1BFQ0lBTCwgRElSRUNULAogICAgSU5ESVJFQ1QsIE9SIENPTlNFUVVFTlRJQUwgREFNQUdFUyBPUiBBTlkgREFNQUdFUyBXSEFUU09FVkVSIFJFU1VMVElORyBGUk9NCiAgICBMT1NTIE9GIFVTRSwgREFUQSBPUiBQUk9GSVRTLCBXSEVUSEVSIElOIEFOIEFDVElPTiBPRiBDT05UUkFDVCwgTkVHTElHRU5DRSBPUgogICAgT1RIRVIgVE9SVElPVVMgQUNUSU9OLCBBUklTSU5HIE9VVCBPRiBPUiBJTiBDT05ORUNUSU9OIFdJVEggVEhFIFVTRSBPUgogICAgUEVSRk9STUFOQ0UgT0YgVEhJUyBTT0ZUV0FSRS4KICAgICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqICovdmFyIGU9ZnVuY3Rpb24oKXtyZXR1cm4oZT1PYmplY3QuYXNzaWdufHxmdW5jdGlvbihlKXtmb3IodmFyIHQscj0xLG49YXJndW1lbnRzLmxlbmd0aDtyPG47cisrKWZvcih2YXIgbyBpbiB0PWFyZ3VtZW50c1tyXSlPYmplY3QucHJvdG90eXBlLmhhc093blByb3BlcnR5LmNhbGwodCxvKSYmKGVbb109dFtvXSk7cmV0dXJuIGV9KS5hcHBseSh0aGlzLGFyZ3VtZW50cyl9O2Z1bmN0aW9uIHQoZSx0LHIsbil7cmV0dXJuIG5ldyhyfHwocj1Qcm9taXNlKSkoKGZ1bmN0aW9uKG8scyl7ZnVuY3Rpb24gYShlKXt0cnl7dShuLm5leHQoZSkpfWNhdGNoKGUpe3MoZSl9fWZ1bmN0aW9uIGkoZSl7dHJ5e3Uobi50aHJvdyhlKSl9Y2F0Y2goZSl7cyhlKX19ZnVuY3Rpb24gdShlKXt2YXIgdDtlLmRvbmU/byhlLnZhbHVlKToodD1lLnZhbHVlLHQgaW5zdGFuY2VvZiByP3Q6bmV3IHIoKGZ1bmN0aW9uKGUpe2UodCl9KSkpLnRoZW4oYSxpKX11KChuPW4uYXBwbHkoZSx0fHxbXSkpLm5leHQoKSl9KSl9ZnVuY3Rpb24gcihlLHQpe3ZhciByLG4sbyxzLGE9e2xhYmVsOjAsc2VudDpmdW5jdGlvbigpe2lmKDEmb1swXSl0aHJvdyBvWzFdO3JldHVybiBvWzFdfSx0cnlzOltdLG9wczpbXX07cmV0dXJuIHM9e25leHQ6aSgwKSx0aHJvdzppKDEpLHJldHVybjppKDIpfSwiZnVuY3Rpb24iPT10eXBlb2YgU3ltYm9sJiYoc1tTeW1ib2wuaXRlcmF0b3JdPWZ1bmN0aW9uKCl7cmV0dXJuIHRoaXN9KSxzO2Z1bmN0aW9uIGkocyl7cmV0dXJuIGZ1bmN0aW9uKGkpe3JldHVybiBmdW5jdGlvbihzKXtpZihyKXRocm93IG5ldyBUeXBlRXJyb3IoIkdlbmVyYXRvciBpcyBhbHJlYWR5IGV4ZWN1dGluZy4iKTtmb3IoO2E7KXRyeXtpZihyPTEsbiYmKG89MiZzWzBdP24ucmV0dXJuOnNbMF0/bi50aHJvd3x8KChvPW4ucmV0dXJuKSYmby5jYWxsKG4pLDApOm4ubmV4dCkmJiEobz1vLmNhbGwobixzWzFdKSkuZG9uZSlyZXR1cm4gbztzd2l0Y2gobj0wLG8mJihzPVsyJnNbMF0sby52YWx1ZV0pLHNbMF0pe2Nhc2UgMDpjYXNlIDE6bz1zO2JyZWFrO2Nhc2UgNDpyZXR1cm4gYS5sYWJlbCsrLHt2YWx1ZTpzWzFdLGRvbmU6ITF9O2Nhc2UgNTphLmxhYmVsKyssbj1zWzFdLHM9WzBdO2NvbnRpbnVlO2Nhc2UgNzpzPWEub3BzLnBvcCgpLGEudHJ5cy5wb3AoKTtjb250aW51ZTtkZWZhdWx0OmlmKCEobz1hLnRyeXMsKG89by5sZW5ndGg+MCYmb1tvLmxlbmd0aC0xXSl8fDYhPT1zWzBdJiYyIT09c1swXSkpe2E9MDtjb250aW51ZX1pZigzPT09c1swXSYmKCFvfHxzWzFdPm9bMF0mJnNbMV08b1szXSkpe2EubGFiZWw9c1sxXTticmVha31pZig2PT09c1swXSYmYS5sYWJlbDxvWzFdKXthLmxhYmVsPW9bMV0sbz1zO2JyZWFrfWlmKG8mJmEubGFiZWw8b1syXSl7YS5sYWJlbD1vWzJdLGEub3BzLnB1c2gocyk7YnJlYWt9b1syXSYmYS5vcHMucG9wKCksYS50cnlzLnBvcCgpO2NvbnRpbnVlfXM9dC5jYWxsKGUsYSl9Y2F0Y2goZSl7cz1bNixlXSxuPTB9ZmluYWxseXtyPW89MH1pZig1JnNbMF0pdGhyb3cgc1sxXTtyZXR1cm57dmFsdWU6c1swXT9zWzFdOnZvaWQgMCxkb25lOiEwfX0oW3MsaV0pfX19dmFyIG49e30sbz1mdW5jdGlvbihlLHQpe3JldHVybiBlKyJ8Iit0fTthZGRFdmVudExpc3RlbmVyKCJtZXNzYWdlIiwoZnVuY3Rpb24ocyl7dmFyIGE9cy5kYXRhLGk9YS50aW1lb3V0LHU9YS5hdXRoLGM9YS5mZXRjaFVybCxmPWEuZmV0Y2hPcHRpb25zLGw9cy5wb3J0c1swXTtyZXR1cm4gdCh2b2lkIDAsdm9pZCAwLHZvaWQgMCwoZnVuY3Rpb24oKXt2YXIgdCxzLGEsaCxwLGIseSxkLHYsdztyZXR1cm4gcih0aGlzLChmdW5jdGlvbihyKXtzd2l0Y2goci5sYWJlbCl7Y2FzZSAwOmE9KHM9dXx8e30pLmF1ZGllbmNlLGg9cy5zY29wZSxyLmxhYmVsPTE7Y2FzZSAxOmlmKHIudHJ5cy5wdXNoKFsxLDcsLDhdKSwhKHA9SlNPTi5wYXJzZShmLmJvZHkpKS5yZWZyZXNoX3Rva2VuJiYicmVmcmVzaF90b2tlbiI9PT1wLmdyYW50X3R5cGUpe2lmKCEoYj1mdW5jdGlvbihlLHQpe3JldHVybiBuW28oZSx0KV19KGEsaCkpKXRocm93IG5ldyBFcnJvcigiVGhlIHdlYiB3b3JrZXIgaXMgbWlzc2luZyB0aGUgcmVmcmVzaCB0b2tlbiIpO2YuYm9keT1KU09OLnN0cmluZ2lmeShlKGUoe30scCkse3JlZnJlc2hfdG9rZW46Yn0pKX15PXZvaWQgMCwiZnVuY3Rpb24iPT10eXBlb2YgQWJvcnRDb250cm9sbGVyJiYoeT1uZXcgQWJvcnRDb250cm9sbGVyLGYuc2lnbmFsPXkuc2lnbmFsKSxkPXZvaWQgMCxyLmxhYmVsPTI7Y2FzZSAyOnJldHVybiByLnRyeXMucHVzaChbMiw0LCw1XSksWzQsUHJvbWlzZS5yYWNlKFsoZz1pLG5ldyBQcm9taXNlKChmdW5jdGlvbihlKXtyZXR1cm4gc2V0VGltZW91dChlLGcpfSkpKSxmZXRjaChjLGUoe30sZikpXSldO2Nhc2UgMzpyZXR1cm4gZD1yLnNlbnQoKSxbMyw1XTtjYXNlIDQ6cmV0dXJuIHY9ci5zZW50KCksbC5wb3N0TWVzc2FnZSh7ZXJyb3I6di5tZXNzYWdlfSksWzJdO2Nhc2UgNTpyZXR1cm4gZD9bNCxkLmpzb24oKV06KHkmJnkuYWJvcnQoKSxsLnBvc3RNZXNzYWdlKHtlcnJvcjoiVGltZW91dCB3aGVuIGV4ZWN1dGluZyAnZmV0Y2gnIn0pLFsyXSk7Y2FzZSA2OnJldHVybih0PXIuc2VudCgpKS5yZWZyZXNoX3Rva2VuPyhmdW5jdGlvbihlLHQscil7bltvKHQscildPWV9KHQucmVmcmVzaF90b2tlbixhLGgpLGRlbGV0ZSB0LnJlZnJlc2hfdG9rZW4pOmZ1bmN0aW9uKGUsdCl7ZGVsZXRlIG5bbyhlLHQpXX0oYSxoKSxsLnBvc3RNZXNzYWdlKHtvazpkLm9rLGpzb246dH0pLFszLDhdO2Nhc2UgNzpyZXR1cm4gdz1yLnNlbnQoKSxsLnBvc3RNZXNzYWdlKHtvazohMSxqc29uOntlcnJvcl9kZXNjcmlwdGlvbjp3Lm1lc3NhZ2V9fSksWzMsOF07Y2FzZSA4OnJldHVyblsyXX12YXIgZ30pKX0pKX0pKX0oKTsKCg==",null,!1,function(t){return Pc=Pc||function(t,e,n){var r=void 0===e?null:e,o=function(t,e){var n=atob(t);if(e){for(var r=new Uint8Array(n.length),o=0,i=n.length;o<i;++o)r[o]=n.charCodeAt(o);return String.fromCharCode.apply(null,new Uint16Array(r.buffer))}return n}(t,void 0!==n&&n),i=o.indexOf("\n",10)+1,a=o.substring(i)+(r?"//# sourceMappingURL="+r:""),c=new Blob([a],{type:"application/javascript"});return URL.createObjectURL(c)}("Lyogcm9sbHVwLXBsdWdpbi13ZWItd29ya2VyLWxvYWRlciAqLwohZnVuY3Rpb24oKXsidXNlIHN0cmljdCI7Ci8qISAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgogICAgQ29weXJpZ2h0IChjKSBNaWNyb3NvZnQgQ29ycG9yYXRpb24uCgogICAgUGVybWlzc2lvbiB0byB1c2UsIGNvcHksIG1vZGlmeSwgYW5kL29yIGRpc3RyaWJ1dGUgdGhpcyBzb2Z0d2FyZSBmb3IgYW55CiAgICBwdXJwb3NlIHdpdGggb3Igd2l0aG91dCBmZWUgaXMgaGVyZWJ5IGdyYW50ZWQuCgogICAgVEhFIFNPRlRXQVJFIElTIFBST1ZJREVEICJBUyBJUyIgQU5EIFRIRSBBVVRIT1IgRElTQ0xBSU1TIEFMTCBXQVJSQU5USUVTIFdJVEgKICAgIFJFR0FSRCBUTyBUSElTIFNPRlRXQVJFIElOQ0xVRElORyBBTEwgSU1QTElFRCBXQVJSQU5USUVTIE9GIE1FUkNIQU5UQUJJTElUWQogICAgQU5EIEZJVE5FU1MuIElOIE5PIEVWRU5UIFNIQUxMIFRIRSBBVVRIT1IgQkUgTElBQkxFIEZPUiBBTlkgU1BFQ0lBTCwgRElSRUNULAogICAgSU5ESVJFQ1QsIE9SIENPTlNFUVVFTlRJQUwgREFNQUdFUyBPUiBBTlkgREFNQUdFUyBXSEFUU09FVkVSIFJFU1VMVElORyBGUk9NCiAgICBMT1NTIE9GIFVTRSwgREFUQSBPUiBQUk9GSVRTLCBXSEVUSEVSIElOIEFOIEFDVElPTiBPRiBDT05UUkFDVCwgTkVHTElHRU5DRSBPUgogICAgT1RIRVIgVE9SVElPVVMgQUNUSU9OLCBBUklTSU5HIE9VVCBPRiBPUiBJTiBDT05ORUNUSU9OIFdJVEggVEhFIFVTRSBPUgogICAgUEVSRk9STUFOQ0UgT0YgVEhJUyBTT0ZUV0FSRS4KICAgICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqICovdmFyIGU9ZnVuY3Rpb24oKXtyZXR1cm4oZT1PYmplY3QuYXNzaWdufHxmdW5jdGlvbihlKXtmb3IodmFyIHQscj0xLG49YXJndW1lbnRzLmxlbmd0aDtyPG47cisrKWZvcih2YXIgbyBpbiB0PWFyZ3VtZW50c1tyXSlPYmplY3QucHJvdG90eXBlLmhhc093blByb3BlcnR5LmNhbGwodCxvKSYmKGVbb109dFtvXSk7cmV0dXJuIGV9KS5hcHBseSh0aGlzLGFyZ3VtZW50cyl9O2Z1bmN0aW9uIHQoZSx0LHIsbil7cmV0dXJuIG5ldyhyfHwocj1Qcm9taXNlKSkoKGZ1bmN0aW9uKG8scyl7ZnVuY3Rpb24gYShlKXt0cnl7dShuLm5leHQoZSkpfWNhdGNoKGUpe3MoZSl9fWZ1bmN0aW9uIGkoZSl7dHJ5e3Uobi50aHJvdyhlKSl9Y2F0Y2goZSl7cyhlKX19ZnVuY3Rpb24gdShlKXt2YXIgdDtlLmRvbmU/byhlLnZhbHVlKToodD1lLnZhbHVlLHQgaW5zdGFuY2VvZiByP3Q6bmV3IHIoKGZ1bmN0aW9uKGUpe2UodCl9KSkpLnRoZW4oYSxpKX11KChuPW4uYXBwbHkoZSx0fHxbXSkpLm5leHQoKSl9KSl9ZnVuY3Rpb24gcihlLHQpe3ZhciByLG4sbyxzLGE9e2xhYmVsOjAsc2VudDpmdW5jdGlvbigpe2lmKDEmb1swXSl0aHJvdyBvWzFdO3JldHVybiBvWzFdfSx0cnlzOltdLG9wczpbXX07cmV0dXJuIHM9e25leHQ6aSgwKSx0aHJvdzppKDEpLHJldHVybjppKDIpfSwiZnVuY3Rpb24iPT10eXBlb2YgU3ltYm9sJiYoc1tTeW1ib2wuaXRlcmF0b3JdPWZ1bmN0aW9uKCl7cmV0dXJuIHRoaXN9KSxzO2Z1bmN0aW9uIGkocyl7cmV0dXJuIGZ1bmN0aW9uKGkpe3JldHVybiBmdW5jdGlvbihzKXtpZihyKXRocm93IG5ldyBUeXBlRXJyb3IoIkdlbmVyYXRvciBpcyBhbHJlYWR5IGV4ZWN1dGluZy4iKTtmb3IoO2E7KXRyeXtpZihyPTEsbiYmKG89MiZzWzBdP24ucmV0dXJuOnNbMF0/bi50aHJvd3x8KChvPW4ucmV0dXJuKSYmby5jYWxsKG4pLDApOm4ubmV4dCkmJiEobz1vLmNhbGwobixzWzFdKSkuZG9uZSlyZXR1cm4gbztzd2l0Y2gobj0wLG8mJihzPVsyJnNbMF0sby52YWx1ZV0pLHNbMF0pe2Nhc2UgMDpjYXNlIDE6bz1zO2JyZWFrO2Nhc2UgNDpyZXR1cm4gYS5sYWJlbCsrLHt2YWx1ZTpzWzFdLGRvbmU6ITF9O2Nhc2UgNTphLmxhYmVsKyssbj1zWzFdLHM9WzBdO2NvbnRpbnVlO2Nhc2UgNzpzPWEub3BzLnBvcCgpLGEudHJ5cy5wb3AoKTtjb250aW51ZTtkZWZhdWx0OmlmKCEobz1hLnRyeXMsKG89by5sZW5ndGg+MCYmb1tvLmxlbmd0aC0xXSl8fDYhPT1zWzBdJiYyIT09c1swXSkpe2E9MDtjb250aW51ZX1pZigzPT09c1swXSYmKCFvfHxzWzFdPm9bMF0mJnNbMV08b1szXSkpe2EubGFiZWw9c1sxXTticmVha31pZig2PT09c1swXSYmYS5sYWJlbDxvWzFdKXthLmxhYmVsPW9bMV0sbz1zO2JyZWFrfWlmKG8mJmEubGFiZWw8b1syXSl7YS5sYWJlbD1vWzJdLGEub3BzLnB1c2gocyk7YnJlYWt9b1syXSYmYS5vcHMucG9wKCksYS50cnlzLnBvcCgpO2NvbnRpbnVlfXM9dC5jYWxsKGUsYSl9Y2F0Y2goZSl7cz1bNixlXSxuPTB9ZmluYWxseXtyPW89MH1pZig1JnNbMF0pdGhyb3cgc1sxXTtyZXR1cm57dmFsdWU6c1swXT9zWzFdOnZvaWQgMCxkb25lOiEwfX0oW3MsaV0pfX19dmFyIG49e30sbz1mdW5jdGlvbihlLHQpe3JldHVybiBlKyJ8Iit0fTthZGRFdmVudExpc3RlbmVyKCJtZXNzYWdlIiwoZnVuY3Rpb24ocyl7dmFyIGE9cy5kYXRhLGk9YS50aW1lb3V0LHU9YS5hdXRoLGM9YS5mZXRjaFVybCxmPWEuZmV0Y2hPcHRpb25zLGw9cy5wb3J0c1swXTtyZXR1cm4gdCh2b2lkIDAsdm9pZCAwLHZvaWQgMCwoZnVuY3Rpb24oKXt2YXIgdCxzLGEsaCxwLGIseSxkLHYsdztyZXR1cm4gcih0aGlzLChmdW5jdGlvbihyKXtzd2l0Y2goci5sYWJlbCl7Y2FzZSAwOmE9KHM9dXx8e30pLmF1ZGllbmNlLGg9cy5zY29wZSxyLmxhYmVsPTE7Y2FzZSAxOmlmKHIudHJ5cy5wdXNoKFsxLDcsLDhdKSwhKHA9SlNPTi5wYXJzZShmLmJvZHkpKS5yZWZyZXNoX3Rva2VuJiYicmVmcmVzaF90b2tlbiI9PT1wLmdyYW50X3R5cGUpe2lmKCEoYj1mdW5jdGlvbihlLHQpe3JldHVybiBuW28oZSx0KV19KGEsaCkpKXRocm93IG5ldyBFcnJvcigiVGhlIHdlYiB3b3JrZXIgaXMgbWlzc2luZyB0aGUgcmVmcmVzaCB0b2tlbiIpO2YuYm9keT1KU09OLnN0cmluZ2lmeShlKGUoe30scCkse3JlZnJlc2hfdG9rZW46Yn0pKX15PXZvaWQgMCwiZnVuY3Rpb24iPT10eXBlb2YgQWJvcnRDb250cm9sbGVyJiYoeT1uZXcgQWJvcnRDb250cm9sbGVyLGYuc2lnbmFsPXkuc2lnbmFsKSxkPXZvaWQgMCxyLmxhYmVsPTI7Y2FzZSAyOnJldHVybiByLnRyeXMucHVzaChbMiw0LCw1XSksWzQsUHJvbWlzZS5yYWNlKFsoZz1pLG5ldyBQcm9taXNlKChmdW5jdGlvbihlKXtyZXR1cm4gc2V0VGltZW91dChlLGcpfSkpKSxmZXRjaChjLGUoe30sZikpXSldO2Nhc2UgMzpyZXR1cm4gZD1yLnNlbnQoKSxbMyw1XTtjYXNlIDQ6cmV0dXJuIHY9ci5zZW50KCksbC5wb3N0TWVzc2FnZSh7ZXJyb3I6di5tZXNzYWdlfSksWzJdO2Nhc2UgNTpyZXR1cm4gZD9bNCxkLmpzb24oKV06KHkmJnkuYWJvcnQoKSxsLnBvc3RNZXNzYWdlKHtlcnJvcjoiVGltZW91dCB3aGVuIGV4ZWN1dGluZyAnZmV0Y2gnIn0pLFsyXSk7Y2FzZSA2OnJldHVybih0PXIuc2VudCgpKS5yZWZyZXNoX3Rva2VuPyhmdW5jdGlvbihlLHQscil7bltvKHQscildPWV9KHQucmVmcmVzaF90b2tlbixhLGgpLGRlbGV0ZSB0LnJlZnJlc2hfdG9rZW4pOmZ1bmN0aW9uKGUsdCl7ZGVsZXRlIG5bbyhlLHQpXX0oYSxoKSxsLnBvc3RNZXNzYWdlKHtvazpkLm9rLGpzb246dH0pLFszLDhdO2Nhc2UgNzpyZXR1cm4gdz1yLnNlbnQoKSxsLnBvc3RNZXNzYWdlKHtvazohMSxqc29uOntlcnJvcl9kZXNjcmlwdGlvbjp3Lm1lc3NhZ2V9fSksWzMsOF07Y2FzZSA4OnJldHVyblsyXX12YXIgZ30pKX0pKX0pKX0oKTsKCg==",null,false),new Worker(Pc,t)}),Gc={},Ac=new Qa,Yc={memory:function(){return(new Lc).enclosedCache},localstorage:function(){return new Rc}},Bc=function(t){return Yc[t]},$c=function(){function t(t){var e,n;if(this.options=t,"undefined"!=typeof window&&function(){if(!uc())throw new Error("For security reasons, `window.crypto` is required to run `auth0-spa-js`.");if(void 0===lc())throw new Error("\n      auth0-spa-js must run on a secure origin. See https://github.com/auth0/auth0-spa-js/blob/master/FAQ.md#why-do-i-get-auth0-spa-js-must-run-on-a-secure-origin for more information.\n    ")}(),this.cacheLocation=t.cacheLocation||"memory",this.cookieStorage=!1===t.legacySameSiteCookie?Fc:zc,this.sessionCheckExpiryDays=t.sessionCheckExpiryDays||1,!Bc(this.cacheLocation))throw new Error('Invalid cache location "'+this.cacheLocation+'"');var r,o,i=t.useCookiesForTransactions?this.cookieStorage:Nc;this.cache=Bc(this.cacheLocation)(),this.scope=this.options.scope,this.transactionManager=new Cc(i),this.domainUrl="https://"+this.options.domain,this.tokenIssuer=(r=this.options.issuer,o=this.domainUrl,r?r.startsWith("https://")?r:"https://"+r+"/":o+"/"),this.defaultScope=xc("openid",void 0!==(null===(n=null===(e=this.options)||void 0===e?void 0:e.advancedOptions)||void 0===n?void 0:n.defaultScope)?this.options.advancedOptions.defaultScope:"openid profile email"),this.options.useRefreshTokens&&(this.scope=xc(this.scope,"offline_access")),"undefined"!=typeof window&&window.Worker&&this.options.useRefreshTokens&&"memory"===this.cacheLocation&&!/Trident.*rv:11\.0/.test(navigator.userAgent)&&(this.worker=new jc),this.customOptions=function(t){return t.advancedOptions,t.audience,t.auth0Client,t.authorizeTimeoutInSeconds,t.cacheLocation,t.client_id,t.domain,t.issuer,t.leeway,t.max_age,t.redirect_uri,t.scope,t.useRefreshTokens,Ve(t,["advancedOptions","audience","auth0Client","authorizeTimeoutInSeconds","cacheLocation","client_id","domain","issuer","leeway","max_age","redirect_uri","scope","useRefreshTokens"])}(t)}return t.prototype._url=function(t){var e=encodeURIComponent(btoa(JSON.stringify(this.options.auth0Client||nc)));return""+this.domainUrl+t+"&auth0Client="+e},t.prototype._getParams=function(t,e,n,r,o){var i=this.options;i.domain,i.leeway,i.useRefreshTokens,i.useCookiesForTransactions,i.auth0Client,i.cacheLocation,i.advancedOptions;var a=Ve(i,["domain","leeway","useRefreshTokens","useCookiesForTransactions","auth0Client","cacheLocation","advancedOptions"]);return Ze(Ze(Ze({},a),t),{scope:xc(this.defaultScope,this.scope,t.scope),response_type:"code",response_mode:"query",state:e,nonce:n,redirect_uri:o||this.options.redirect_uri,code_challenge:r,code_challenge_method:"S256"})},t.prototype._authorizeUrl=function(t){return this._url("/authorize?"+pc(t))},t.prototype._verifyIdToken=function(t,e,n){return function(t){if(!t.id_token)throw new Error("ID token is required but missing");var e=function(t){var e=t.split("."),n=e[0],r=e[1],o=e[2];if(3!==e.length||!n||!r||!o)throw new Error("ID token could not be decoded");var i=JSON.parse(mc(r)),a={__raw:t},c={};return Object.keys(i).forEach((function(t){a[t]=i[t],Uc.includes(t)||(c[t]=i[t])})),{encoded:{header:n,payload:r,signature:o},header:JSON.parse(mc(n)),claims:a,user:c}}(t.id_token);if(!e.claims.iss)throw new Error("Issuer (iss) claim must be a string present in the ID token");if(e.claims.iss!==t.iss)throw new Error('Issuer (iss) claim mismatch in the ID token; expected "'+t.iss+'", found "'+e.claims.iss+'"');if(!e.user.sub)throw new Error("Subject (sub) claim must be a string present in the ID token");if("RS256"!==e.header.alg)throw new Error('Signature algorithm of "'+e.header.alg+'" is not supported. Expected the ID token to be signed with "RS256".');if(!e.claims.aud||"string"!=typeof e.claims.aud&&!Array.isArray(e.claims.aud))throw new Error("Audience (aud) claim must be a string or array of strings present in the ID token");if(Array.isArray(e.claims.aud)){if(!e.claims.aud.includes(t.aud))throw new Error('Audience (aud) claim mismatch in the ID token; expected "'+t.aud+'" but was not one of "'+e.claims.aud.join(", ")+'"');if(e.claims.aud.length>1){if(!e.claims.azp)throw new Error("Authorized Party (azp) claim must be a string present in the ID token when Audience (aud) claim has multiple values");if(e.claims.azp!==t.aud)throw new Error('Authorized Party (azp) claim mismatch in the ID token; expected "'+t.aud+'", found "'+e.claims.azp+'"')}}else if(e.claims.aud!==t.aud)throw new Error('Audience (aud) claim mismatch in the ID token; expected "'+t.aud+'" but found "'+e.claims.aud+'"');if(t.nonce){if(!e.claims.nonce)throw new Error("Nonce (nonce) claim must be a string present in the ID token");if(e.claims.nonce!==t.nonce)throw new Error('Nonce (nonce) claim mismatch in the ID token; expected "'+t.nonce+'", found "'+e.claims.nonce+'"')}if(t.max_age&&!Kc(e.claims.auth_time))throw new Error("Authentication Time (auth_time) claim must be a number present in the ID token when Max Age (max_age) is specified");if(!Kc(e.claims.exp))throw new Error("Expiration Time (exp) claim must be a number present in the ID token");if(!Kc(e.claims.iat))throw new Error("Issued At (iat) claim must be a number present in the ID token");var n=t.leeway||60,r=new Date(Date.now()),o=new Date(0),i=new Date(0),a=new Date(0);if(a.setUTCSeconds(parseInt(e.claims.auth_time)+t.max_age+n),o.setUTCSeconds(e.claims.exp+n),i.setUTCSeconds(e.claims.nbf-n),r>o)throw new Error("Expiration Time (exp) claim error in the ID token; current time ("+r+") is after expiration time ("+o+")");if(Kc(e.claims.nbf)&&r<i)throw new Error("Not Before time (nbf) claim in the ID token indicates that this token can't be used just yet. Currrent time ("+r+") is before "+i);if(Kc(e.claims.auth_time)&&r>a)throw new Error("Authentication Time (auth_time) claim in the ID token indicates that too much time has passed since the last end-user authentication. Currrent time ("+r+") is after last auth at "+a);if(t.organizationId){if(!e.claims.org_id)throw new Error("Organization ID (org_id) claim must be a string present in the ID token");if(t.organizationId!==e.claims.org_id)throw new Error('Organization ID (org_id) claim mismatch in the ID token; expected "'+t.organizationId+'", found "'+e.claims.org_id+'"')}return e}({iss:this.tokenIssuer,aud:this.options.client_id,id_token:t,nonce:e,organizationId:n,leeway:this.options.leeway,max_age:this._parseNumber(this.options.max_age)})},t.prototype._parseNumber=function(t){return"string"!=typeof t?t:parseInt(t,10)||void 0},t.prototype.buildAuthorizeUrl=function(t){return void 0===t&&(t={}),We(this,void 0,void 0,(function(){var e,n,r,o,i,a,c,s,u,l,f,d;return Xe(this,(function(p){switch(p.label){case 0:return e=t.redirect_uri,n=t.appState,r=Ve(t,["redirect_uri","appState"]),o=dc(fc()),i=dc(fc()),a=fc(),[4,hc(a)];case 1:return c=p.sent(),s=yc(c),u=t.fragment?"#"+t.fragment:"",l=this._getParams(r,o,i,s,e),f=this._authorizeUrl(l),d=t.organization||this.options.organization,this.transactionManager.create(Ze({nonce:i,code_verifier:a,appState:n,scope:l.scope,audience:l.audience||"default",redirect_uri:l.redirect_uri},d&&{organizationId:d})),[2,f+u]}}))}))},t.prototype.loginWithPopup=function(t,e){return We(this,void 0,void 0,(function(){var n,r,o,i,a,c,s,u,l,f,d,p,h;return Xe(this,(function(m){switch(m.label){case 0:return t=t||{},(e=e||{}).popup||(e.popup=function(t){var e=window.screenX+(window.innerWidth-400)/2,n=window.screenY+(window.innerHeight-600)/2;return window.open("","auth0:authorize:popup","left="+e+",top="+n+",width=400,height=600,resizable,scrollbars=yes,status=1")}()),n=Ve(t,[]),r=dc(fc()),o=dc(fc()),i=fc(),[4,hc(i)];case 1:return a=m.sent(),c=yc(a),s=this._getParams(n,r,o,c,this.options.redirect_uri||window.location.origin),u=this._authorizeUrl(Ze(Ze({},s),{response_mode:"web_message"})),e.popup.location.href=u,[4,sc(Ze(Ze({},e),{timeoutInSeconds:e.timeoutInSeconds||this.options.authorizeTimeoutInSeconds||60}))];case 2:if(l=m.sent(),r!==l.state)throw new Error("Invalid state");return[4,kc({audience:s.audience,scope:s.scope,baseUrl:this.domainUrl,client_id:this.options.client_id,code_verifier:i,code:l.code,grant_type:"authorization_code",redirect_uri:s.redirect_uri,auth0Client:this.options.auth0Client},this.worker)];case 3:return f=m.sent(),d=t.organization||this.options.organization,p=this._verifyIdToken(f.id_token,o,d),h=Ze(Ze({},f),{decodedToken:p,scope:s.scope,audience:s.audience||"default",client_id:this.options.client_id}),this.cache.save(h),this.cookieStorage.save("auth0.is.authenticated",!0,{daysUntilExpire:this.sessionCheckExpiryDays}),[2]}}))}))},t.prototype.getUser=function(t){return void 0===t&&(t={}),We(this,void 0,void 0,(function(){var e,n,r;return Xe(this,(function(o){return e=t.audience||this.options.audience||"default",n=xc(this.defaultScope,this.scope,t.scope),[2,(r=this.cache.get(new Ic({client_id:this.options.client_id,audience:e,scope:n})))&&r.decodedToken&&r.decodedToken.user]}))}))},t.prototype.getIdTokenClaims=function(t){return void 0===t&&(t={}),We(this,void 0,void 0,(function(){var e,n,r;return Xe(this,(function(o){return e=t.audience||this.options.audience||"default",n=xc(this.defaultScope,this.scope,t.scope),[2,(r=this.cache.get(new Ic({client_id:this.options.client_id,audience:e,scope:n})))&&r.decodedToken&&r.decodedToken.claims]}))}))},t.prototype.loginWithRedirect=function(t){return void 0===t&&(t={}),We(this,void 0,void 0,(function(){var e,n,r;return Xe(this,(function(o){switch(o.label){case 0:return e=t.redirectMethod,n=Ve(t,["redirectMethod"]),[4,this.buildAuthorizeUrl(n)];case 1:return r=o.sent(),window.location[e||"assign"](r),[2]}}))}))},t.prototype.handleRedirectCallback=function(t){return void 0===t&&(t=window.location.href),We(this,void 0,void 0,(function(){var e,n,r,o,i,a,c,s,u,l,f;return Xe(this,(function(d){switch(d.label){case 0:if(0===(e=t.split("?").slice(1)).length)throw new Error("There are no query params available for parsing.");if(n=function(t){t.indexOf("#")>-1&&(t=t.substr(0,t.indexOf("#")));var e=t.split("&"),n={};return e.forEach((function(t){var e=t.split("="),r=e[0],o=e[1];n[r]=decodeURIComponent(o)})),Ze(Ze({},n),{expires_in:parseInt(n.expires_in)})}(e.join("")),r=n.state,o=n.code,i=n.error,a=n.error_description,!(c=this.transactionManager.get())||!c.code_verifier)throw new Error("Invalid state");if(this.transactionManager.remove(),i)throw new oc(i,a,r,c.appState);return s={audience:c.audience,scope:c.scope,baseUrl:this.domainUrl,client_id:this.options.client_id,code_verifier:c.code_verifier,grant_type:"authorization_code",code:o,auth0Client:this.options.auth0Client},void 0!==c.redirect_uri&&(s.redirect_uri=c.redirect_uri),[4,kc(s,this.worker)];case 1:return u=d.sent(),l=this._verifyIdToken(u.id_token,c.nonce,c.organizationId),f=Ze(Ze({},u),{decodedToken:l,audience:c.audience,scope:c.scope,client_id:this.options.client_id}),this.cache.save(f),this.cookieStorage.save("auth0.is.authenticated",!0,{daysUntilExpire:this.sessionCheckExpiryDays}),[2,{appState:c.appState}]}}))}))},t.prototype.checkSession=function(t){return We(this,void 0,void 0,(function(){var e;return Xe(this,(function(n){switch(n.label){case 0:if(!this.cookieStorage.get("auth0.is.authenticated"))return[2];n.label=1;case 1:return n.trys.push([1,3,,4]),[4,this.getTokenSilently(t)];case 2:return n.sent(),[3,4];case 3:if(e=n.sent(),!ec.includes(e.error))throw e;return[3,4];case 4:return[2]}}))}))},t.prototype.getTokenSilently=function(t){return void 0===t&&(t={}),We(this,void 0,void 0,(function(){var e,n,r,o=this;return Xe(this,(function(i){return e=Ze(Ze({audience:this.options.audience,ignoreCache:!1},t),{scope:xc(this.defaultScope,this.scope,t.scope)}),n=e.ignoreCache,r=Ve(e,["ignoreCache"]),[2,(a=function(){return o._getTokenSilently(Ze({ignoreCache:n},r))},c=this.options.client_id+"::"+r.audience+"::"+r.scope,s=Gc[c],s||(s=a().finally((function(){delete Gc[c],s=null})),Gc[c]=s),s)];var a,c,s}))}))},t.prototype._getTokenSilently=function(t){return void 0===t&&(t={}),We(this,void 0,void 0,(function(){var e,n,r,o,i,a,c=this;return Xe(this,(function(s){switch(s.label){case 0:return e=t.ignoreCache,n=Ve(t,["ignoreCache"]),r=function(){var t=c.cache.get(new Ic({scope:n.scope,audience:n.audience||"default",client_id:c.options.client_id}),60);return t&&t.access_token},!e&&(o=r())?[2,o]:[4,(u=function(){return Ac.acquireLock("auth0.lock.getTokenSilently",5e3)},l=10,void 0===l&&(l=3),We(void 0,void 0,void 0,(function(){var t;return Xe(this,(function(e){switch(e.label){case 0:t=0,e.label=1;case 1:return t<l?[4,u()]:[3,4];case 2:if(e.sent())return[2,!0];e.label=3;case 3:return t++,[3,1];case 4:return[2,!1]}}))})))];case 1:if(!s.sent())return[3,10];s.label=2;case 2:return s.trys.push([2,,7,9]),!e&&(o=r())?[2,o]:this.options.useRefreshTokens?[4,this._getTokenUsingRefreshToken(n)]:[3,4];case 3:return a=s.sent(),[3,6];case 4:return[4,this._getTokenFromIFrame(n)];case 5:a=s.sent(),s.label=6;case 6:return i=a,this.cache.save(Ze({client_id:this.options.client_id},i)),this.cookieStorage.save("auth0.is.authenticated",!0,{daysUntilExpire:this.sessionCheckExpiryDays}),[2,i.access_token];case 7:return[4,Ac.releaseLock("auth0.lock.getTokenSilently")];case 8:return s.sent(),[7];case 9:return[3,11];case 10:throw new ic;case 11:return[2]}var u,l}))}))},t.prototype.getTokenWithPopup=function(t,e){return void 0===t&&(t={}),void 0===e&&(e={}),We(this,void 0,void 0,(function(){return Xe(this,(function(n){switch(n.label){case 0:return t.audience=t.audience||this.options.audience,t.scope=xc(this.defaultScope,this.scope,t.scope),e=Ze(Ze({},tc),e),[4,this.loginWithPopup(t,e)];case 1:return n.sent(),[2,this.cache.get(new Ic({scope:t.scope,audience:t.audience||"default",client_id:this.options.client_id})).access_token]}}))}))},t.prototype.isAuthenticated=function(){return We(this,void 0,void 0,(function(){return Xe(this,(function(t){switch(t.label){case 0:return[4,this.getUser()];case 1:return[2,!!t.sent()]}}))}))},t.prototype.buildLogoutUrl=function(t){void 0===t&&(t={}),null!==t.client_id?t.client_id=t.client_id||this.options.client_id:delete t.client_id;var e=t.federated,n=Ve(t,["federated"]),r=e?"&federated":"";return this._url("/v2/logout?"+pc(n))+r},t.prototype.logout=function(t){void 0===t&&(t={});var e=t.localOnly,n=Ve(t,["localOnly"]);if(e&&n.federated)throw new Error("It is invalid to set both the `federated` and `localOnly` options to `true`");if(this.cache.clear(),this.cookieStorage.remove("auth0.is.authenticated"),!e){var r=this.buildLogoutUrl(n);window.location.assign(r)}},t.prototype._getTokenFromIFrame=function(t){return We(this,void 0,void 0,(function(){var e,n,r,o,i,a,c,s,u,l,f,d,p,h,m;return Xe(this,(function(y){switch(y.label){case 0:return e=dc(fc()),n=dc(fc()),r=fc(),[4,hc(r)];case 1:o=y.sent(),i=yc(o),a=this._getParams(t,e,n,i,t.redirect_uri||this.options.redirect_uri||window.location.origin),c=this._authorizeUrl(Ze(Ze({},a),{prompt:"none",response_mode:"web_message"})),s=t.timeoutInSeconds||this.options.authorizeTimeoutInSeconds,y.label=2;case 2:return y.trys.push([2,5,,6]),[4,(g=c,v=this.domainUrl,b=s,void 0===b&&(b=60),new Promise((function(t,e){var n=window.document.createElement("iframe");n.setAttribute("width","0"),n.setAttribute("height","0"),n.style.display="none";var r,o=function(){window.document.body.contains(n)&&(window.document.body.removeChild(n),window.removeEventListener("message",r,!1))},i=setTimeout((function(){e(new ic),o()}),1e3*b);r=function(n){if(n.origin==v&&n.data&&"authorization_response"===n.data.type){var a=n.source;a&&a.close(),n.data.response.error?e(rc.fromPayload(n.data.response)):t(n.data.response),clearTimeout(i),window.removeEventListener("message",r,!1),setTimeout(o,2e3)}},window.addEventListener("message",r,!1),window.document.body.appendChild(n),n.setAttribute("src",g)})))];case 3:if(u=y.sent(),e!==u.state)throw new Error("Invalid state");return l=t.scope,f=t.audience,t.redirect_uri,t.ignoreCache,t.timeoutInSeconds,d=Ve(t,["scope","audience","redirect_uri","ignoreCache","timeoutInSeconds"]),[4,kc(Ze(Ze(Ze({},this.customOptions),d),{scope:l,audience:f,baseUrl:this.domainUrl,client_id:this.options.client_id,code_verifier:r,code:u.code,grant_type:"authorization_code",redirect_uri:a.redirect_uri,auth0Client:this.options.auth0Client}),this.worker)];case 4:return p=y.sent(),h=this._verifyIdToken(p.id_token,n),[2,Ze(Ze({},p),{decodedToken:h,scope:a.scope,audience:a.audience||"default"})];case 5:throw"login_required"===(m=y.sent()).error&&this.logout({localOnly:!0}),m;case 6:return[2]}var g,v,b}))}))},t.prototype._getTokenUsingRefreshToken=function(t){return We(this,void 0,void 0,(function(){var e,n,r,o,i,a,c,s,u;return Xe(this,(function(l){switch(l.label){case 0:return t.scope=xc(this.defaultScope,this.options.scope,t.scope),(e=this.cache.get(new Ic({scope:t.scope,audience:t.audience||"default",client_id:this.options.client_id})))&&e.refresh_token||this.worker?[3,2]:[4,this._getTokenFromIFrame(t)];case 1:return[2,l.sent()];case 2:n=t.redirect_uri||this.options.redirect_uri||window.location.origin,o=t.scope,i=t.audience,t.ignoreCache,t.timeoutInSeconds,a=Ve(t,["scope","audience","ignoreCache","timeoutInSeconds"]),c="number"==typeof t.timeoutInSeconds?1e3*t.timeoutInSeconds:null,l.label=3;case 3:return l.trys.push([3,5,,8]),[4,kc(Ze(Ze(Ze(Ze(Ze({},this.customOptions),a),{audience:i,scope:o,baseUrl:this.domainUrl,client_id:this.options.client_id,grant_type:"refresh_token",refresh_token:e&&e.refresh_token,redirect_uri:n}),c&&{timeout:c}),{auth0Client:this.options.auth0Client}),this.worker)];case 4:return r=l.sent(),[3,8];case 5:return"The web worker is missing the refresh token"===(s=l.sent()).message||s.message&&s.message.indexOf("invalid refresh token")>-1?[4,this._getTokenFromIFrame(t)]:[3,7];case 6:return[2,l.sent()];case 7:throw s;case 8:return u=this._verifyIdToken(r.id_token),[2,Ze(Ze({},r),{decodedToken:u,scope:t.scope,audience:t.audience||"default"})]}}))}))},t}();const Jc=window.location;let qc,Hc=null,Dc=!1;const Mc=async()=>{const t=await fetch("/auth_config.json"),e=await t.json();Hc=await function(t){return We(this,void 0,void 0,(function(){var e;return Xe(this,(function(n){switch(n.label){case 0:return[4,(e=new $c(t)).checkSession()];case 1:return n.sent(),[2,e]}}))}))}({domain:e.domain,client_id:e.clientId,audience:e.audience})};window.onload=async()=>{if("dasifor.xyz"!==Jc.host)return D.getInstance(),void qc();if(await Mc(),Dc=await Hc.isAuthenticated(),Dc)return void qc();const t=window.location.search;if(t.includes("code=")&&t.includes("state=")){await Hc.handleRedirectCallback(),window.history.replaceState({},document.title,"/");const t=await Hc.getTokenSilently();qc(),D.getInstance(t)}};const Qc=async()=>await Hc.isAuthenticated(),ts=async()=>{await Hc.loginWithRedirect({redirect_uri:"https://dasifor.xyz"})},es=()=>{D.destroy(),Hc.logout({returnTo:"https://dasifor.xyz"})};function ns(e){let n,r,o,i;return{c(){n=f("li"),r=f("a"),r.textContent="Logga in",y(r,"href","/login"),y(r,"class","svelte-1hkku9o")},m(t,a){s(t,n,a),c(n,r),o||(i=m(r,"click",e[2]),o=!0)},p:t,d(t){t&&u(n),o=!1,i()}}}function rs(e){let n,r,o,i;return{c(){n=f("li"),r=f("a"),r.textContent="Logga ut",y(r,"href","/login"),y(r,"class","svelte-1hkku9o")},m(t,a){s(t,n,a),c(n,r),o||(i=m(r,"click",e[1]),o=!0)},p:t,d(t){t&&u(n),o=!1,i()}}}function os(e){let n,r,o,i,a;function l(t,e){return t[0]?rs:ns}let d=l(e),h=d(e);return{c(){n=f("nav"),r=f("div"),o=f("ul"),o.innerHTML='<li><a href="/" class="svelte-1hkku9o">Hem</a></li> \n\t\t\t<li><a href="/new" class="svelte-1hkku9o">Ny budget</a></li> \n\t\t\t<li><a href="/edit" class="svelte-1hkku9o">Ändra budget</a></li>',i=p(),a=f("ul"),h.c(),y(o,"id","nav-mobile"),y(o,"class","left"),y(a,"id","nav-mobile"),y(a,"class","right"),y(r,"class","nav-wrapper"),y(n,"class","indigo darken-3")},m(t,e){s(t,n,e),c(n,r),c(r,o),c(r,i),c(r,a),h.m(a,null)},p(t,[e]){d===(d=l(t))&&h?h.p(t,e):(h.d(1),h=d(t),h&&(h.c(),h.m(a,null)))},i:t,o:t,d(t){t&&u(n),h.d()}}}function is(t,e,n){let{loggedIn:r}=e;return t.$$set=t=>{"loggedIn"in t&&n(0,r=t.loggedIn)},[r,()=>es(),()=>ts()]}class as extends H{constructor(t){super(),q(this,t,is,os,i,{loggedIn:0})}}function cs(e){let n;return{c(){n=f("p"),n.innerHTML='Logga in uppe till höger eller besök <a href="https://budget.dasifor.xyz">den öppna versionen</a>.',y(n,"class","center svelte-1vbsoe2")},m(t,e){s(t,n,e)},p:t,i:t,o:t,d(t){t&&u(n)}}}class ss extends H{constructor(t){super(),q(this,t,null,cs,i,{})}}function us(t){return Qc().then((t=>{t?es():ts()})),[]}class ls extends H{constructor(t){super(),q(this,t,us,null,i,{})}}function fs(e){let n,r;return n=new ss({}),{c(){Y(n.$$.fragment)},m(t,e){B(n,t,e),r=!0},p:t,i(t){r||(z(n.$$.fragment,t),r=!0)},o(t){N(n.$$.fragment,t),r=!1},d(t){$(n,t)}}}function ds(t){let e,n,r;var o=t[0];return o&&(e=new o({})),{c(){e&&Y(e.$$.fragment),n=h()},m(t,o){e&&B(e,t,o),s(t,n,o),r=!0},p(t,r){if(o!==(o=t[0])){if(e){X();const t=e;N(t.$$.fragment,1,0,(()=>{$(t,1)})),F()}o?(e=new o({}),Y(e.$$.fragment),z(e.$$.fragment,1),B(e,n.parentNode,n)):e=null}},i(t){r||(e&&z(e.$$.fragment,t),r=!0)},o(t){e&&N(e.$$.fragment,t),r=!1},d(t){t&&u(n),e&&$(e,t)}}}function ps(t){let e,n,r,o,i,a;e=new as({props:{loggedIn:t[1]}});const c=[ds,fs],l=[];function f(t,e){return t[1]?0:1}return r=f(t),o=l[r]=c[r](t),{c(){Y(e.$$.fragment),n=p(),o.c(),i=h()},m(t,o){B(e,t,o),s(t,n,o),l[r].m(t,o),s(t,i,o),a=!0},p(t,[n]){const a={};2&n&&(a.loggedIn=t[1]),e.$set(a);let s=r;r=f(t),r===s?l[r].p(t,n):(X(),N(l[s],1,1,(()=>{l[s]=null})),F(),o=l[r],o?o.p(t,n):(o=l[r]=c[r](t),o.c()),z(o,1),o.m(i.parentNode,i))},i(t){a||(z(e.$$.fragment,t),z(o),a=!0)},o(t){N(e.$$.fragment,t),N(o),a=!1},d(t){$(e,t),t&&u(n),l[r].d(t),t&&u(i)}}}function hs(t,e,n){let r,o=null;return xe("/",(()=>{n(0,o=me)})),xe("/new",(()=>{n(0,o=Ce)})),xe("/edit",(()=>{n(0,o=de)})),xe("/login",(()=>{n(0,o=ls)})),xe("/logout",(()=>{n(0,o=ls)})),xe.start(),Qc().then((t=>{n(1,r=t)})),qc=()=>{n(1,r=!0)},[o,r]}return new class extends H{constructor(t){super(),q(this,t,hs,ps,i,{})}}({target:document.body,props:{}})}();
+    ***************************************************************************** */
+    var e=function(t,n){return (e=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t;}||function(e,t){for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n]);})(t,n)};function t(t,n){if("function"!=typeof n&&null!==n)throw new TypeError("Class extends value "+String(n)+" is not a constructor or null");function r(){this.constructor=t;}e(t,n),t.prototype=null===n?Object.create(n):(r.prototype=n.prototype,new r);}var n=function(){return (n=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var o in t=arguments[n])Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o]);return e}).apply(this,arguments)};function r(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var o=0;for(r=Object.getOwnPropertySymbols(e);o<r.length;o++)t.indexOf(r[o])<0&&Object.prototype.propertyIsEnumerable.call(e,r[o])&&(n[r[o]]=e[r[o]]);}return n}function o(e,t,n,r){return new(n||(n=Promise))((function(o,i){function a(e){try{s(r.next(e));}catch(e){i(e);}}function c(e){try{s(r.throw(e));}catch(e){i(e);}}function s(e){var t;e.done?o(e.value):(t=e.value,t instanceof n?t:new n((function(e){e(t);}))).then(a,c);}s((r=r.apply(e,t||[])).next());}))}function i(e,t){var n,r,o,i,a={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return i={next:c(0),throw:c(1),return:c(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function c(i){return function(c){return function(i){if(n)throw new TypeError("Generator is already executing.");for(;a;)try{if(n=1,r&&(o=2&i[0]?r.return:i[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,i[1])).done)return o;switch(r=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:return a.label++,{value:i[1],done:!1};case 5:a.label++,r=i[1],i=[0];continue;case 7:i=a.ops.pop(),a.trys.pop();continue;default:if(!(o=a.trys,(o=o.length>0&&o[o.length-1])||6!==i[0]&&2!==i[0])){a=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){a.label=i[1];break}if(6===i[0]&&a.label<o[1]){a.label=o[1],o=i;break}if(o&&a.label<o[2]){a.label=o[2],a.ops.push(i);break}o[2]&&a.ops.pop(),a.trys.pop();continue}i=t.call(e,a);}catch(e){i=[6,e],r=0;}finally{n=o=0;}if(5&i[0])throw i[1];return {value:i[0]?i[1]:void 0,done:!0}}([i,c])}}}var a="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};function c(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}function s(e,t){return e(t={exports:{}},t.exports),t.exports}var u=function(e){return e&&e.Math==Math&&e},l=u("object"==typeof globalThis&&globalThis)||u("object"==typeof window&&window)||u("object"==typeof self&&self)||u("object"==typeof a&&a)||function(){return this}()||Function("return this")(),f=function(e){try{return !!e()}catch(e){return !0}},d=!f((function(){return 7!=Object.defineProperty({},1,{get:function(){return 7}})[1]})),p={}.propertyIsEnumerable,h=Object.getOwnPropertyDescriptor,y={f:h&&!p.call({1:2},1)?function(e){var t=h(this,e);return !!t&&t.enumerable}:p},v=function(e,t){return {enumerable:!(1&e),configurable:!(2&e),writable:!(4&e),value:t}},m={}.toString,g=function(e){return m.call(e).slice(8,-1)},b="".split,w=f((function(){return !Object("z").propertyIsEnumerable(0)}))?function(e){return "String"==g(e)?b.call(e,""):Object(e)}:Object,S=function(e){if(null==e)throw TypeError("Can't call method on "+e);return e},_=function(e){return w(S(e))},k=function(e){return "object"==typeof e?null!==e:"function"==typeof e},I=function(e,t){if(!k(e))return e;var n,r;if(t&&"function"==typeof(n=e.toString)&&!k(r=n.call(e)))return r;if("function"==typeof(n=e.valueOf)&&!k(r=n.call(e)))return r;if(!t&&"function"==typeof(n=e.toString)&&!k(r=n.call(e)))return r;throw TypeError("Can't convert object to primitive value")},T=function(e){return Object(S(e))},O={}.hasOwnProperty,E=function(e,t){return O.call(T(e),t)},x=l.document,R=k(x)&&k(x.createElement),L=function(e){return R?x.createElement(e):{}},C=!d&&!f((function(){return 7!=Object.defineProperty(L("div"),"a",{get:function(){return 7}}).a})),j=Object.getOwnPropertyDescriptor,U={f:d?j:function(e,t){if(e=_(e),t=I(t,!0),C)try{return j(e,t)}catch(e){}if(E(e,t))return v(!y.f.call(e,t),e[t])}},A=function(e){if(!k(e))throw TypeError(String(e)+" is not an object");return e},P=Object.defineProperty,F={f:d?P:function(e,t,n){if(A(e),t=I(t,!0),A(n),C)try{return P(e,t,n)}catch(e){}if("get"in n||"set"in n)throw TypeError("Accessors not supported");return "value"in n&&(e[t]=n.value),e}},K=d?function(e,t,n){return F.f(e,t,v(1,n))}:function(e,t,n){return e[t]=n,e},W=function(e,t){try{K(l,e,t);}catch(n){l[e]=t;}return t},z=l["__core-js_shared__"]||W("__core-js_shared__",{}),V=Function.toString;"function"!=typeof z.inspectSource&&(z.inspectSource=function(e){return V.call(e)});var Z,X,N,G=z.inspectSource,J=l.WeakMap,D="function"==typeof J&&/native code/.test(G(J)),Y=s((function(e){(e.exports=function(e,t){return z[e]||(z[e]=void 0!==t?t:{})})("versions",[]).push({version:"3.11.0",mode:"global",copyright:"© 2021 Denis Pushkarev (zloirock.ru)"});})),B=0,M=Math.random(),q=function(e){return "Symbol("+String(void 0===e?"":e)+")_"+(++B+M).toString(36)},H=Y("keys"),Q=function(e){return H[e]||(H[e]=q(e))},$={},ee=l.WeakMap;if(D){var te=z.state||(z.state=new ee),ne=te.get,re=te.has,oe=te.set;Z=function(e,t){if(re.call(te,e))throw new TypeError("Object already initialized");return t.facade=e,oe.call(te,e,t),t},X=function(e){return ne.call(te,e)||{}},N=function(e){return re.call(te,e)};}else {var ie=Q("state");$[ie]=!0,Z=function(e,t){if(E(e,ie))throw new TypeError("Object already initialized");return t.facade=e,K(e,ie,t),t},X=function(e){return E(e,ie)?e[ie]:{}},N=function(e){return E(e,ie)};}var ae,ce,se={set:Z,get:X,has:N,enforce:function(e){return N(e)?X(e):Z(e,{})},getterFor:function(e){return function(t){var n;if(!k(t)||(n=X(t)).type!==e)throw TypeError("Incompatible receiver, "+e+" required");return n}}},ue=s((function(e){var t=se.get,n=se.enforce,r=String(String).split("String");(e.exports=function(e,t,o,i){var a,c=!!i&&!!i.unsafe,s=!!i&&!!i.enumerable,u=!!i&&!!i.noTargetGet;"function"==typeof o&&("string"!=typeof t||E(o,"name")||K(o,"name",t),(a=n(o)).source||(a.source=r.join("string"==typeof t?t:""))),e!==l?(c?!u&&e[t]&&(s=!0):delete e[t],s?e[t]=o:K(e,t,o)):s?e[t]=o:W(t,o);})(Function.prototype,"toString",(function(){return "function"==typeof this&&t(this).source||G(this)}));})),le=l,fe=function(e){return "function"==typeof e?e:void 0},de=function(e,t){return arguments.length<2?fe(le[e])||fe(l[e]):le[e]&&le[e][t]||l[e]&&l[e][t]},pe=Math.ceil,he=Math.floor,ye=function(e){return isNaN(e=+e)?0:(e>0?he:pe)(e)},ve=Math.min,me=function(e){return e>0?ve(ye(e),9007199254740991):0},ge=Math.max,be=Math.min,we=function(e){return function(t,n,r){var o,i=_(t),a=me(i.length),c=function(e,t){var n=ye(e);return n<0?ge(n+t,0):be(n,t)}(r,a);if(e&&n!=n){for(;a>c;)if((o=i[c++])!=o)return !0}else for(;a>c;c++)if((e||c in i)&&i[c]===n)return e||c||0;return !e&&-1}},Se={includes:we(!0),indexOf:we(!1)},_e=Se.indexOf,ke=function(e,t){var n,r=_(e),o=0,i=[];for(n in r)!E($,n)&&E(r,n)&&i.push(n);for(;t.length>o;)E(r,n=t[o++])&&(~_e(i,n)||i.push(n));return i},Ie=["constructor","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","toLocaleString","toString","valueOf"],Te=Ie.concat("length","prototype"),Oe={f:Object.getOwnPropertyNames||function(e){return ke(e,Te)}},Ee={f:Object.getOwnPropertySymbols},xe=de("Reflect","ownKeys")||function(e){var t=Oe.f(A(e)),n=Ee.f;return n?t.concat(n(e)):t},Re=function(e,t){for(var n=xe(t),r=F.f,o=U.f,i=0;i<n.length;i++){var a=n[i];E(e,a)||r(e,a,o(t,a));}},Le=/#|\.prototype\./,Ce=function(e,t){var n=Ue[je(e)];return n==Pe||n!=Ae&&("function"==typeof t?f(t):!!t)},je=Ce.normalize=function(e){return String(e).replace(Le,".").toLowerCase()},Ue=Ce.data={},Ae=Ce.NATIVE="N",Pe=Ce.POLYFILL="P",Fe=Ce,Ke=U.f,We=function(e,t){var n,r,o,i,a,c=e.target,s=e.global,u=e.stat;if(n=s?l:u?l[c]||W(c,{}):(l[c]||{}).prototype)for(r in t){if(i=t[r],o=e.noTargetGet?(a=Ke(n,r))&&a.value:n[r],!Fe(s?r:c+(u?".":"#")+r,e.forced)&&void 0!==o){if(typeof i==typeof o)continue;Re(i,o);}(e.sham||o&&o.sham)&&K(i,"sham",!0),ue(n,r,i,e);}},ze="process"==g(l.process),Ve=de("navigator","userAgent")||"",Ze=l.process,Xe=Ze&&Ze.versions,Ne=Xe&&Xe.v8;Ne?ce=(ae=Ne.split("."))[0]+ae[1]:Ve&&(!(ae=Ve.match(/Edge\/(\d+)/))||ae[1]>=74)&&(ae=Ve.match(/Chrome\/(\d+)/))&&(ce=ae[1]);var Ge,Je=ce&&+ce,De=!!Object.getOwnPropertySymbols&&!f((function(){return !Symbol.sham&&(ze?38===Je:Je>37&&Je<41)})),Ye=De&&!Symbol.sham&&"symbol"==typeof Symbol.iterator,Be=Y("wks"),Me=l.Symbol,qe=Ye?Me:Me&&Me.withoutSetter||q,He=function(e){return E(Be,e)&&(De||"string"==typeof Be[e])||(De&&E(Me,e)?Be[e]=Me[e]:Be[e]=qe("Symbol."+e)),Be[e]},Qe=He("match"),$e=function(e){if(function(e){var t;return k(e)&&(void 0!==(t=e[Qe])?!!t:"RegExp"==g(e))}(e))throw TypeError("The method doesn't accept regular expressions");return e},et=He("match"),tt=function(e){var t=/./;try{"/./"[e](t);}catch(n){try{return t[et]=!1,"/./"[e](t)}catch(e){}}return !1},nt=U.f,rt="".startsWith,ot=Math.min,it=tt("startsWith"),at=!(it||(Ge=nt(String.prototype,"startsWith"),!Ge||Ge.writable));We({target:"String",proto:!0,forced:!at&&!it},{startsWith:function(e){var t=String(S(this));$e(e);var n=me(ot(arguments.length>1?arguments[1]:void 0,t.length)),r=String(e);return rt?rt.call(t,r,n):t.slice(n,n+r.length)===r}});var ct=function(e){if("function"!=typeof e)throw TypeError(String(e)+" is not a function");return e},st=function(e,t,n){if(ct(e),void 0===t)return e;switch(n){case 0:return function(){return e.call(t)};case 1:return function(n){return e.call(t,n)};case 2:return function(n,r){return e.call(t,n,r)};case 3:return function(n,r,o){return e.call(t,n,r,o)}}return function(){return e.apply(t,arguments)}},ut=Function.call,lt=function(e,t,n){return st(ut,l[e].prototype[t],n)};lt("String","startsWith");var ft=Array.isArray||function(e){return "Array"==g(e)},dt=function(e,t,n){var r=I(t);r in e?F.f(e,r,v(0,n)):e[r]=n;},pt=He("species"),ht=function(e,t){var n;return ft(e)&&("function"!=typeof(n=e.constructor)||n!==Array&&!ft(n.prototype)?k(n)&&null===(n=n[pt])&&(n=void 0):n=void 0),new(void 0===n?Array:n)(0===t?0:t)},yt=He("species"),vt=He("isConcatSpreadable"),mt=Je>=51||!f((function(){var e=[];return e[vt]=!1,e.concat()[0]!==e})),gt=function(e){return Je>=51||!f((function(){var t=[];return (t.constructor={})[yt]=function(){return {foo:1}},1!==t[e](Boolean).foo}))}("concat"),bt=function(e){if(!k(e))return !1;var t=e[vt];return void 0!==t?!!t:ft(e)};We({target:"Array",proto:!0,forced:!mt||!gt},{concat:function(e){var t,n,r,o,i,a=T(this),c=ht(a,0),s=0;for(t=-1,r=arguments.length;t<r;t++)if(bt(i=-1===t?a:arguments[t])){if(s+(o=me(i.length))>9007199254740991)throw TypeError("Maximum allowed index exceeded");for(n=0;n<o;n++,s++)n in i&&dt(c,s,i[n]);}else {if(s>=9007199254740991)throw TypeError("Maximum allowed index exceeded");dt(c,s++,i);}return c.length=s,c}});var wt={};wt[He("toStringTag")]="z";var St="[object z]"===String(wt),_t=He("toStringTag"),kt="Arguments"==g(function(){return arguments}()),It=St?g:function(e){var t,n,r;return void 0===e?"Undefined":null===e?"Null":"string"==typeof(n=function(e,t){try{return e[t]}catch(e){}}(t=Object(e),_t))?n:kt?g(t):"Object"==(r=g(t))&&"function"==typeof t.callee?"Arguments":r},Tt=St?{}.toString:function(){return "[object "+It(this)+"]"};St||ue(Object.prototype,"toString",Tt,{unsafe:!0});var Ot,Et=Object.keys||function(e){return ke(e,Ie)},xt=d?Object.defineProperties:function(e,t){A(e);for(var n,r=Et(t),o=r.length,i=0;o>i;)F.f(e,n=r[i++],t[n]);return e},Rt=de("document","documentElement"),Lt=Q("IE_PROTO"),Ct=function(){},jt=function(e){return "<script>"+e+"<\/script>"},Ut=function(){try{Ot=document.domain&&new ActiveXObject("htmlfile");}catch(e){}var e,t;Ut=Ot?function(e){e.write(jt("")),e.close();var t=e.parentWindow.Object;return e=null,t}(Ot):((t=L("iframe")).style.display="none",Rt.appendChild(t),t.src=String("javascript:"),(e=t.contentWindow.document).open(),e.write(jt("document.F=Object")),e.close(),e.F);for(var n=Ie.length;n--;)delete Ut.prototype[Ie[n]];return Ut()};$[Lt]=!0;var At=Object.create||function(e,t){var n;return null!==e?(Ct.prototype=A(e),n=new Ct,Ct.prototype=null,n[Lt]=e):n=Ut(),void 0===t?n:xt(n,t)},Pt=Oe.f,Ft={}.toString,Kt="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],Wt={f:function(e){return Kt&&"[object Window]"==Ft.call(e)?function(e){try{return Pt(e)}catch(e){return Kt.slice()}}(e):Pt(_(e))}},zt={f:He},Vt=F.f,Zt=function(e){var t=le.Symbol||(le.Symbol={});E(t,e)||Vt(t,e,{value:zt.f(e)});},Xt=F.f,Nt=He("toStringTag"),Gt=function(e,t,n){e&&!E(e=n?e:e.prototype,Nt)&&Xt(e,Nt,{configurable:!0,value:t});},Jt=[].push,Dt=function(e){var t=1==e,n=2==e,r=3==e,o=4==e,i=6==e,a=7==e,c=5==e||i;return function(s,u,l,f){for(var d,p,h=T(s),y=w(h),v=st(u,l,3),m=me(y.length),g=0,b=f||ht,S=t?b(s,m):n||a?b(s,0):void 0;m>g;g++)if((c||g in y)&&(p=v(d=y[g],g,h),e))if(t)S[g]=p;else if(p)switch(e){case 3:return !0;case 5:return d;case 6:return g;case 2:Jt.call(S,d);}else switch(e){case 4:return !1;case 7:Jt.call(S,d);}return i?-1:r||o?o:S}},Yt={forEach:Dt(0),map:Dt(1),filter:Dt(2),some:Dt(3),every:Dt(4),find:Dt(5),findIndex:Dt(6),filterOut:Dt(7)}.forEach,Bt=Q("hidden"),Mt=He("toPrimitive"),qt=se.set,Ht=se.getterFor("Symbol"),Qt=Object.prototype,$t=l.Symbol,en=de("JSON","stringify"),tn=U.f,nn=F.f,rn=Wt.f,on=y.f,an=Y("symbols"),cn=Y("op-symbols"),sn=Y("string-to-symbol-registry"),un=Y("symbol-to-string-registry"),ln=Y("wks"),fn=l.QObject,dn=!fn||!fn.prototype||!fn.prototype.findChild,pn=d&&f((function(){return 7!=At(nn({},"a",{get:function(){return nn(this,"a",{value:7}).a}})).a}))?function(e,t,n){var r=tn(Qt,t);r&&delete Qt[t],nn(e,t,n),r&&e!==Qt&&nn(Qt,t,r);}:nn,hn=function(e,t){var n=an[e]=At($t.prototype);return qt(n,{type:"Symbol",tag:e,description:t}),d||(n.description=t),n},yn=Ye?function(e){return "symbol"==typeof e}:function(e){return Object(e)instanceof $t},vn=function(e,t,n){e===Qt&&vn(cn,t,n),A(e);var r=I(t,!0);return A(n),E(an,r)?(n.enumerable?(E(e,Bt)&&e[Bt][r]&&(e[Bt][r]=!1),n=At(n,{enumerable:v(0,!1)})):(E(e,Bt)||nn(e,Bt,v(1,{})),e[Bt][r]=!0),pn(e,r,n)):nn(e,r,n)},mn=function(e,t){A(e);var n=_(t),r=Et(n).concat(Sn(n));return Yt(r,(function(t){d&&!gn.call(n,t)||vn(e,t,n[t]);})),e},gn=function(e){var t=I(e,!0),n=on.call(this,t);return !(this===Qt&&E(an,t)&&!E(cn,t))&&(!(n||!E(this,t)||!E(an,t)||E(this,Bt)&&this[Bt][t])||n)},bn=function(e,t){var n=_(e),r=I(t,!0);if(n!==Qt||!E(an,r)||E(cn,r)){var o=tn(n,r);return !o||!E(an,r)||E(n,Bt)&&n[Bt][r]||(o.enumerable=!0),o}},wn=function(e){var t=rn(_(e)),n=[];return Yt(t,(function(e){E(an,e)||E($,e)||n.push(e);})),n},Sn=function(e){var t=e===Qt,n=rn(t?cn:_(e)),r=[];return Yt(n,(function(e){!E(an,e)||t&&!E(Qt,e)||r.push(an[e]);})),r};if(De||(ue(($t=function(){if(this instanceof $t)throw TypeError("Symbol is not a constructor");var e=arguments.length&&void 0!==arguments[0]?String(arguments[0]):void 0,t=q(e),n=function(e){this===Qt&&n.call(cn,e),E(this,Bt)&&E(this[Bt],t)&&(this[Bt][t]=!1),pn(this,t,v(1,e));};return d&&dn&&pn(Qt,t,{configurable:!0,set:n}),hn(t,e)}).prototype,"toString",(function(){return Ht(this).tag})),ue($t,"withoutSetter",(function(e){return hn(q(e),e)})),y.f=gn,F.f=vn,U.f=bn,Oe.f=Wt.f=wn,Ee.f=Sn,zt.f=function(e){return hn(He(e),e)},d&&(nn($t.prototype,"description",{configurable:!0,get:function(){return Ht(this).description}}),ue(Qt,"propertyIsEnumerable",gn,{unsafe:!0}))),We({global:!0,wrap:!0,forced:!De,sham:!De},{Symbol:$t}),Yt(Et(ln),(function(e){Zt(e);})),We({target:"Symbol",stat:!0,forced:!De},{for:function(e){var t=String(e);if(E(sn,t))return sn[t];var n=$t(t);return sn[t]=n,un[n]=t,n},keyFor:function(e){if(!yn(e))throw TypeError(e+" is not a symbol");if(E(un,e))return un[e]},useSetter:function(){dn=!0;},useSimple:function(){dn=!1;}}),We({target:"Object",stat:!0,forced:!De,sham:!d},{create:function(e,t){return void 0===t?At(e):mn(At(e),t)},defineProperty:vn,defineProperties:mn,getOwnPropertyDescriptor:bn}),We({target:"Object",stat:!0,forced:!De},{getOwnPropertyNames:wn,getOwnPropertySymbols:Sn}),We({target:"Object",stat:!0,forced:f((function(){Ee.f(1);}))},{getOwnPropertySymbols:function(e){return Ee.f(T(e))}}),en){var _n=!De||f((function(){var e=$t();return "[null]"!=en([e])||"{}"!=en({a:e})||"{}"!=en(Object(e))}));We({target:"JSON",stat:!0,forced:_n},{stringify:function(e,t,n){for(var r,o=[e],i=1;arguments.length>i;)o.push(arguments[i++]);if(r=t,(k(t)||void 0!==e)&&!yn(e))return ft(t)||(t=function(e,t){if("function"==typeof r&&(t=r.call(this,e,t)),!yn(t))return t}),o[1]=t,en.apply(null,o)}});}$t.prototype[Mt]||K($t.prototype,Mt,$t.prototype.valueOf),Gt($t,"Symbol"),$[Bt]=!0,Zt("asyncIterator");var kn=F.f,In=l.Symbol;if(d&&"function"==typeof In&&(!("description"in In.prototype)||void 0!==In().description)){var Tn={},On=function(){var e=arguments.length<1||void 0===arguments[0]?void 0:String(arguments[0]),t=this instanceof On?new In(e):void 0===e?In():In(e);return ""===e&&(Tn[t]=!0),t};Re(On,In);var En=On.prototype=In.prototype;En.constructor=On;var xn=En.toString,Rn="Symbol(test)"==String(In("test")),Ln=/^Symbol\((.*)\)[^)]+$/;kn(En,"description",{configurable:!0,get:function(){var e=k(this)?this.valueOf():this,t=xn.call(e);if(E(Tn,e))return "";var n=Rn?t.slice(7,-1):t.replace(Ln,"$1");return ""===n?void 0:n}}),We({global:!0,forced:!0},{Symbol:On});}Zt("hasInstance"),Zt("isConcatSpreadable"),Zt("iterator"),Zt("match"),Zt("matchAll"),Zt("replace"),Zt("search"),Zt("species"),Zt("split"),Zt("toPrimitive"),Zt("toStringTag"),Zt("unscopables"),Gt(l.JSON,"JSON",!0),Gt(Math,"Math",!0),We({global:!0},{Reflect:{}}),Gt(l.Reflect,"Reflect",!0),le.Symbol;var Cn,jn,Un,An=function(e){return function(t,n){var r,o,i=String(S(t)),a=ye(n),c=i.length;return a<0||a>=c?e?"":void 0:(r=i.charCodeAt(a))<55296||r>56319||a+1===c||(o=i.charCodeAt(a+1))<56320||o>57343?e?i.charAt(a):r:e?i.slice(a,a+2):o-56320+(r-55296<<10)+65536}},Pn={codeAt:An(!1),charAt:An(!0)},Fn=!f((function(){function e(){}return e.prototype.constructor=null,Object.getPrototypeOf(new e)!==e.prototype})),Kn=Q("IE_PROTO"),Wn=Object.prototype,zn=Fn?Object.getPrototypeOf:function(e){return e=T(e),E(e,Kn)?e[Kn]:"function"==typeof e.constructor&&e instanceof e.constructor?e.constructor.prototype:e instanceof Object?Wn:null},Vn=He("iterator"),Zn=!1;[].keys&&("next"in(Un=[].keys())?(jn=zn(zn(Un)))!==Object.prototype&&(Cn=jn):Zn=!0),(null==Cn||f((function(){var e={};return Cn[Vn].call(e)!==e})))&&(Cn={}),E(Cn,Vn)||K(Cn,Vn,(function(){return this}));var Xn={IteratorPrototype:Cn,BUGGY_SAFARI_ITERATORS:Zn},Nn={},Gn=Xn.IteratorPrototype,Jn=function(){return this},Dn=Object.setPrototypeOf||("__proto__"in{}?function(){var e,t=!1,n={};try{(e=Object.getOwnPropertyDescriptor(Object.prototype,"__proto__").set).call(n,[]),t=n instanceof Array;}catch(e){}return function(n,r){return A(n),function(e){if(!k(e)&&null!==e)throw TypeError("Can't set "+String(e)+" as a prototype")}(r),t?e.call(n,r):n.__proto__=r,n}}():void 0),Yn=Xn.IteratorPrototype,Bn=Xn.BUGGY_SAFARI_ITERATORS,Mn=He("iterator"),qn=function(){return this},Hn=function(e,t,n,r,o,i,a){!function(e,t,n){var r=t+" Iterator";e.prototype=At(Gn,{next:v(1,n)}),Gt(e,r,!1),Nn[r]=Jn;}(n,t,r);var c,s,u,l=function(e){if(e===o&&y)return y;if(!Bn&&e in p)return p[e];switch(e){case"keys":case"values":case"entries":return function(){return new n(this,e)}}return function(){return new n(this)}},f=t+" Iterator",d=!1,p=e.prototype,h=p[Mn]||p["@@iterator"]||o&&p[o],y=!Bn&&h||l(o),m="Array"==t&&p.entries||h;if(m&&(c=zn(m.call(new e)),Yn!==Object.prototype&&c.next&&(zn(c)!==Yn&&(Dn?Dn(c,Yn):"function"!=typeof c[Mn]&&K(c,Mn,qn)),Gt(c,f,!0))),"values"==o&&h&&"values"!==h.name&&(d=!0,y=function(){return h.call(this)}),p[Mn]!==y&&K(p,Mn,y),Nn[t]=y,o)if(s={values:l("values"),keys:i?y:l("keys"),entries:l("entries")},a)for(u in s)(Bn||d||!(u in p))&&ue(p,u,s[u]);else We({target:t,proto:!0,forced:Bn||d},s);return s},Qn=Pn.charAt,$n=se.set,er=se.getterFor("String Iterator");Hn(String,"String",(function(e){$n(this,{type:"String Iterator",string:String(e),index:0});}),(function(){var e,t=er(this),n=t.string,r=t.index;return r>=n.length?{value:void 0,done:!0}:(e=Qn(n,r),t.index+=e.length,{value:e,done:!1})}));var tr=function(e){var t=e.return;if(void 0!==t)return A(t.call(e)).value},nr=function(e,t,n,r){try{return r?t(A(n)[0],n[1]):t(n)}catch(t){throw tr(e),t}},rr=He("iterator"),or=Array.prototype,ir=function(e){return void 0!==e&&(Nn.Array===e||or[rr]===e)},ar=He("iterator"),cr=function(e){if(null!=e)return e[ar]||e["@@iterator"]||Nn[It(e)]},sr=He("iterator"),ur=!1;try{var lr=0,fr={next:function(){return {done:!!lr++}},return:function(){ur=!0;}};fr[sr]=function(){return this},Array.from(fr,(function(){throw 2}));}catch(e){}var dr=function(e,t){if(!t&&!ur)return !1;var n=!1;try{var r={};r[sr]=function(){return {next:function(){return {done:n=!0}}}},e(r);}catch(e){}return n},pr=!dr((function(e){Array.from(e);}));We({target:"Array",stat:!0,forced:pr},{from:function(e){var t,n,r,o,i,a,c=T(e),s="function"==typeof this?this:Array,u=arguments.length,l=u>1?arguments[1]:void 0,f=void 0!==l,d=cr(c),p=0;if(f&&(l=st(l,u>2?arguments[2]:void 0,2)),null==d||s==Array&&ir(d))for(n=new s(t=me(c.length));t>p;p++)a=f?l(c[p],p):c[p],dt(n,p,a);else for(i=(o=d.call(c)).next,n=new s;!(r=i.call(o)).done;p++)a=f?nr(o,l,[r.value,p],!0):r.value,dt(n,p,a);return n.length=p,n}}),le.Array.from;var hr,yr="undefined"!=typeof ArrayBuffer&&"undefined"!=typeof DataView,vr=F.f,mr=l.Int8Array,gr=mr&&mr.prototype,br=l.Uint8ClampedArray,wr=br&&br.prototype,Sr=mr&&zn(mr),_r=gr&&zn(gr),kr=Object.prototype,Ir=kr.isPrototypeOf,Tr=He("toStringTag"),Or=q("TYPED_ARRAY_TAG"),Er=yr&&!!Dn&&"Opera"!==It(l.opera),xr={Int8Array:1,Uint8Array:1,Uint8ClampedArray:1,Int16Array:2,Uint16Array:2,Int32Array:4,Uint32Array:4,Float32Array:4,Float64Array:8},Rr={BigInt64Array:8,BigUint64Array:8},Lr=function(e){if(!k(e))return !1;var t=It(e);return E(xr,t)||E(Rr,t)};for(hr in xr)l[hr]||(Er=!1);if((!Er||"function"!=typeof Sr||Sr===Function.prototype)&&(Sr=function(){throw TypeError("Incorrect invocation")},Er))for(hr in xr)l[hr]&&Dn(l[hr],Sr);if((!Er||!_r||_r===kr)&&(_r=Sr.prototype,Er))for(hr in xr)l[hr]&&Dn(l[hr].prototype,_r);if(Er&&zn(wr)!==_r&&Dn(wr,_r),d&&!E(_r,Tr))for(hr in vr(_r,Tr,{get:function(){return k(this)?this[Or]:void 0}}),xr)l[hr]&&K(l[hr],Or,hr);var Cr=function(e){if(Lr(e))return e;throw TypeError("Target is not a typed array")},jr=function(e){if(Dn){if(Ir.call(Sr,e))return e}else for(var t in xr)if(E(xr,hr)){var n=l[t];if(n&&(e===n||Ir.call(n,e)))return e}throw TypeError("Target is not a typed array constructor")},Ur=function(e,t,n){if(d){if(n)for(var r in xr){var o=l[r];o&&E(o.prototype,e)&&delete o.prototype[e];}_r[e]&&!n||ue(_r,e,n?t:Er&&gr[e]||t);}},Ar=He("species"),Pr=Cr,Fr=jr,Kr=[].slice;Ur("slice",(function(e,t){for(var n=Kr.call(Pr(this),e,t),r=function(e,t){var n,r=A(e).constructor;return void 0===r||null==(n=A(r)[Ar])?t:ct(n)}(this,this.constructor),o=0,i=n.length,a=new(Fr(r))(i);i>o;)a[o]=n[o++];return a}),f((function(){new Int8Array(1).slice();})));var Wr=He("unscopables"),zr=Array.prototype;null==zr[Wr]&&F.f(zr,Wr,{configurable:!0,value:At(null)});var Vr=function(e){zr[Wr][e]=!0;},Zr=Se.includes;We({target:"Array",proto:!0},{includes:function(e){return Zr(this,e,arguments.length>1?arguments[1]:void 0)}}),Vr("includes"),lt("Array","includes"),We({target:"String",proto:!0,forced:!tt("includes")},{includes:function(e){return !!~String(S(this)).indexOf($e(e),arguments.length>1?arguments[1]:void 0)}}),lt("String","includes");var Xr=!f((function(){return Object.isExtensible(Object.preventExtensions({}))})),Nr=s((function(e){var t=F.f,n=q("meta"),r=0,o=Object.isExtensible||function(){return !0},i=function(e){t(e,n,{value:{objectID:"O"+ ++r,weakData:{}}});},a=e.exports={REQUIRED:!1,fastKey:function(e,t){if(!k(e))return "symbol"==typeof e?e:("string"==typeof e?"S":"P")+e;if(!E(e,n)){if(!o(e))return "F";if(!t)return "E";i(e);}return e[n].objectID},getWeakData:function(e,t){if(!E(e,n)){if(!o(e))return !0;if(!t)return !1;i(e);}return e[n].weakData},onFreeze:function(e){return Xr&&a.REQUIRED&&o(e)&&!E(e,n)&&i(e),e}};$[n]=!0;}));Nr.REQUIRED,Nr.fastKey,Nr.getWeakData,Nr.onFreeze;var Gr=function(e,t){this.stopped=e,this.result=t;},Jr=function(e,t,n){var r,o,i,a,c,s,u,l=n&&n.that,f=!(!n||!n.AS_ENTRIES),d=!(!n||!n.IS_ITERATOR),p=!(!n||!n.INTERRUPTED),h=st(t,l,1+f+p),y=function(e){return r&&tr(r),new Gr(!0,e)},v=function(e){return f?(A(e),p?h(e[0],e[1],y):h(e[0],e[1])):p?h(e,y):h(e)};if(d)r=e;else {if("function"!=typeof(o=cr(e)))throw TypeError("Target is not iterable");if(ir(o)){for(i=0,a=me(e.length);a>i;i++)if((c=v(e[i]))&&c instanceof Gr)return c;return new Gr(!1)}r=o.call(e);}for(s=r.next;!(u=s.call(r)).done;){try{c=v(u.value);}catch(e){throw tr(r),e}if("object"==typeof c&&c&&c instanceof Gr)return c}return new Gr(!1)},Dr=function(e,t,n){if(!(e instanceof t))throw TypeError("Incorrect "+(n?n+" ":"")+"invocation");return e},Yr=function(e,t,n){for(var r in t)ue(e,r,t[r],n);return e},Br=He("species"),Mr=F.f,qr=Nr.fastKey,Hr=se.set,Qr=se.getterFor;!function(e,t,n){var r=-1!==e.indexOf("Map"),o=-1!==e.indexOf("Weak"),i=r?"set":"add",a=l[e],c=a&&a.prototype,s=a,u={},d=function(e){var t=c[e];ue(c,e,"add"==e?function(e){return t.call(this,0===e?0:e),this}:"delete"==e?function(e){return !(o&&!k(e))&&t.call(this,0===e?0:e)}:"get"==e?function(e){return o&&!k(e)?void 0:t.call(this,0===e?0:e)}:"has"==e?function(e){return !(o&&!k(e))&&t.call(this,0===e?0:e)}:function(e,n){return t.call(this,0===e?0:e,n),this});};if(Fe(e,"function"!=typeof a||!(o||c.forEach&&!f((function(){(new a).entries().next();})))))s=n.getConstructor(t,e,r,i),Nr.REQUIRED=!0;else if(Fe(e,!0)){var p=new s,h=p[i](o?{}:-0,1)!=p,y=f((function(){p.has(1);})),v=dr((function(e){new a(e);})),m=!o&&f((function(){for(var e=new a,t=5;t--;)e[i](t,t);return !e.has(-0)}));v||((s=t((function(t,n){Dr(t,s,e);var o=function(e,t,n){var r,o;return Dn&&"function"==typeof(r=t.constructor)&&r!==n&&k(o=r.prototype)&&o!==n.prototype&&Dn(e,o),e}(new a,t,s);return null!=n&&Jr(n,o[i],{that:o,AS_ENTRIES:r}),o}))).prototype=c,c.constructor=s),(y||m)&&(d("delete"),d("has"),r&&d("get")),(m||h)&&d(i),o&&c.clear&&delete c.clear;}u[e]=s,We({global:!0,forced:s!=a},u),Gt(s,e),o||n.setStrong(s,e,r);}("Set",(function(e){return function(){return e(this,arguments.length?arguments[0]:void 0)}}),{getConstructor:function(e,t,n,r){var o=e((function(e,i){Dr(e,o,t),Hr(e,{type:t,index:At(null),first:void 0,last:void 0,size:0}),d||(e.size=0),null!=i&&Jr(i,e[r],{that:e,AS_ENTRIES:n});})),i=Qr(t),a=function(e,t,n){var r,o,a=i(e),s=c(e,t);return s?s.value=n:(a.last=s={index:o=qr(t,!0),key:t,value:n,previous:r=a.last,next:void 0,removed:!1},a.first||(a.first=s),r&&(r.next=s),d?a.size++:e.size++,"F"!==o&&(a.index[o]=s)),e},c=function(e,t){var n,r=i(e),o=qr(t);if("F"!==o)return r.index[o];for(n=r.first;n;n=n.next)if(n.key==t)return n};return Yr(o.prototype,{clear:function(){for(var e=i(this),t=e.index,n=e.first;n;)n.removed=!0,n.previous&&(n.previous=n.previous.next=void 0),delete t[n.index],n=n.next;e.first=e.last=void 0,d?e.size=0:this.size=0;},delete:function(e){var t=this,n=i(t),r=c(t,e);if(r){var o=r.next,a=r.previous;delete n.index[r.index],r.removed=!0,a&&(a.next=o),o&&(o.previous=a),n.first==r&&(n.first=o),n.last==r&&(n.last=a),d?n.size--:t.size--;}return !!r},forEach:function(e){for(var t,n=i(this),r=st(e,arguments.length>1?arguments[1]:void 0,3);t=t?t.next:n.first;)for(r(t.value,t.key,this);t&&t.removed;)t=t.previous;},has:function(e){return !!c(this,e)}}),Yr(o.prototype,n?{get:function(e){var t=c(this,e);return t&&t.value},set:function(e,t){return a(this,0===e?0:e,t)}}:{add:function(e){return a(this,e=0===e?0:e,e)}}),d&&Mr(o.prototype,"size",{get:function(){return i(this).size}}),o},setStrong:function(e,t,n){var r=t+" Iterator",o=Qr(t),i=Qr(r);Hn(e,t,(function(e,t){Hr(this,{type:r,target:e,state:o(e),kind:t,last:void 0});}),(function(){for(var e=i(this),t=e.kind,n=e.last;n&&n.removed;)n=n.previous;return e.target&&(e.last=n=n?n.next:e.state.first)?"keys"==t?{value:n.key,done:!1}:"values"==t?{value:n.value,done:!1}:{value:[n.key,n.value],done:!1}:(e.target=void 0,{value:void 0,done:!0})}),n?"entries":"values",!n,!0),function(e){var t=de(e),n=F.f;d&&t&&!t[Br]&&n(t,Br,{configurable:!0,get:function(){return this}});}(t);}});var $r={CSSRuleList:0,CSSStyleDeclaration:0,CSSValueList:0,ClientRectList:0,DOMRectList:0,DOMStringList:0,DOMTokenList:1,DataTransferItemList:0,FileList:0,HTMLAllCollection:0,HTMLCollection:0,HTMLFormElement:0,HTMLSelectElement:0,MediaList:0,MimeTypeArray:0,NamedNodeMap:0,NodeList:1,PaintRequestList:0,Plugin:0,PluginArray:0,SVGLengthList:0,SVGNumberList:0,SVGPathSegList:0,SVGPointList:0,SVGStringList:0,SVGTransformList:0,SourceBufferList:0,StyleSheetList:0,TextTrackCueList:0,TextTrackList:0,TouchList:0},eo=se.set,to=se.getterFor("Array Iterator"),no=Hn(Array,"Array",(function(e,t){eo(this,{type:"Array Iterator",target:_(e),index:0,kind:t});}),(function(){var e=to(this),t=e.target,n=e.kind,r=e.index++;return !t||r>=t.length?(e.target=void 0,{value:void 0,done:!0}):"keys"==n?{value:r,done:!1}:"values"==n?{value:t[r],done:!1}:{value:[r,t[r]],done:!1}}),"values");Nn.Arguments=Nn.Array,Vr("keys"),Vr("values"),Vr("entries");var ro=He("iterator"),oo=He("toStringTag"),io=no.values;for(var ao in $r){var co=l[ao],so=co&&co.prototype;if(so){if(so[ro]!==io)try{K(so,ro,io);}catch(e){so[ro]=io;}if(so[oo]||K(so,oo,ao),$r[ao])for(var uo in no)if(so[uo]!==no[uo])try{K(so,uo,no[uo]);}catch(e){so[uo]=no[uo];}}}function lo(e){var t=this.constructor;return this.then((function(n){return t.resolve(e()).then((function(){return n}))}),(function(n){return t.resolve(e()).then((function(){return t.reject(n)}))}))}function fo(e){return new this((function(t,n){if(!e||void 0===e.length)return n(new TypeError(typeof e+" "+e+" is not iterable(cannot read property Symbol(Symbol.iterator))"));var r=Array.prototype.slice.call(e);if(0===r.length)return t([]);var o=r.length;function i(e,n){if(n&&("object"==typeof n||"function"==typeof n)){var a=n.then;if("function"==typeof a)return void a.call(n,(function(t){i(e,t);}),(function(n){r[e]={status:"rejected",reason:n},0==--o&&t(r);}))}r[e]={status:"fulfilled",value:n},0==--o&&t(r);}for(var a=0;a<r.length;a++)i(a,r[a]);}))}le.Set;var po=setTimeout;function ho(e){return Boolean(e&&void 0!==e.length)}function yo(){}function vo(e){if(!(this instanceof vo))throw new TypeError("Promises must be constructed via new");if("function"!=typeof e)throw new TypeError("not a function");this._state=0,this._handled=!1,this._value=void 0,this._deferreds=[],_o(e,this);}function mo(e,t){for(;3===e._state;)e=e._value;0!==e._state?(e._handled=!0,vo._immediateFn((function(){var n=1===e._state?t.onFulfilled:t.onRejected;if(null!==n){var r;try{r=n(e._value);}catch(e){return void bo(t.promise,e)}go(t.promise,r);}else (1===e._state?go:bo)(t.promise,e._value);}))):e._deferreds.push(t);}function go(e,t){try{if(t===e)throw new TypeError("A promise cannot be resolved with itself.");if(t&&("object"==typeof t||"function"==typeof t)){var n=t.then;if(t instanceof vo)return e._state=3,e._value=t,void wo(e);if("function"==typeof n)return void _o((r=n,o=t,function(){r.apply(o,arguments);}),e)}e._state=1,e._value=t,wo(e);}catch(t){bo(e,t);}var r,o;}function bo(e,t){e._state=2,e._value=t,wo(e);}function wo(e){2===e._state&&0===e._deferreds.length&&vo._immediateFn((function(){e._handled||vo._unhandledRejectionFn(e._value);}));for(var t=0,n=e._deferreds.length;t<n;t++)mo(e,e._deferreds[t]);e._deferreds=null;}function So(e,t,n){this.onFulfilled="function"==typeof e?e:null,this.onRejected="function"==typeof t?t:null,this.promise=n;}function _o(e,t){var n=!1;try{e((function(e){n||(n=!0,go(t,e));}),(function(e){n||(n=!0,bo(t,e));}));}catch(e){if(n)return;n=!0,bo(t,e);}}vo.prototype.catch=function(e){return this.then(null,e)},vo.prototype.then=function(e,t){var n=new this.constructor(yo);return mo(this,new So(e,t,n)),n},vo.prototype.finally=lo,vo.all=function(e){return new vo((function(t,n){if(!ho(e))return n(new TypeError("Promise.all accepts an array"));var r=Array.prototype.slice.call(e);if(0===r.length)return t([]);var o=r.length;function i(e,a){try{if(a&&("object"==typeof a||"function"==typeof a)){var c=a.then;if("function"==typeof c)return void c.call(a,(function(t){i(e,t);}),n)}r[e]=a,0==--o&&t(r);}catch(e){n(e);}}for(var a=0;a<r.length;a++)i(a,r[a]);}))},vo.allSettled=fo,vo.resolve=function(e){return e&&"object"==typeof e&&e.constructor===vo?e:new vo((function(t){t(e);}))},vo.reject=function(e){return new vo((function(t,n){n(e);}))},vo.race=function(e){return new vo((function(t,n){if(!ho(e))return n(new TypeError("Promise.race accepts an array"));for(var r=0,o=e.length;r<o;r++)vo.resolve(e[r]).then(t,n);}))},vo._immediateFn="function"==typeof setImmediate&&function(e){setImmediate(e);}||function(e){po(e,0);},vo._unhandledRejectionFn=function(e){"undefined"!=typeof console&&console&&console.warn("Possible Unhandled Promise Rejection:",e);};var ko=function(){if("undefined"!=typeof self)return self;if("undefined"!=typeof window)return window;if("undefined"!=typeof global)return global;throw new Error("unable to locate global object")}();"function"!=typeof ko.Promise?ko.Promise=vo:ko.Promise.prototype.finally?ko.Promise.allSettled||(ko.Promise.allSettled=fo):ko.Promise.prototype.finally=lo,function(e){function t(){}function n(e,t){if(e=void 0===e?"utf-8":e,t=void 0===t?{fatal:!1}:t,-1===o.indexOf(e.toLowerCase()))throw new RangeError("Failed to construct 'TextDecoder': The encoding label provided ('"+e+"') is invalid.");if(t.fatal)throw Error("Failed to construct 'TextDecoder': the 'fatal' option is unsupported.")}function r(e){for(var t=0,n=Math.min(65536,e.length+1),r=new Uint16Array(n),o=[],i=0;;){var a=t<e.length;if(!a||i>=n-1){if(o.push(String.fromCharCode.apply(null,r.subarray(0,i))),!a)return o.join("");e=e.subarray(t),i=t=0;}if(0==(128&(a=e[t++])))r[i++]=a;else if(192==(224&a)){var c=63&e[t++];r[i++]=(31&a)<<6|c;}else if(224==(240&a)){c=63&e[t++];var s=63&e[t++];r[i++]=(31&a)<<12|c<<6|s;}else if(240==(248&a)){65535<(a=(7&a)<<18|(c=63&e[t++])<<12|(s=63&e[t++])<<6|63&e[t++])&&(a-=65536,r[i++]=a>>>10&1023|55296,a=56320|1023&a),r[i++]=a;}}}if(e.TextEncoder&&e.TextDecoder)return !1;var o=["utf-8","utf8","unicode-1-1-utf-8"];Object.defineProperty(t.prototype,"encoding",{value:"utf-8"}),t.prototype.encode=function(e,t){if((t=void 0===t?{stream:!1}:t).stream)throw Error("Failed to encode: the 'stream' option is unsupported.");t=0;for(var n=e.length,r=0,o=Math.max(32,n+(n>>>1)+7),i=new Uint8Array(o>>>3<<3);t<n;){var a=e.charCodeAt(t++);if(55296<=a&&56319>=a){if(t<n){var c=e.charCodeAt(t);56320==(64512&c)&&(++t,a=((1023&a)<<10)+(1023&c)+65536);}if(55296<=a&&56319>=a)continue}if(r+4>i.length&&(o+=8,o=(o*=1+t/e.length*2)>>>3<<3,(c=new Uint8Array(o)).set(i),i=c),0==(4294967168&a))i[r++]=a;else {if(0==(4294965248&a))i[r++]=a>>>6&31|192;else if(0==(4294901760&a))i[r++]=a>>>12&15|224,i[r++]=a>>>6&63|128;else {if(0!=(4292870144&a))continue;i[r++]=a>>>18&7|240,i[r++]=a>>>12&63|128,i[r++]=a>>>6&63|128;}i[r++]=63&a|128;}}return i.slice?i.slice(0,r):i.subarray(0,r)},Object.defineProperty(n.prototype,"encoding",{value:"utf-8"}),Object.defineProperty(n.prototype,"fatal",{value:!1}),Object.defineProperty(n.prototype,"ignoreBOM",{value:!1});var i=r;"function"==typeof Buffer&&Buffer.from?i=function(e){return Buffer.from(e.buffer,e.byteOffset,e.byteLength).toString("utf-8")}:"function"==typeof Blob&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&(i=function(e){var t=URL.createObjectURL(new Blob([e],{type:"text/plain;charset=UTF-8"}));try{var n=new XMLHttpRequest;return n.open("GET",t,!1),n.send(),n.responseText}catch(t){return r(e)}finally{URL.revokeObjectURL(t);}}),n.prototype.decode=function(e,t){if((t=void 0===t?{stream:!1}:t).stream)throw Error("Failed to decode: the 'stream' option is unsupported.");return e=e instanceof Uint8Array?e:e.buffer instanceof ArrayBuffer?new Uint8Array(e.buffer):new Uint8Array(e),i(e)},e.TextEncoder=t,e.TextDecoder=n;}("undefined"!=typeof window?window:a),function(){function e(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function t(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r);}}function n(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}function r(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&i(e,t);}function o(e){return (o=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function i(e,t){return (i=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function c(){if("undefined"==typeof Reflect||!Reflect.construct)return !1;if(Reflect.construct.sham)return !1;if("function"==typeof Proxy)return !0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],(function(){}))),!0}catch(e){return !1}}function s(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function u(e,t){return !t||"object"!=typeof t&&"function"!=typeof t?s(e):t}function l(e){var t=c();return function(){var n,r=o(e);if(t){var i=o(this).constructor;n=Reflect.construct(r,arguments,i);}else n=r.apply(this,arguments);return u(this,n)}}function f(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=o(e)););return e}function d(e,t,n){return (d="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,t,n){var r=f(e,t);if(r){var o=Object.getOwnPropertyDescriptor(r,t);return o.get?o.get.call(n):o.value}})(e,t,n||e)}var p=function(){function t(){e(this,t),Object.defineProperty(this,"listeners",{value:{},writable:!0,configurable:!0});}return n(t,[{key:"addEventListener",value:function(e,t,n){e in this.listeners||(this.listeners[e]=[]),this.listeners[e].push({callback:t,options:n});}},{key:"removeEventListener",value:function(e,t){if(e in this.listeners)for(var n=this.listeners[e],r=0,o=n.length;r<o;r++)if(n[r].callback===t)return void n.splice(r,1)}},{key:"dispatchEvent",value:function(e){if(e.type in this.listeners){for(var t=this.listeners[e.type].slice(),n=0,r=t.length;n<r;n++){var o=t[n];try{o.callback.call(this,e);}catch(e){Promise.resolve().then((function(){throw e}));}o.options&&o.options.once&&this.removeEventListener(e.type,o.callback);}return !e.defaultPrevented}}}]),t}(),h=function(t){r(a,t);var i=l(a);function a(){var t;return e(this,a),(t=i.call(this)).listeners||p.call(s(t)),Object.defineProperty(s(t),"aborted",{value:!1,writable:!0,configurable:!0}),Object.defineProperty(s(t),"onabort",{value:null,writable:!0,configurable:!0}),t}return n(a,[{key:"toString",value:function(){return "[object AbortSignal]"}},{key:"dispatchEvent",value:function(e){"abort"===e.type&&(this.aborted=!0,"function"==typeof this.onabort&&this.onabort.call(this,e)),d(o(a.prototype),"dispatchEvent",this).call(this,e);}}]),a}(p),y=function(){function t(){e(this,t),Object.defineProperty(this,"signal",{value:new h,writable:!0,configurable:!0});}return n(t,[{key:"abort",value:function(){var e;try{e=new Event("abort");}catch(t){"undefined"!=typeof document?document.createEvent?(e=document.createEvent("Event")).initEvent("abort",!1,!1):(e=document.createEventObject()).type="abort":e={type:"abort",bubbles:!1,cancelable:!1};}this.signal.dispatchEvent(e);}},{key:"toString",value:function(){return "[object AbortController]"}}]),t}();function v(e){return e.__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL?(console.log("__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL=true is set, will force install polyfill"),!0):"function"==typeof e.Request&&!e.Request.prototype.hasOwnProperty("signal")||!e.AbortController}"undefined"!=typeof Symbol&&Symbol.toStringTag&&(y.prototype[Symbol.toStringTag]="AbortController",h.prototype[Symbol.toStringTag]="AbortSignal"),function(e){v(e)&&(e.AbortController=y,e.AbortSignal=h);}("undefined"!=typeof self?self:a);}();var Io=s((function(e,t){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(){var e=this;this.locked=new Map,this.addToLocked=function(t,n){var r=e.locked.get(t);void 0===r?void 0===n?e.locked.set(t,[]):e.locked.set(t,[n]):void 0!==n&&(r.unshift(n),e.locked.set(t,r));},this.isLocked=function(t){return e.locked.has(t)},this.lock=function(t){return new Promise((function(n,r){e.isLocked(t)?e.addToLocked(t,n):(e.addToLocked(t),n());}))},this.unlock=function(t){var n=e.locked.get(t);if(void 0!==n&&0!==n.length){var r=n.pop();e.locked.set(t,n),void 0!==r&&setTimeout(r,0);}else e.locked.delete(t);};}return e.getInstance=function(){return void 0===e.instance&&(e.instance=new e),e.instance},e}();t.default=function(){return n.getInstance()};}));c(Io);var To=c(s((function(e,t){var n=a&&a.__awaiter||function(e,t,n,r){return new(n||(n=Promise))((function(o,i){function a(e){try{s(r.next(e));}catch(e){i(e);}}function c(e){try{s(r.throw(e));}catch(e){i(e);}}function s(e){e.done?o(e.value):new n((function(t){t(e.value);})).then(a,c);}s((r=r.apply(e,t||[])).next());}))},r=a&&a.__generator||function(e,t){var n,r,o,i,a={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return i={next:c(0),throw:c(1),return:c(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function c(i){return function(c){return function(i){if(n)throw new TypeError("Generator is already executing.");for(;a;)try{if(n=1,r&&(o=2&i[0]?r.return:i[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,i[1])).done)return o;switch(r=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:return a.label++,{value:i[1],done:!1};case 5:a.label++,r=i[1],i=[0];continue;case 7:i=a.ops.pop(),a.trys.pop();continue;default:if(!(o=a.trys,(o=o.length>0&&o[o.length-1])||6!==i[0]&&2!==i[0])){a=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){a.label=i[1];break}if(6===i[0]&&a.label<o[1]){a.label=o[1],o=i;break}if(o&&a.label<o[2]){a.label=o[2],a.ops.push(i);break}o[2]&&a.ops.pop(),a.trys.pop();continue}i=t.call(e,a);}catch(e){i=[6,e],r=0;}finally{n=o=0;}if(5&i[0])throw i[1];return {value:i[0]?i[1]:void 0,done:!0}}([i,c])}}};Object.defineProperty(t,"__esModule",{value:!0});var o="browser-tabs-lock-key";function i(e){return new Promise((function(t){return setTimeout(t,e)}))}function c(e){for(var t="0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz",n="",r=0;r<e;r++){n+=t[Math.floor(Math.random()*t.length)];}return n}var s=function(){function e(){this.acquiredIatSet=new Set,this.id=Date.now().toString()+c(15),this.acquireLock=this.acquireLock.bind(this),this.releaseLock=this.releaseLock.bind(this),this.releaseLock__private__=this.releaseLock__private__.bind(this),this.waitForSomethingToChange=this.waitForSomethingToChange.bind(this),this.refreshLockWhileAcquired=this.refreshLockWhileAcquired.bind(this),void 0===e.waiters&&(e.waiters=[]);}return e.prototype.acquireLock=function(t,a){return void 0===a&&(a=5e3),n(this,void 0,void 0,(function(){var n,s,u,l,f,d;return r(this,(function(r){switch(r.label){case 0:n=Date.now()+c(4),s=Date.now()+a,u=o+"-"+t,l=window.localStorage,r.label=1;case 1:return Date.now()<s?[4,i(30)]:[3,8];case 2:return r.sent(),null!==l.getItem(u)?[3,5]:(f=this.id+"-"+t+"-"+n,[4,i(Math.floor(25*Math.random()))]);case 3:return r.sent(),l.setItem(u,JSON.stringify({id:this.id,iat:n,timeoutKey:f,timeAcquired:Date.now(),timeRefreshed:Date.now()})),[4,i(30)];case 4:return r.sent(),null!==(d=l.getItem(u))&&(d=JSON.parse(d)).id===this.id&&d.iat===n?(this.acquiredIatSet.add(n),this.refreshLockWhileAcquired(u,n),[2,!0]):[3,7];case 5:return e.lockCorrector(),[4,this.waitForSomethingToChange(s)];case 6:r.sent(),r.label=7;case 7:return n=Date.now()+c(4),[3,1];case 8:return [2,!1]}}))}))},e.prototype.refreshLockWhileAcquired=function(e,t){return n(this,void 0,void 0,(function(){var o=this;return r(this,(function(i){return setTimeout((function(){return n(o,void 0,void 0,(function(){var n,o;return r(this,(function(r){switch(r.label){case 0:return [4,Io.default().lock(t)];case 1:return r.sent(),this.acquiredIatSet.has(t)?(n=window.localStorage,null===(o=n.getItem(e))?(Io.default().unlock(t),[2]):((o=JSON.parse(o)).timeRefreshed=Date.now(),n.setItem(e,JSON.stringify(o)),Io.default().unlock(t),this.refreshLockWhileAcquired(e,t),[2])):(Io.default().unlock(t),[2])}}))}))}),1e3),[2]}))}))},e.prototype.waitForSomethingToChange=function(t){return n(this,void 0,void 0,(function(){return r(this,(function(n){switch(n.label){case 0:return [4,new Promise((function(n){var r=!1,o=Date.now(),i=!1;function a(){if(i||(window.removeEventListener("storage",a),e.removeFromWaiting(a),clearTimeout(c),i=!0),!r){r=!0;var t=50-(Date.now()-o);t>0?setTimeout(n,t):n();}}window.addEventListener("storage",a),e.addToWaiting(a);var c=setTimeout(a,Math.max(0,t-Date.now()));}))];case 1:return n.sent(),[2]}}))}))},e.addToWaiting=function(t){this.removeFromWaiting(t),void 0!==e.waiters&&e.waiters.push(t);},e.removeFromWaiting=function(t){void 0!==e.waiters&&(e.waiters=e.waiters.filter((function(e){return e!==t})));},e.notifyWaiters=function(){void 0!==e.waiters&&e.waiters.slice().forEach((function(e){return e()}));},e.prototype.releaseLock=function(e){return n(this,void 0,void 0,(function(){return r(this,(function(t){switch(t.label){case 0:return [4,this.releaseLock__private__(e)];case 1:return [2,t.sent()]}}))}))},e.prototype.releaseLock__private__=function(t){return n(this,void 0,void 0,(function(){var n,i,a;return r(this,(function(r){switch(r.label){case 0:return n=window.localStorage,i=o+"-"+t,null===(a=n.getItem(i))?[2]:(a=JSON.parse(a)).id!==this.id?[3,2]:[4,Io.default().lock(a.iat)];case 1:r.sent(),this.acquiredIatSet.delete(a.iat),n.removeItem(i),Io.default().unlock(a.iat),e.notifyWaiters(),r.label=2;case 2:return [2]}}))}))},e.lockCorrector=function(){for(var t=Date.now()-5e3,n=window.localStorage,r=Object.keys(n),i=!1,a=0;a<r.length;a++){var c=r[a];if(c.includes(o)){var s=n.getItem(c);null!==s&&(void 0===(s=JSON.parse(s)).timeRefreshed&&s.timeAcquired<t||void 0!==s.timeRefreshed&&s.timeRefreshed<t)&&(n.removeItem(c),i=!0);}}i&&e.notifyWaiters();},e.waiters=void 0,e}();t.default=s;}))),Oo={timeoutInSeconds:60},Eo=["login_required","consent_required","interaction_required","account_selection_required","access_denied"],xo={name:"auth0-spa-js",version:"1.15.0"},Ro=function(e){function n(t,r){var o=e.call(this,r)||this;return o.error=t,o.error_description=r,Object.setPrototypeOf(o,n.prototype),o}return t(n,e),n.fromPayload=function(e){return new n(e.error,e.error_description)},n}(Error),Lo=function(e){function n(t,r,o,i){void 0===i&&(i=null);var a=e.call(this,t,r)||this;return a.state=o,a.appState=i,Object.setPrototypeOf(a,n.prototype),a}return t(n,e),n}(Ro),Co=function(e){function n(){var t=e.call(this,"timeout","Timeout")||this;return Object.setPrototypeOf(t,n.prototype),t}return t(n,e),n}(Ro),jo=function(e){function n(t){var r=e.call(this)||this;return r.popup=t,Object.setPrototypeOf(r,n.prototype),r}return t(n,e),n}(Co),Uo=function(e){function n(t){var r=e.call(this,"cancelled","Popup closed")||this;return r.popup=t,Object.setPrototypeOf(r,n.prototype),r}return t(n,e),n}(Ro),Ao=function(e){return new Promise((function(t,n){var r,o=setInterval((function(){e.popup&&e.popup.closed&&(clearInterval(o),clearTimeout(i),window.removeEventListener("message",r,!1),n(new Uo(e.popup)));}),1e3),i=setTimeout((function(){clearInterval(o),n(new jo(e.popup)),window.removeEventListener("message",r,!1);}),1e3*(e.timeoutInSeconds||60));r=function(a){if(a.data&&"authorization_response"===a.data.type){if(clearTimeout(i),clearInterval(o),window.removeEventListener("message",r,!1),e.popup.close(),a.data.response.error)return n(Ro.fromPayload(a.data.response));t(a.data.response);}},window.addEventListener("message",r);}))},Po=function(){return window.crypto||window.msCrypto},Fo=function(){var e=Po();return e.subtle||e.webkitSubtle},Ko=function(){var e="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_~.",t="";return Array.from(Po().getRandomValues(new Uint8Array(43))).forEach((function(n){return t+=e[n%e.length]})),t},Wo=function(e){return btoa(e)},zo=function(e){return Object.keys(e).filter((function(t){return void 0!==e[t]})).map((function(t){return encodeURIComponent(t)+"="+encodeURIComponent(e[t])})).join("&")},Vo=function(e){return o(void 0,void 0,void 0,(function(){var t;return i(this,(function(n){switch(n.label){case 0:return t=Fo().digest({name:"SHA-256"},(new TextEncoder).encode(e)),window.msCrypto?[2,new Promise((function(e,n){t.oncomplete=function(t){e(t.target.result);},t.onerror=function(e){n(e.error);},t.onabort=function(){n("The digest operation was aborted");};}))]:[4,t];case 1:return [2,n.sent()]}}))}))},Zo=function(e){return function(e){return decodeURIComponent(atob(e).split("").map((function(e){return "%"+("00"+e.charCodeAt(0).toString(16)).slice(-2)})).join(""))}(e.replace(/_/g,"/").replace(/-/g,"+"))},Xo=function(e){var t=new Uint8Array(e);return function(e){var t={"+":"-","/":"_","=":""};return e.replace(/[+/=]/g,(function(e){return t[e]}))}(window.btoa(String.fromCharCode.apply(String,Array.from(t))))};var No=function(e,t){return o(void 0,void 0,void 0,(function(){var n,r;return i(this,(function(o){switch(o.label){case 0:return [4,(i=e,a=t,a=a||{},new Promise((function(e,t){var n=new XMLHttpRequest,r=[],o=[],c={},s=function(){return {ok:2==(n.status/100|0),statusText:n.statusText,status:n.status,url:n.responseURL,text:function(){return Promise.resolve(n.responseText)},json:function(){return Promise.resolve(n.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([n.response]))},clone:s,headers:{keys:function(){return r},entries:function(){return o},get:function(e){return c[e.toLowerCase()]},has:function(e){return e.toLowerCase()in c}}}};for(var u in n.open(a.method||"get",i,!0),n.onload=function(){n.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm,(function(e,t,n){r.push(t=t.toLowerCase()),o.push([t,n]),c[t]=c[t]?c[t]+","+n:n;})),e(s());},n.onerror=t,n.withCredentials="include"==a.credentials,a.headers)n.setRequestHeader(u,a.headers[u]);n.send(a.body||null);})))];case 1:return n=o.sent(),r={ok:n.ok},[4,n.json()];case 2:return [2,(r.json=o.sent(),r)]}var i,a;}))}))},Go=function(e,t,n){return o(void 0,void 0,void 0,(function(){var r,o;return i(this,(function(i){return r=new AbortController,t.signal=r.signal,[2,Promise.race([No(e,t),new Promise((function(e,t){o=setTimeout((function(){r.abort(),t(new Error("Timeout when executing 'fetch'"));}),n);}))]).finally((function(){clearTimeout(o);}))]}))}))},Jo=function(e,t,n,r,a,c){return o(void 0,void 0,void 0,(function(){return i(this,(function(o){return [2,(i={auth:{audience:t,scope:n},timeout:a,fetchUrl:e,fetchOptions:r},s=c,new Promise((function(e,t){var n=new MessageChannel;n.port1.onmessage=function(n){n.data.error?t(new Error(n.data.error)):e(n.data);},s.postMessage(i,[n.port2]);})))];var i,s;}))}))},Do=function(e,t,n,r,a,c){return void 0===c&&(c=1e4),o(void 0,void 0,void 0,(function(){return i(this,(function(o){return a?[2,Jo(e,t,n,r,c,a)]:[2,Go(e,r,c)]}))}))};function Yo(e,t,n,a,c,s){return o(this,void 0,void 0,(function(){var o,u,l,f,d,p,h,y;return i(this,(function(i){switch(i.label){case 0:o=null,l=0,i.label=1;case 1:if(!(l<3))return [3,6];i.label=2;case 2:return i.trys.push([2,4,,5]),[4,Do(e,n,a,c,s,t)];case 3:return u=i.sent(),o=null,[3,6];case 4:return f=i.sent(),o=f,[3,5];case 5:return l++,[3,1];case 6:if(o)throw o.message=o.message||"Failed to fetch",o;if(d=u.json,p=d.error,h=d.error_description,y=r(d,["error","error_description"]),!u.ok)throw new Ro(p||"request_error",h||"HTTP error. Unable to fetch "+e);return [2,y]}}))}))}function Bo(e,t){var n=e.baseUrl,a=e.timeout,c=e.audience,s=e.scope,u=e.auth0Client,l=r(e,["baseUrl","timeout","audience","scope","auth0Client"]);return o(this,void 0,void 0,(function(){return i(this,(function(e){switch(e.label){case 0:return [4,Yo(n+"/oauth/token",a,c||"default",s,{method:"POST",body:JSON.stringify(l),headers:{"Content-type":"application/json","Auth0-Client":btoa(JSON.stringify(u||xo))}},t)];case 1:return [2,e.sent()]}}))}))}var Mo=function(e){return Array.from(new Set(e))},qo=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];return Mo(e.join(" ").trim().split(/\s+/)).join(" ")},Ho=function(){function e(e,t){void 0===t&&(t=Qo),this.prefix=t,this.client_id=e.client_id,this.scope=e.scope,this.audience=e.audience;}return e.prototype.toKey=function(){return this.prefix+"::"+this.client_id+"::"+this.audience+"::"+this.scope},e.fromKey=function(t){var n=t.split("::"),r=n[0],o=n[1],i=n[2];return new e({client_id:o,scope:n[3],audience:i},r)},e}(),Qo="@@auth0spajs@@",$o=function(e){var t=Math.floor(Date.now()/1e3)+e.expires_in;return {body:e,expiresAt:Math.min(t,e.decodedToken.claims.exp)}},ei=function(e,t){var n=e.client_id,r=e.audience,o=e.scope;return t.filter((function(e){var t=Ho.fromKey(e),i=t.prefix,a=t.client_id,c=t.audience,s=t.scope,u=s&&s.split(" "),l=s&&o.split(" ").reduce((function(e,t){return e&&u.includes(t)}),!0);return i===Qo&&a===n&&c===r&&l}))[0]},ti=function(){function e(){}return e.prototype.save=function(e){var t=new Ho({client_id:e.client_id,scope:e.scope,audience:e.audience}),n=$o(e);window.localStorage.setItem(t.toKey(),JSON.stringify(n));},e.prototype.get=function(e,t){void 0===t&&(t=0);var n=this.readJson(e),r=Math.floor(Date.now()/1e3);if(n){if(!(n.expiresAt-t<r))return n.body;if(n.body.refresh_token){var o=this.stripData(n);return this.writeJson(e.toKey(),o),o.body}localStorage.removeItem(e.toKey());}},e.prototype.clear=function(){for(var e=localStorage.length-1;e>=0;e--)localStorage.key(e).startsWith(Qo)&&localStorage.removeItem(localStorage.key(e));},e.prototype.readJson=function(e){var t,n=ei(e,Object.keys(window.localStorage)),r=n&&window.localStorage.getItem(n);if(r&&(t=JSON.parse(r)))return t},e.prototype.writeJson=function(e,t){localStorage.setItem(e,JSON.stringify(t));},e.prototype.stripData=function(e){return {body:{refresh_token:e.body.refresh_token},expiresAt:e.expiresAt}},e}(),ni=function(){var e;this.enclosedCache=(e={},{save:function(t){var n=new Ho({client_id:t.client_id,scope:t.scope,audience:t.audience}),r=$o(t);e[n.toKey()]=r;},get:function(t,n){void 0===n&&(n=0);var r=ei(t,Object.keys(e)),o=e[r],i=Math.floor(Date.now()/1e3);if(o)return o.expiresAt-n<i?o.body.refresh_token?(o.body={refresh_token:o.body.refresh_token},o.body):void delete e[t.toKey()]:o.body},clear:function(){e={};}});},ri=function(){function e(e){this.storage=e,this.transaction=this.storage.get("a0.spajs.txs");}return e.prototype.create=function(e){this.transaction=e,this.storage.save("a0.spajs.txs",e,{daysUntilExpire:1});},e.prototype.get=function(){return this.transaction},e.prototype.remove=function(){delete this.transaction,this.storage.remove("a0.spajs.txs");},e}(),oi=function(e){return "number"==typeof e},ii=["iss","aud","exp","nbf","iat","jti","azp","nonce","auth_time","at_hash","c_hash","acr","amr","sub_jwk","cnf","sip_from_tag","sip_date","sip_callid","sip_cseq_num","sip_via_branch","orig","dest","mky","events","toe","txn","rph","sid","vot","vtm"],ai=function(e){if(!e.id_token)throw new Error("ID token is required but missing");var t=function(e){var t=e.split("."),n=t[0],r=t[1],o=t[2];if(3!==t.length||!n||!r||!o)throw new Error("ID token could not be decoded");var i=JSON.parse(Zo(r)),a={__raw:e},c={};return Object.keys(i).forEach((function(e){a[e]=i[e],ii.includes(e)||(c[e]=i[e]);})),{encoded:{header:n,payload:r,signature:o},header:JSON.parse(Zo(n)),claims:a,user:c}}(e.id_token);if(!t.claims.iss)throw new Error("Issuer (iss) claim must be a string present in the ID token");if(t.claims.iss!==e.iss)throw new Error('Issuer (iss) claim mismatch in the ID token; expected "'+e.iss+'", found "'+t.claims.iss+'"');if(!t.user.sub)throw new Error("Subject (sub) claim must be a string present in the ID token");if("RS256"!==t.header.alg)throw new Error('Signature algorithm of "'+t.header.alg+'" is not supported. Expected the ID token to be signed with "RS256".');if(!t.claims.aud||"string"!=typeof t.claims.aud&&!Array.isArray(t.claims.aud))throw new Error("Audience (aud) claim must be a string or array of strings present in the ID token");if(Array.isArray(t.claims.aud)){if(!t.claims.aud.includes(e.aud))throw new Error('Audience (aud) claim mismatch in the ID token; expected "'+e.aud+'" but was not one of "'+t.claims.aud.join(", ")+'"');if(t.claims.aud.length>1){if(!t.claims.azp)throw new Error("Authorized Party (azp) claim must be a string present in the ID token when Audience (aud) claim has multiple values");if(t.claims.azp!==e.aud)throw new Error('Authorized Party (azp) claim mismatch in the ID token; expected "'+e.aud+'", found "'+t.claims.azp+'"')}}else if(t.claims.aud!==e.aud)throw new Error('Audience (aud) claim mismatch in the ID token; expected "'+e.aud+'" but found "'+t.claims.aud+'"');if(e.nonce){if(!t.claims.nonce)throw new Error("Nonce (nonce) claim must be a string present in the ID token");if(t.claims.nonce!==e.nonce)throw new Error('Nonce (nonce) claim mismatch in the ID token; expected "'+e.nonce+'", found "'+t.claims.nonce+'"')}if(e.max_age&&!oi(t.claims.auth_time))throw new Error("Authentication Time (auth_time) claim must be a number present in the ID token when Max Age (max_age) is specified");if(!oi(t.claims.exp))throw new Error("Expiration Time (exp) claim must be a number present in the ID token");if(!oi(t.claims.iat))throw new Error("Issued At (iat) claim must be a number present in the ID token");var n=e.leeway||60,r=new Date(Date.now()),o=new Date(0),i=new Date(0),a=new Date(0);if(a.setUTCSeconds(parseInt(t.claims.auth_time)+e.max_age+n),o.setUTCSeconds(t.claims.exp+n),i.setUTCSeconds(t.claims.nbf-n),r>o)throw new Error("Expiration Time (exp) claim error in the ID token; current time ("+r+") is after expiration time ("+o+")");if(oi(t.claims.nbf)&&r<i)throw new Error("Not Before time (nbf) claim in the ID token indicates that this token can't be used just yet. Currrent time ("+r+") is before "+i);if(oi(t.claims.auth_time)&&r>a)throw new Error("Authentication Time (auth_time) claim in the ID token indicates that too much time has passed since the last end-user authentication. Currrent time ("+r+") is after last auth at "+a);if(e.organizationId){if(!t.claims.org_id)throw new Error("Organization ID (org_id) claim must be a string present in the ID token");if(e.organizationId!==t.claims.org_id)throw new Error('Organization ID (org_id) claim mismatch in the ID token; expected "'+e.organizationId+'", found "'+t.claims.org_id+'"')}return t},ci=s((function(e,t){var n=a&&a.__assign||function(){return (n=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var o in t=arguments[n])Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o]);return e}).apply(this,arguments)};function r(e,t){if(!t)return "";var n="; "+e;return !0===t?n:n+"="+t}function o(e,t,n){return encodeURIComponent(e).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent).replace(/\(/g,"%28").replace(/\)/g,"%29")+"="+encodeURIComponent(t).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent)+function(e){if("number"==typeof e.expires){var t=new Date;t.setMilliseconds(t.getMilliseconds()+864e5*e.expires),e.expires=t;}return r("Expires",e.expires?e.expires.toUTCString():"")+r("Domain",e.domain)+r("Path",e.path)+r("Secure",e.secure)+r("SameSite",e.sameSite)}(n)}function i(e){for(var t={},n=e?e.split("; "):[],r=/(%[\dA-F]{2})+/gi,o=0;o<n.length;o++){var i=n[o].split("="),a=i.slice(1).join("=");'"'===a.charAt(0)&&(a=a.slice(1,-1));try{t[i[0].replace(r,decodeURIComponent)]=a.replace(r,decodeURIComponent);}catch(e){}}return t}function c(){return i(document.cookie)}function s(e,t,r){document.cookie=o(e,t,n({path:"/"},r));}t.__esModule=!0,t.encode=o,t.parse=i,t.getAll=c,t.get=function(e){return c()[e]},t.set=s,t.remove=function(e,t){s(e,"",n(n({},t),{expires:-1}));};}));c(ci),ci.encode,ci.parse,ci.getAll;var si=ci.get,ui=ci.set,li=ci.remove,fi={get:function(e){var t=si(e);if(void 0!==t)return JSON.parse(t)},save:function(e,t,n){var r={};"https:"===window.location.protocol&&(r={secure:!0,sameSite:"none"}),r.expires=n.daysUntilExpire,ui(e,JSON.stringify(t),r);},remove:function(e){li(e);}},di={get:function(e){var t=fi.get(e);return t||fi.get("_legacy_"+e)},save:function(e,t,n){var r={};"https:"===window.location.protocol&&(r={secure:!0}),r.expires=n.daysUntilExpire,ui("_legacy_"+e,JSON.stringify(t),r),fi.save(e,t,n);},remove:function(e){fi.remove(e),fi.remove("_legacy_"+e);}},pi={get:function(e){if("undefined"!=typeof sessionStorage){var t=sessionStorage.getItem(e);if(void 0!==t)return JSON.parse(t)}},save:function(e,t){sessionStorage.setItem(e,JSON.stringify(t));},remove:function(e){sessionStorage.removeItem(e);}};function hi(e,t,n){var r=void 0===t?null:t,o=function(e,t){var n=atob(e);if(t){for(var r=new Uint8Array(n.length),o=0,i=n.length;o<i;++o)r[o]=n.charCodeAt(o);return String.fromCharCode.apply(null,new Uint16Array(r.buffer))}return n}(e,void 0!==n&&n),i=o.indexOf("\n",10)+1,a=o.substring(i)+(r?"//# sourceMappingURL="+r:""),c=new Blob([a],{type:"application/javascript"});return URL.createObjectURL(c)}var yi,vi,mi,gi,bi=(yi="Lyogcm9sbHVwLXBsdWdpbi13ZWItd29ya2VyLWxvYWRlciAqLwohZnVuY3Rpb24oKXsidXNlIHN0cmljdCI7Ci8qISAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgogICAgQ29weXJpZ2h0IChjKSBNaWNyb3NvZnQgQ29ycG9yYXRpb24uCgogICAgUGVybWlzc2lvbiB0byB1c2UsIGNvcHksIG1vZGlmeSwgYW5kL29yIGRpc3RyaWJ1dGUgdGhpcyBzb2Z0d2FyZSBmb3IgYW55CiAgICBwdXJwb3NlIHdpdGggb3Igd2l0aG91dCBmZWUgaXMgaGVyZWJ5IGdyYW50ZWQuCgogICAgVEhFIFNPRlRXQVJFIElTIFBST1ZJREVEICJBUyBJUyIgQU5EIFRIRSBBVVRIT1IgRElTQ0xBSU1TIEFMTCBXQVJSQU5USUVTIFdJVEgKICAgIFJFR0FSRCBUTyBUSElTIFNPRlRXQVJFIElOQ0xVRElORyBBTEwgSU1QTElFRCBXQVJSQU5USUVTIE9GIE1FUkNIQU5UQUJJTElUWQogICAgQU5EIEZJVE5FU1MuIElOIE5PIEVWRU5UIFNIQUxMIFRIRSBBVVRIT1IgQkUgTElBQkxFIEZPUiBBTlkgU1BFQ0lBTCwgRElSRUNULAogICAgSU5ESVJFQ1QsIE9SIENPTlNFUVVFTlRJQUwgREFNQUdFUyBPUiBBTlkgREFNQUdFUyBXSEFUU09FVkVSIFJFU1VMVElORyBGUk9NCiAgICBMT1NTIE9GIFVTRSwgREFUQSBPUiBQUk9GSVRTLCBXSEVUSEVSIElOIEFOIEFDVElPTiBPRiBDT05UUkFDVCwgTkVHTElHRU5DRSBPUgogICAgT1RIRVIgVE9SVElPVVMgQUNUSU9OLCBBUklTSU5HIE9VVCBPRiBPUiBJTiBDT05ORUNUSU9OIFdJVEggVEhFIFVTRSBPUgogICAgUEVSRk9STUFOQ0UgT0YgVEhJUyBTT0ZUV0FSRS4KICAgICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqICovdmFyIGU9ZnVuY3Rpb24oKXtyZXR1cm4oZT1PYmplY3QuYXNzaWdufHxmdW5jdGlvbihlKXtmb3IodmFyIHQscj0xLG49YXJndW1lbnRzLmxlbmd0aDtyPG47cisrKWZvcih2YXIgbyBpbiB0PWFyZ3VtZW50c1tyXSlPYmplY3QucHJvdG90eXBlLmhhc093blByb3BlcnR5LmNhbGwodCxvKSYmKGVbb109dFtvXSk7cmV0dXJuIGV9KS5hcHBseSh0aGlzLGFyZ3VtZW50cyl9O2Z1bmN0aW9uIHQoZSx0LHIsbil7cmV0dXJuIG5ldyhyfHwocj1Qcm9taXNlKSkoKGZ1bmN0aW9uKG8scyl7ZnVuY3Rpb24gYShlKXt0cnl7dShuLm5leHQoZSkpfWNhdGNoKGUpe3MoZSl9fWZ1bmN0aW9uIGkoZSl7dHJ5e3Uobi50aHJvdyhlKSl9Y2F0Y2goZSl7cyhlKX19ZnVuY3Rpb24gdShlKXt2YXIgdDtlLmRvbmU/byhlLnZhbHVlKToodD1lLnZhbHVlLHQgaW5zdGFuY2VvZiByP3Q6bmV3IHIoKGZ1bmN0aW9uKGUpe2UodCl9KSkpLnRoZW4oYSxpKX11KChuPW4uYXBwbHkoZSx0fHxbXSkpLm5leHQoKSl9KSl9ZnVuY3Rpb24gcihlLHQpe3ZhciByLG4sbyxzLGE9e2xhYmVsOjAsc2VudDpmdW5jdGlvbigpe2lmKDEmb1swXSl0aHJvdyBvWzFdO3JldHVybiBvWzFdfSx0cnlzOltdLG9wczpbXX07cmV0dXJuIHM9e25leHQ6aSgwKSx0aHJvdzppKDEpLHJldHVybjppKDIpfSwiZnVuY3Rpb24iPT10eXBlb2YgU3ltYm9sJiYoc1tTeW1ib2wuaXRlcmF0b3JdPWZ1bmN0aW9uKCl7cmV0dXJuIHRoaXN9KSxzO2Z1bmN0aW9uIGkocyl7cmV0dXJuIGZ1bmN0aW9uKGkpe3JldHVybiBmdW5jdGlvbihzKXtpZihyKXRocm93IG5ldyBUeXBlRXJyb3IoIkdlbmVyYXRvciBpcyBhbHJlYWR5IGV4ZWN1dGluZy4iKTtmb3IoO2E7KXRyeXtpZihyPTEsbiYmKG89MiZzWzBdP24ucmV0dXJuOnNbMF0/bi50aHJvd3x8KChvPW4ucmV0dXJuKSYmby5jYWxsKG4pLDApOm4ubmV4dCkmJiEobz1vLmNhbGwobixzWzFdKSkuZG9uZSlyZXR1cm4gbztzd2l0Y2gobj0wLG8mJihzPVsyJnNbMF0sby52YWx1ZV0pLHNbMF0pe2Nhc2UgMDpjYXNlIDE6bz1zO2JyZWFrO2Nhc2UgNDpyZXR1cm4gYS5sYWJlbCsrLHt2YWx1ZTpzWzFdLGRvbmU6ITF9O2Nhc2UgNTphLmxhYmVsKyssbj1zWzFdLHM9WzBdO2NvbnRpbnVlO2Nhc2UgNzpzPWEub3BzLnBvcCgpLGEudHJ5cy5wb3AoKTtjb250aW51ZTtkZWZhdWx0OmlmKCEobz1hLnRyeXMsKG89by5sZW5ndGg+MCYmb1tvLmxlbmd0aC0xXSl8fDYhPT1zWzBdJiYyIT09c1swXSkpe2E9MDtjb250aW51ZX1pZigzPT09c1swXSYmKCFvfHxzWzFdPm9bMF0mJnNbMV08b1szXSkpe2EubGFiZWw9c1sxXTticmVha31pZig2PT09c1swXSYmYS5sYWJlbDxvWzFdKXthLmxhYmVsPW9bMV0sbz1zO2JyZWFrfWlmKG8mJmEubGFiZWw8b1syXSl7YS5sYWJlbD1vWzJdLGEub3BzLnB1c2gocyk7YnJlYWt9b1syXSYmYS5vcHMucG9wKCksYS50cnlzLnBvcCgpO2NvbnRpbnVlfXM9dC5jYWxsKGUsYSl9Y2F0Y2goZSl7cz1bNixlXSxuPTB9ZmluYWxseXtyPW89MH1pZig1JnNbMF0pdGhyb3cgc1sxXTtyZXR1cm57dmFsdWU6c1swXT9zWzFdOnZvaWQgMCxkb25lOiEwfX0oW3MsaV0pfX19dmFyIG49e30sbz1mdW5jdGlvbihlLHQpe3JldHVybiBlKyJ8Iit0fTthZGRFdmVudExpc3RlbmVyKCJtZXNzYWdlIiwoZnVuY3Rpb24ocyl7dmFyIGE9cy5kYXRhLGk9YS50aW1lb3V0LHU9YS5hdXRoLGM9YS5mZXRjaFVybCxmPWEuZmV0Y2hPcHRpb25zLGw9cy5wb3J0c1swXTtyZXR1cm4gdCh2b2lkIDAsdm9pZCAwLHZvaWQgMCwoZnVuY3Rpb24oKXt2YXIgdCxzLGEsaCxwLGIseSxkLHYsdztyZXR1cm4gcih0aGlzLChmdW5jdGlvbihyKXtzd2l0Y2goci5sYWJlbCl7Y2FzZSAwOmE9KHM9dXx8e30pLmF1ZGllbmNlLGg9cy5zY29wZSxyLmxhYmVsPTE7Y2FzZSAxOmlmKHIudHJ5cy5wdXNoKFsxLDcsLDhdKSwhKHA9SlNPTi5wYXJzZShmLmJvZHkpKS5yZWZyZXNoX3Rva2VuJiYicmVmcmVzaF90b2tlbiI9PT1wLmdyYW50X3R5cGUpe2lmKCEoYj1mdW5jdGlvbihlLHQpe3JldHVybiBuW28oZSx0KV19KGEsaCkpKXRocm93IG5ldyBFcnJvcigiVGhlIHdlYiB3b3JrZXIgaXMgbWlzc2luZyB0aGUgcmVmcmVzaCB0b2tlbiIpO2YuYm9keT1KU09OLnN0cmluZ2lmeShlKGUoe30scCkse3JlZnJlc2hfdG9rZW46Yn0pKX15PXZvaWQgMCwiZnVuY3Rpb24iPT10eXBlb2YgQWJvcnRDb250cm9sbGVyJiYoeT1uZXcgQWJvcnRDb250cm9sbGVyLGYuc2lnbmFsPXkuc2lnbmFsKSxkPXZvaWQgMCxyLmxhYmVsPTI7Y2FzZSAyOnJldHVybiByLnRyeXMucHVzaChbMiw0LCw1XSksWzQsUHJvbWlzZS5yYWNlKFsoZz1pLG5ldyBQcm9taXNlKChmdW5jdGlvbihlKXtyZXR1cm4gc2V0VGltZW91dChlLGcpfSkpKSxmZXRjaChjLGUoe30sZikpXSldO2Nhc2UgMzpyZXR1cm4gZD1yLnNlbnQoKSxbMyw1XTtjYXNlIDQ6cmV0dXJuIHY9ci5zZW50KCksbC5wb3N0TWVzc2FnZSh7ZXJyb3I6di5tZXNzYWdlfSksWzJdO2Nhc2UgNTpyZXR1cm4gZD9bNCxkLmpzb24oKV06KHkmJnkuYWJvcnQoKSxsLnBvc3RNZXNzYWdlKHtlcnJvcjoiVGltZW91dCB3aGVuIGV4ZWN1dGluZyAnZmV0Y2gnIn0pLFsyXSk7Y2FzZSA2OnJldHVybih0PXIuc2VudCgpKS5yZWZyZXNoX3Rva2VuPyhmdW5jdGlvbihlLHQscil7bltvKHQscildPWV9KHQucmVmcmVzaF90b2tlbixhLGgpLGRlbGV0ZSB0LnJlZnJlc2hfdG9rZW4pOmZ1bmN0aW9uKGUsdCl7ZGVsZXRlIG5bbyhlLHQpXX0oYSxoKSxsLnBvc3RNZXNzYWdlKHtvazpkLm9rLGpzb246dH0pLFszLDhdO2Nhc2UgNzpyZXR1cm4gdz1yLnNlbnQoKSxsLnBvc3RNZXNzYWdlKHtvazohMSxqc29uOntlcnJvcl9kZXNjcmlwdGlvbjp3Lm1lc3NhZ2V9fSksWzMsOF07Y2FzZSA4OnJldHVyblsyXX12YXIgZ30pKX0pKX0pKX0oKTsKCg==",vi=null,mi=!1,function(e){return gi=gi||hi(yi,vi,mi),new Worker(gi,e)}),wi={},Si=new To,_i={memory:function(){return (new ni).enclosedCache},localstorage:function(){return new ti}},ki=function(e){return _i[e]},Ii=function(){return !/Trident.*rv:11\.0/.test(navigator.userAgent)},Ti=function(){function e(e){var t,n;if(this.options=e,"undefined"!=typeof window&&function(){if(!Po())throw new Error("For security reasons, `window.crypto` is required to run `auth0-spa-js`.");if(void 0===Fo())throw new Error("\n      auth0-spa-js must run on a secure origin. See https://github.com/auth0/auth0-spa-js/blob/master/FAQ.md#why-do-i-get-auth0-spa-js-must-run-on-a-secure-origin for more information.\n    ")}(),this.cacheLocation=e.cacheLocation||"memory",this.cookieStorage=!1===e.legacySameSiteCookie?fi:di,this.sessionCheckExpiryDays=e.sessionCheckExpiryDays||1,!ki(this.cacheLocation))throw new Error('Invalid cache location "'+this.cacheLocation+'"');var o,i,a=e.useCookiesForTransactions?this.cookieStorage:pi;this.cache=ki(this.cacheLocation)(),this.scope=this.options.scope,this.transactionManager=new ri(a),this.domainUrl="https://"+this.options.domain,this.tokenIssuer=(o=this.options.issuer,i=this.domainUrl,o?o.startsWith("https://")?o:"https://"+o+"/":i+"/"),this.defaultScope=qo("openid",void 0!==(null===(n=null===(t=this.options)||void 0===t?void 0:t.advancedOptions)||void 0===n?void 0:n.defaultScope)?this.options.advancedOptions.defaultScope:"openid profile email"),this.options.useRefreshTokens&&(this.scope=qo(this.scope,"offline_access")),"undefined"!=typeof window&&window.Worker&&this.options.useRefreshTokens&&"memory"===this.cacheLocation&&Ii()&&(this.worker=new bi),this.customOptions=function(e){return e.advancedOptions,e.audience,e.auth0Client,e.authorizeTimeoutInSeconds,e.cacheLocation,e.client_id,e.domain,e.issuer,e.leeway,e.max_age,e.redirect_uri,e.scope,e.useRefreshTokens,r(e,["advancedOptions","audience","auth0Client","authorizeTimeoutInSeconds","cacheLocation","client_id","domain","issuer","leeway","max_age","redirect_uri","scope","useRefreshTokens"])}(e);}return e.prototype._url=function(e){var t=encodeURIComponent(btoa(JSON.stringify(this.options.auth0Client||xo)));return ""+this.domainUrl+e+"&auth0Client="+t},e.prototype._getParams=function(e,t,o,i,a){var c=this.options;c.domain,c.leeway,c.useRefreshTokens,c.useCookiesForTransactions,c.auth0Client,c.cacheLocation,c.advancedOptions;var s=r(c,["domain","leeway","useRefreshTokens","useCookiesForTransactions","auth0Client","cacheLocation","advancedOptions"]);return n(n(n({},s),e),{scope:qo(this.defaultScope,this.scope,e.scope),response_type:"code",response_mode:"query",state:t,nonce:o,redirect_uri:a||this.options.redirect_uri,code_challenge:i,code_challenge_method:"S256"})},e.prototype._authorizeUrl=function(e){return this._url("/authorize?"+zo(e))},e.prototype._verifyIdToken=function(e,t,n){return ai({iss:this.tokenIssuer,aud:this.options.client_id,id_token:e,nonce:t,organizationId:n,leeway:this.options.leeway,max_age:this._parseNumber(this.options.max_age)})},e.prototype._parseNumber=function(e){return "string"!=typeof e?e:parseInt(e,10)||void 0},e.prototype.buildAuthorizeUrl=function(e){return void 0===e&&(e={}),o(this,void 0,void 0,(function(){var t,o,a,c,s,u,l,f,d,p,h,y;return i(this,(function(i){switch(i.label){case 0:return t=e.redirect_uri,o=e.appState,a=r(e,["redirect_uri","appState"]),c=Wo(Ko()),s=Wo(Ko()),u=Ko(),[4,Vo(u)];case 1:return l=i.sent(),f=Xo(l),d=e.fragment?"#"+e.fragment:"",p=this._getParams(a,c,s,f,t),h=this._authorizeUrl(p),y=e.organization||this.options.organization,this.transactionManager.create(n({nonce:s,code_verifier:u,appState:o,scope:p.scope,audience:p.audience||"default",redirect_uri:p.redirect_uri},y&&{organizationId:y})),[2,h+d]}}))}))},e.prototype.loginWithPopup=function(e,t){return o(this,void 0,void 0,(function(){var o,a,c,s,u,l,f,d,p,h,y,v,m;return i(this,(function(i){switch(i.label){case 0:return e=e||{},(t=t||{}).popup||(t.popup=function(e){var t=window.screenX+(window.innerWidth-400)/2,n=window.screenY+(window.innerHeight-600)/2;return window.open(e,"auth0:authorize:popup","left="+t+",top="+n+",width=400,height=600,resizable,scrollbars=yes,status=1")}("")),o=r(e,[]),a=Wo(Ko()),c=Wo(Ko()),s=Ko(),[4,Vo(s)];case 1:return u=i.sent(),l=Xo(u),f=this._getParams(o,a,c,l,this.options.redirect_uri||window.location.origin),d=this._authorizeUrl(n(n({},f),{response_mode:"web_message"})),t.popup.location.href=d,[4,Ao(n(n({},t),{timeoutInSeconds:t.timeoutInSeconds||this.options.authorizeTimeoutInSeconds||60}))];case 2:if(p=i.sent(),a!==p.state)throw new Error("Invalid state");return [4,Bo({audience:f.audience,scope:f.scope,baseUrl:this.domainUrl,client_id:this.options.client_id,code_verifier:s,code:p.code,grant_type:"authorization_code",redirect_uri:f.redirect_uri,auth0Client:this.options.auth0Client},this.worker)];case 3:return h=i.sent(),y=e.organization||this.options.organization,v=this._verifyIdToken(h.id_token,c,y),m=n(n({},h),{decodedToken:v,scope:f.scope,audience:f.audience||"default",client_id:this.options.client_id}),this.cache.save(m),this.cookieStorage.save("auth0.is.authenticated",!0,{daysUntilExpire:this.sessionCheckExpiryDays}),[2]}}))}))},e.prototype.getUser=function(e){return void 0===e&&(e={}),o(this,void 0,void 0,(function(){var t,n,r;return i(this,(function(o){return t=e.audience||this.options.audience||"default",n=qo(this.defaultScope,this.scope,e.scope),[2,(r=this.cache.get(new Ho({client_id:this.options.client_id,audience:t,scope:n})))&&r.decodedToken&&r.decodedToken.user]}))}))},e.prototype.getIdTokenClaims=function(e){return void 0===e&&(e={}),o(this,void 0,void 0,(function(){var t,n,r;return i(this,(function(o){return t=e.audience||this.options.audience||"default",n=qo(this.defaultScope,this.scope,e.scope),[2,(r=this.cache.get(new Ho({client_id:this.options.client_id,audience:t,scope:n})))&&r.decodedToken&&r.decodedToken.claims]}))}))},e.prototype.loginWithRedirect=function(e){return void 0===e&&(e={}),o(this,void 0,void 0,(function(){var t,n,o;return i(this,(function(i){switch(i.label){case 0:return t=e.redirectMethod,n=r(e,["redirectMethod"]),[4,this.buildAuthorizeUrl(n)];case 1:return o=i.sent(),window.location[t||"assign"](o),[2]}}))}))},e.prototype.handleRedirectCallback=function(e){return void 0===e&&(e=window.location.href),o(this,void 0,void 0,(function(){var t,r,o,a,c,s,u,l,f,d,p;return i(this,(function(i){switch(i.label){case 0:if(0===(t=e.split("?").slice(1)).length)throw new Error("There are no query params available for parsing.");if(r=function(e){e.indexOf("#")>-1&&(e=e.substr(0,e.indexOf("#")));var t=e.split("&"),r={};return t.forEach((function(e){var t=e.split("="),n=t[0],o=t[1];r[n]=decodeURIComponent(o);})),n(n({},r),{expires_in:parseInt(r.expires_in)})}(t.join("")),o=r.state,a=r.code,c=r.error,s=r.error_description,!(u=this.transactionManager.get())||!u.code_verifier)throw new Error("Invalid state");if(this.transactionManager.remove(),c)throw new Lo(c,s,o,u.appState);return l={audience:u.audience,scope:u.scope,baseUrl:this.domainUrl,client_id:this.options.client_id,code_verifier:u.code_verifier,grant_type:"authorization_code",code:a,auth0Client:this.options.auth0Client},void 0!==u.redirect_uri&&(l.redirect_uri=u.redirect_uri),[4,Bo(l,this.worker)];case 1:return f=i.sent(),d=this._verifyIdToken(f.id_token,u.nonce,u.organizationId),p=n(n({},f),{decodedToken:d,audience:u.audience,scope:u.scope,client_id:this.options.client_id}),this.cache.save(p),this.cookieStorage.save("auth0.is.authenticated",!0,{daysUntilExpire:this.sessionCheckExpiryDays}),[2,{appState:u.appState}]}}))}))},e.prototype.checkSession=function(e){return o(this,void 0,void 0,(function(){var t;return i(this,(function(n){switch(n.label){case 0:if(!this.cookieStorage.get("auth0.is.authenticated"))return [2];n.label=1;case 1:return n.trys.push([1,3,,4]),[4,this.getTokenSilently(e)];case 2:return n.sent(),[3,4];case 3:if(t=n.sent(),!Eo.includes(t.error))throw t;return [3,4];case 4:return [2]}}))}))},e.prototype.getTokenSilently=function(e){return void 0===e&&(e={}),o(this,void 0,void 0,(function(){var t,o,a,c=this;return i(this,(function(i){return t=n(n({audience:this.options.audience,ignoreCache:!1},e),{scope:qo(this.defaultScope,this.scope,e.scope)}),o=t.ignoreCache,a=r(t,["ignoreCache"]),[2,(s=function(){return c._getTokenSilently(n({ignoreCache:o},a))},u=this.options.client_id+"::"+a.audience+"::"+a.scope,l=wi[u],l||(l=s().finally((function(){delete wi[u],l=null;})),wi[u]=l),l)];var s,u,l;}))}))},e.prototype._getTokenSilently=function(e){return void 0===e&&(e={}),o(this,void 0,void 0,(function(){var t,a,c,s,u,l,f=this;return i(this,(function(d){switch(d.label){case 0:return t=e.ignoreCache,a=r(e,["ignoreCache"]),c=function(){var e=f.cache.get(new Ho({scope:a.scope,audience:a.audience||"default",client_id:f.options.client_id}),60);return e&&e.access_token},!t&&(s=c())?[2,s]:[4,(p=function(){return Si.acquireLock("auth0.lock.getTokenSilently",5e3)},h=10,void 0===h&&(h=3),o(void 0,void 0,void 0,(function(){var e;return i(this,(function(t){switch(t.label){case 0:e=0,t.label=1;case 1:return e<h?[4,p()]:[3,4];case 2:if(t.sent())return [2,!0];t.label=3;case 3:return e++,[3,1];case 4:return [2,!1]}}))})))];case 1:if(!d.sent())return [3,10];d.label=2;case 2:return d.trys.push([2,,7,9]),!t&&(s=c())?[2,s]:this.options.useRefreshTokens?[4,this._getTokenUsingRefreshToken(a)]:[3,4];case 3:return l=d.sent(),[3,6];case 4:return [4,this._getTokenFromIFrame(a)];case 5:l=d.sent(),d.label=6;case 6:return u=l,this.cache.save(n({client_id:this.options.client_id},u)),this.cookieStorage.save("auth0.is.authenticated",!0,{daysUntilExpire:this.sessionCheckExpiryDays}),[2,u.access_token];case 7:return [4,Si.releaseLock("auth0.lock.getTokenSilently")];case 8:return d.sent(),[7];case 9:return [3,11];case 10:throw new Co;case 11:return [2]}var p,h;}))}))},e.prototype.getTokenWithPopup=function(e,t){return void 0===e&&(e={}),void 0===t&&(t={}),o(this,void 0,void 0,(function(){return i(this,(function(r){switch(r.label){case 0:return e.audience=e.audience||this.options.audience,e.scope=qo(this.defaultScope,this.scope,e.scope),t=n(n({},Oo),t),[4,this.loginWithPopup(e,t)];case 1:return r.sent(),[2,this.cache.get(new Ho({scope:e.scope,audience:e.audience||"default",client_id:this.options.client_id})).access_token]}}))}))},e.prototype.isAuthenticated=function(){return o(this,void 0,void 0,(function(){return i(this,(function(e){switch(e.label){case 0:return [4,this.getUser()];case 1:return [2,!!e.sent()]}}))}))},e.prototype.buildLogoutUrl=function(e){void 0===e&&(e={}),null!==e.client_id?e.client_id=e.client_id||this.options.client_id:delete e.client_id;var t=e.federated,n=r(e,["federated"]),o=t?"&federated":"";return this._url("/v2/logout?"+zo(n))+o},e.prototype.logout=function(e){void 0===e&&(e={});var t=e.localOnly,n=r(e,["localOnly"]);if(t&&n.federated)throw new Error("It is invalid to set both the `federated` and `localOnly` options to `true`");if(this.cache.clear(),this.cookieStorage.remove("auth0.is.authenticated"),!t){var o=this.buildLogoutUrl(n);window.location.assign(o);}},e.prototype._getTokenFromIFrame=function(e){return o(this,void 0,void 0,(function(){var t,o,a,c,s,u,l,f,d,p,h,y,v,m,g;return i(this,(function(i){switch(i.label){case 0:return t=Wo(Ko()),o=Wo(Ko()),a=Ko(),[4,Vo(a)];case 1:c=i.sent(),s=Xo(c),u=this._getParams(e,t,o,s,e.redirect_uri||this.options.redirect_uri||window.location.origin),l=this._authorizeUrl(n(n({},u),{prompt:"none",response_mode:"web_message"})),f=e.timeoutInSeconds||this.options.authorizeTimeoutInSeconds,i.label=2;case 2:return i.trys.push([2,5,,6]),[4,(b=l,w=this.domainUrl,S=f,void 0===S&&(S=60),new Promise((function(e,t){var n=window.document.createElement("iframe");n.setAttribute("width","0"),n.setAttribute("height","0"),n.style.display="none";var r,o=function(){window.document.body.contains(n)&&(window.document.body.removeChild(n),window.removeEventListener("message",r,!1));},i=setTimeout((function(){t(new Co),o();}),1e3*S);r=function(n){if(n.origin==w&&n.data&&"authorization_response"===n.data.type){var a=n.source;a&&a.close(),n.data.response.error?t(Ro.fromPayload(n.data.response)):e(n.data.response),clearTimeout(i),window.removeEventListener("message",r,!1),setTimeout(o,2e3);}},window.addEventListener("message",r,!1),window.document.body.appendChild(n),n.setAttribute("src",b);})))];case 3:if(d=i.sent(),t!==d.state)throw new Error("Invalid state");return p=e.scope,h=e.audience,e.redirect_uri,e.ignoreCache,e.timeoutInSeconds,y=r(e,["scope","audience","redirect_uri","ignoreCache","timeoutInSeconds"]),[4,Bo(n(n(n({},this.customOptions),y),{scope:p,audience:h,baseUrl:this.domainUrl,client_id:this.options.client_id,code_verifier:a,code:d.code,grant_type:"authorization_code",redirect_uri:u.redirect_uri,auth0Client:this.options.auth0Client}),this.worker)];case 4:return v=i.sent(),m=this._verifyIdToken(v.id_token,o),[2,n(n({},v),{decodedToken:m,scope:u.scope,audience:u.audience||"default"})];case 5:throw "login_required"===(g=i.sent()).error&&this.logout({localOnly:!0}),g;case 6:return [2]}var b,w,S;}))}))},e.prototype._getTokenUsingRefreshToken=function(e){return o(this,void 0,void 0,(function(){var t,o,a,c,s,u,l,f,d;return i(this,(function(i){switch(i.label){case 0:return e.scope=qo(this.defaultScope,this.options.scope,e.scope),(t=this.cache.get(new Ho({scope:e.scope,audience:e.audience||"default",client_id:this.options.client_id})))&&t.refresh_token||this.worker?[3,2]:[4,this._getTokenFromIFrame(e)];case 1:return [2,i.sent()];case 2:o=e.redirect_uri||this.options.redirect_uri||window.location.origin,c=e.scope,s=e.audience,e.ignoreCache,e.timeoutInSeconds,u=r(e,["scope","audience","ignoreCache","timeoutInSeconds"]),l="number"==typeof e.timeoutInSeconds?1e3*e.timeoutInSeconds:null,i.label=3;case 3:return i.trys.push([3,5,,8]),[4,Bo(n(n(n(n(n({},this.customOptions),u),{audience:s,scope:c,baseUrl:this.domainUrl,client_id:this.options.client_id,grant_type:"refresh_token",refresh_token:t&&t.refresh_token,redirect_uri:o}),l&&{timeout:l}),{auth0Client:this.options.auth0Client}),this.worker)];case 4:return a=i.sent(),[3,8];case 5:return "The web worker is missing the refresh token"===(f=i.sent()).message||f.message&&f.message.indexOf("invalid refresh token")>-1?[4,this._getTokenFromIFrame(e)]:[3,7];case 6:return [2,i.sent()];case 7:throw f;case 8:return d=this._verifyIdToken(a.id_token),[2,n(n({},a),{decodedToken:d,scope:e.scope,audience:e.audience||"default"})]}}))}))},e}();function Ei(e){return o(this,void 0,void 0,(function(){var t;return i(this,(function(n){switch(n.label){case 0:return [4,(t=new Ti(e)).checkSession()];case 1:return n.sent(),[2,t]}}))}))}
+
+    const loc = window.location;
+    let auth0 = null;
+    let isAuthenticated = false;
+    let callback;
+    const onLoggedIn = (cb) => {
+        callback = cb;
+    };
+    const configureClient = async () => {
+        const response = await fetch("/auth_config.json");
+        const config = await response.json();
+        auth0 = await Ei({
+            domain: config.domain,
+            client_id: config.clientId,
+            audience: config.audience,
+        });
+    };
+    window.onload = async () => {
+        if (loc.host !== "dasifor.xyz") {
+            Fetcher.getInstance();
+            callback();
+            return;
+        }
+        await configureClient();
+        isAuthenticated = await auth0.isAuthenticated();
+        if (isAuthenticated) {
+            callback();
+            return;
+        }
+        const query = window.location.search;
+        if (query.includes("code=") && query.includes("state=")) {
+            await auth0.handleRedirectCallback();
+            window.history.replaceState({}, document.title, "/");
+            const token = await auth0.getTokenSilently();
+            callback();
+            Fetcher.getInstance(token);
+        }
+    };
+    const isLoggedIn = async () => {
+        return await auth0.isAuthenticated();
+    };
+    const login = async () => {
+        await auth0.loginWithRedirect({
+            redirect_uri: "https://dasifor.xyz"
+        });
+    };
+    const logout = () => {
+        Fetcher.destroy();
+        auth0.logout({
+            returnTo: "https://dasifor.xyz"
+        });
+    };
+
+    /* src/components/Navigator.svelte generated by Svelte v3.38.2 */
+    const file$1 = "src/components/Navigator.svelte";
+
+    // (15:3) {:else}
+    function create_else_block$1(ctx) {
+    	let li;
+    	let a;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			li = element$1("li");
+    			a = element$1("a");
+    			a.textContent = "Logga in";
+    			attr_dev(a, "href", "/login");
+    			attr_dev(a, "class", "svelte-1hkku9o");
+    			add_location(a, file$1, 15, 8, 453);
+    			add_location(li, file$1, 15, 4, 449);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, a);
+
+    			if (!mounted) {
+    				dispose = listen_dev(a, "click", /*click_handler_1*/ ctx[2], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$1.name,
+    		type: "else",
+    		source: "(15:3) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (13:3) {#if loggedIn}
+    function create_if_block$1(ctx) {
+    	let li;
+    	let a;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			li = element$1("li");
+    			a = element$1("a");
+    			a.textContent = "Logga ut";
+    			attr_dev(a, "href", "/login");
+    			attr_dev(a, "class", "svelte-1hkku9o");
+    			add_location(a, file$1, 13, 8, 373);
+    			add_location(li, file$1, 13, 4, 369);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, a);
+
+    			if (!mounted) {
+    				dispose = listen_dev(a, "click", /*click_handler*/ ctx[1], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(13:3) {#if loggedIn}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$3(ctx) {
+    	let nav;
+    	let div;
+    	let ul0;
+    	let li0;
+    	let a0;
+    	let t1;
+    	let li1;
+    	let a1;
+    	let t3;
+    	let li2;
+    	let a2;
+    	let t5;
+    	let ul1;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*loggedIn*/ ctx[0]) return create_if_block$1;
+    		return create_else_block$1;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			nav = element$1("nav");
+    			div = element$1("div");
+    			ul0 = element$1("ul");
+    			li0 = element$1("li");
+    			a0 = element$1("a");
+    			a0.textContent = "Hem";
+    			t1 = space();
+    			li1 = element$1("li");
+    			a1 = element$1("a");
+    			a1.textContent = "Ny budget";
+    			t3 = space();
+    			li2 = element$1("li");
+    			a2 = element$1("a");
+    			a2.textContent = "Ändra budget";
+    			t5 = space();
+    			ul1 = element$1("ul");
+    			if_block.c();
+    			attr_dev(a0, "href", "/");
+    			attr_dev(a0, "class", "svelte-1hkku9o");
+    			add_location(a0, file$1, 7, 7, 191);
+    			add_location(li0, file$1, 7, 3, 187);
+    			attr_dev(a1, "href", "/new");
+    			attr_dev(a1, "class", "svelte-1hkku9o");
+    			add_location(a1, file$1, 8, 7, 223);
+    			add_location(li1, file$1, 8, 3, 219);
+    			attr_dev(a2, "href", "/edit");
+    			attr_dev(a2, "class", "svelte-1hkku9o");
+    			add_location(a2, file$1, 9, 7, 264);
+    			add_location(li2, file$1, 9, 3, 260);
+    			attr_dev(ul0, "id", "nav-mobile");
+    			attr_dev(ul0, "class", "left");
+    			add_location(ul0, file$1, 6, 2, 150);
+    			attr_dev(ul1, "id", "nav-mobile");
+    			attr_dev(ul1, "class", "right");
+    			add_location(ul1, file$1, 11, 2, 312);
+    			attr_dev(div, "class", "nav-wrapper");
+    			add_location(div, file$1, 5, 1, 122);
+    			attr_dev(nav, "class", "indigo darken-3");
+    			add_location(nav, file$1, 4, 0, 91);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, nav, anchor);
+    			append_dev(nav, div);
+    			append_dev(div, ul0);
+    			append_dev(ul0, li0);
+    			append_dev(li0, a0);
+    			append_dev(ul0, t1);
+    			append_dev(ul0, li1);
+    			append_dev(li1, a1);
+    			append_dev(ul0, t3);
+    			append_dev(ul0, li2);
+    			append_dev(li2, a2);
+    			append_dev(div, t5);
+    			append_dev(div, ul1);
+    			if_block.m(ul1, null);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(ul1, null);
+    				}
+    			}
+    		},
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(nav);
+    			if_block.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$3.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$3($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Navigator", slots, []);
+    	let { loggedIn } = $$props;
+    	const writable_props = ["loggedIn"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Navigator> was created with unknown prop '${key}'`);
+    	});
+
+    	const click_handler = () => logout();
+    	const click_handler_1 = () => login();
+
+    	$$self.$$set = $$props => {
+    		if ("loggedIn" in $$props) $$invalidate(0, loggedIn = $$props.loggedIn);
+    	};
+
+    	$$self.$capture_state = () => ({ login, logout, loggedIn });
+
+    	$$self.$inject_state = $$props => {
+    		if ("loggedIn" in $$props) $$invalidate(0, loggedIn = $$props.loggedIn);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [loggedIn, click_handler, click_handler_1];
+    }
+
+    class Navigator extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$3, create_fragment$3, safe_not_equal$1, { loggedIn: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Navigator",
+    			options,
+    			id: create_fragment$3.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*loggedIn*/ ctx[0] === undefined && !("loggedIn" in props)) {
+    			console.warn("<Navigator> was created without expected prop 'loggedIn'");
+    		}
+    	}
+
+    	get loggedIn() {
+    		throw new Error("<Navigator>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set loggedIn(value) {
+    		throw new Error("<Navigator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/misc/NotLoggedIn.svelte generated by Svelte v3.38.2 */
+
+    const file = "src/components/misc/NotLoggedIn.svelte";
+
+    function create_fragment$2(ctx) {
+    	let p;
+    	let t0;
+    	let a;
+    	let t2;
+
+    	const block = {
+    		c: function create() {
+    			p = element$1("p");
+    			t0 = text$1("Logga in uppe till höger eller besök ");
+    			a = element$1("a");
+    			a.textContent = "den öppna versionen";
+    			t2 = text$1(".");
+    			attr_dev(a, "href", "https://budget.dasifor.xyz");
+    			add_location(a, file, 4, 38, 77);
+    			attr_dev(p, "class", "center svelte-1vbsoe2");
+    			add_location(p, file, 3, 0, 20);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    			append_dev(p, t0);
+    			append_dev(p, a);
+    			append_dev(p, t2);
+    		},
+    		p: noop$1,
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$2.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$2($$self, $$props) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("NotLoggedIn", slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<NotLoggedIn> was created with unknown prop '${key}'`);
+    	});
+
+    	return [];
+    }
+
+    class NotLoggedIn extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$2, create_fragment$2, safe_not_equal$1, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "NotLoggedIn",
+    			options,
+    			id: create_fragment$2.name
+    		});
+    	}
+    }
+
+    /* src/components/misc/Login.svelte generated by Svelte v3.38.2 */
+
+    function create_fragment$1(ctx) {
+    	const block = {
+    		c: noop$1,
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: noop$1,
+    		p: noop$1,
+    		i: noop$1,
+    		o: noop$1,
+    		d: noop$1
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$1.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Login", slots, []);
+
+    	isLoggedIn().then(loggedIn => {
+    		if (loggedIn) {
+    			logout();
+    		} else {
+    			login();
+    		}
+    	});
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Login> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({ isLoggedIn, login, logout });
+    	return [];
+    }
+
+    class Login extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$1, create_fragment$1, safe_not_equal$1, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Login",
+    			options,
+    			id: create_fragment$1.name
+    		});
+    	}
+    }
+
+    /* src/App.svelte generated by Svelte v3.38.2 */
+
+    // (38:0) {:else}
+    function create_else_block(ctx) {
+    	let notloggedin;
+    	let current;
+    	notloggedin = new NotLoggedIn({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			create_component(notloggedin.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component$1(notloggedin, target, anchor);
+    			current = true;
+    		},
+    		p: noop$1,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(notloggedin.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(notloggedin.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component$1(notloggedin, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(38:0) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (36:0) {#if loggedIn}
+    function create_if_block(ctx) {
+    	let switch_instance;
+    	let switch_instance_anchor;
+    	let current;
+    	var switch_value = /*page*/ ctx[0];
+
+    	function switch_props(ctx) {
+    		return { $$inline: true };
+    	}
+
+    	if (switch_value) {
+    		switch_instance = new switch_value(switch_props());
+    	}
+
+    	const block = {
+    		c: function create() {
+    			if (switch_instance) create_component(switch_instance.$$.fragment);
+    			switch_instance_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (switch_instance) {
+    				mount_component$1(switch_instance, target, anchor);
+    			}
+
+    			insert_dev(target, switch_instance_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (switch_value !== (switch_value = /*page*/ ctx[0])) {
+    				if (switch_instance) {
+    					group_outros();
+    					const old_component = switch_instance;
+
+    					transition_out(old_component.$$.fragment, 1, 0, () => {
+    						destroy_component$1(old_component, 1);
+    					});
+
+    					check_outros();
+    				}
+
+    				if (switch_value) {
+    					switch_instance = new switch_value(switch_props());
+    					create_component(switch_instance.$$.fragment);
+    					transition_in$1(switch_instance.$$.fragment, 1);
+    					mount_component$1(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+    				} else {
+    					switch_instance = null;
+    				}
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			if (switch_instance) transition_in$1(switch_instance.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(switch_instance_anchor);
+    			if (switch_instance) destroy_component$1(switch_instance, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(36:0) {#if loggedIn}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment(ctx) {
+    	let navigator;
+    	let t;
+    	let current_block_type_index;
+    	let if_block;
+    	let if_block_anchor;
+    	let current;
+
+    	navigator = new Navigator({
+    			props: { loggedIn: /*loggedIn*/ ctx[1] },
+    			$$inline: true
+    		});
+
+    	const if_block_creators = [create_if_block, create_else_block];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*loggedIn*/ ctx[1]) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			create_component(navigator.$$.fragment);
+    			t = space();
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component$1(navigator, target, anchor);
+    			insert_dev(target, t, anchor);
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			const navigator_changes = {};
+    			if (dirty & /*loggedIn*/ 2) navigator_changes.loggedIn = /*loggedIn*/ ctx[1];
+    			navigator.$set(navigator_changes);
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
+
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				} else {
+    					if_block.p(ctx, dirty);
+    				}
+
+    				transition_in$1(if_block, 1);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in$1(navigator.$$.fragment, local);
+    			transition_in$1(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(navigator.$$.fragment, local);
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component$1(navigator, detaching);
+    			if (detaching) detach_dev(t);
+    			if_blocks[current_block_type_index].d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("App", slots, []);
+    	let page$1 = null;
+
+    	page("/", () => {
+    		$$invalidate(0, page$1 = ViewBudget);
+    	});
+
+    	page("/new", () => {
+    		$$invalidate(0, page$1 = NewBudget);
+    	});
+
+    	page("/edit", () => {
+    		$$invalidate(0, page$1 = EditBudget);
+    	});
+
+    	page("/login", () => {
+    		$$invalidate(0, page$1 = Login);
+    	});
+
+    	page("/logout", () => {
+    		$$invalidate(0, page$1 = Login);
+    	});
+
+    	page.start();
+    	let loggedIn;
+
+    	isLoggedIn().then(isLoggedIn => {
+    		$$invalidate(1, loggedIn = isLoggedIn);
+    	});
+
+    	onLoggedIn(() => {
+    		$$invalidate(1, loggedIn = true);
+    	});
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<App> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({
+    		EditBudget,
+    		ViewBudget,
+    		NewBudget,
+    		Navigator,
+    		NotLoggedIn,
+    		Login,
+    		onLoggedIn,
+    		isLoggedIn,
+    		router: page,
+    		page: page$1,
+    		loggedIn
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("page" in $$props) $$invalidate(0, page$1 = $$props.page);
+    		if ("loggedIn" in $$props) $$invalidate(1, loggedIn = $$props.loggedIn);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [page$1, loggedIn];
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance, create_fragment, safe_not_equal$1, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "App",
+    			options,
+    			id: create_fragment.name
+    		});
+    	}
+    }
+
+    const app = new App({
+        target: document.body,
+        props: {}
+    });
+
+    return app;
+
+}());
 //# sourceMappingURL=bundle.js.map
