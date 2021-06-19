@@ -5,11 +5,13 @@ const loc = window.location;
 let auth0 = null;
 let isAuthenticated = false;
 
-let callback: () => void;
+//let callback: () => void;
 
+/*
 export const onLoggedIn = (cb: () => void): void => {
 	callback = cb;
 };
+*/
 
 const configureClient = async () => {
 	const response = await fetch("/auth_config.json");
@@ -25,14 +27,14 @@ const configureClient = async () => {
 window.onload = async () => {
 	if (loc.host !== "dasifor.xyz") {
 		Fetcher.getInstance();
-		callback();
+		//callback();
 		return;
 	}
 
 	await configureClient();
 	isAuthenticated = await auth0.isAuthenticated();
 	if (isAuthenticated) {
-		callback();
+		//callback();
 		return;
 	}
 
@@ -42,7 +44,7 @@ window.onload = async () => {
 		window.history.replaceState({}, document.title, "/");
 
 		const token = await auth0.getTokenSilently();
-		callback();
+		//callback();
 		Fetcher.getInstance(token);
 	}
 };

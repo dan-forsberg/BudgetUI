@@ -5,7 +5,7 @@ import NewBudget from "./components/create/NewBudget.svelte";
 import Navigator from "./components/Navigator.svelte";
 import NotLoggedIn from "./components/misc/NotLoggedIn.svelte";
 import Login from "./components/misc/Login.svelte";
-import { onLoggedIn, isLoggedIn } from "./auth";
+import { isLoggedIn } from "./auth";
 import router from "page";
 
 let page = null;

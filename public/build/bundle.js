@@ -5298,10 +5298,12 @@ var app = (function () {
     const loc = window.location;
     let auth0 = null;
     let isAuthenticated = false;
-    let callback;
-    const onLoggedIn = (cb) => {
+    //let callback: () => void;
+    /*
+    export const onLoggedIn = (cb: () => void): void => {
         callback = cb;
     };
+    */
     const configureClient = async () => {
         const response = await fetch("/auth_config.json");
         const config = await response.json();
@@ -5314,13 +5316,13 @@ var app = (function () {
     window.onload = async () => {
         if (loc.host !== "dasifor.xyz") {
             Fetcher.getInstance();
-            callback();
+            //callback();
             return;
         }
         await configureClient();
         isAuthenticated = await auth0.isAuthenticated();
         if (isAuthenticated) {
-            callback();
+            //callback();
             return;
         }
         const query = window.location.search;
@@ -5328,7 +5330,7 @@ var app = (function () {
             await auth0.handleRedirectCallback();
             window.history.replaceState({}, document.title, "/");
             const token = await auth0.getTokenSilently();
-            callback();
+            //callback();
             Fetcher.getInstance(token);
         }
     };
@@ -5370,8 +5372,8 @@ var app = (function () {
     			a.textContent = "Logga in";
     			attr_dev(a, "href", "/login");
     			attr_dev(a, "class", "svelte-1hkku9o");
-    			add_location(a, file$2, 15, 8, 453);
-    			add_location(li, file$2, 15, 4, 449);
+    			add_location(a, file$2, 15, 8, 454);
+    			add_location(li, file$2, 15, 4, 450);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -5413,7 +5415,7 @@ var app = (function () {
     			li = element$1("li");
     			a = element$1("a");
     			a.textContent = "Logga ut";
-    			attr_dev(a, "href", "/login");
+    			attr_dev(a, "href", "/logout");
     			attr_dev(a, "class", "svelte-1hkku9o");
     			add_location(a, file$2, 13, 8, 373);
     			add_location(li, file$2, 13, 4, 369);
@@ -5772,7 +5774,7 @@ var app = (function () {
     		c: function create() {
     			p = element$1("p");
     			t = text$1(t_value);
-    			add_location(p, file, 38, 1, 958);
+    			add_location(p, file, 38, 1, 946);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -5994,7 +5996,7 @@ var app = (function () {
     		c: function create() {
     			p = element$1("p");
     			p.textContent = "...";
-    			add_location(p, file, 29, 1, 803);
+    			add_location(p, file, 29, 1, 791);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -6128,7 +6130,6 @@ var app = (function () {
     		Navigator,
     		NotLoggedIn,
     		Login,
-    		onLoggedIn,
     		isLoggedIn,
     		router: page,
     		page: page$1,
