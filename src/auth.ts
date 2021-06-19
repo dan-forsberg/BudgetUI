@@ -46,14 +46,19 @@ window.onload = async () => {
 
 		const token = await auth0.getTokenSilently();
 		//callback();
+		isAuthenticated = true;
 		Fetcher.getInstance(token);
 	}
 };
 
-export const isLoggedIn = async (): Promise<boolean> => {
+export const isLoggedIna = async (): Promise<boolean> => {
 	if (!auth0)
 		await configureClient();
 	return await auth0.isAuthenticated();
+};
+
+export const isLoggedIn = (): boolean => {
+	return isAuthenticated;
 };
 
 export const login = async (): Promise<void> => {
