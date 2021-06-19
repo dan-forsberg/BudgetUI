@@ -14,7 +14,7 @@ export let loggedIn: boolean;
 			{#if loggedIn}
 				<li><a href="/logout" on:click={() => logout()}>Logga ut</a></li>
 			{:else}
-				<li><a href="/logout" on:click={() => login()}>Logga in</a></li>
+				<li><a href="/login" on:click={() => login()}>Logga in</a></li>
 			{/if}
 		</ul>
 	</div>

@@ -2,7 +2,6 @@ import createAuth0Client from "@auth0/auth0-spa-js";
 import { Fetcher } from "./controllers/fetcher";
 const loc = window.location;
 
-const fetchAuthConfig = () => fetch("/auth_config.json");
 let auth0 = null;
 let isAuthenticated = false;
 
@@ -13,7 +12,7 @@ export const onLoggedIn = (cb: () => void): void => {
 };
 
 const configureClient = async () => {
-	const response = await fetchAuthConfig();
+	const response = await fetch("/auth_config.json");
 	const config = await response.json();
 
 	auth0 = await createAuth0Client({
