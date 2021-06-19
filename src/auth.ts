@@ -5,13 +5,11 @@ const loc = window.location;
 let auth0 = null;
 let isAuthenticated = false;
 
-//let callback: () => void;
+let callback: () => void;
 
-/*
 export const onLoggedIn = (cb: () => void): void => {
 	callback = cb;
 };
-*/
 
 const configureClient = async () => {
 	const response = await fetch("/auth_config.json");
@@ -25,17 +23,16 @@ const configureClient = async () => {
 };
 
 window.onload = async () => {
-	console.log("hej");
 	if (loc.host !== "dasifor.xyz") {
 		Fetcher.getInstance();
-		//callback();
+		callback();
 		return;
 	}
 
 	await configureClient();
 	isAuthenticated = await auth0.isAuthenticated();
 	if (isAuthenticated) {
-		//callback();
+		callback();
 		return;
 	}
 
@@ -45,26 +42,20 @@ window.onload = async () => {
 		window.history.replaceState({}, document.title, "/");
 
 		const token = await auth0.getTokenSilently();
-		//callback();
-		isAuthenticated = true;
+		callback();
 		Fetcher.getInstance(token);
 	}
 };
 
-export const isLoggedIna = async (): Promise<boolean> => {
-	if (!auth0)
-		await configureClient();
+export const isLoggedIn = async (): Promise<boolean> => {
+	if (!auth0) {
+		console.log("No auth0 object, configuring.");
+		configureClient();
+	}
 	return await auth0.isAuthenticated();
 };
 
-export const isLoggedIn = (): boolean => {
-	return isAuthenticated;
-};
-
 export const login = async (): Promise<void> => {
-	if (!auth0)
-		await configureClient();
-
 	await auth0.loginWithRedirect({
 		redirect_uri: "https://dasifor.xyz"
 	});
@@ -72,8 +63,6 @@ export const login = async (): Promise<void> => {
 
 export const logout = (): void => {
 	Fetcher.destroy();
-	if (!auth0)
-		return;
 	auth0.logout({
 		returnTo: "https://dasifor.xyz"
 	});

@@ -5,7 +5,7 @@ import NewBudget from "./components/create/NewBudget.svelte";
 import Navigator from "./components/Navigator.svelte";
 import NotLoggedIn from "./components/misc/NotLoggedIn.svelte";
 import Login from "./components/misc/Login.svelte";
-import { isLoggedIn } from "./auth";
+import { onLoggedIn } from "./auth";
 import router from "page";
 
 let page = null;
@@ -32,10 +32,12 @@ router("/logout", () => {
 
 router.start();
 
-let loggedIn = isLoggedIn();
+let loggedIn = false;
+onLoggedIn(() => {
+	loggedIn = true;
+});
 </script>
 
-Loggedin = {loggedIn}
 <Navigator {loggedIn} />
 {#if loggedIn}
 	<svelte:component this={page} />
