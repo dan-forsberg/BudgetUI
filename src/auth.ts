@@ -25,6 +25,7 @@ const configureClient = async () => {
 };
 
 window.onload = async () => {
+	console.log("hej");
 	if (loc.host !== "dasifor.xyz") {
 		Fetcher.getInstance();
 		//callback();

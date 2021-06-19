@@ -38,6 +38,7 @@ let isLoggedInPromise = isLoggedIn();
 {#await isLoggedInPromise}
 	<p>...</p>
 {:then loggedIn}
+	Loggedin = {loggedIn}
 	<Navigator {loggedIn} />
 	{#if loggedIn}
 		<svelte:component this={page} />
