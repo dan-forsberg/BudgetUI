@@ -48,10 +48,15 @@ window.onload = async () => {
 };
 
 export const isLoggedIn = async (): Promise<boolean> => {
+	if (!auth0)
+		await configureClient();
 	return await auth0.isAuthenticated();
 };
 
 export const login = async (): Promise<void> => {
+	if (!auth0)
+		await configureClient();
+
 	await auth0.loginWithRedirect({
 		redirect_uri: "https://dasifor.xyz"
 	});
@@ -59,6 +64,8 @@ export const login = async (): Promise<void> => {
 
 export const logout = (): void => {
 	Fetcher.destroy();
+	if (!auth0)
+		return;
 	auth0.logout({
 		returnTo: "https://dasifor.xyz"
 	});

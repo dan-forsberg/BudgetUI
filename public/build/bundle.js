@@ -5333,15 +5333,21 @@ var app = (function () {
         }
     };
     const isLoggedIn = async () => {
+        if (!auth0)
+            await configureClient();
         return await auth0.isAuthenticated();
     };
     const login = async () => {
+        if (!auth0)
+            await configureClient();
         await auth0.loginWithRedirect({
             redirect_uri: "https://dasifor.xyz"
         });
     };
     const logout = () => {
         Fetcher.destroy();
+        if (!auth0)
+            return;
         auth0.logout({
             returnTo: "https://dasifor.xyz"
         });
