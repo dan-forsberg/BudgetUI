@@ -1,4 +1,6 @@
 <script lang="ts">
+import { login, logout } from "../auth";
+
 export let loggedIn: boolean;
 </script>
 
@@ -11,9 +13,9 @@ export let loggedIn: boolean;
 		</ul>
 		<ul id="nav-mobile" class="right">
 			{#if loggedIn}
-				<li><a href="/login">Logga ut</a></li>
+				<li><a href="/login" on:click={() => logout()}>Logga ut</a></li>
 			{:else}
-				<li><a href="/login">Logga in</a></li>
+				<li><a href="/login" on:click={() => login()}>Logga in</a></li>
 			{/if}
 		</ul>
 	</div>
