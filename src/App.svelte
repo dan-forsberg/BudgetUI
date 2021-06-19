@@ -32,22 +32,16 @@ router("/logout", () => {
 
 router.start();
 
-let isLoggedInPromise = isLoggedIn();
+let loggedIn = isLoggedIn();
 </script>
 
-{#await isLoggedInPromise}
-	<p>...</p>
-{:then loggedIn}
-	Loggedin = {loggedIn}
-	<Navigator {loggedIn} />
-	{#if loggedIn}
-		<svelte:component this={page} />
-	{:else}
-		<NotLoggedIn />
-	{/if}
-{:catch error}
-	<p>{error.message}</p>
-{/await}
+Loggedin = {loggedIn}
+<Navigator {loggedIn} />
+{#if loggedIn}
+	<svelte:component this={page} />
+{:else}
+	<NotLoggedIn />
+{/if}
 
 <style>
 :global(body) {
