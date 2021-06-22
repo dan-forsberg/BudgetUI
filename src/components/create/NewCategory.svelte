@@ -66,7 +66,7 @@ const newRow = () => {
 	let newEntry = {
 		Category: category,
 		description: "",
-		amount: "-",
+		amount: "",
 		date: new Date(),
 	};
 
