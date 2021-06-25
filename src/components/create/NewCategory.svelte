@@ -1,11 +1,13 @@
 <script>
 import gemensamTotal from "../../stores/gemensamTotal";
-import { sortEntries } from "../../controllers/entry";
+import entry, { sortEntries } from "../../controllers/entry";
 import { clickOutside } from "../../clickOutside";
 import { onMount } from "svelte";
 
 export let entries;
 export let category;
+
+console.log("Entries");
 
 let total = 0;
 
@@ -94,8 +96,15 @@ onMount(() => {
 				type="text"
 				placeholder="Beskrivning"
 				bind:value={entry.description}
+				disabled={entry.Category.continuousUpdate}
 				class="description" />
-			<input type="number" placeholder="Belopp" bind:value={entry.amount} class="amount" />
+
+			<input
+				type="number"
+				placeholder="Belopp"
+				bind:value={entry.amount}
+				class="amount"
+				disabled={entry.Category.continuousUpdate} />
 		</div>
 	{/each}
 	<div class="entry-container">
