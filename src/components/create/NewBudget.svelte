@@ -1,56 +1,58 @@
-<script>
-import entry from "../../controllers/entry";
+<script lang="ts">
+import entry, { separateIntoCategories } from "../../controllers/entry";
+import type { SeparatedEntries } from "../../controllers/entry";
+import { onMount } from "svelte";
 import NewCategory from "./NewCategory.svelte";
-import Toast from "svelte-toast";
-import page from "page";
-const toast = new Toast();
+import type IEntry from "../../interfaces/entry";
 
-const now = new Date();
-let dateString = new Date(now.getFullYear(), now.getMonth() + 1, 5).toISOString().slice(0, 10);
+let data: SeparatedEntries[];
+let date = whatIsNextMonth();
 
-let seperated = [];
-let data;
-entry.getDefaultEntries().then((resp) => {
-	// Make sure that data.categories[0] is "Gemensamma"
-	const gemensamma = resp.categories.indexOf("Gemensamma");
-	if (gemensamma > 0) {
-		let temporary = resp.categories[0];
-		resp.categories[0] = resp.categories[gemensamma];
-		resp.categories[gemensamma] = temporary;
-	}
+/**
+ * Returns a string which is the 25:th of next month (YYYY-MM-DD)
+ */
+function whatIsNextMonth(): string {
+	const now = new Date();
+	const nextMonth = (now.getMonth() + 1) % 12;
+	const year = now.getFullYear() + (nextMonth == 0 ? 1 : 0);
 
-	// Separate the entries into its categories
-	resp.categories.forEach((category) => {
-		seperated[category] = resp.result.filter((entry) => entry.Category.name === category);
-	});
+	return new Date(year, nextMonth, 25 + 1).toISOString().slice(0, 10);
+}
 
-	data = resp;
+onMount(async () => {
+	const response = await entry.getDefaultEntries();
+	data = separateIntoCategories(response);
 });
 
 async function submit() {
-	// combine all the categories into one array
-	let combined = [];
-	data.categories.forEach((category) => {
-		combined = [...combined, ...seperated[category]];
+	/**
+	 * The API wants all the entries in one array, so combine
+	 * all the seperate entries into one, filter out any empty rows
+	 * and any rows which belong to a category which is continuousUpdate
+	 * and that do not have the entry.new flag set (ie old entries, we don't
+	 * want to send duplicates to the API)
+	 */
+
+	const combined: IEntry[] = [];
+	data.forEach((category) => {
+		const filtered = category.entries.filter(
+			(entry) =>
+				// negation
+				!(
+					entry.amount === "" ||
+					entry.description === "" ||
+					(entry.Category.continuousUpdate && !entry.new)
+				)
+		);
+
+		combined.push(...filtered);
 	});
 
-	// remove any empty entries
-	combined = combined.filter((entry) => entry.value !== "" && entry.description !== "");
+	// set the date for all the entries
 
-	// set the date of all the entries
-	combined.forEach((entry) => {
-		entry.date = new Date(dateString);
-	});
+	combined.forEach((entry) => (entry.date = new Date()));
 
-	try {
-		console.dir(combined);
-		await entry.newEntry(combined);
-		toast.success("Budget sparad!");
-		page("/");
-	} catch (err) {
-		toast.error("Något gick fel.");
-		console.error(err.message);
-	}
+	return;
 }
 </script>
 
@@ -59,16 +61,16 @@ async function submit() {
 		<p>Hämtar standard raderna...</p>
 	{:else}
 		<div class="budget-container">
-			{#each data.categories as category}
+			{#each data as separatedCategory}
 				<div class="budget">
-					<NewCategory bind:entries={seperated[category]} {category} />
+					<NewCategory bind:data={separatedCategory} />
 				</div>
 			{/each}
 		</div>
 
 		<div class="center">
 			<label for="date">Vilken månad gäller budgeten?</label>
-			<input id="date" class="input-date" type="text" bind:value={dateString} />
+			<input id="date" class="input-date" type="date" bind:value={date} />
 			<br />
 			<button class="btn waves-effect waves-light indigo" on:click={submit}>Skicka</button>
 		</div>

@@ -1,110 +1,123 @@
-<script>
+<script lang="ts">
+import type { SeparatedEntries } from "../../controllers/entry";
 import gemensamTotal from "../../stores/gemensamTotal";
-import entry, { sortEntries } from "../../controllers/entry";
-import { clickOutside } from "../../clickOutside";
+import { sortEntries } from "../../controllers/entry";
 import { onMount } from "svelte";
+import { clickOutside } from "../../clickOutside";
 
-export let entries;
-export let category;
+export let data: SeparatedEntries;
+let total = -1;
 
-console.log("Entries");
+/**
+ * Some tables have a special entry with the description "HALF_OF_GEMENSAMMA"
+ * This entry can have a value, for example -500 or +500
+ *
+ * The value is meant to be updated to be half of the total of the table
+ * called "Gemensamma" + (whatever value it was originally)
+ *
+ * If this instance is presenting "Gemensamma" the total will be updated in
+ * a svelte store. Otherwise this instance will update the value to half of
+ * what's stored in the svelte store
+ *
+ * This entry's purpose is simply to "even out" the costs between two people
+ * in a household which is the case for us, as one of us is studying and the
+ * other working full time
+ * (this is also the reason for the hard coded-ness)
+ */
+const HOGIndex = data.entries.findIndex((entry) => entry.description === "HALF_OF_GEMENSAMMA");
+const HOGAmount = HOGIndex > -1 ? data.entries[HOGIndex].amount : 0;
 
-let total = 0;
-
-// special value to balance out if one person should pay more for the common costs
-// "half of gemsamma even outer"
-let HOG_evenOuter = 0;
-
-// some default entries can have a special first row with description
-// "HALF_OF_GEMENSAMMA" where the value should be the half of gemensamma's total
-// subscribe to the total and update the amount
-if (entries.length > 0 && entries[0].description === "HALF_OF_GEMENSAMMA") {
-	let entry = entries[0];
-	HOG_evenOuter = entry.amount;
-
-	let description = "Halva gemensamma";
-
-	if (HOG_evenOuter > 0) {
-		description += ` (+${HOG_evenOuter})`;
-	} else if (HOG_evenOuter < 0) {
-		description += ` (${HOG_evenOuter})`;
-	}
-
-	entry.description = description;
-
-	gemensamTotal.subscribe((totalOfGemensam) => {
-		entry.amount = totalOfGemensam / 2 - HOG_evenOuter;
+if (HOGIndex > -1) {
+	const HOG = data.entries[HOGIndex];
+	HOG.description = "Halva gemensamma (" + (HOGAmount > 0 ? "+" : "") + HOGAmount + ")";
+	gemensamTotal.subscribe((amount) => {
+		//@ts-expect-error HOGAmount can be a string or a number, TS doesn't approve
+		HOG.amount = amount / 2 + Number.parseInt(HOGAmount);
 	});
 }
 
-const isEmptyEntry = (entry) => {
-	return entry !== undefined && isEmptyString(entry.description) && isEmptyString(entry.amount);
-};
-
-const isEmptyString = (str) => {
-	return null === str || str === undefined || str.length === 0;
-};
-
-// Remove any empty rows and update the total
-// Sort the entries by amount lowest - highest
-// Run when clicking outside the form and onMount()
-const updateTable = () => {
-	removeEmptyRows();
-	let { sortedEntries, total: updatedTotal } = sortEntries(entries);
-
-	entries = sortedEntries;
-	total = updatedTotal;
-
-	if (category === "Gemensamma") {
+function updateHOG() {
+	if (data.category === "Gemensamma") {
 		gemensamTotal.set(total);
 	}
-};
+}
 
-const removeEmptyRows = () => {
-	entries = entries.filter((entry) => !isEmptyEntry(entry));
-};
+function removeEmptyRows() {
+	data.entries = data.entries.filter(
+		(entry) => !(entry.amount === "" && entry.description === "")
+	);
+}
 
-const newRow = () => {
-	let newEntry = {
-		Category: category,
+function isLastRowEmpty() {
+	const last = data.entries[data.entries.length - 1];
+	return last.description === "" && last.amount === "";
+}
+
+function addNewRow() {
+	//if (isLastRowEmpty()) return;
+
+	const newEntry = {
+		Category: data.entries[0].Category,
 		description: "",
 		amount: "",
 		date: new Date(),
+		new: true,
 	};
 
-	entries = [...entries, newEntry];
-};
+	data.entries.push(newEntry);
+	// force svelte to see the update
+	data = data;
+}
 
-$: {
-	let len = entries.length;
-	let last = entries[len - 1];
-	if (len == 0 || !isEmptyEntry(last)) {
-		newRow();
+function updateTable() {
+	removeEmptyRows();
+	const { sortedEntries, total: updatedTotal } = sortEntries(data.entries);
+
+	total = updatedTotal;
+	data.entries = sortedEntries;
+
+	const entriesLength = data.entries.length;
+	const last = data.entries[entriesLength - 1];
+
+	if (!isLastRowEmpty()) {
+		addNewRow();
 	}
+
+	updateHOG();
+	// force svelte to see the update
+	data = data;
 }
 
 onMount(() => {
 	updateTable();
 });
+
+$: {
+	removeEmptyRows();
+	addNewRow();
+}
 </script>
 
-<h4>{category}</h4>
+<h4>{data.category}</h4>
+<!-- eslint might raise a warning about this because it doens't understand Svelte's "use" -->
 <form use:clickOutside on:click_outside={updateTable}>
-	{#each entries as entry}
+	{#each data.entries as entry}
 		<div class="entry-container">
 			<input
 				type="text"
 				placeholder="Beskrivning"
 				bind:value={entry.description}
 				disabled={entry.Category.continuousUpdate}
-				class="description" />
+				class="description"
+				on:change={addNewRow} />
 
 			<input
 				type="number"
 				placeholder="Belopp"
 				bind:value={entry.amount}
 				class="amount"
-				disabled={entry.Category.continuousUpdate} />
+				disabled={entry.Category.continuousUpdate}
+				on:change={addNewRow} />
 		</div>
 	{/each}
 	<div class="entry-container">
