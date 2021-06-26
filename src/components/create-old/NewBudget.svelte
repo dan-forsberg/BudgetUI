@@ -1,0 +1,111 @@
+<script>
+import entry from "../../controllers/entry";
+import NewCategory from "./NewCategory.svelte";
+import Toast from "svelte-toast";
+import page from "page";
+const toast = new Toast();
+
+const now = new Date();
+let dateString = new Date(now.getFullYear(), now.getMonth() + 1, 5).toISOString().slice(0, 10);
+
+let data = undefined;
+entry.getDefaultEntries().then((resp) => {
+	// Make sure that data.categories[0] is "Gemensamma"
+	/*
+	const gemensamma = resp.categories.indexOf("Gemensamma");
+	if (gemensamma > 0) {
+		let temporary = resp.categories[0];
+		resp.categories[0] = resp.categories[gemensamma];
+		resp.categories[gemensamma] = temporary;
+	}
+	*/
+	data = {};
+	data.categories = resp.categories;
+	// Separate the entries into its categories
+	resp.categories.forEach((category) => {
+		data.entries[category] = resp.result.filter((entry) => entry.Category.name === category);
+	});
+
+	console.dir(data);
+});
+
+async function submit() {
+	// combine all the categories into one array
+	let combined = [];
+	data.categories.forEach((category) => {
+		combined = [...combined, ...data.entries[category]];
+	});
+
+	combined = combined.filter(
+		(entry) =>
+			!(
+				// any empty rows
+				(
+					entry.value == "" ||
+					entry.description == "" ||
+					// or any rows where continuousUpdate is true
+					// which will be the "old" default entries from the API
+					entry.Category?.continuousUpdate
+				)
+			)
+	);
+
+	// set the date of all the entries
+	combined.forEach((entry) => {
+		entry.date = new Date(dateString);
+	});
+
+	try {
+		await entry.newEntry(combined);
+		toast.success("Budget sparad!");
+		page("/");
+	} catch (err) {
+		toast.error("Något gick fel.");
+		console.error(err.message);
+	}
+}
+</script>
+
+<div id="new-budget-wrapper">
+	{#if data === undefined}
+		<p>Hämtar standard raderna...</p>
+	{:else}
+		<div class="budget-container">
+			{#each data.categories as category}
+				<div class="budget">
+					<NewCategory bind:entries={data.entries.category} {category} />
+				</div>
+			{/each}
+		</div>
+
+		<div class="center">
+			<label for="date">Vilken månad gäller budgeten?</label>
+			<input id="date" class="input-date" type="text" bind:value={dateString} />
+			<br />
+			<button class="btn waves-effect waves-light indigo" on:click={submit}>Skicka</button>
+		</div>
+	{/if}
+</div>
+
+<style>
+#new-budget-wrapper {
+	/* if on mobile the send button is at the very-very bottom
+		hackily fix that */
+	margin-bottom: 15px;
+}
+
+.budget-container {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.budget {
+	margin: 10px;
+}
+
+.input-date {
+	/* Materalize sets width to 100% and takes a priority*/
+	width: auto !important;
+}
+</style>
