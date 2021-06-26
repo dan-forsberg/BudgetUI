@@ -15,7 +15,7 @@ const getAllEntries = async (): Promise<GetResponse> => {
 	return json;
 };
 
-const getDefaultEntries = async (): Promise<IEntry[]> => {
+const getDefaultEntries = async (): Promise<GetResponse> => {
 	const fetcher = Fetcher.getInstance();
 	const response = await fetcher.get("/default");
 	const json = await response.json();
@@ -57,7 +57,7 @@ const getSpecificEntries = async (attributes: GetAttributes): Promise<GetRespons
 
 const newEntry = async (newEntry: IEntry | IEntry[]): Promise<IEntry> => {
 	// the entries object has to be an array for the API
-	let body;
+	let body: { entries: IEntry[]; };
 	if (Array.isArray(newEntry))
 		body = { entries: newEntry };
 	else
@@ -107,10 +107,11 @@ const sortEntries = (entries: IEntry[]): {
 	let total = 0;
 	const negative = [], positive = [];
 
-	// Filter out positive values into positive, negative into negative and find the total O(n)
-	// Sort the arrays later O(n^2) if len < 10, otherwise O(n log(n))
+	// Filter out positive values into positive, negative into negative and find the total 
+	// Sort the arrays later
 	entries.forEach((entry) => {
-		total += entry.amount;
+		//@ts-expect-error entry.amount could be string
+		total += Number.parseInt(entry.amount);
 
 		if (entry.amount > 0) {
 			positive.push(entry);
@@ -127,5 +128,22 @@ const sortEntries = (entries: IEntry[]): {
 	return { sortedEntries, total };
 };
 
+type SeparatedEntries = {
+	category: string;
+	entries: IEntry[];
+
+};
+
+const separateIntoCategories = (data: GetResponse): SeparatedEntries[] => {
+	const separated: SeparatedEntries[] = [];
+	data.categories.forEach((category) => {
+		const temp = data.result.filter((entry) => entry.Category.name === category);
+		separated.push({ category: category, entries: temp });
+	});
+
+	return separated;
+};
+
 export default { getAllEntries, getSpecificEntries, newEntry, getDefaultEntries, updateEntry };
-export { sortEntries };
+export { sortEntries, separateIntoCategories };
+export type { SeparatedEntries };
