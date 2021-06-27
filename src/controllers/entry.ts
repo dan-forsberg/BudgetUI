@@ -111,7 +111,11 @@ const sortEntries = (entries: IEntry[]): {
 	// Sort the arrays later
 	entries.forEach((entry) => {
 		//@ts-expect-error entry.amount could be string
-		total += Number.parseInt(entry.amount);
+		let entryAmount = Number.parseInt(entry.amount);
+		if (isNaN(entryAmount))
+			entryAmount = 0;
+
+		total += entryAmount;
 
 		if (entry.amount > 0) {
 			positive.push(entry);
