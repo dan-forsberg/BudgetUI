@@ -2,8 +2,9 @@
 import type { SeparatedEntries } from "../../controllers/entry";
 import gemensamTotal from "../../stores/gemensamTotal";
 import { sortEntries } from "../../controllers/entry";
-import { onDestroy, onMount } from "svelte";
+import { onMount } from "svelte";
 import { clickOutside } from "../../clickOutside";
+import type IEntry from "../../interfaces/entry";
 
 export let data: SeparatedEntries;
 let total = -1;
@@ -43,18 +44,20 @@ function updateHOG() {
 }
 
 function removeEmptyRows() {
-	data.entries = data.entries.filter(
-		(entry) => !(entry.amount === "" && entry.description === "")
-	);
+	data.entries = data.entries.filter((entry) => !isEntryEmpty(entry));
+}
+
+function isEntryEmpty(entry: IEntry) {
+	return (entry.amount == null || entry.amount == "") && entry.description == "";
 }
 
 function isLastRowEmpty() {
 	const last = data.entries[data.entries.length - 1];
-	return last.description === "" && last.amount === "";
+	return isEntryEmpty(last);
 }
 
-function addNewRow() {
-	//if (isLastRowEmpty()) return;
+function addNewRow(naive = false) {
+	if (!naive && isLastRowEmpty()) return;
 
 	const newEntry = {
 		Category: data.entries[0].Category,
@@ -90,11 +93,6 @@ function updateTable() {
 
 onMount(() => {
 	updateTable();
-
-	const elem = document.getElementById(data.category);
-	elem.addEventListener("click_outside", (e) => {
-		updateTable();
-	});
 });
 
 $: {
@@ -104,24 +102,25 @@ $: {
 </script>
 
 <h4>{data.category}</h4>
-<form id={data.category}>
+<!-- eslint/tslint might throw an error/warning for this, but it compiles fine  -->
+<form use:clickOutside on:click_outside={updateTable}>
 	{#each data.entries as entry}
 		<div class="entry-container">
 			<input
 				type="text"
 				placeholder="Beskrivning"
 				bind:value={entry.description}
-				disabled={entry.Category.continuousUpdate}
+				disabled={entry.Category.continuousUpdate && !entry.new}
 				class="description"
-				on:change={addNewRow} />
+				on:blur={() => addNewRow()} />
 
 			<input
 				type="number"
 				placeholder="Belopp"
 				bind:value={entry.amount}
 				class="amount"
-				disabled={entry.Category.continuousUpdate}
-				on:change={addNewRow} />
+				disabled={entry.Category.continuousUpdate && !entry.new}
+				on:blur={() => addNewRow()} />
 		</div>
 	{/each}
 	<div class="entry-container">
