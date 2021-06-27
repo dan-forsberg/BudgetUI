@@ -1,9 +1,9 @@
 <script>
-  import { sortEntries } from "../../controllers/entry";
-  import InPlaceEdit from "./InPlaceEdit.svelte";
-  import entry from "../../controllers/entry";
-  import Toast from "svelte-toast";
-  const toast = new Toast();
+import { sortEntries } from "../../controllers/entry";
+import InPlaceEdit from "./InPlaceEdit.svelte";
+import entry from "../../controllers/entry";
+import "toastify-js/src/toastify.css";
+import Toastify from "toastify-js";
 
   export let entries;
   export let category;
@@ -27,22 +27,29 @@
     }
   };
 
-  const update = async () => {
-    let success = true;
-
-    for (const editedEntry of editedEntries) {
-      try {
-        await entry.updateEntry(editedEntry);
-      } catch (err) {
-        toast.error(`Kunde inte uppdatera: ${editedEntry.description}`);
-        success = false;
-      }
-    }
-
-    if (success) {
-      toast.success(`Uppdaterade ${editedEntries.length} rader.`);
-    }
-  };
+const update = async () => {
+	for (const editedEntry of editedEntries) {
+		try {
+			await entry.updateEntry(editedEntry);
+			Toastify({
+				text: "Sparat",
+				duration: 1200,
+				gravity: "bottom",
+				position: "center",
+				backgroundColor: "limegreen",
+			}).showToast();
+		} catch (err) {
+			Toastify({
+				text: `Kunde inte uppdatera: ${editedEntry.description}`,
+				duration: 3000,
+				gravity: "bottom",
+				position: "center",
+				backgroundColor: "red",
+			}).showToast();
+			success = false;
+		}
+	}
+};
 </script>
 
 {#if entries !== undefined}
