@@ -171,6 +171,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/toastify-js@^1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@types/toastify-js/-/toastify-js-1.9.1.tgz#fd0c39dae7b218ac004d1bf661e16f370cea866a"
+  integrity sha512-y97gmQ6WIG39JU0wLaZaZ8IodW2i40jgqJlg4KLmLgtdcyjWgV3skBTFnkfQQWleQNCJKtodTS1x1n7q1Co3Gg==
+
 "@typescript-eslint/eslint-plugin@^4.14.2":
   version "4.26.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.26.1.tgz#b9c7313321cb837e2bf8bebe7acc2220659e67d3"
@@ -1446,11 +1451,6 @@ svelte-preprocess@^4.0.0:
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
 
-svelte-toast@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/svelte-toast/-/svelte-toast-1.0.0.tgz#9b562d8c819a38c524e07b3f17f30b46dae7c630"
-  integrity sha512-i6XHJgCgyAYmobEXS78iei6cQBLYIDgk1rrj65wM0sIi4RzCl/9205sVruZT7zUf0N2xsLkeN2rFh9inlRJXEg==
-
 svelte@^3.0.0:
   version "3.38.2"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.38.2.tgz#55e5c681f793ae349b5cc2fe58e5782af4275ef5"
@@ -1493,6 +1493,11 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+toastify-js@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/toastify-js/-/toastify-js-1.11.0.tgz#00d5a592a59789c8f0856f74935c31f282b77c66"
+  integrity sha512-N9o4RHy+IxY51C0wO50uJmXDpGHKKf6wRq2q0pfHlpMxRLKreD68L6ZR5BEETd5UCHWcwZa4sLNMV8iO5L+zqQ==
 
 totalist@^1.0.0:
   version "1.1.0"
