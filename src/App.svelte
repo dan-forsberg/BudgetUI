@@ -1,53 +1,62 @@
 <script lang="ts">
-import EditBudget from "./components/edit/EditBudget.svelte";
-import ViewBudget from "./components/read/ViewBudget.svelte";
-import NewBudget from "./components/create/NewBudget.svelte";
-import Navigator from "./components/Navigator.svelte";
-import NotLoggedIn from "./components/misc/NotLoggedIn.svelte";
-import Login from "./components/misc/Login.svelte";
-import { onLoggedIn } from "./auth";
-import router from "page";
+  import EditBudget from "./components/edit/EditBudget.svelte";
+  import ViewBudget from "./components/read/ViewBudget.svelte";
+  import NewBudget from "./components/create/NewBudget.svelte";
+  import Navigator from "./components/Navigator.svelte";
+  import NotLoggedIn from "./components/misc/NotLoggedIn.svelte";
+  import Stats from "./components/read/ViewStats.svelte";
+  import Login from "./components/misc/Login.svelte";
+  import { onLoggedIn } from "./auth";
+  import router from "page";
 
-let page = null;
+  let page = null;
 
-router("/", () => {
-	page = ViewBudget;
-});
+  router("/", () => {
+    page = ViewBudget;
+  });
 
-router("/new", () => {
-	page = NewBudget;
-});
+  router("/new", () => {
+    page = NewBudget;
+  });
 
-router("/edit", () => {
-	page = EditBudget;
-});
+  router("/edit", () => {
+    page = EditBudget;
+  });
 
-router("/login", () => {
-	page = Login;
-});
+  router("/login", () => {
+    page = Login;
+  });
 
-router("/logout", () => {
-	page = Login;
-});
+  router("/logout", () => {
+    page = Login;
+  });
 
-router.start();
+  router("/stats", () => {
+    page = Stats;
+  });
 
-let loggedIn = false;
-onLoggedIn(() => {
-	loggedIn = true;
-});
+  router("*", () => {
+    page = ViewBudget;
+  });
+
+  router.start();
+
+  let loggedIn = false;
+  onLoggedIn(() => {
+    loggedIn = true;
+  });
 </script>
 
 <Navigator {loggedIn} />
 {#if loggedIn}
-	<svelte:component this={page} />
+  <svelte:component this={page} />
 {:else}
-	<NotLoggedIn />
+  <NotLoggedIn />
 {/if}
 
 <style>
-:global(body) {
-	/* Not sure if materialize or svelte is adding a padding, but something is */
-	padding: 0px !important;
-}
+  :global(body) {
+    /* Not sure if materialize or svelte is adding a padding, but something is */
+    padding: 0px !important;
+  }
 </style>
