@@ -1,4 +1,4 @@
-interface IEntry {
+interface IEntry extends Object {
 	id?: number;
 	date: Date;
 	description: string;
