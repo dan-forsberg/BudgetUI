@@ -1,7 +1,7 @@
 <script lang="ts">
   import entry from "../../controllers/entry";
   import { onMount } from "svelte";
-  import Table from "../misc/table/Table.svelte";
+  import Table from "../misc/StatsTable.svelte";
 
   let flattened: any[];
 
