@@ -68,16 +68,23 @@
     let selector, needle;
 
     if (colon > -1) {
-      //while (colon > -1) {
-      selector = searchTerm.substring(0, colon);
-      needle = searchTerm.substring(colon + 1).trim();
+      /* TODO: unbork */
+      let count = 0;
+      while (colon > -1 && count < 3) {
+        selector = searchTerm.substring(0, colon);
+        needle = searchTerm.substring(colon + 1).trim();
 
-      //searchTerm = needle;
-      //colon = -1;
-      //colon = searchTerm.indexOf(":");
+        console.log(selector);
+        console.log(needle);
 
-      //console.log("colon: " + colon);
-      //}
+        const newSearchPos = searchTerm.search(/\s\S*:/);
+        searchTerm = searchTerm.substring(newSearchPos);
+
+        colon = searchTerm.indexOf(":");
+
+        console.log(searchTerm + " " + colon);
+        count++;
+      }
     } else {
       selector = null;
       needle = searchTerm;
