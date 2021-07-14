@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-
   export let input;
   /* do manipulations on entries, keep  as a backup */
   const backup = input;
@@ -11,10 +9,9 @@
   let sortOnKey = null;
   let asc = false;
 
-  /**
-   * Called from onclick-event - sorts the table depending on what key is clicked
-   * @param key what key to sort the table on
-   */
+  let total = undefined;
+  let avg = undefined;
+
   const sortTable = (key: string) => {
     toggleArrow(key);
     sortOnKey = key;
@@ -24,7 +21,7 @@
     }
 
     // assignment so Svelte updates
-    entries = entries.sort((a, b) => {
+    entries = entries.sort((a: Object, b: Object) => {
       const test = a[sortOnKey] <= b[sortOnKey];
 
       if (asc) {
@@ -36,18 +33,24 @@
   };
 
   const searchTable = () => {
-    console.log(searchTerm);
-
     if (searchTerm === "") {
       entries = backup;
+      total = avg = undefined;
     } else {
       const [selector, needle] = getSelectorNeedle(searchTerm);
 
       if (keys.includes(selector)) {
-        entries = searchSpecific(selector, needle);
+        /* the if-statement below makes things feel snappier
+         * otherwise if you search for 'kategori', you'll likely have an empty table
+         * then when you add a colon ('kategori:') all entries will be rendered which
+         * is noticably not-one-bit snappy
+         */
+        if (needle != "") entries = searchSpecific(selector, needle);
       } else {
         entries = searchEverything(needle);
       }
+
+      setTotAvg();
     }
   };
 
@@ -61,13 +64,20 @@
   }
 
   function getSelectorNeedle(searchTerm: string) {
-    const colon = searchTerm.indexOf(":");
-
-    let selector: string | null, needle: string;
+    let colon = searchTerm.indexOf(":");
+    let selector, needle;
 
     if (colon > -1) {
+      //while (colon > -1) {
       selector = searchTerm.substring(0, colon);
       needle = searchTerm.substring(colon + 1).trim();
+
+      //searchTerm = needle;
+      //colon = -1;
+      //colon = searchTerm.indexOf(":");
+
+      //console.log("colon: " + colon);
+      //}
     } else {
       selector = null;
       needle = searchTerm;
@@ -77,9 +87,11 @@
   }
 
   function searchSpecific(key: string, searchTerm: string) {
-    return backup.filter((entry: object) =>
+    const result = backup.filter((entry: object) =>
       entry[key].toString().toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    return result;
   }
 
   function searchEverything(searchTerm: string) {
@@ -88,44 +100,69 @@
       remove the keys (replace(...))
       and look for the needle
     */
-    return backup.filter(
+
+    const result = backup.filter(
       (entry: object) =>
         JSON.stringify(entry)
           .replace(/("\w+":)/g, "")
           .toLowerCase()
           .indexOf(searchTerm.toLowerCase()) !== -1
     );
+
+    return result;
+  }
+
+  function setTotAvg() {
+    let tot = 0;
+
+    entries.forEach((entry) => {
+      tot += entry.belopp;
+    });
+
+    total = tot;
+    avg = Math.round(tot / entries.length);
   }
 </script>
 
-<input bind:value={searchTerm} on:input={() => searchTable()} type="search" />
-<table>
-  <thead>
-    <tr>
-      {#each keys as key}
-        <th>
-          <span class="arrow down up hidden" id="{key}-arrow" />
-          <span id={key} on:click={() => sortTable(key)}>
-            {key.toUpperCase()}</span>
-        </th>
-      {/each}
-    </tr>
-  </thead>
-  <tbody>
-    {#each entries as row}
+<div>
+  <input
+    bind:value={searchTerm}
+    on:input={() => searchTable()}
+    type="search"
+    placeholder="kategori: ..." />
+  <table>
+    <thead>
       <tr>
         {#each keys as key}
-          <td>{row[key]}</td>
+          <th>
+            <span class="arrow down up hidden" id="{key}-arrow" />
+            <span id={key} on:click={() => sortTable(key)}>
+              {key.toUpperCase()}</span>
+          </th>
         {/each}
       </tr>
-    {/each}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {#each entries as row}
+        <tr>
+          {#each keys as key}
+            <td>{row[key]}</td>
+          {/each}
+        </tr>
+      {/each}
+      {#if total && avg}
+        <tr id="average">
+          <td colspan="2">Totalt/snitt</td>
+          <td>{total} / {avg}</td>
+        </tr>
+      {/if}
+    </tbody>
+  </table>
+</div>
 
 <style>
-  table {
+  div {
     width: 50%;
-
     margin-left: auto;
     margin-right: auto;
   }
@@ -147,5 +184,10 @@
 
   .hidden {
     display: none;
+  }
+
+  #average,
+  #total {
+    font-weight: bold;
   }
 </style>
