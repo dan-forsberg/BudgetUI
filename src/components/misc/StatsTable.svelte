@@ -37,18 +37,23 @@
       entries = backup;
       total = avg = undefined;
     } else {
-      const [selector, needle] = getSelectorNeedle(searchTerm);
+      const [selectors, values] = getSelectorsValues(searchTerm);
 
-      if (keys.includes(selector)) {
+      console.log("**** SELECTORS ****");
+      console.dir(selectors);
+      console.log("**** NEEDLES ****");
+      console.dir(values);
+
+      /* if (keys.includes(selector)) {
         /* the if-statement below makes things feel snappier
          * otherwise if you search for 'kategori', you'll likely have an empty table
          * then when you add a colon ('kategori:') all entries will be rendered which
          * is noticably not-one-bit snappy
-         */
+         * /
         if (needle != "") entries = searchSpecific(selector, needle);
       } else {
         entries = searchEverything(needle);
-      }
+      } */
 
       setTotAvg();
     }
@@ -63,34 +68,37 @@
     elem.classList.add(asc ? "up" : "down");
   }
 
-  function getSelectorNeedle(searchTerm: string) {
-    let colon = searchTerm.indexOf(":");
-    let selector, needle;
+  function getSelectorsValues(searchTerm: string, selectors = [], values = []) {
+    /* match any unicode letter followed by :, but don't consume : */
+    const selectorPattern = /\p{Letter}+(?=:)/u;
 
-    if (colon > -1) {
-      /* TODO: unbork */
-      let count = 0;
-      while (colon > -1 && count < 3) {
-        selector = searchTerm.substring(0, colon);
-        needle = searchTerm.substring(colon + 1).trim();
+    const result = searchTerm.match(selectorPattern);
+    const length = result[0].length;
+    const selector = result[0];
 
-        console.log(selector);
-        console.log(needle);
+    /* there might be another selector in the string,
+     therefore this is a potential value */
+    const potentialValue = searchTerm.substring(length + 1);
+    /* check if there IS another selector, if not return
+     otherwise keep processing until we're finished */
+    const next = potentialValue.match(selectorPattern);
 
-        const newSearchPos = searchTerm.search(/\s\S*:/);
-        searchTerm = searchTerm.substring(newSearchPos);
-
-        colon = searchTerm.indexOf(":");
-
-        console.log(searchTerm + " " + colon);
-        count++;
-      }
+    if (next === null) {
+      return [
+        [...selectors, selector],
+        [...values, potentialValue],
+      ];
     } else {
-      selector = null;
-      needle = searchTerm;
-    }
+      /* get the actual value (substring up until the match and trim it) */
+      const actualValue = potentialValue.substring(0, next.index).trim();
+      const newSearchTerm = potentialValue.substring(next.index);
 
-    return [selector, needle];
+      return getSelectorsValues(
+        newSearchTerm,
+        [...selectors, selector],
+        [...values, actualValue]
+      );
+    }
   }
 
   function searchSpecific(key: string, searchTerm: string) {
