@@ -11,8 +11,12 @@
 
   let sortOnKey = null;
   let asc = false;
-  let total = undefined;
-  let avg = undefined;
+  let meta = {
+    total: undefined,
+    average: undefined,
+    startDate: null,
+    endDate: null,
+  };
 
   let searchTerm = "";
 
@@ -39,7 +43,12 @@
   const searchTable = () => {
     if (searchTerm === "") {
       entries = input;
-      total = avg = undefined;
+      meta = {
+        total: undefined,
+        average: undefined,
+        startDate: null,
+        endDate: null,
+      };
     } else {
       const results = getSelectorsValues(searchTerm);
       if (results === null) {
@@ -58,7 +67,7 @@
         }
       }
 
-      setTotAvg();
+      setMeta();
     }
   };
 
@@ -71,15 +80,26 @@
     elem.classList.add(asc ? "up" : "down");
   }
 
-  function setTotAvg() {
-    let tot = 0;
+  function setMeta() {
+    let total = 0;
+    let startDate, endDate;
 
     entries.forEach((entry) => {
-      tot += entry.belopp;
+      total += entry.belopp;
+      const date = new Date(entry.datum);
+      if (startDate == null || startDate > date) {
+        startDate = date;
+      }
+
+      if (endDate == null || endDate < date) {
+        endDate = date;
+      }
     });
 
-    total = tot;
-    avg = Math.round(tot / entries.length);
+    meta.total = total;
+    meta.average = Math.round(total / entries.length);
+    meta.startDate = startDate.toISOString().slice(0, 10);
+    meta.endDate = endDate.toISOString().slice(0, 10);
   }
 </script>
 
@@ -109,10 +129,11 @@
           {/each}
         </tr>
       {/each}
-      {#if total && avg}
+      {#if meta.total}
         <tr id="average">
           <td colspan="2">Totalt/snitt</td>
-          <td>{total} / {avg}</td>
+          <td>{meta.total} / {meta.average}</td>
+          <td>{meta.startDate} - {meta.endDate}</td>
         </tr>
       {/if}
     </tbody>
