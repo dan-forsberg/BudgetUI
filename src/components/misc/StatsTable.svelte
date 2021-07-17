@@ -141,12 +141,6 @@
 </div>
 
 <style>
-  div {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .arrow {
     border: solid black;
     border-width: 0 3px 3px 0;

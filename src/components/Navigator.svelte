@@ -4,7 +4,7 @@
   export let loggedIn: boolean;
 </script>
 
-<nav class="indigo darken-3">
+<nav class="blue darken-4">
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="left">
       <li><a href="/">Hem</a></li>

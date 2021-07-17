@@ -1,161 +1,158 @@
 <script lang="ts">
-import type { SeparatedEntries } from "../../controllers/entry";
-import gemensamTotal from "../../stores/gemensamTotal";
-import { sortEntries } from "../../controllers/entry";
-import { onMount } from "svelte";
-import { clickOutside } from "../../clickOutside";
+  import type { SeparatedEntries } from "../../controllers/entry";
+  import gemensamTotal from "../../stores/gemensamTotal";
+  import { sortEntries } from "../../controllers/entry";
+  import { onMount } from "svelte";
+  import { clickOutside } from "../../clickOutside";
 
-export let data: SeparatedEntries;
-let total = -1;
+  export let data: SeparatedEntries;
+  let total = -1;
 
-/**
- * Some tables have a special entry with the description "HALF_OF_GEMENSAMMA"
- * This entry can have a value, for example -500 or +500
- *
- * The value is meant to be updated to be half of the total of the table
- * called "Gemensamma" + (whatever value it was originally)
- *
- * If this instance is presenting "Gemensamma" the total will be updated in
- * a svelte store. Otherwise this instance will update the value to half of
- * what's stored in the svelte store
- *
- * This entry's purpose is simply to "even out" the costs between two people
- * in a household which is the case for us, as one of us is studying and the
- * other working full time
- * (this is also the reason for the hard coded-ness)
- */
-const HOGIndex = data.entries.findIndex((entry) => entry.description === "HALF_OF_GEMENSAMMA");
-const HOGAmount = HOGIndex > -1 ? data.entries[HOGIndex].amount : 0;
+  /**
+   * Some tables have a special entry with the description "HALF_OF_GEMENSAMMA"
+   * This entry can have a value, for example -500 or +500
+   *
+   * The value is meant to be updated to be half of the total of the table
+   * called "Gemensamma" + (whatever value it was originally)
+   *
+   * If this instance is presenting "Gemensamma" the total will be updated in
+   * a svelte store. Otherwise this instance will update the value to half of
+   * what's stored in the svelte store
+   *
+   * This entry's purpose is simply to "even out" the costs between two people
+   * in a household which is the case for us, as one of us is studying and the
+   * other working full time
+   * (this is also the reason for the hard coded-ness)
+   */
+  const hogIndex = data.entries.findIndex(
+    (entry) => entry.description === "HALF_OF_GEMENSAMMA"
+  );
 
-if (HOGIndex > -1) {
-	const HOG = data.entries[HOGIndex];
-	HOG.description = "Halva gemensamma (" + (HOGAmount > 0 ? "+" : "") + HOGAmount + ")";
-	gemensamTotal.subscribe((amount) => {
-		//@ts-expect-error HOGAmount can be a string or a number, TS doesn't approve
-		HOG.amount = amount / 2 + Number.parseInt(HOGAmount);
-	});
-}
+  if (hogIndex > -1) {
+    const hog = data.entries[hogIndex];
+    const hogAmount = hogIndex > -1 ? data.entries[hogIndex].amount : 0;
+    const amountString = (hogAmount > 0 ? "+" : "") + hogAmount;
+    hog.description = `Halva gemensamma (${amountString})`;
 
-function updateHOG() {
-	if (data.category === "Gemensamma") {
-		gemensamTotal.set(total);
-	}
-}
+    gemensamTotal.subscribe((amount) => {
+      //@ts-expect-error HOGAmount can be a string or a number, TS doesn't approve
+      hog.amount = amount / 2 + Number.parseInt(hogAmount);
+    });
+  }
 
-function removeEmptyRows() {
-	data.entries = data.entries.filter(
-		(entry) => !(entry.amount === "" && entry.description === "")
-	);
-}
+  function updateHog() {
+    if (data.category === "Gemensamma") {
+      gemensamTotal.set(total);
+    }
+  }
 
-function isLastRowEmpty() {
-	const last = data.entries[data.entries.length - 1];
-	return last.description === "" && last.amount === "";
-}
+  function removeEmptyRows() {
+    data.entries = data.entries.filter(
+      (entry) => entry.amount !== "" && entry.description !== ""
+    );
+  }
 
-function addNewRow() {
-	//if (isLastRowEmpty()) return;
+  function isLastRowEmpty() {
+    const last = data.entries[data.entries.length - 1];
+    return last.description === "" && last.amount === "";
+  }
 
-	const newEntry = {
-		Category: data.entries[0].Category,
-		description: "",
-		amount: "",
-		date: new Date(),
-		new: true,
-	};
+  function addNewRow() {
+    if (isLastRowEmpty()) return;
 
-	data.entries.push(newEntry);
-	// force svelte to see the update
-	data = data;
-}
+    const newEntry = {
+      Category: data.entries[0].Category,
+      description: "",
+      amount: "",
+      date: new Date(),
+      new: true,
+    };
 
-function updateTable() {
-	removeEmptyRows();
-	const { sortedEntries, total: updatedTotal } = sortEntries(data.entries);
+    data.entries.push(newEntry);
+    // force svelte to see the update
+    data = data;
+  }
 
-	total = updatedTotal;
-	data.entries = sortedEntries;
+  function updateTable() {
+    removeEmptyRows();
+    const { sortedEntries, total: updatedTotal } = sortEntries(data.entries);
 
-	const entriesLength = data.entries.length;
-	const last = data.entries[entriesLength - 1];
+    total = updatedTotal;
+    data.entries = sortedEntries;
 
-	if (!isLastRowEmpty()) {
-		addNewRow();
-	}
+    const entriesLength = data.entries.length;
 
-	updateHOG();
-	// force svelte to see the update
-	data = data;
-}
+    if (!isLastRowEmpty()) {
+      addNewRow();
+    }
 
-onMount(() => {
-	updateTable();
-});
+    updateHog();
+    // force svelte to see the update
+    data = data;
+  }
 
-$: {
-	removeEmptyRows();
-	addNewRow();
-}
+  onMount(() => {
+    updateTable();
+  });
+
+  $: {
+    removeEmptyRows();
+    addNewRow();
+  }
 </script>
 
 <h4>{data.category}</h4>
 <!-- eslint might raise a warning about this because it doens't understand Svelte's "use" -->
 <form use:clickOutside on:click_outside={updateTable}>
-	{#each data.entries as entry}
-		<div class="entry-container">
-			<input
-				type="text"
-				placeholder="Beskrivning"
-				bind:value={entry.description}
-				disabled={entry.Category.continuousUpdate}
-				class="description"
-				on:change={addNewRow} />
+  {#each data.entries as entry}
+    <div>
+      <input
+        type="text"
+        placeholder="Beskrivning"
+        bind:value={entry.description}
+        disabled={entry.Category.continuousUpdate && !entry.new}
+        class="description"
+        on:change={addNewRow} />
 
-			<input
-				type="number"
-				placeholder="Belopp"
-				bind:value={entry.amount}
-				class="amount"
-				disabled={entry.Category.continuousUpdate}
-				on:change={addNewRow} />
-		</div>
-	{/each}
-	<div class="entry-container">
-		<input disabled type="text" value="Totalt" class="description" />
-		<input disabled type="number" bind:value={total} class="amount" />
-	</div>
+      <input
+        type="number"
+        placeholder="Belopp"
+        bind:value={entry.amount}
+        class="amount"
+        disabled={entry.Category.continuousUpdate && !entry.new}
+        on:change={addNewRow} />
+    </div>
+  {/each}
+  <div class="total">
+    <input disabled type="text" value="Totalt" class="description" />
+    <input disabled type="number" bind:value={total} class="amount" />
+  </div>
 </form>
 
 <style>
-/* !important, otherwise Materalize takes priority */
-input:disabled {
-	color: black !important;
-	border-bottom: 1px solid #9e9e9e !important;
-	font-weight: 450;
-}
+  /* !important, otherwise Materalize takes priority */
+  .total input {
+    color: black !important;
+    border-bottom: 1px solid #9e9e9e !important;
+    font-weight: bold;
+  }
+  .description {
+    width: 70% !important;
+  }
 
-.entry-container {
-	display: flex;
-	justify-content: space-between;
-}
+  .amount {
+    width: 25% !important;
+  }
 
-.description {
-	width: 70% !important;
-}
+  /* Remove arrows from number input */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-.amount {
-	width: 25% !important;
-}
-
-/* Remove arrows from number input */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-	-moz-appearance: textfield;
-}
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 </style>

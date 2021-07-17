@@ -48,15 +48,12 @@
 </script>
 
 <Navigator {loggedIn} />
-{#if loggedIn}
-  <svelte:component this={page} />
-{:else}
-  <NotLoggedIn />
-{/if}
-
-<style>
-  :global(body) {
-    /* Not sure if materialize or svelte is adding a padding, but something is */
-    padding: 0px !important;
-  }
-</style>
+<div class="container">
+  <div class="row">
+    {#if loggedIn}
+      <svelte:component this={page} />
+    {:else}
+      <NotLoggedIn />
+    {/if}
+  </div>
+</div>
