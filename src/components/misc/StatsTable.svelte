@@ -65,24 +65,24 @@
 
           firstIteration = false;
         }
-      }
 
-      setMeta();
+        setMeta();
+      }
     }
   };
 
   function toggleArrow(newKey: string) {
     const elem = document.getElementById(`${newKey}-arrow`);
     const oldElem = document.getElementById(`${sortOnKey}-arrow`);
-    oldElem?.classList.add("hidden");
+    oldElem?.classList.add("hide");
 
-    elem.classList.remove("up", "down", "hidden");
+    elem.classList.remove("up", "down", "hide");
     elem.classList.add(asc ? "up" : "down");
   }
 
   function setMeta() {
     let total = 0;
-    let startDate, endDate;
+    let startDate: Date, endDate: Date;
 
     entries.forEach((entry) => {
       total += entry.belopp;
@@ -96,10 +96,12 @@
       }
     });
 
-    meta.total = total;
-    meta.average = Math.round(total / entries.length);
-    meta.startDate = startDate.toISOString().slice(0, 10);
-    meta.endDate = endDate.toISOString().slice(0, 10);
+    if (startDate) {
+      meta.total = total;
+      meta.average = Math.round(total / entries.length);
+      meta.startDate = startDate.toISOString().slice(0, 10);
+      meta.endDate = endDate.toISOString().slice(0, 10);
+    }
   }
 </script>
 
@@ -114,7 +116,7 @@
       <tr>
         {#each keys as key}
           <th>
-            <span class="arrow down up hidden" id="{key}-arrow" />
+            <span class="arrow down up hide" id="{key}-arrow" />
             <span id={key} on:click={() => sortTable(key)}>
               {key.toUpperCase()}</span>
           </th>
@@ -155,11 +157,6 @@
   .down {
     transform: rotate(45deg);
   }
-
-  .hidden {
-    display: none;
-  }
-
   #average,
   #total {
     font-weight: bold;

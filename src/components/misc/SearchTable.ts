@@ -22,20 +22,18 @@ type SelectorValue = {
 function matchAndGetLength(searchTerm: string): { match: string, length: number, rest: string, index: number; } {
 	// match "foo:" without consuming the : in "foo: bar baz"
 	const selectorPattern = /\p{Letter}+(?=:)/u;
-
 	const result = searchTerm.match(selectorPattern);
-	if (result === null) {
-		// not returning a simple null, otherwise TS will go bananas
-		// if you destructure the return value
-		return { match: null, length: null, rest: null, index: null };
+	let ret = { match: null, length: null, rest: null, index: null };
+
+	if (result !== null) {
+		const length = result[0].length;
+		const match = result[0];
+		// length + 1 to ignore the colon
+		const rest = searchTerm.substring(length + 1).trim();
+		ret = { match: match, length: length, rest: rest, index: result.index };
 	}
 
-	const length = result[0].length;
-	const match = result[0];
-	// length + 1 to ignore the colon
-	const rest = searchTerm.substring(length + 1).trim();
-
-	return { match: match, length: length, rest: rest, index: result.index };
+	return ret;
 }
 
 
@@ -55,10 +53,10 @@ function getSelectorsValues(searchTerm: string, selectorValues: SelectorValue[] 
 	}
 
 	// have we found all selectors?
-	const hasNext = matchAndGetLength(potentialValue);
-	if (hasNext.match !== null) {
-		const actualValue = potentialValue.substring(0, hasNext.index).trim();
-		const newSearchTerm = potentialValue.substring(hasNext.index);
+	const nextMatch = matchAndGetLength(potentialValue);
+	if (nextMatch.match !== null) {
+		const actualValue = potentialValue.substring(0, nextMatch.index).trim();
+		const newSearchTerm = potentialValue.substring(nextMatch.index);
 
 		const results = { selector: selector, value: actualValue };
 
@@ -73,11 +71,11 @@ function getSelectorsValues(searchTerm: string, selectorValues: SelectorValue[] 
 }
 
 function searchSpecific(list: Record<string, unknown>[], key: string, searchTerm: string): Record<string, unknown>[] {
-	const result = list.filter((entry) =>
-		entry[key].toString().toLowerCase().includes(searchTerm.toLowerCase())
+	const keyLC = key.toLowerCase();
+	const searchTermLC = searchTerm.toLowerCase();
+	return list.filter((entry) =>
+		entry[keyLC].toString().toLowerCase().includes(searchTermLC)
 	);
-
-	return result;
 }
 
 function searchEverything(list: Record<string, unknown>[], searchTerm: string): Record<string, unknown>[] {
@@ -86,15 +84,13 @@ function searchEverything(list: Record<string, unknown>[], searchTerm: string): 
 	  remove the keys (replace(...))
 	  and look for the needle
 	*/
-	const result = list.filter(
+	return list.filter(
 		(entry) =>
 			JSON.stringify(entry)
 				.replace(/("\w+":)/g, "")
 				.toLowerCase()
 				.indexOf(searchTerm.toLowerCase()) !== -1
 	);
-
-	return result;
 }
 
 export { getSelectorsValues, searchSpecific, searchEverything };
